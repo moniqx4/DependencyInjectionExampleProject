@@ -8,18 +8,20 @@ namespace DependencyInjectionExampleProject
         static void Main(string[] args)
         {
             // this could be set in XML config, to be set per deployment
-            AutofacExample.EEDBVersion = "V2";
+            AutofacExample.EEDBVersion = "V3";
 
             //Autofac Example:
-            IContainer container = AutofacExample.Setup(); 
+            IContainer container = AutofacExample.Setup();
+
             var pages = container.Resolve<IPages>();
 
-            // This would be an example of getting our objects available in container using HomeGrown container
-            // var pages = HomeGrownDIExample.Setup();
+            /*** This would be an example of getting our objects available in container using HomeGrown container ***/
+            //var pages = HomeGrownDIExample.Setup();
 
+            /*** Accessing and using the container objects ***/
             pages.GetPages();
 
-            //Without DI to handle the same pages, and this would be necessary in every class that needs to use them, the other options above ONLY needs to be in the entry point/program startup class
+            /*** Without DI to handle the same pages, and this would be necessary in every class that needs to use them, the other options above ONLY needs to be in the entry point/program startup class ***/
             //EmployeeDashboardV3 employeedb = new EmployeeDashboardV3();
             //EmployeeDashboardV2 employeedb2 = new EmployeeDashboardV2();
             //PunchComponent punch = new PunchComponent();

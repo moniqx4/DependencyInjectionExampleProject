@@ -11,7 +11,7 @@ namespace DependencyInjectionExampleProject
             DIContainer container = new DIContainer();
 
             //Register our interfaces
-            container.Register<IEmployeeDashboard, EmployeeDashboardV2>();
+            container.Register<IEmployeeDashboard, EmployeeDashboardV3>();
             container.Register<IPunchComponent, PunchComponent>();
             container.Register<IPages, Pages>();
 

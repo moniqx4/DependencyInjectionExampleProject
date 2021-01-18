@@ -8,6 +8,5 @@ namespace DependencyInjectionExampleProject
     {
         void GetPunchcomponent();
 
-        //void CreatePunch();
     }
 }

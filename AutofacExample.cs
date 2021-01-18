@@ -15,9 +15,8 @@ namespace DependencyInjectionExampleProject
             {
                 builder.RegisterType<EmployeeDashboardV3>().As<IEmployeeDashboard>();
             } else builder.RegisterType<EmployeeDashboardV2>().As<IEmployeeDashboard>();
-
           
-            builder.RegisterType<PunchComponent>().As<IPunchComponent>();
+            builder.RegisterType<PunchComponent>().As<IPunchComponent>().SingleInstance();
             builder.RegisterType<Pages>().As<IPages>();
 
             // Scan an assembly for components
@@ -28,6 +27,7 @@ namespace DependencyInjectionExampleProject
 
             Container = builder.Build();
             Container.BeginLifetimeScope();
+
             return Container;
         }
     }

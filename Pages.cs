@@ -8,14 +8,12 @@
         public Pages(IEmployeeDashboard employeeDashboard, IPunchComponent punchComponent)
         {
             _employeeDashboard = employeeDashboard;
-            _punchComponent = punchComponent;
-            //_employeeDashboardV2 = employeeDashboardV2;
+            _punchComponent = punchComponent;            
         }
 
         public void GetPages()
         {
-           _employeeDashboard.GetEmployeeDashboard();    
-
+           _employeeDashboard.GetEmployeeDashboard();   
            _punchComponent.GetPunchcomponent();
            
         }
