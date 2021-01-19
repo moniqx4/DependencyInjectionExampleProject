@@ -27,3 +27,19 @@ This is the container setup for the Home Grown version. Very basic no frils,
 setup for registering interfaces with their concrete classes, and building the container, thats it.
 
 The other files are basically test files to demonstrate different scenarios.
+
+*NuniTestProject* -
+This project is an example of setting up an autofac container with a TestRunner. The TestRunner is setup
+To get the actual test code from a workflow, by the workflow's name. 
+
+*PageObjectProvider*  -
+The PageObjectProvider is the container build in this project, and it is setup to register all the
+Interfaces in the assemply, so not required to enter them when a new interface is added. 
+
+The TestRunner uses a TestContext, if wanted to add more setting then the name of the test, would add
+it to the the TestContext. The TextContentBuilder, builds that Context so the TestRunner knows how to work
+with your test, what settings it requires to be set etc.
+
+A WebsiteContext could be added as well, for setting a configuration, like the browsertype to use to run
+test, etc. Setup the same way as the Test Context. For this example kept it simple with just the Test Context
+being defined with only the name.
