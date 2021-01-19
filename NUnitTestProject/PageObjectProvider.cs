@@ -9,7 +9,7 @@ namespace NUnitTestProject
     {
         public static IContainer Container { get; set; }
 
-        public static string Version { get; set; }
+        public static string Version { get; set; } = "V3";
 
         public static IContainer Setup()
         {
