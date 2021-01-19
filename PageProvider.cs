@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using DependencyInjectionExampleProject.Tests;
 using System;
 
 namespace DependencyInjectionExampleProject
