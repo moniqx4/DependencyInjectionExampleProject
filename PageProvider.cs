@@ -3,9 +3,9 @@ using System;
 
 namespace DependencyInjectionExampleProject
 {
-    class PageProvider
+    public class PageProvider
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             // this could be set in XML config, to be set per deployment
             AutofacExample.Version = "V2";
