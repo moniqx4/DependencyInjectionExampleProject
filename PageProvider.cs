@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using DependencyInjectionExampleProject.Tests;
 using System;
 
 namespace DependencyInjectionExampleProject
@@ -9,7 +8,7 @@ namespace DependencyInjectionExampleProject
         static void Main(string[] args)
         {
             // this could be set in XML config, to be set per deployment
-            AutofacExample.EEDBVersion = "V3";
+            AutofacExample.Version = "V2";
 
             //Autofac Example:
             IContainer container = AutofacExample.Setup();

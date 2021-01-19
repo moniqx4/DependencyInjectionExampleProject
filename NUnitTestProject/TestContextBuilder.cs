@@ -1,4 +1,4 @@
-﻿namespace DependencyInjectionExampleProject.Tests
+﻿namespace NUnitTestProject
 {
     public class TestContextBuilder
     {
@@ -19,6 +19,13 @@
         public TestContextBuilder AddName(string testName)
         {
             _context.WorkflowName = testName;
+
+            return this;
+        }
+
+        public TestContextBuilder AddVersion(string version)
+        {
+            _context.Version = version;
 
             return this;
         }

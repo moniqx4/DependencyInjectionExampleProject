@@ -1,10 +1,11 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
+using DependencyInjectionExampleProject;
 using System.Reflection;
 
-namespace DependencyInjectionExampleProject
+namespace NUnitTestProject
 {
-    public static class AutofacExample
+    public static class PageObjectProvider
     {
         public static IContainer Container { get; set; }
 
@@ -22,12 +23,9 @@ namespace DependencyInjectionExampleProject
             if (Version == "V3")
             {
                 builder.RegisterType<EmployeeDashboardV3>().As<IEmployeeDashboard>();
-            } else builder.RegisterType<EmployeeDashboardV2>().As<IEmployeeDashboard>();
-          
-            builder.RegisterType<PunchComponent>().As<IPunchComponent>().SingleInstance();
-            builder.RegisterType<Pages>().As<IPages>();
+            }
+            else builder.RegisterType<EmployeeDashboardV2>().As<IEmployeeDashboard>();
 
-            
             // Scan an assembly for components
             //builder.RegisterAssemblyTypes(DependencyInjectionExampleProject)
             //       .Where(t => t.Name.StartsWith("I"))
@@ -39,5 +37,6 @@ namespace DependencyInjectionExampleProject
 
             return Container;
         }
+
     }
 }

@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NUnitTestProject\**" />
+    <EmbeddedResource Remove="NUnitTestProject\**" />
+    <None Remove="NUnitTestProject\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.1.0" />
     <PackageReference Include="NUnit" Version="3.13.0" />
     <PackageReference Include="NUnit.Extension.DependencyInjection" Version="0.7.0" />

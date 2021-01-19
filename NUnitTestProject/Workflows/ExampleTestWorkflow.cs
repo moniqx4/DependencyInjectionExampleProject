@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DependencyInjectionExampleProject;
+using System;
 
-namespace DependencyInjectionExampleProject.Tests.Workflows
+namespace NUnitTestProject.Workflows
 {
-    public class TestWorkflow
+    public class ExampleTestWorkflow
     {
         private IEmployeeDashboard _employeeDashboard;
 
-        public TestWorkflow(IEmployeeDashboard employeeDashboard)
+        public ExampleTestWorkflow(IEmployeeDashboard employeeDashboard)
         {
             _employeeDashboard = employeeDashboard;
         }
@@ -20,7 +19,7 @@ namespace DependencyInjectionExampleProject.Tests.Workflows
 
         private void ShowEmployeeDashboardPageMsg()
         {
-            Console.Write("If you see this, then the test runner is setup properly.");
+            Console.Write("If you see this, then the test runner is setup properly. ");
 
             _employeeDashboard.GetEmployeeDashboard();
         }
