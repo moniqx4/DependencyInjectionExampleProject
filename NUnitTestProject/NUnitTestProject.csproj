@@ -16,4 +16,15 @@
     <ProjectReference Include="..\DependencyInjectionExampleProject.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Workflows\WebTime\EmployeeDashboard\Activity\" />
+    <Folder Include="Workflows\WebTime\EmployeeDashboard\Schedule\" />
+    <Folder Include="Workflows\WebTime\EmployeeDashboard\TimeOffRequest\" />
+    <Folder Include="Workflows\WebTime\SupervisorDashboard\" />
+    <Folder Include="Workflows\WebTime\WebKiosk\Activity\" />
+    <Folder Include="Workflows\WebTime\WebKiosk\Punch\" />
+    <Folder Include="Workflows\WebTime\WebKiosk\Schedule\" />
+    <Folder Include="Workflows\WebTime\WebKiosk\TimeOffRequest\" />
+  </ItemGroup>
+
 </Project>

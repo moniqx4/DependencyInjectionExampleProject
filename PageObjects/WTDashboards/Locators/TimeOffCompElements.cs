@@ -4,8 +4,13 @@ using System.Text;
 
 namespace PageObjects.WTDashboards.Locators
 {
-    public class TimeOffCompElements
+    public static class TimeOffCompElements
     {
         
+    }
+
+    public static class TimeOffCompElementsV2
+    {
+
     }
 }

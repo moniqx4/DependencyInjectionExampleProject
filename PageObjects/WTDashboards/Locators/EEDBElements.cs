@@ -4,8 +4,13 @@ using System.Text;
 
 namespace PageObjects.WTDashboards.Locators
 {
-    public class EEDBElements
+    public static class EEDBElements
     {
       
+    }
+
+    public static class EEDBElementsV2
+    {
+
     }
 }

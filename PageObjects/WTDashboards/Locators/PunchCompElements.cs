@@ -4,8 +4,13 @@ using System.Text;
 
 namespace PageObjects.WTDashboards.Locators
 {
-    public class PunchCompElements
+    public static class PunchCompElements
     {
       
+    }
+
+    public static class PunchCompElementsV2
+    {
+
     }
 }

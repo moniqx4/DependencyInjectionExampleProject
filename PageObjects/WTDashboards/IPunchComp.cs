@@ -1,7 +1,7 @@
 ﻿
 namespace PageObjects.WTDashboards
 {
-    interface IPunchComponent
+    public interface IPunchComp
     {
         void AddRegularPunch(string punchType);
         void AddManualPunch(string punchType);

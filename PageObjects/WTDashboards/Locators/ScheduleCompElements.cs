@@ -4,8 +4,13 @@ using System.Text;
 
 namespace PageObjects.WTDashboards.Locators
 {
-    public class ScheduleCompElements
+    public static class ScheduleCompElements
     {
        
+    }
+
+    public static class ScheduleCompElementsV2
+    {
+
     }
 }

@@ -1,7 +1,11 @@
-﻿namespace PageObjects.WTDashboards
+﻿using PageObjects.WTDashboards.Models;
+
+namespace PageObjects.WTDashboards
 {
-    public interface IActivityComponent
+    public interface IActivityComp
     {
-        void GetAttendencePointDetails();
+        AttPointsDto GetAttendencePointDetails();
+
+        PunchActvityDto GetActivityDetails(int index);
     }
 }

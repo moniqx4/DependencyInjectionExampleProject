@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
-using DependencyInjectionExampleProject;
+using PageObjects.WTDashboards;
+using PageObjects.WTDashboards.ConcreteClasses;
 using System.Reflection;
 
 namespace NUnitTestProject
@@ -15,16 +16,17 @@ namespace NUnitTestProject
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("DependencyInjectionExampleProject")).AsImplementedInterfaces();
+            //builder.RegisterAssemblyTypes(Assembly.Load("DependencyInjectionExampleProject")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.Load("NUnitTestProject")).AsImplementedInterfaces();
 
             // Registering Classes without Interfaces
             builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
             if (Version == "V3")
             {
-                builder.RegisterType<EmployeeDashboardV3>().As<IEmployeeDashboard>();
+                builder.RegisterType<EmployeeDashboardPage>().As<IEmployeeDashboard>();
             }
-            else builder.RegisterType<EmployeeDashboardV2>().As<IEmployeeDashboard>();
+            else builder.RegisterType<EmployeeDashboardPageV2>().As<IEmployeeDashboard>();
 
             // Scan an assembly for components
             //builder.RegisterAssemblyTypes(DependencyInjectionExampleProject)

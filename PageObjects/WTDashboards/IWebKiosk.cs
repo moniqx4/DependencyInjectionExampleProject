@@ -16,6 +16,8 @@ namespace PageObjects.WebKiosk
 
         void ConfigWebKiosk();
 
+        void DeleteWebKiosk();
 
+        void HandleTimeOutSessionModal();
     }
 }
