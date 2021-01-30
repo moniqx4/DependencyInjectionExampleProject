@@ -1,0 +1,4 @@
+﻿FROM ocaramba/selenium
+COPY ./ /MoniTestProject
+WORKDIR /MoniTestProject
+RUN ls

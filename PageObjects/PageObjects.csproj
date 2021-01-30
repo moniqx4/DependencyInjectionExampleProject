@@ -8,4 +8,8 @@
     <Folder Include="UserProfile\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumWebDriver\SeleniumWebDriver.csproj" />
+  </ItemGroup>
+
 </Project>
