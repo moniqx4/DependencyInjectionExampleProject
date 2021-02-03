@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using SeleniumWebDriver;
 
-namespace DependencyInjectionExampleProject.PageObjects.WTDashboards
+namespace DependencyInjectionExampleProject.PageObjects
 {
-    public partial class PageObjectBase: IDriver
+    public partial class PageObjectBase
     {
         protected IWebDriver Driver { get; set; }
 

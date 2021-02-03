@@ -59,7 +59,7 @@ namespace SeleniumWebDriver.Extensions
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(
                     driver =>
                     {
-                        var javaScriptExecutor = driver as IJavaScriptExecutor;
+                        IJavaScriptExecutor javaScriptExecutor = driver as IJavaScriptExecutor;
                         return javaScriptExecutor != null
                                && (bool)javaScriptExecutor.ExecuteScript("return jQuery.active == 0");
                     });
@@ -259,7 +259,7 @@ namespace SeleniumWebDriver.Extensions
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(
                     driver =>
                     {
-                        var javaScriptExecutor = driver as IJavaScriptExecutor;
+                        IJavaScriptExecutor javaScriptExecutor = driver as IJavaScriptExecutor;
                         return javaScriptExecutor != null
                                &&
                                (bool)javaScriptExecutor.ExecuteScript(

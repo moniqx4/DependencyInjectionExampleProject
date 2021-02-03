@@ -26,8 +26,7 @@ namespace SeleniumWebDriver.Extensions
         /// <param name="webElement">The web element.</param>
         public static void JavaScriptClick(this IWebElement webElement)
         {
-            var javascript = webElement.ToDriver() as IJavaScriptExecutor;
-            if (javascript == null)
+            if (!(webElement is IJavaScriptExecutor javascript))
             {
                 throw new ArgumentException("Element must wrap a web driver that supports javascript execution");
             }
@@ -45,8 +44,7 @@ namespace SeleniumWebDriver.Extensions
         /// Element must wrap a web driver that supports javascript execution.</exception>
         public static string GetTextContent(this IWebElement webElement)
         {
-            var javascript = webElement.ToDriver() as IJavaScriptExecutor;
-            if (javascript == null)
+            if (!(webElement is IJavaScriptExecutor javascript))
             {
                 throw new ArgumentException("Element must wrap a web driver that supports javascript execution");
             }

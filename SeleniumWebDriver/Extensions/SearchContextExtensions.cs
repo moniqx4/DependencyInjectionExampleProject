@@ -100,15 +100,16 @@ namespace SeleniumWebDriver.Extensions
         /// </code></example>
         public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, double timeout, Func<IWebElement, bool> condition, [Optional] string customMessage)
         {
-            var driver = element.ToDriver();
-            if (DriverContext.IsDriverSynchronizationWithAngular(driver))
+            var driver = (IWebElement)element;
+            if (DriverContext.IsDriverSynchronizationWithAngular((IWebDriver)driver))
             {
-                driver.WaitForAngular();
+                //driver.WaitForAngular();
+               
             }
 
             var by = locator.ToBy();
 
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout)) { Message = customMessage };
+            var wait = new WebDriverWait((IWebDriver)driver, TimeSpan.FromSeconds(timeout)) { Message = customMessage };
             wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
 
             wait.Until(
@@ -140,7 +141,7 @@ namespace SeleniumWebDriver.Extensions
         {
             var by = locator.ToBy();
 
-            var wait = new WebDriverWait(new SystemClock(), element.ToDriver(), TimeSpan.FromSeconds(timeout), TimeSpan.FromSeconds(timeInterval)) { Message = customMessage };
+            var wait = new WebDriverWait(new SystemClock(), (IWebDriver)element, TimeSpan.FromSeconds(timeout), TimeSpan.FromSeconds(timeInterval)) { Message = customMessage };
             wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
 
             wait.Until(
@@ -388,4 +389,4 @@ namespace SeleniumWebDriver.Extensions
         }
     }
 }
-}
+

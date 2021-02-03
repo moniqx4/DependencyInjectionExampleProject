@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="WebPay\" />
     <Folder Include="UserProfile\" />
   </ItemGroup>
 

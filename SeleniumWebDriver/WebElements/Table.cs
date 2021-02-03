@@ -25,7 +25,7 @@ namespace SeleniumWebDriver.WebElements
         /// </returns>
         public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator)
         {
-            var table = this.webElement;
+            var table = webElement;
             var rows = table.GetElements(rowLocator);
 
             var result = new string[rows.Count][];

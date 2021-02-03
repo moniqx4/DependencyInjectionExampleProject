@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PageObjects.WTDashboards.Models
 {
-    class TipEntryDto
+    public class TipEntryModel
     {
     }
 }

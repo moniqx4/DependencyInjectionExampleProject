@@ -2,7 +2,7 @@
 
 namespace PageObjects.WTDashboards.Models
 {
-    public class LoginCredDto
+    public class LoginCredModel
     {
         public string CompanyId { get; set; }
 

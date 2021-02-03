@@ -1,9 +1,8 @@
-﻿using PageObjects.SharedServices;
+﻿using PageObjects.Login;
+using PageObjects.SharedServices;
 using PageObjects.WTDashboards;
-using PageObjects.WTDashboards.Constants;
+using PageObjects.WTDashboards.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 {
@@ -14,24 +13,29 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
         private readonly IMyTimeSheet _myTimeSheet;
         private readonly INavigationService _navigationService;
         private readonly IPunchComp _punchCard;
+        private readonly LoginPage _login;
 
         public VerifyPunchWorkflow(
             IEmployeeDashboard employeeDashboard,
             IValidationService validate,
             IMyTimeSheet myTimeSheet,
             INavigationService navigationService,
-            IPunchComp punchCard)
+            IPunchComp punchCard,
+            LoginPage login)
         {
             _employeeDashboard = employeeDashboard;
             _validate = validate;
             _myTimeSheet = myTimeSheet;
             _navigationService = navigationService;
             _punchCard = punchCard;
+            _login = login;
         }
 
         public void Execute()
         {
-            Login(); // passing in employee login credentials
+           
+
+            Login();
             AddPunch(); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
             //var actualPunchDetails = 
             ValidatePunch(); // pass in the expected punch details
@@ -41,9 +45,15 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 
         private void Login()
         {
-            // with the passed in credentials, goto the eedashboard page and login
-            _navigationService.OpenToWTEmployeeDashboard(); // the LoginDto object should be passed in
-            //throw new NotImplementedException();
+            LoginCredModel loginCred = new LoginCredModel()
+            {
+                Username = "marcyemployee",
+                Password = "somepassword",
+                CompanyId = "100496"
+            };
+
+            _navigationService.OpenToWTEmployeeDashboard();
+            _login.LoginToEmployeeDashboard();            
         }
 
         private void AddPunch()

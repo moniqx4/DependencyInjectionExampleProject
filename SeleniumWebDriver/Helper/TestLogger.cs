@@ -5,12 +5,12 @@ using NLog;
 namespace SeleniumWebDriver.Helper
 {
 
-    public class TestLogger
+    public class TestLogger : ILogger
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger(); //.net4.x
         //private static readonly NLog.Logger Logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger(); // netcore3.x
         private DateTime startTestTime;
-
+        
         /// <summary>
         /// Logs the test starting.
         /// </summary>
@@ -19,7 +19,7 @@ namespace SeleniumWebDriver.Helper
         {
             this.startTestTime = DateTime.Now;
             this.Info("*************************************************************************************");
-            this.Info("START: {0} starts at {1}.", driverContext.TestTitle, this.startTestTime);
+            this.Info("START: {0} starts at {1}.", driverContext.TestTitle, startTestTime);
         }
 
         /// <summary>

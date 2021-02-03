@@ -1,25 +1,22 @@
-﻿using DependencyInjectionExampleProject.PageObjects.WTDashboards;
+﻿using DependencyInjectionExampleProject.PageObjects;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects.SharedServices
 {
     public class NavigationService :  PageObjectBase, INavigationService
     {
-
-        public NavigationService(DriverContext driverContext)
+        private readonly IWebPage _webPage;
+        public NavigationService(DriverContext driverContext, IWebPage webPage)
             : base(driverContext)
         {
+            _webPage = webPage;
         }
 
 
         public void NavigateToToggleMenuOpt(string menuOpt)
         {
-            
-            Driver.FindElement(by.)
+           
             throw new NotImplementedException();
         }
 

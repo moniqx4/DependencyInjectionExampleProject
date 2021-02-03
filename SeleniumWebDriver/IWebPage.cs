@@ -1,12 +1,11 @@
 ﻿using SeleniumWebDriver.Type;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace DependencyInjectionExampleProject.SeleniumWebDriver
+namespace SeleniumWebDriver
 {
     public interface IWebPage
     {
-        void ClickElement(Locator locator);
+        void ClickElement(Locator type, string locator);
+
+        void SetText(Locator type, string locator, string text);
     }
 }

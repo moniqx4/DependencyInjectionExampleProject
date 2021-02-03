@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using NLog;
+using SeleniumWebDriver.Helper;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +14,7 @@ namespace NUnitTestProject
 
             private Queue<ServiceMethod> _teardownMethods;
 
-            private List<Tuple<Type, Type>> Registrations;
+            private List<Tuple<Type, Type>> _registrations;
 
             private readonly string _testName;
 
@@ -24,9 +26,9 @@ namespace NUnitTestProject
             {
                 _testName = testName;
                 //_version = version;
-                Registrations = new List<Tuple<Type, Type>>();
+                _registrations = new List<Tuple<Type, Type>>();
                 _container = PageObjectProvider.Container;
-                //_logger = new TestLogger(_testName);
+                //_logger = new TestLogger();
                 _setupMethods = new Queue<ServiceMethod>();
                 _teardownMethods = new Queue<ServiceMethod>();
             }
@@ -40,7 +42,7 @@ namespace NUnitTestProject
 
             public void Setup<TTarget, TSource>()
             {
-                Registrations.Add(Tuple.Create(typeof(TTarget), typeof(TSource)));
+                _registrations.Add(Tuple.Create(typeof(TTarget), typeof(TSource)));
             }
 
             public void TearDown<T>(Action<object> setupMethod)
@@ -65,7 +67,7 @@ namespace NUnitTestProject
                         {                            
                             builder.RegisterInstance(testContext);
                         //builder.RegisterInstance(testContext.WebSite);
-                        foreach (var registration in Registrations)
+                        foreach (var registration in _registrations)
                             {                                
                                 builder.RegisterType(registration.Item2).As(registration.Item1);
                             }

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Configuration;
+using NLog;
 
 namespace SeleniumWebDriver
 {
@@ -13,6 +14,7 @@ namespace SeleniumWebDriver
     {
         // private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger(); .net4.x
         public static readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        //ILogger logger = new Logger();
 
         /// <summary>
         /// Getting appsettings.json file.
@@ -30,13 +32,13 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
-
+               
                 //setting = ConfigurationManager.AppSettings["url"];  .net4.x
 
-                setting = Builder["appSettings:url"]; // .net core3.x
-
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the url from settings file '{0}'", setting);
+                string setting = Builder["appSettings:url"]; // .net core3.x
+                //ILogger Logger;
+                //Logger.Info("Gets the url from settings file '{0}'", setting);
+                
                 return setting;
             }
         }
@@ -49,14 +51,12 @@ namespace SeleniumWebDriver
         {
             get
             {
-                bool supportedBrowser = false;
-                string setting = null;
-
+                      
                 //setting = ConfigurationManager.AppSettings["browser"]; .net4.x
-                setting = Builder["appSettings:browser"]; //.netcore
+                string setting = Builder["appSettings:browser"]; //.netcore
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "Browser value from settings file '{0}'", setting);
-                supportedBrowser = Enum.TryParse(setting, out BrowserType browserType);
+                //ILogger.Info("Browser value from settings file '{0}'", setting);
+                bool supportedBrowser = Enum.TryParse(setting, out BrowserType browserType);
                 if (supportedBrowser)
                 {
                     return browserType;
@@ -73,13 +73,11 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
+               // setting = ConfigurationManager.AppSettings["UseCurrentDirectory"]; .net4.x
 
-                // setting = ConfigurationManager.AppSettings["UseCurrentDirectory"]; .net4.x
-
-                setting = Builder["appSettings:UseCurrentDirectory"]; //.netcore3.x
-
-                //Logger.Trace(CultureInfo.CurrentCulture, "Use Current Directory value from settings file '{0}'", setting);
+                string setting = Builder["appSettings:UseCurrentDirectory"]; //.netcore3.x
+                //ILogger logger;
+                //logger.Info("Use Current Directory value from settings file '{0}'", setting);
                 if (string.IsNullOrEmpty(setting))
                 {
                     return false;
@@ -101,12 +99,10 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
+               //setting = ConfigurationManager.AppSettings["username"]; .net4.x
 
-                //setting = ConfigurationManager.AppSettings["username"]; .net4.x
-
-                setting = Builder["appSettings:username"]; //.netcore3.x
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the username from settings file '{0}'", setting);
+                string setting = Builder["appSettings:username"]; //.netcore3.x
+                //Logger.Info("Gets the username from settings file '{0}'", setting);
 
                 return setting;
             }
@@ -119,12 +115,10 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
-
-                //setting = ConfigurationManager.AppSettings["password"]; .net4.x
+               //setting = ConfigurationManager.AppSettings["password"]; .net4.x
 
 
-                setting = Builder["appSettings:password"]; //.netcore3.x
+                string setting = Builder["appSettings:password"]; //.netcore3.x
 
                 //Logger.Trace(CultureInfo.CurrentCulture, "Gets the password from settings file '{0}'", setting);
                 return setting;
@@ -141,13 +135,12 @@ namespace SeleniumWebDriver
         {
             get
             {
-                double setting;
+             
+                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["mediumTimeout"]); .net.4.x
 
-                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["mediumTimeout"], CultureInfo.CurrentCulture); .net.4.x
+                double setting = Convert.ToDouble(Builder["appSettings:mediumTimeout"]); //.netcore3.x
 
-                setting = Convert.ToDouble(Builder["appSettings:mediumTimeout"]); //.netcore3.x
-
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the mediumTimeout from settings file '{0}'", setting);
+                //Logger.Info("Gets the mediumTimeout from settings file '{0}'", setting);
                 return setting;
             }
         }
@@ -162,13 +155,11 @@ namespace SeleniumWebDriver
         {
             get
             {
-                double setting;
+                // setting = Convert.ToDouble(ConfigurationManager.AppSettings["longTimeout"]); .net.4.x
 
-                // setting = Convert.ToDouble(ConfigurationManager.AppSettings["longTimeout"], CultureInfo.CurrentCulture); .net.4.x
+                double setting = Convert.ToDouble(Builder["appSettings:longTimeout"]); //.netcore3.x
 
-                setting = Convert.ToDouble(Builder["appSettings:longTimeout"]); //.netcore3.x
-
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the longTimeout from settings file '{0}'", setting);
+                //Logger.Info("Gets the longTimeout from settings file '{0}'", setting);
                 return setting;
             }
         }
@@ -183,13 +174,11 @@ namespace SeleniumWebDriver
         {
             get
             {
-                double setting;
+                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["shortTimeout"]);  .net.4.x
 
-                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["shortTimeout"], CultureInfo.CurrentCulture);  .net.4.x
+                double setting = Convert.ToDouble(Builder["appSettings:shortTimeout"]); //.netcore3.x
 
-                setting = Convert.ToDouble(Builder["appSettings:shortTimeout"]); //.netcore3.x
-
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the shortTimeout from settings file '{0}'", setting);
+                //Logger.Info("Gets the shortTimeout from settings file '{0}'", setting);
                 return setting;
             }
         }
@@ -200,13 +189,12 @@ namespace SeleniumWebDriver
         public static double ImplicitlyWaitMilliseconds
         {
             get
-            {
-                double setting;
-                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["ImplicitlyWaitMilliseconds"], CultureInfo.CurrentCulture); //.net.4.x
+            {                
+                //setting = Convert.ToDouble(ConfigurationManager.AppSettings["ImplicitlyWaitMilliseconds"]); //.net.4.x
 
-                setting = Convert.ToDouble(Builder["appSettings:ImplicitlyWaitMilliseconds"]); //.netcore3.x
+                double setting = Convert.ToDouble(Builder["appSettings:ImplicitlyWaitMilliseconds"]); //.netcore3.x
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the ImplicitlyWaitMilliseconds from settings file '{0}'", setting);
+                //Logger.Info("Gets the ImplicitlyWaitMilliseconds from settings file '{0}'", setting);
                 return setting;
             }
         }
@@ -218,13 +206,11 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
-
                 //setting = ConfigurationManager.AppSettings["FirefoxBrowserExecutableLocation"];  //.net.4.x
 
-                setting = Builder["appSettings:FirefoxBrowserExecutableLocation"]; //.netcore3.x
+                string setting = Builder["appSettings:FirefoxBrowserExecutableLocation"]; //.netcore3.x
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "Gets the path and file name of the Firefox browser executable from settings file '{0}'", setting);
+                //Logger.Info(CultureInfo.CurrentCulture, "Gets the path and file name of the Firefox browser executable from settings file '{0}'", setting);
                 if (string.IsNullOrEmpty(setting))
                 {
                     return string.Empty;
@@ -241,13 +227,12 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
 
                 //setting = ConfigurationManager.AppSettings["JavaScriptErrorTypes"]; //.net4x
 
-                setting = Builder["appSettings:JavaScriptErrorTypes"]; //.netcore3.x
+                string setting = Builder["appSettings:JavaScriptErrorTypes"]; //.netcore3.x
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "JavaScript error logging value from settings file '{0}'", setting);
+                //Logger.Info("JavaScript error logging value from settings file '{0}'", setting);
                 if (string.IsNullOrEmpty(setting))
                 {
                     return new Collection<string>
@@ -275,13 +260,12 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
 
                 //setting = ConfigurationManager.AppSettings["ScreenShotFolder"]; .net4.x
 
-                setting = Builder["appSettings:ScreenShotFolder"]; //.netcore3.x
+                string setting = Builder["appSettings:ScreenShotFolder"]; //.netcore3.x
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "Get ScreenShotFolder value from settings file '{0}'", setting);
+                //Logger.Trace("Get ScreenShotFolder value from settings file '{0}'", setting);
                 return setting;
             }
         }
@@ -293,13 +277,11 @@ namespace SeleniumWebDriver
         {
             get
             {
-                string setting = null;
-
                 //setting = ConfigurationManager.AppSettings["SynchronizationWithAngularEnabled"];
 
-                setting = Builder["appSettings:SynchronizationWithAngularEnabled"]; //.netcore3.x
+                string setting = Builder["appSettings:SynchronizationWithAngularEnabled"]; //.netcore3.x
 
-                //Logger.Trace(CultureInfo.CurrentCulture, "Angular synchronization Enabled value from settings file '{0}'", setting);
+                //Logger.Trace("Angular synchronization Enabled value from settings file '{0}'", setting);
                 if (string.IsNullOrEmpty(setting))
                 {
                     return false;
@@ -344,7 +326,5 @@ namespace SeleniumWebDriver
         }
 
     }
-
-
 }
 

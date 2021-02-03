@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SeleniumWebDriver
 {
-    public interface IWebPage
+    public interface IBrowserActions
     {
     }
 }

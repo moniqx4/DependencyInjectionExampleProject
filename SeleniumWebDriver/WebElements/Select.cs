@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.Type;
 using System;
 
 namespace SeleniumWebDriver.WebElements
@@ -8,10 +9,12 @@ namespace SeleniumWebDriver.WebElements
     public class Select : RemoteWebElement
     {
         private readonly IWebElement webElement;
+        private readonly ILogger _logger;
 
-        public Select(IWebElement webElement)
+        public Select(IWebElement webElement, ILogger logger)
             : base(webElement as RemoteWebDriver, null)
-        {          
+        {
+            _logger = logger;
         }
 
         public SelectElement SelectElement()
@@ -36,8 +39,9 @@ namespace SeleniumWebDriver.WebElements
             }
             catch (NoSuchElementException e)
             {
-                //log error here
-                throw;
+                _logger.Error("unable to select value by text: {0}", selectValue);
+                _logger.Error(e.Message);
+               
             }
         }
 
@@ -47,7 +51,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="index">Index value to be selected.</param>
         public void SelectByIndex(int index)
         {
-            this.SelectByIndex(index, BaseConfig.MediumTimeout);
+            SelectByIndex(index, BaseConfig.MediumTimeout);
         }
 
         /// <summary>
@@ -69,8 +73,8 @@ namespace SeleniumWebDriver.WebElements
             }
             catch (NoSuchElementException e)
             {
-                //Logger.Error(CultureInfo.CurrentCulture, "unable to select given index: {0}", index);
-                //Logger.Error(e.Message);
+                _logger.Error("unable to select given index: {0}", index);
+                _logger.Error(e.Message);
             }
         }
 
@@ -100,8 +104,8 @@ namespace SeleniumWebDriver.WebElements
             }
             catch (NoSuchElementException e)
             {
-                //Logger.Error(CultureInfo.CurrentCulture, "unable to select given value: {0}", selectValue);
-                //Logger.Error(e.Message);
+                _logger.Error("unable to select given value: {0}", selectValue);
+                _logger.Error(e.Message);
             }
         }
 
@@ -112,9 +116,9 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>
         /// True or False depends if text is available in dropdown.
         /// </returns>
-        public bool IsSelectOptionAvailable(string option)
+        public bool IsSelectOptionAvailable(IWebElement option)
         {
-            return this.IsSelectOptionAvailable(option, BaseConfig.MediumTimeout);
+            return IsSelectOptionAvailable(option, BaseConfig.MediumTimeout);
         }
 
         /// <summary>
@@ -125,10 +129,11 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>
         /// True or False depends if text is available in dropdown.
         /// </returns>
-        public bool IsSelectOptionAvailable(string option, double timeout)
+        public bool IsSelectOptionAvailable(IWebElement element, double timeout)
         {
-            var element = WaitUntilDropdownIsPopulated(timeout);
             var selectElement = new SelectElement(element);
+            WaitUntilDropdownIsPopulated(timeout);
+            
             var numEl = selectElement.AllSelectedOptions.Count;
 
             if (numEl > 0)
@@ -146,11 +151,11 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>Web element when dropdown populated.</returns>
         private IWebElement WaitUntilDropdownIsPopulated(double timeout)
         {
-            var selectElement = new SelectElement(this.webElement);
+            var selectElement = new SelectElement(webElement);
             var isPopulated = false;
             try
             {
-                new WebDriverWait(this.webElement.ToDriver(), TimeSpan.FromSeconds(timeout)).Until(
+                new WebDriverWait((IWebDriver)webElement, TimeSpan.FromSeconds(timeout)).Until(
                     x =>
                     {
                         var size = selectElement.Options.Count;
@@ -164,12 +169,13 @@ namespace SeleniumWebDriver.WebElements
             }
             catch (NoSuchElementException e)
             {
-                //Logger.Error(CultureInfo.CurrentCulture, "unable to select given index: {0}", selectElement);
-                //Logger.Error(e.Message);
+                _logger.Error("unable to select given index: {0}", selectElement);
+                _logger.Error(e.Message);
             }
 
-            return this.webElement;
+            return webElement;
         }
+      
     }
 }
-}
+

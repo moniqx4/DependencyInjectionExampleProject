@@ -13,12 +13,24 @@ namespace SeleniumWebDriver
             _driver = driver;
         }
 
-       
+        public void ClickElement(Locator locator)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClickElement(Locator type, string locator)
+        {
+            throw new NotImplementedException();
+        }
 
         public void GetDriver()
         {
             _driver.Start();
         }
-      
+
+        public void SetText(Locator type, string locator, string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

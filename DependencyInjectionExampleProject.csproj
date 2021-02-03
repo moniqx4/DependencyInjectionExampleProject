@@ -3,19 +3,41 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="NUnitTestProject\**" />
+    <Compile Remove="PageObjects\**" />
+    <Compile Remove="SeleniumWebDriver\**" />
     <EmbeddedResource Remove="NUnitTestProject\**" />
+    <EmbeddedResource Remove="PageObjects\**" />
+    <EmbeddedResource Remove="SeleniumWebDriver\**" />
     <None Remove="NUnitTestProject\**" />
+    <None Remove="PageObjects\**" />
+    <None Remove="SeleniumWebDriver\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="DependencyInjectionExampleProject.sln" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="NLog" Version="4.7.7" />
     <PackageReference Include="NUnit" Version="3.13.0" />
     <PackageReference Include="NUnit.Extension.DependencyInjection" Version="0.7.0" />
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="WebDriverManager" Version="2.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="PageObjects\PageObjects.csproj" />
+    <ProjectReference Include="SeleniumWebDriver\SeleniumWebDriver.csproj" />
   </ItemGroup>
 
 </Project>

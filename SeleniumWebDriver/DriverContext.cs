@@ -142,7 +142,7 @@ namespace SeleniumWebDriver
             }
         }
 
-        private InternetExplorerOptions internetExplorerOptions
+        private InternetExplorerOptions InternetExplorerOptions
         {
             get
             {
@@ -218,7 +218,7 @@ namespace SeleniumWebDriver
                     _driver = new FirefoxDriver(FirefoxOptions);
                     break;
                 case BrowserType.InternetExplorer:
-                    _driver = new InternetExplorerDriver(internetExplorerOptions);
+                    _driver = new InternetExplorerDriver(InternetExplorerOptions);
                     break;
                 default:
                     throw new Exception("Invalid BrowserType, can't start Browser");
