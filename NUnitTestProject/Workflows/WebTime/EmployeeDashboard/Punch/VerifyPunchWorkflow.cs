@@ -13,7 +13,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
         private readonly IMyTimeSheet _myTimeSheet;
         private readonly INavigationService _navigationService;
         private readonly IPunchComp _punchCard;
-        private readonly LoginPage _login;
+        private readonly ILogin _login;
 
         public VerifyPunchWorkflow(
             IEmployeeDashboard employeeDashboard,
@@ -21,7 +21,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             IMyTimeSheet myTimeSheet,
             INavigationService navigationService,
             IPunchComp punchCard,
-            LoginPage login)
+            ILogin login)
         {
             _employeeDashboard = employeeDashboard;
             _validate = validate;
@@ -33,18 +33,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 
         public void Execute()
         {
-           
 
-            Login();
-            AddPunch(); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
-            //var actualPunchDetails = 
-            ValidatePunch(); // pass in the expected punch details
-            ClearPunch(); // clear out added punch
-
-        }
-
-        private void Login()
-        {
             LoginCredModel loginCred = new LoginCredModel()
             {
                 Username = "marcyemployee",
@@ -52,8 +41,19 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
                 CompanyId = "100496"
             };
 
+            Login(loginCred);
+            AddPunch(); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
+            //var actualPunchDetails = 
+            ValidatePunch(); // pass in the expected punch details
+            ClearPunch(); // clear out added punch
+
+        }
+
+        private void Login(LoginCredModel loginCred)
+        {
+
             _navigationService.OpenToWTEmployeeDashboard();
-            _login.LoginToEmployeeDashboard();            
+            _login.LoginToEmployeeDashboard(loginCred);            
         }
 
         private void AddPunch()

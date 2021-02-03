@@ -5,8 +5,8 @@ namespace PageObjects.Login
     public interface ILogin
     {
         public LoginCredModel loginCred { get; set; }
-        void LoginToEmployeeDashboard();
+        void LoginToEmployeeDashboard(LoginCredModel loginCred);
 
-        void LoginToWebKiosk();
+        void LoginToWebKiosk(LoginCredModel loginCred);
     }
 }

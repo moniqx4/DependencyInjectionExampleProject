@@ -16,12 +16,12 @@ namespace PageObjects.Login
             _webPage = webPage;
         }
 
-        public void LoginToEmployeeDashboard()
+        public void LoginToEmployeeDashboard(LoginCredModel loginCred)
         {
             FillLoginPageForm(loginCred);
         }
 
-        public void LoginToWebKiosk()
+        public void LoginToWebKiosk(LoginCredModel loginCred)
         {
             FillLoginPageForm(loginCred);
         }
