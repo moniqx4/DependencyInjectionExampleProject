@@ -8,7 +8,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 {
     public class VerifyPunchWorkflow
     {
-        private readonly IEmployeeDashboard _employeeDashboard;
+        private readonly IEmployeeDashboard _employeeDashboard;      
         private readonly IValidationService _validate;
         private readonly IMyTimeSheet _myTimeSheet;
         private readonly INavigationService _navigationService;
@@ -60,6 +60,11 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
         {
             // based on if reg or manual, set the required options, and submit
             //_punchCard.AddRegularPunch(PunchTypes.ClockIn);
+            throw new NotImplementedException();
+        }
+
+        private void AddNotes()
+        {
             throw new NotImplementedException();
         }
 

@@ -9,6 +9,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
+using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
 using SeleniumWebDriver.Types;
@@ -20,9 +21,13 @@ namespace SeleniumWebDriver
     public partial class DriverContext : IDriverContext
     {
         private IWebDriver _driver;
+        
 
         public string TestTitle { get; set; }
-        public string CurrentDirectory { get; set; }
+
+        public string PageUrl { get; set; }
+
+        public string CurrentScreenshotDirectory { get; set; }
 
         private readonly Collection<ErrorDetail> verifyMessages = new Collection<ErrorDetail>();
 
@@ -37,15 +42,7 @@ namespace SeleniumWebDriver
                 return _driver;
             }
         }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether [test failed].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [test failed]; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsTestFailed { get; set; }
-
+  
         private static Dictionary<IWebDriver, bool> driversAngularSynchronizationEnable =
             new Dictionary<IWebDriver, bool>();
 
@@ -86,79 +83,79 @@ namespace SeleniumWebDriver
         {
             get
             {
-                return FilesHelper.GetFolder(BaseConfig.ScreenShotFolder, this.CurrentDirectory);
+                return FilesHelper.GetFolder(BaseConfig.ScreenShotFolder, this.CurrentScreenshotDirectory);
             }
         }
 
 
-        private FirefoxOptions FirefoxOptions
-        {
-            get
-            {
+        //private FirefoxOptions FirefoxOptions
+        //{
+        //    get
+        //    {
 
-                var firefoxOptions = new FirefoxOptions
-                {
-                    PageLoadStrategy = PageLoadStrategy.Eager,
-                };
+        //        var firefoxOptions = new FirefoxOptions
+        //        {
+        //            PageLoadStrategy = PageLoadStrategy.Eager,
+        //        };
 
-                new DriverManager().SetUpDriver(new FirefoxConfig());
-                _driver = new FirefoxDriver(firefoxOptions);
-                return (FirefoxOptions)_driver;
-            }
-        }
+        //        new DriverManager().SetUpDriver(new FirefoxConfig());
+        //        _driver = new FirefoxDriver(firefoxOptions);
+        //        return (FirefoxOptions)_driver;
+        //    }
+        //}
 
-        private ChromeOptions ChromeOptions
-        {
-            get
-            {
+        //private ChromeOptions ChromeOptions
+        //{
+        //    get
+        //    {
 
-                var chromeOptions = new ChromeOptions
-                {
-                    PageLoadStrategy = PageLoadStrategy.Eager,
-                    Arguments = { }
-                };
+        //        var chromeOptions = new ChromeOptions
+        //        {
+        //            PageLoadStrategy = PageLoadStrategy.Eager,
+        //            Arguments = { }
+        //        };
 
-                new DriverManager().SetUpDriver(new ChromeConfig());
-                _driver = new ChromeDriver(chromeOptions);
-                return (ChromeOptions)_driver;
-            }
-        }
+        //        new DriverManager().SetUpDriver(new ChromeConfig());
+        //        _driver = new ChromeDriver(chromeOptions);
+        //        return (ChromeOptions)_driver;
+        //    }
+        //}
 
-        private EdgeOptions EdgeOptions
-        {
-            get
-            {
+        //private EdgeOptions EdgeOptions
+        //{
+        //    get
+        //    {
 
-                var edgeOptions = new EdgeOptions
-                {
-                    PageLoadStrategy = PageLoadStrategy.Eager,
-                    UseInPrivateBrowsing = true,
+        //        var edgeOptions = new EdgeOptions
+        //        {
+        //            PageLoadStrategy = PageLoadStrategy.Eager,
+        //            UseInPrivateBrowsing = true,
 
-                };
+        //        };
 
-                new DriverManager().SetUpDriver(new EdgeConfig());
-                _driver = new EdgeDriver(edgeOptions);
-                return (EdgeOptions)_driver;
-            }
-        }
+        //        new DriverManager().SetUpDriver(new EdgeConfig());
+        //        _driver = new EdgeDriver(edgeOptions);
+        //        return (EdgeOptions)_driver;
+        //    }
+        //}
 
-        private InternetExplorerOptions InternetExplorerOptions
-        {
-            get
-            {
+        //private InternetExplorerOptions InternetExplorerOptions
+        //{
+        //    get
+        //    {
 
-                InternetExplorerOptions internetOptions = new InternetExplorerOptions
-                {
-                    PageLoadStrategy = PageLoadStrategy.Eager,
-                    EnsureCleanSession = true,
-                    IgnoreZoomLevel = true,
-                };
+        //        InternetExplorerOptions internetOptions = new InternetExplorerOptions
+        //        {
+        //            PageLoadStrategy = PageLoadStrategy.Eager,
+        //            EnsureCleanSession = true,
+        //            IgnoreZoomLevel = true,
+        //        };
 
-                new DriverManager().SetUpDriver(new InternetExplorerConfig());
-                _driver = new InternetExplorerDriver(internetOptions);
-                return (InternetExplorerOptions)_driver;
-            }
-        }
+        //        new DriverManager().SetUpDriver(new InternetExplorerConfig());
+        //        _driver = new InternetExplorerDriver(internetOptions);
+        //        return (InternetExplorerOptions)_driver;
+        //    }
+        //}
 
         /// <summary>
         /// Takes the screenshot.
@@ -208,17 +205,17 @@ namespace SeleniumWebDriver
             switch (BaseConfig.Browser)
             {
 
-                case BrowserType.Chrome:                  
-                    _driver = new ChromeDriver(ChromeOptions);
+                case BrowserType.Chrome:
+                    CustomChrome _driver = new CustomChrome();
                     break;
                 case BrowserType.Edge:
-                    _driver = new EdgeDriver(EdgeOptions);
+                    CustomEdge _driver = new CustomEdge();
                     break;
                 case BrowserType.Firefox:
-                    _driver = new FirefoxDriver(FirefoxOptions);
+                    _driver = new CustomFirefox();
                     break;
                 case BrowserType.InternetExplorer:
-                    _driver = new InternetExplorerDriver(InternetExplorerOptions);
+                    _driver = new CustomInternetExplorer();
                     break;
                 default:
                     throw new Exception("Invalid BrowserType, can't start Browser");

@@ -1,4 +1,6 @@
-﻿using SeleniumWebDriver.Type;
+﻿using OpenQA.Selenium;
+using SeleniumWebDriver.Extensions;
+using SeleniumWebDriver.Type;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +9,14 @@ namespace SeleniumWebDriver
 {
     public class SeleniumDriver : IDriver
     {
-        private readonly IDriverContext _driver;
-        public SeleniumDriver(IDriverContext driver)
+        protected IWebDriver Driver { get; set; }
+
+        protected DriverContext DriverContext { get; set; }
+
+        public SeleniumDriver(DriverContext driverContext)
         {
-            _driver = driver;
+            DriverContext = driverContext;
+            Driver = driverContext.Driver;
         }
 
         public void ClickElement(Locator locator)
@@ -25,12 +31,13 @@ namespace SeleniumWebDriver
 
         public void GetDriver()
         {
-            _driver.Start();
+            DriverContext.Start();
         }
 
         public void SetText(Locator type, string locator, string text)
         {
-            throw new NotImplementedException();
+            // SearchContextExtensions.GetElement(type, locator, text,60, "Unable to Locate Element");            
+         
         }
     }
 }
