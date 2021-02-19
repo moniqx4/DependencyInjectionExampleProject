@@ -3,9 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace SeleniumWebDriver.Extensions
 {
@@ -34,8 +32,7 @@ namespace SeleniumWebDriver.Extensions
         /// <param name="url">The URL.</param>
         public static void NavigateTo(this IWebDriver webDriver, Uri url)
         {
-            webDriver.Navigate().GoToUrl(url);
-            
+            webDriver.Navigate().GoToUrl(url);            
         }
 
         /// <summary>
@@ -274,8 +271,7 @@ namespace SeleniumWebDriver.Extensions
 
         /// <summary>
         /// Enable synchronization with angular.
-        /// </summary>
-        /// <param name="webDriver">The WebDriver.</param>
+        /// </summary>        
         /// <param name="enable">Enable or disable synchronization.</param>
         public static void SynchronizeWithAngular(bool enable)
         {

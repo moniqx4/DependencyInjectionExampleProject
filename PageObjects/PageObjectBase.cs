@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumWebDriver;
-using System;
 
 namespace DependencyInjectionExampleProject.PageObjects
 {
