@@ -16,7 +16,7 @@ namespace SeleniumWebDriver
 
         public string TestTitle { get; set; }
 
-        public string PageUrl { get; set; }
+        //public string PageUrl { get; set; }
 
         public string CurrentScreenshotDirectory { get; set; }
 
@@ -29,7 +29,7 @@ namespace SeleniumWebDriver
         {
             get
             {
-                return _driver;
+                return Current;
             }
         }
 
@@ -58,21 +58,21 @@ namespace SeleniumWebDriver
         /// </summary>
         /// <param name="driver">Provide driver.</param>
         /// <param name="enable">Set true to enable.</param>
-        public static void SetAngularSynchronizationForDriver(IWebDriver driver, bool enable)
+        public static void SetAngularSynchronizationForDriver(bool enable)
         {
-            if (!enable && driversAngularSynchronizationEnable.ContainsKey(driver))
+            if (!enable && driversAngularSynchronizationEnable.ContainsKey(Current))
             {
-                driversAngularSynchronizationEnable.Remove(driver);
+                driversAngularSynchronizationEnable.Remove(Current);
             }
 
-            if (enable && !driversAngularSynchronizationEnable.ContainsKey(driver))
+            if (enable && !driversAngularSynchronizationEnable.ContainsKey(Current))
             {
-                driversAngularSynchronizationEnable.Add(driver, true);
+                driversAngularSynchronizationEnable.Add(Current, true);
             }
 
-            if (enable && driversAngularSynchronizationEnable.ContainsKey(driver))
+            if (enable && driversAngularSynchronizationEnable.ContainsKey(Current))
             {
-                driversAngularSynchronizationEnable[driver] = true;
+                driversAngularSynchronizationEnable[Current] = true;
             }
         }
 
@@ -93,7 +93,7 @@ namespace SeleniumWebDriver
         {
             try
             {
-                var screenshotDriver = (ITakesScreenshot)_driver;
+                var screenshotDriver = (ITakesScreenshot)Current;
                 var screenshot = screenshotDriver.GetScreenshot();
                 return screenshot;
             }
