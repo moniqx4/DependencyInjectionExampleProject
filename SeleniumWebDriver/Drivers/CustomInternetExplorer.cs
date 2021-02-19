@@ -6,7 +6,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWebDriver.Drivers
 {
-    public static class CustomInternetExplorer
+    public class CustomInternetExplorer
     {
         [ThreadStatic]
         static IWebDriver driver = new InternetExplorerDriver();

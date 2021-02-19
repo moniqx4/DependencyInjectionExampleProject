@@ -9,7 +9,7 @@ namespace SeleniumWebDriver
 {
     public class SeleniumDriver : IDriver
     {
-        protected IWebDriver Driver { get; set; }
+        protected static IWebDriver Driver { get; set; }
 
         protected DriverContext DriverContext { get; set; }
 

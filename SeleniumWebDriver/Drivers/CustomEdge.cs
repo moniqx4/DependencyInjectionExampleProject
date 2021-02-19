@@ -10,7 +10,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWebDriver.Drivers
 {
-    public static class CustomEdge
+    public class CustomEdge
     {
         [ThreadStatic]
         static IWebDriver driver = new EdgeDriver();

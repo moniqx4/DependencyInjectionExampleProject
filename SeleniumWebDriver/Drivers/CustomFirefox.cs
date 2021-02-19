@@ -1,17 +1,15 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using System;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWebDriver.Drivers
 {
-    public static class CustomFirefox
-    {
-        [ThreadStatic]
-        static IWebDriver driver = new FirefoxDriver();
+    public class CustomFirefox
+    {       
+        IWebDriver driver = new FirefoxDriver();
     
-        private static FirefoxOptions FirefoxOptions
+        private FirefoxOptions FirefoxOptions
         {
             get
             {

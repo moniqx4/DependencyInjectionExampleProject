@@ -1,27 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Text;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Remote;
 using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
 using SeleniumWebDriver.Types;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWebDriver
 {
-    public partial class DriverContext : IDriverContext
+    public partial class DriverContext
     {
-        private IWebDriver _driver;
-        
+        [ThreadStatic]
+        private static IWebDriver _driver;        
 
         public string TestTitle { get; set; }
 
@@ -30,7 +21,6 @@ namespace SeleniumWebDriver
         public string CurrentScreenshotDirectory { get; set; }
 
         private readonly Collection<ErrorDetail> verifyMessages = new Collection<ErrorDetail>();
-
 
         /// <summary>
         /// Gets driver Handle.
@@ -42,7 +32,14 @@ namespace SeleniumWebDriver
                 return _driver;
             }
         }
-  
+
+        public static IWebDriver Current => _driver ?? throw new NullReferenceException();
+
+        public static void Goto(string url)
+        {
+            Current.Navigate().GoToUrl(url);
+        }
+
         private static Dictionary<IWebDriver, bool> driversAngularSynchronizationEnable =
             new Dictionary<IWebDriver, bool>();
 
@@ -88,75 +85,6 @@ namespace SeleniumWebDriver
         }
 
 
-        //private FirefoxOptions FirefoxOptions
-        //{
-        //    get
-        //    {
-
-        //        var firefoxOptions = new FirefoxOptions
-        //        {
-        //            PageLoadStrategy = PageLoadStrategy.Eager,
-        //        };
-
-        //        new DriverManager().SetUpDriver(new FirefoxConfig());
-        //        _driver = new FirefoxDriver(firefoxOptions);
-        //        return (FirefoxOptions)_driver;
-        //    }
-        //}
-
-        //private ChromeOptions ChromeOptions
-        //{
-        //    get
-        //    {
-
-        //        var chromeOptions = new ChromeOptions
-        //        {
-        //            PageLoadStrategy = PageLoadStrategy.Eager,
-        //            Arguments = { }
-        //        };
-
-        //        new DriverManager().SetUpDriver(new ChromeConfig());
-        //        _driver = new ChromeDriver(chromeOptions);
-        //        return (ChromeOptions)_driver;
-        //    }
-        //}
-
-        //private EdgeOptions EdgeOptions
-        //{
-        //    get
-        //    {
-
-        //        var edgeOptions = new EdgeOptions
-        //        {
-        //            PageLoadStrategy = PageLoadStrategy.Eager,
-        //            UseInPrivateBrowsing = true,
-
-        //        };
-
-        //        new DriverManager().SetUpDriver(new EdgeConfig());
-        //        _driver = new EdgeDriver(edgeOptions);
-        //        return (EdgeOptions)_driver;
-        //    }
-        //}
-
-        //private InternetExplorerOptions InternetExplorerOptions
-        //{
-        //    get
-        //    {
-
-        //        InternetExplorerOptions internetOptions = new InternetExplorerOptions
-        //        {
-        //            PageLoadStrategy = PageLoadStrategy.Eager,
-        //            EnsureCleanSession = true,
-        //            IgnoreZoomLevel = true,
-        //        };
-
-        //        new DriverManager().SetUpDriver(new InternetExplorerConfig());
-        //        _driver = new InternetExplorerDriver(internetOptions);
-        //        return (InternetExplorerOptions)_driver;
-        //    }
-        //}
-
         /// <summary>
         /// Takes the screenshot.
         /// </summary>
@@ -186,7 +114,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public void WindowMaximize()
         {
-            _driver.Manage().Window.Maximize();
+            Current.Manage().Window.Maximize();
         }
 
         /// <summary>
@@ -194,28 +122,28 @@ namespace SeleniumWebDriver
         /// </summary>
         public void DeleteAllCookies()
         {
-            _driver.Manage().Cookies.DeleteAllCookies();
+            Current.Manage().Cookies.DeleteAllCookies();
         }
 
         /// <summary>
         /// Starts the specified Driver.
         /// </summary>
-        public void Start()
+        public static void Start()
         {
             switch (BaseConfig.Browser)
             {
 
                 case BrowserType.Chrome:
-                    CustomChrome _driver = new CustomChrome();
+                    new CustomChrome();                    
                     break;
                 case BrowserType.Edge:
-                    CustomEdge _driver = new CustomEdge();
+                    new CustomEdge();
                     break;
                 case BrowserType.Firefox:
-                    _driver = new CustomFirefox();
+                    new CustomFirefox();
                     break;
                 case BrowserType.InternetExplorer:
-                    _driver = new CustomInternetExplorer();
+                    new CustomInternetExplorer();
                     break;
                 default:
                     throw new Exception("Invalid BrowserType, can't start Browser");
@@ -224,7 +152,7 @@ namespace SeleniumWebDriver
         }
 
         //private void SetupRemoteWebDriver()
-        //{
+         
         //    NameValueCollection driverCapabilitiesConf = new NameValueCollection();
         //    NameValueCollection settings = new NameValueCollection();
 

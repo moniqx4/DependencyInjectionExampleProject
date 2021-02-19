@@ -6,7 +6,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace SeleniumWebDriver.Drivers
 {
-    public static class CustomChrome
+    public class CustomChrome
     {
         [ThreadStatic]
         static IWebDriver driver = new ChromeDriver();
@@ -15,7 +15,6 @@ namespace SeleniumWebDriver.Drivers
         {
             get
             {
-
                 var chromeOptions = new ChromeOptions
                 {
                     PageLoadStrategy = PageLoadStrategy.Eager,

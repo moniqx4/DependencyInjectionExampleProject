@@ -1,11 +1,13 @@
 ﻿using OpenQA.Selenium;
 using SeleniumWebDriver;
+using System;
 
 namespace DependencyInjectionExampleProject.PageObjects
 {
     public partial class PageObjectBase
     {
-        protected IWebDriver Driver { get; set; }
+       
+        protected static IWebDriver Driver { get; set; }
 
         protected DriverContext DriverContext { get; set; }
         
