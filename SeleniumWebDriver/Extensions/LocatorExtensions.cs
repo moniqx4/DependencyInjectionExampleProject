@@ -14,9 +14,9 @@ namespace SeleniumWebDriver.Extensions
         /// </code> </example>
         /// <param name="locator">The element locator.</param>
         /// <returns>The Selenium By.</returns>
-        public static By ToBy(this ElementLocator locator)
+        public static By ToBy(this ElementLocator locator, By by)
         {
-            By by;
+            //By by;
 
             switch (locator.Kind)
             {

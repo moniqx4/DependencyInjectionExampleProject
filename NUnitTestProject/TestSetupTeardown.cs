@@ -10,8 +10,7 @@ namespace NUnitTestProject
         public class TestSetupTearDown
         {
             private readonly DriverContext driverContext = new DriverContext();
-            //DriverContext.CurrentDirectory = Directory.GetCurrentDirectory(); //.net4.x
-            //DriverContext.CurrentDirectory = TestContext.CurrentContext.TestDirectory; .netcore3.x
+            
             protected DriverContext DriverContext
             {
                 get
@@ -23,9 +22,10 @@ namespace NUnitTestProject
             [OneTimeSetUp]
             public void RunBeforeAnyTests()
             {
-                DriverContext.Start();
+                DriverContext.Start();  // Based on what is in the BaseConfig, starts the specifed browsertype
                 //LogTest.LogTestStarting(driverContext);
-                PageObjectProvider.Setup();
+                PageObjectProvider.Setup(); // this is what sets up our container for the PageObjects
+                // DriverContext.Goto(url); needs to be the Login Page usually, or whatever page the test starts on
             }
 
             /// <summary>

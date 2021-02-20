@@ -30,7 +30,14 @@ namespace TestUtilities
 
             return JsonConvert.DeserializeObject<IList<T>>(response.Content);
         }
+
+        //example way to handle data received, change T to the actual type(model) of the API response and then parse that data to a list or array
+        //public T GetByPageGroupId(string number)
+        //{
+        //    var elements = GetApiResponse(apiEndpoint);
+        //    return elements.FirstOrDefault(element => element.locator == Elementlocator);
+        }
     }
 
     public delegate void T();
-}
+

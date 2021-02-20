@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
@@ -106,8 +105,8 @@ namespace SeleniumWebDriver.Extensions
                 //driver.WaitForAngular();
                
             }
-
-            var by = locator.ToBy();
+            
+            By by = locator.ToBy(locator.Kind);
 
             var wait = new WebDriverWait((IWebDriver)driver, TimeSpan.FromSeconds(timeout)) { Message = customMessage };
             wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
@@ -139,7 +138,7 @@ namespace SeleniumWebDriver.Extensions
         /// </code></example>
         public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, double timeout, double timeInterval, Func<IWebElement, bool> condition, [Optional] string customMessage)
         {
-            var by = locator.ToBy();
+            By by = locator.ToBy(locator.Kind);
 
             var wait = new WebDriverWait(new SystemClock(), (IWebDriver)element, TimeSpan.FromSeconds(timeout), TimeSpan.FromSeconds(timeInterval)) { Message = customMessage };
             wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
@@ -316,8 +315,8 @@ namespace SeleniumWebDriver.Extensions
         /// var checkboxes = this.Driver.GetElements(this.stackOverFlowCheckbox, e =&gt; e.Enabled == false);
         /// </code></example>
         public static IList<IWebElement> GetElements(this ISearchContext element, ElementLocator locator, Func<IWebElement, bool> condition)
-        {
-            return element.FindElements(locator.ToBy()).Where(condition).ToList();
+        {           
+            return element.FindElements(locator.ToBy(locator.Kind)).Where(condition).ToList();
         }
 
         /// <summary>
@@ -385,7 +384,7 @@ namespace SeleniumWebDriver.Extensions
                 return constructor.Invoke(new object[] { webElement }) as T;
             }
 
-            throw new ArgumentNullException(string.Format(CultureInfo.CurrentCulture, "Constructor for type {0} is null.", typeof(T)));
+            throw new ArgumentNullException(string.Format(CultureInfo.CurrentCulture, $"Constructor for type {typeof(T)} is null."));
         }
     }
 }

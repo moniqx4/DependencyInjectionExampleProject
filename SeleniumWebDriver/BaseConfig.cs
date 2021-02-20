@@ -199,26 +199,27 @@ namespace SeleniumWebDriver
             }
         }
 
+        //since using the DriverManager, don't need this
         /// <summary>
         /// Gets the path and file name of the Firefox browser executable.
         /// </summary>
-        public static string FirefoxBrowserExecutableLocation
-        {
-            get
-            {
-                //setting = ConfigurationManager.AppSettings["FirefoxBrowserExecutableLocation"];  //.net.4.x
+        //public static string FirefoxBrowserExecutableLocation
+        //{
+        //    get
+        //    {
+        //        //setting = ConfigurationManager.AppSettings["FirefoxBrowserExecutableLocation"];  //.net.4.x
 
-                string setting = Builder["appSettings:FirefoxBrowserExecutableLocation"]; //.netcore3.x
+        //        string setting = Builder["appSettings:FirefoxBrowserExecutableLocation"]; //.netcore3.x
 
-                //Logger.Info(CultureInfo.CurrentCulture, "Gets the path and file name of the Firefox browser executable from settings file '{0}'", setting);
-                if (string.IsNullOrEmpty(setting))
-                {
-                    return string.Empty;
-                }
+        //        //Logger.Info(CultureInfo.CurrentCulture, "Gets the path and file name of the Firefox browser executable from settings file '{0}'", setting);
+        //        if (string.IsNullOrEmpty(setting))
+        //        {
+        //            return string.Empty;
+        //        }
 
-                return setting;
-            }
-        }
+        //        return setting;
+        //    }
+        //}
 
         /// <summary>
         /// Gets JavaScript error types from a browser. "SyntaxError,EvalError,ReferenceError,RangeError,TypeError,URIError,Refused to display,Internal Server Error,Cannot read property" by default.

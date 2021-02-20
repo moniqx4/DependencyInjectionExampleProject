@@ -1,4 +1,7 @@
-﻿namespace SeleniumWebDriver.Type
+﻿using OpenQA.Selenium;
+using System;
+
+namespace SeleniumWebDriver.Type
 {
     /// <summary>
     /// Class that helps to define Kind and value for html elements.
@@ -49,6 +52,11 @@
         public ElementLocator Format(params object[] parameters)
         {
             return new ElementLocator(Kind, string.Format(Value, parameters));
+        }
+
+        internal By ToBy(Locator kind)
+        {
+            throw new NotImplementedException();
         }
     }
 }

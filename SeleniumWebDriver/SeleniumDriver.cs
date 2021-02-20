@@ -1,27 +1,30 @@
 ﻿using OpenQA.Selenium;
-using SeleniumWebDriver.Extensions;
 using SeleniumWebDriver.Type;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using SeleniumWebDriver.Extensions;
 
 namespace SeleniumWebDriver
 {
     public class SeleniumDriver : IDriver
     {
-        protected static IWebDriver Driver { get; set; }
+        //protected static IWebDriver Driver { get; set; }
 
         protected DriverContext DriverContext { get; set; }
 
         public SeleniumDriver(DriverContext driverContext)
         {
             DriverContext = driverContext;
-            Driver = driverContext.Driver;
+            //Driver = driverContext.Driver;
         }
 
-        public void ClickElement(Locator locator)
+        public void ClickElement(string locatorType, string element)
         {
-            throw new NotImplementedException();
+            //ElementLocator locator
+            //locator.Kind = Locator.Id;
+            //locator.Value = element;
+            //DriverContext.Current.FindElement(by(locatorType), element).Click();
+            //DriverContext.Current.FindElement(By.XPath(element)).Click();
+            //throw new NotImplementedException();
         }
 
         public void ClickElement(Locator type, string locator)

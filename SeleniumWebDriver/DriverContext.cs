@@ -14,9 +14,7 @@ namespace SeleniumWebDriver
         [ThreadStatic]
         private static IWebDriver _driver;        
 
-        public string TestTitle { get; set; }
-
-        //public string PageUrl { get; set; }
+        public string TestTitle { get; set; }       
 
         public string CurrentScreenshotDirectory { get; set; }
 
@@ -35,9 +33,9 @@ namespace SeleniumWebDriver
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException();
 
-        public static void Goto(string url)
+        public static void Goto()
         {
-            Current.Navigate().GoToUrl(url);
+            Current.Navigate().GoToUrl(BaseConfig.Url);
         }
 
         private static Dictionary<IWebDriver, bool> driversAngularSynchronizationEnable =
