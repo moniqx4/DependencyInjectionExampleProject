@@ -12,11 +12,14 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         //private readonly IWebDriver _browser;
         
-        private readonly IDriver _driver;
+    
+        private readonly IWebPage _webPage;
+        private readonly IBrowser _browser;
      
-        public EmployeeDashboardPage(IDriver driver)
+        public EmployeeDashboardPage(IBrowser browser, IWebPage webPage)
         {            
-            _driver = driver;
+            _browser = browser;
+            _webPage = webPage;
         }
 
         public void LoginToEmployeeDashboard()
@@ -34,10 +37,19 @@ namespace PageObjects.WTDashboards.ConcreteClasses
             throw new NotImplementedException();
         }
 
-        public void NavigateToEmployeeDashboardHome()
+        public void NavigateToEmployeeDashboardHome(string version = "2")
         {
-            
-            throw new NotImplementedException();
+            string path;
+
+            if(version == "V2")
+            {
+                path = "";
+            }else
+            {
+                path = "";
+            }
+
+            _browser.NavigateTo(BaseConfig.Url + path);            
         }
 
         public void NavigateToMyAdjustments()
@@ -48,7 +60,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public void SetNotesText(string text)
         {
             //NotesTextField.SendKeys(text);
-            _driver.SetText(Locator.Id, "", text);
+            _webPage.SetText(Locator.Id, "", text);
         }
 
 

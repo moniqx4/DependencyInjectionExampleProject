@@ -6,6 +6,7 @@
         Firefox,
         Edge,
         InternetExplorer,
+        Remote,
         None
     }
 }

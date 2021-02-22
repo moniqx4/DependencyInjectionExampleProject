@@ -8,7 +8,7 @@
 
         void NavigateMyTimeSheet();
 
-        void NavigateToEmployeeDashboardHome();
+        void NavigateToEmployeeDashboardHome(string version);
 
         void LogoutOfEmployeeDashboard();
 

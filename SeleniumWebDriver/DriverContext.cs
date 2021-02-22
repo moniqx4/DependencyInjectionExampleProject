@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Framework.Selenium;
 using OpenQA.Selenium;
 using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Helper;
@@ -128,25 +129,27 @@ namespace SeleniumWebDriver
         /// </summary>
         public static void Start()
         {
-            switch (BaseConfig.Browser)
-            {
 
-                case BrowserType.Chrome:
-                    new CustomChrome();                    
-                    break;
-                case BrowserType.Edge:
-                    new CustomEdge();
-                    break;
-                case BrowserType.Firefox:
-                    new CustomFirefox();
-                    break;
-                case BrowserType.InternetExplorer:
-                    new CustomInternetExplorer();
-                    break;
-                default:
-                    throw new Exception("Invalid BrowserType, can't start Browser");
+            DriverFactory.Build(BaseConfig.Type, BaseConfig.Browser);
+            //switch (BaseConfig.Browser)
+            //{
 
-            }
+            //    case BrowserType.Chrome:
+            //        new CustomChrome();                    
+            //        break;
+            //    case BrowserType.Edge:
+            //        new CustomEdge();
+            //        break;
+            //    case BrowserType.Firefox:
+            //        new CustomFirefox();
+            //        break;
+            //    case BrowserType.InternetExplorer:
+            //        new CustomInternetExplorer();
+            //        break;
+            //    default:
+            //        throw new Exception("Invalid BrowserType, can't start Browser");
+
+            //}
         }
 
         //private void SetupRemoteWebDriver()

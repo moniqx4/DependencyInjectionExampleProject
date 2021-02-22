@@ -10,6 +10,11 @@ namespace SeleniumWebDriver.Drivers
     {
         [ThreadStatic]
         static IWebDriver driver = new ChromeDriver();
+
+        public CustomChrome()
+        {
+
+        }
        
         private static ChromeOptions ChromeOptions
         {

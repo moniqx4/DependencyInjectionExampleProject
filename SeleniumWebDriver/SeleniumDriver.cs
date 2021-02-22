@@ -32,15 +32,20 @@ namespace SeleniumWebDriver
             throw new NotImplementedException();
         }
 
-        public void GetDriver()
-        {
-            DriverContext.Start();
-        }
+        //public void GetDriver()
+        //{
+        //    DriverContext.Current
+        //}
 
         public void SetText(Locator type, string locator, string text)
         {
             // SearchContextExtensions.GetElement(type, locator, text,60, "Unable to Locate Element");            
          
+        }
+
+        public void NavigateTo(string url)
+        {            
+            DriverContext.Current.Navigate().GoToUrl(url);
         }
     }
 }

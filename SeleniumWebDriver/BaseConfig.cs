@@ -43,6 +43,24 @@ namespace SeleniumWebDriver
             }
         }
 
+        /// <summary>
+        /// Gets the type, local, or remote.
+        /// </summary>
+        public static string Type
+        {
+            get
+            {
+
+                //setting = ConfigurationManager.AppSettings["url"];  .net4.x
+
+                string setting = Builder["appSettings:type"]; // .net core3.x
+                                                             //ILogger Logger;
+                                                             //Logger.Info("Gets the url from settings file '{0}'", setting);
+
+                return setting;
+            }
+        }
+
 
         /// <summary>
         /// Gets the Driver.

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SeleniumWebDriver
+﻿namespace SeleniumWebDriver
 {
     public interface IBrowser
     {
+        void NavigateTo(string url);
     }
 }
