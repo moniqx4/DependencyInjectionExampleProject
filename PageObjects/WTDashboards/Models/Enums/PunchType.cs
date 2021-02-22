@@ -1,9 +1,13 @@
-﻿
-namespace PageObjects.WTDashboards.Models.Enums
+﻿namespace PageObjects.WTDashboards.Models.Enums
 {
     public enum PunchType
     {
-        Regular,
-        Manual
+        ClockIn,
+        ClockOut,
+        Transfer,
+        StartLunch,
+        EndLunch,
+        StartBreak,
+        EndBreak
     }
 }

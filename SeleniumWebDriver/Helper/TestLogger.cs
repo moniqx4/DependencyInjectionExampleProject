@@ -6,9 +6,8 @@ namespace SeleniumWebDriver.Helper
 {
 
     public class TestLogger : ILogger
-    {
-        private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger(); //.net4.x
-        //private static readonly NLog.Logger Logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger(); // netcore3.x
+    {        
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private DateTime startTestTime;
         
         /// <summary>
@@ -17,9 +16,9 @@ namespace SeleniumWebDriver.Helper
         /// <param name="driverContext">The driver context.</param>
         public void LogTestStarting(DriverContext driverContext)
         {
-            this.startTestTime = DateTime.Now;
-            this.Info("*************************************************************************************");
-            this.Info("START: {0} starts at {1}.", driverContext.TestTitle, startTestTime);
+            startTestTime = DateTime.Now;
+            Info("*************************************************************************************");
+            Info("START: {0} starts at {1}.", driverContext.TestTitle, startTestTime);
         }
 
         /// <summary>
@@ -30,8 +29,8 @@ namespace SeleniumWebDriver.Helper
         {
             var endTestTime = DateTime.Now;
             var timeInSec = (endTestTime - this.startTestTime).TotalMilliseconds / 1000d;
-            this.Info("END: {0} ends at {1} after {2} sec.", driverContext.TestTitle, endTestTime, timeInSec.ToString("##,###", CultureInfo.CurrentCulture));
-            this.Info("*************************************************************************************");
+            Info("END: {0} ends at {1} after {2} sec.", driverContext.TestTitle, endTestTime, timeInSec.ToString("##,###", CultureInfo.CurrentCulture));
+            Info("*************************************************************************************");
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace SeleniumWebDriver.Helper
         /// <param name="e">The e.</param>
         public void LogError(Exception e)
         {
-            this.Error("Error occurred: {0}", e);
+            Error("Error occurred: {0}", e);
             throw e;
         }
     }

@@ -1,11 +1,13 @@
 ﻿
+using PageObjects.WTDashboards.Models;
+
 namespace PageObjects.WTDashboards
 {
     public interface IPunchComp
     {
-        void AddRegularPunch(string punchType);
-        void AddManualPunch(string punchType);
+        IPunchComp AddRegularPunch(PunchModel punchDetails);
+        IPunchComp AddManualPunch(PunchModel punchDetails);
 
-
+        void ClearPunches();
     }
 }
