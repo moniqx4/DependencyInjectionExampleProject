@@ -10,13 +10,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{443C3DC3-F4B1-4BB0-AB82-40F3C316690C}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		App.config.xml = App.config.xml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageObjects", "PageObjects\PageObjects.csproj", "{9BF32110-3D33-4EDF-9203-4B1BDBDF47C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumWebDriver", "SeleniumWebDriver\SeleniumWebDriver.csproj", "{C87DDD69-4265-49AA-AAA7-55E93CA106DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUtilities", "TestUtilities\TestUtilities.csproj", "{6CE897FF-1E21-447A-AF1A-843B85418EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUtilities", "TestUtilities\TestUtilities.csproj", "{6CE897FF-1E21-447A-AF1A-843B85418EC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

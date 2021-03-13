@@ -2,7 +2,6 @@
 using SeleniumWebDriver;
 using SeleniumWebDriver.Type;
 
-
 namespace PageObjects.Login
 {
     public class LoginPage : ILogin
@@ -50,7 +49,7 @@ namespace PageObjects.Login
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = Locator.Id,
-                Locator = "Submit"
+                Locator = "username"
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, username);
@@ -61,7 +60,7 @@ namespace PageObjects.Login
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = Locator.Id,
-                Locator = "Submit"
+                Locator = "password"
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, password);
@@ -72,7 +71,7 @@ namespace PageObjects.Login
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = Locator.Id,
-                Locator = "Submit"
+                Locator = "companyId"
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, companyAlias);

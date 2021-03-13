@@ -1,4 +1,6 @@
-﻿using PageObjects.WTDashboards.Models;
+﻿using OpenQA.Selenium;
+using PageObjects.Shared;
+using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 using SeleniumWebDriver;
 using System;
@@ -13,6 +15,35 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         {
             _webPage = webPage;
         }
+
+        //public void ValidateButtonState(ExpectedButtons buttons)
+        //{
+        //    var actualButtons = GetPunchButtonState();           
+
+        //    return CommonTasks.DoesListContain(actualButtons, buttons[0].Text);
+        //}
+
+        //private List<T> GetPunchButtonState()
+        //{
+        //    //get all elements and add to a list
+
+        //    var LocatorModel = new LocatorModel()
+        //    {
+        //        LocatorType = Locator.Id,
+        //        Locator = "[data-automation-id^='punch-button']"
+        //    };
+
+        //    _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator);
+
+        //    var actualPunchButton = _webPage.GetAllElements(LocatorModel.LocatorType, LocatorModel.Locator);
+
+        //    for (int i = 0; i < actualPunchButton.Count; i++)
+        //    {
+        //        actualPunchButton.Add(actualPunchButton[i].Text);
+        //    }
+
+        //    return actualPunchButton;
+        //}
 
         public IPunchComp AddManualPunch(PunchModel punchDetails)
         {

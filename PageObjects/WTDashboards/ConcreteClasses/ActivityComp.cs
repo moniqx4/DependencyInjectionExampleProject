@@ -16,7 +16,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
         public AttPointsDto GetAttendencePointDetails()
         {
             throw new NotImplementedException();
-        }
+        }        
 
         private void OpenAttPointsDrawer()
         {
@@ -27,5 +27,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

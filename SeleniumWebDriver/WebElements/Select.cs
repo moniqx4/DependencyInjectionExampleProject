@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.Type;
 using System;
 
 namespace SeleniumWebDriver.WebElements

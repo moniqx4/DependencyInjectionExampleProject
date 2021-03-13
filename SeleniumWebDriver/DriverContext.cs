@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Framework.Selenium;
 using OpenQA.Selenium;
-using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
-using SeleniumWebDriver.Types;
 
 namespace SeleniumWebDriver
 {
@@ -130,7 +127,7 @@ namespace SeleniumWebDriver
         public static void Start()
         {
 
-            DriverFactory.Build(BaseConfig.Type, BaseConfig.Browser);
+            //DriverFactory.Build(BaseConfig.Type, BaseConfig.Browser);
             //switch (BaseConfig.Browser)
             //{
 

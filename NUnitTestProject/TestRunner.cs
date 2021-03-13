@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using NLog;
-using SeleniumWebDriver.Helper;
 using System;
 using System.Collections.Generic;
 
@@ -97,7 +95,7 @@ namespace NUnitTestProject
             private TestContext BuildTestContext()
             {
                 var testContextBuilder = new TestContextBuilder();
-
+                
                 testContextBuilder
                     //.AddLogger(_logger)
                     .AddName(_testName);
