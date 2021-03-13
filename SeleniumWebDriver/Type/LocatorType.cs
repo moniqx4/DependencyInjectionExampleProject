@@ -1,6 +1,6 @@
 ﻿namespace SeleniumWebDriver.Type
 {
-    public enum Locator
+    public enum LocatorType
     {
         Id,
         XPath,
@@ -11,6 +11,5 @@
         Class,
         PartialLinkText,
         DataAutomationId
-
     }
 }

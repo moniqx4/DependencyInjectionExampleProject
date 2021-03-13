@@ -16,7 +16,7 @@ namespace SeleniumWebDriver.Type
         /// </code> </example>
         /// <param name="kind">The locator type.</param>
         /// <param name="value">The locator value.</param>
-        public ElementLocator(Locator kind, string value)
+        public ElementLocator(LocatorType kind, string value)
         {
             this.Kind = kind;
             this.Value = value;
@@ -28,7 +28,7 @@ namespace SeleniumWebDriver.Type
         /// <value>
         /// Kind of element locator (Id, Xpath, ...).
         /// </value>
-        public Locator Kind { get; set; }
+        public LocatorType Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the element locator value.
@@ -54,7 +54,7 @@ namespace SeleniumWebDriver.Type
             return new ElementLocator(Kind, string.Format(Value, parameters));
         }
 
-        internal By ToBy(Locator kind)
+        internal By ToBy(LocatorType kind)
         {
             throw new NotImplementedException();
         }

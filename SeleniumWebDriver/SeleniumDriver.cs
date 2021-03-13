@@ -6,9 +6,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Drivers;
-using SeleniumWebDriver.Type;
 using SeleniumWebDriver.Types;
-using SeleniumWebDriver.WebElements;
 using System;
 
 namespace SeleniumWebDriver
@@ -20,7 +18,7 @@ namespace SeleniumWebDriver
 
         [ThreadStatic]
         private static IWebDriver _browserWait;
-        //private readonly LocatorBuilder _locatorBuilder;
+        
 
         public static IWebDriver Browser
         {
