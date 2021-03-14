@@ -1,33 +1,20 @@
-﻿using DependencyInjectionExampleProject.SeleniumWebDriver.Drivers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Types;
+using SeleniumWebDriver.Base;
+using SeleniumWebDriver.Type;
+using SeleniumWebDriver.WebElements;
+using System;
 
 namespace DependencyInjectionExampleProject.PageObjects
 {
-    public partial class PageObjectBase
+    public partial class PageObjectBase : BasePage
     {
-
-        protected static IWebDriver Driver { get; set; }
-
-        private DriverFactory _driverFactory;
-        private DriverContext _driverContext { get; set; }
-        
-        public PageObjectBase(DriverContext driverContext, DriverFactory driverFactory)
+        public PageObjectBase()
         {
-            _driverContext = driverContext;
-            _driverFactory = driverFactory;
-            //Driver = driverContext.Driver;
+            PageObjectProvider.Setup();
         }
-
-        //public DriverContext SetupDriver(string type, BrowserType browser)
-        //{
-        //    //var factory = DriverFactory();
-
-        //    //_driverContext = _driverFactory.Build(type, browser);
-
-        //    //return _driverContext;
-        //}
-
     }
+        
+   
 }
