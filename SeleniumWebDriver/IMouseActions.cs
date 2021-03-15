@@ -1,13 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface IMouseActions
     {
-        void DragNDrop(IWebElement src, IWebElement trg);
+        void DragNDrop(Element src, Element trg);
 
-        void ClickNHoldNDrop(IWebElement element, IWebElement trg, int x = 0, int y = 30);
+        void ClickNHoldNDrop(Element element, Element trg, int x = 0, int y = 30);
 
-        void DoubleClickOnElement(IWebElement element);
+        void DoubleClickOnElement(Element element);
     }
 }

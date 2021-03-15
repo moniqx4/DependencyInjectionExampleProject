@@ -1,13 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface IButton
     {
-        bool IsButtonEnabled(IWebElement element);
+        bool IsButtonEnabled(Element element);
 
-        void ClickButton(IWebElement element);
+        void ClickButton(Element element);
 
-        string GetButtonText(IWebElement element);
+        string GetButtonText(Element element);
     }
 }

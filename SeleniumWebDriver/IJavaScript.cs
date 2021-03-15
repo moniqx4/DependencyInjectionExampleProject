@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
@@ -12,7 +12,7 @@ namespace SeleniumWebDriver
 
         void ClickCancelOnPopup();
 
-        void ScrollToElement(IWebElement ele);
+        void ScrollToElement(Element ele);
 
         void TypeTextInPopUp(string inputText);
     }

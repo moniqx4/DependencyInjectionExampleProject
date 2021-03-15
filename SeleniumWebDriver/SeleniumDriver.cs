@@ -7,6 +7,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Types;
+using SeleniumWebDriver.WebElements;
 using System;
 
 namespace SeleniumWebDriver
@@ -88,6 +89,22 @@ namespace SeleniumWebDriver
             }
         }
 
+        public static Element FindElement(By by, string elementName)
+        {
+            return new Element(Browser.FindElement(by), elementName)
+            {
+                FoundBy = by
+            };
+        }
+
+        public static Elements FindElements(By by)
+        {
+            return new Elements(Browser.FindElements(by))
+            {
+                FoundBy = by
+            };
+        }
+
 
         private static RemoteWebDriver BuildRemoteDriver(BrowserType browser)
         {
@@ -152,6 +169,7 @@ namespace SeleniumWebDriver
         public static void StopBrowser()
         {
             Browser.Quit();
+            Browser.Dispose();
             Browser = null;
             BrowserWait = null;
         }

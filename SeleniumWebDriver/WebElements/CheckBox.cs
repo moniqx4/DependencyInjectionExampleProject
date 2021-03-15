@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace SeleniumWebDriver.WebElements
+﻿namespace SeleniumWebDriver.WebElements
 {
     public class CheckBox : ICheckBox
     {
@@ -8,7 +6,7 @@ namespace SeleniumWebDriver.WebElements
         /// Clicks on specified checkbox
         /// </summary>
         /// <param name="element">Checkbox Element</param>
-        public void ClickCheckBox(IWebElement element)
+        public void ClickCheckBox(Element element)
         {
             element.Click();
         }
@@ -18,7 +16,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Checkbox Element</param>
         /// <returns>Returns True if checkbox is checked else False</returns>
-        public bool IsCheckboxChecked(IWebElement element)
+        public bool IsCheckboxChecked(Element element)
         {
             string flag = element.GetAttribute("checked");
             if (flag == null)
@@ -34,7 +32,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">checkbox element</param>
         /// <returns>Returns true if checkbox is enabled else False</returns>
-        public bool IsCheckboxEnbaled(IWebElement element)
+        public bool IsCheckboxEnbaled(Element element)
         {
             return element.Enabled;
         }

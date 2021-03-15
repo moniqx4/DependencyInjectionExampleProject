@@ -275,7 +275,7 @@ namespace SeleniumWebDriver.Extensions
         /// <param name="enable">Enable or disable synchronization.</param>
         public static void SynchronizeWithAngular(bool enable)
         {
-            DriverContext.SetAngularSynchronizationForDriver(enable);
+            //DriverContext.SetAngularSynchronizationForDriver(enable);
         }
 
         /// <summary>

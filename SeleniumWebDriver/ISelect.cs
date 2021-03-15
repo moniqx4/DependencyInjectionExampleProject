@@ -1,5 +1,5 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
@@ -19,9 +19,9 @@ namespace SeleniumWebDriver
 
         void SelectByValue(string selectValue, double timeout);
 
-        bool IsSelectOptionAvailable(IWebElement option);
+        bool IsSelectOptionAvailable(Element option);
 
-        bool IsSelectOptionAvailable(IWebElement element, double timeout);
+        bool IsSelectOptionAvailable(Element element, double timeout);
 
     }
 }

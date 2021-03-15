@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace SeleniumWebDriver.WebElements
+﻿namespace SeleniumWebDriver.WebElements
 {
     public class Button : IButton
     {
@@ -8,7 +6,7 @@ namespace SeleniumWebDriver.WebElements
         /// Clicks on specified button
         /// </summary>
         /// <param name="element">Button WebElement</param>
-        public void ClickButton(IWebElement element)
+        public void ClickButton(Element element)
         {
             element.Click();
         }
@@ -18,7 +16,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Button WebElement</param>
         /// <returns>Button Text</returns>
-        public string GetButtonText(IWebElement element)
+        public string GetButtonText(Element element)
         {
             return element.Text;
         }
@@ -28,7 +26,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Button WebElement </param>
         /// <returns>Return True if button is enabled else False</returns>
-        public bool IsButtonEnabled(IWebElement element)
+        public bool IsButtonEnabled(Element element)
         {
             return element.Enabled;
         }

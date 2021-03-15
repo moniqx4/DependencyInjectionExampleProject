@@ -1,13 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface ILink
     {
-        bool IsLinkEnabled(IWebElement element);
+        bool IsLinkEnabled(Element element);
 
-        string GetLinkText(IWebElement element);
+        string GetLinkText(Element element);
 
-        void ClickOnLink(IWebElement element);
+        void ClickOnLink(Element element);
     }
 }

@@ -1,17 +1,11 @@
-﻿using OpenQA.Selenium;
-using SeleniumWebDriver;
+﻿using SeleniumWebDriver;
 using SeleniumWebDriver.Type;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
     public class EmployeeDashboardPage : IEmployeeDashboard
-    {
-
-        //private readonly IWebDriver _browser;
-        
+    {        
     
         private readonly IWebPage _webPage;
         private readonly IBrowser _browser;
@@ -60,7 +54,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public void SetNotesText(string text)
         {
             //NotesTextField.SendKeys(text);
-            _webPage.SetText(Locator.Id, "", text);
+            _webPage.SetText(LocatorType.Id, "", text);
         }
 
 

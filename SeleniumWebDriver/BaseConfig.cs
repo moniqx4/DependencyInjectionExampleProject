@@ -12,9 +12,7 @@ namespace SeleniumWebDriver
 {
     public static class BaseConfig
     {
-        // private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger(); .net4.x
-        public static readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        //ILogger logger = new Logger();
+        //public static ILogger logger = new Logger();
 
         /// <summary>
         /// Getting appsettings.json file.

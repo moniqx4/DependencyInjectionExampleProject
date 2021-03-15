@@ -1,15 +1,15 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface IComboBox
     {
-        void SelectElementByIndex(IWebElement element, int index);
+        void SelectElementByIndex(Element element, int index);
 
-        void SelectElementByValue(IWebElement element, string value);
+        void SelectElementByValue(Element element, string value);
 
-        void SelectElementByVIsibleText(IWebElement element, string visibleText);
+        void SelectElementByVIsibleText(Element element, string visibleText);
 
-        bool IsComboBoxEnabled(IWebElement element);
+        bool IsComboBoxEnabled(Element element);
     }
 }

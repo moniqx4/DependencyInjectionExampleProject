@@ -1,13 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface ILabel
     {
-        bool IsLabelEnabled(IWebElement element);
+        bool IsLabelEnabled(Element element);
 
-        string GetLabelText(IWebElement element);
+        string GetLabelText(Element element);
 
-        void ClickOnLabel(IWebElement element);
+        void ClickOnLabel(Element element);
     }
 }

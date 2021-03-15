@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace SeleniumWebDriver.WebElements
+﻿namespace SeleniumWebDriver.WebElements
 {
     public class Label: ILabel
     {
@@ -8,7 +6,7 @@ namespace SeleniumWebDriver.WebElements
         /// Clicks on the Label
         /// </summary>
         /// <param name="element">Label WebElement</param>
-        public void ClickOnLabel(IWebElement element)
+        public void ClickOnLabel(Element element)
         {
             element.Click();
         }
@@ -18,7 +16,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element"> Label WebElement</param>
         /// <returns></returns>
-        public string GetLabelText(IWebElement element)
+        public string GetLabelText(Element element)
         {
             return element.Text;
         }
@@ -28,7 +26,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public bool IsLabelEnabled(IWebElement element)
+        public bool IsLabelEnabled(Element element)
         {
             return element.Enabled;
         }

@@ -1,13 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface IRadioButton
     {
-        bool IsRadioButtonSelected(IWebElement element);
+        bool IsRadioButtonSelected(Element element);
 
-        bool IsRadioButtonEnabled(IWebElement element);
+        bool IsRadioButtonEnabled(Element element);
 
-        void ClickOnRadioButton(IWebElement element);
+        void ClickOnRadioButton(Element element);
     }
 }

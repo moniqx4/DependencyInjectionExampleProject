@@ -14,22 +14,22 @@ namespace SeleniumWebDriver.Helper
         /// Logs the test starting.
         /// </summary>
         /// <param name="driverContext">The driver context.</param>
-        public void LogTestStarting(DriverContext driverContext)
+        public void LogTestStarting(IDriver driverContext, string testTitle)
         {
             startTestTime = DateTime.Now;
             Info("*************************************************************************************");
-            Info("START: {0} starts at {1}.", driverContext.TestTitle, startTestTime);
+            Info("START: {0} starts at {1}.", testTitle, startTestTime);
         }
 
         /// <summary>
         /// Logs the test ending.
         /// </summary>
         /// <param name="driverContext">The driver context.</param>
-        public void LogTestEnding(DriverContext driverContext)
+        public void LogTestEnding(IDriver driverContext, string testTitle)
         {
             var endTestTime = DateTime.Now;
             var timeInSec = (endTestTime - this.startTestTime).TotalMilliseconds / 1000d;
-            Info("END: {0} ends at {1} after {2} sec.", driverContext.TestTitle, endTestTime, timeInSec.ToString("##,###", CultureInfo.CurrentCulture));
+            Info("END: {0} ends at {1} after {2} sec.", testTitle, endTestTime, timeInSec.ToString("##,###", CultureInfo.CurrentCulture));
             Info("*************************************************************************************");
         }
 

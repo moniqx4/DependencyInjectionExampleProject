@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
+using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver.Extensions
 {
@@ -78,7 +79,7 @@ namespace SeleniumWebDriver.Extensions
         /// <example>How to use it: <code>
         /// Driver.GetElement(this.loginButton, e =&gt; e.Displayed);
         /// </code></example>
-        public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, Func<IWebElement, bool> condition, [Optional] string customMessage)
+        public static Element GetElement(this ISearchContext element, ElementLocator locator, Func<Element, bool> condition, [Optional] string customMessage)
         {
             return element.GetElement(locator, BaseConfig.LongTimeout, condition, customMessage);
         }
@@ -97,14 +98,14 @@ namespace SeleniumWebDriver.Extensions
         /// <example>How to use it: <code>
         /// this.Driver.GetElement(this.loginButton, timeout, e =&gt; e.Displayed);
         /// </code></example>
-        public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, double timeout, Func<IWebElement, bool> condition, [Optional] string customMessage)
+        public static Element GetElement(this ISearchContext element, ElementLocator locator, double timeout, Func<Element, bool> condition, [Optional] string customMessage)
         {
-            var driver = (IWebElement)element;
-            if (DriverContext.IsDriverSynchronizationWithAngular((IWebDriver)driver))
-            {
-                //driver.WaitForAngular();
+            var driver = (Element)element;
+            //if (DriverContext.IsDriverSynchronizationWithAngular((IWebDriver)driver))
+            //{
+            //    //driver.WaitForAngular();
                
-            }
+            //}
             
             By by = locator.ToBy(locator.Kind);
 
@@ -114,11 +115,11 @@ namespace SeleniumWebDriver.Extensions
             wait.Until(
                     drv =>
                     {
-                        var ele = element.FindElement(@by);
-                        return condition(ele);
+                        var ele = element.FindElement(by);
+                        return condition((Element)ele);
                     });
 
-            return element.FindElement(@by);
+            return (Element)element.FindElement(@by);
         }
 
         /// <summary>

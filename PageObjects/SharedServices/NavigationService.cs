@@ -1,16 +1,14 @@
-﻿using DependencyInjectionExampleProject.PageObjects;
-using SeleniumWebDriver;
+﻿using SeleniumWebDriver;
 using SeleniumWebDriver.Type;
 using PageObjects.WTDashboards.Models;
 using System;
 
 namespace PageObjects.SharedServices
 {
-    public class NavigationService :  PageObjectBase, INavigationService
+    public class NavigationService :  INavigationService
     {
         private readonly IWebPage _webPage;
-        public NavigationService(DriverContext driverContext, IWebPage webPage)
-            : base(driverContext)
+        public NavigationService(IWebPage webPage)           
         {
             _webPage = webPage;
         }
@@ -20,13 +18,13 @@ namespace PageObjects.SharedServices
         {
             var toggleMenu = new LocatorModel()
             {
-                LocatorType = Locator.DataAutomationId,
+                LocatorType = LocatorType.DataAutomationId,
                 Locator = "hamburgermenutoggle"
             };
 
             var menuItem = new LocatorModel()
             {
-                LocatorType = Locator.DataAutomationId,
+                LocatorType = LocatorType.DataAutomationId,
                 Locator = menuOpt
             };
 

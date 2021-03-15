@@ -1,15 +1,15 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
     public interface ITextBox
     {
-        bool IsTextBoxEnabled(IWebElement element);
+        bool IsTextBoxEnabled(Element element);
 
-        void TypeInTextBox(IWebElement element, string text);
+        void TypeInTextBox(Element element, string text);
 
-        string GetTextBoxText(IWebElement element);
+        string GetTextBoxText(Element element);
 
-        void ClearTextBoxText(IWebElement element);
+        void ClearTextBoxText(Element element);
     }
 }

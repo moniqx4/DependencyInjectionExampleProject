@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumWebDriver.WebElements;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
@@ -72,7 +73,7 @@ namespace SeleniumWebDriver
         /// Switches webdriver to specified iframe component
         /// </summary>
         /// <param name="frameElement">IFrame WebElement</param>
-        public void SwitchToFrame(IWebElement frameElement)
+        public void SwitchToFrame(Element frameElement)
         {
             SeleniumDriver.Browser.SwitchTo().Frame(frameElement);
         }

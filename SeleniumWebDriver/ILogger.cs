@@ -4,9 +4,9 @@ namespace SeleniumWebDriver
 {
     public interface ILogger
     {
-        void LogTestStarting(DriverContext driverContext);
+        void LogTestStarting(IDriver driverContext, string testTitle);
 
-        void LogTestEnding(DriverContext driverContext);
+        void LogTestEnding(IDriver driverContext, string testTitle);
 
         void Info(string message, params object[] args);
 

@@ -8,7 +8,7 @@ namespace SeleniumWebDriver.WebElements
         /// Clicks on specified radio button 
         /// </summary>
         /// <param name="element">Radio button WebElement</param>
-        public void ClickOnRadioButton(IWebElement element)
+        public void ClickOnRadioButton(Element element)
         {
             element.Click();
         }
@@ -18,7 +18,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Radio button WebElement</param>
         /// <returns>Returns True if Radio button is enabled else False</returns>
-        public bool IsRadioButtonEnabled(IWebElement element)
+        public bool IsRadioButtonEnabled(Element element)
         {
             return element.Enabled;
         }
@@ -28,7 +28,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Radio button WebElement</param>
         /// <returns>Return True </returns>
-        public bool IsRadioButtonSelected(IWebElement element)
+        public bool IsRadioButtonSelected(Element element)
         {
             string flag = element.GetAttribute("checked");
 

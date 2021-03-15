@@ -1,24 +1,23 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace SeleniumWebDriver.WebElements
 {
-    public class Select : RemoteWebElement
+    public class Select
     {
-        private readonly IWebElement webElement;
+        private readonly Element _element;
         private readonly ILogger _logger;
 
-        public Select(IWebElement webElement, ILogger logger)
-            : base(webElement as RemoteWebDriver, null)
+        public Select(Element element, ILogger logger)
         {
-            _logger = logger;
+            _element = element;
+            _logger = logger;           
         }
 
         public SelectElement SelectElement()
         {
-            return new SelectElement(webElement);
+            return new SelectElement(_element);
         }
 
         public void SelectByText(string selectValue)
@@ -62,7 +61,7 @@ namespace SeleniumWebDriver.WebElements
         {
             timeout = timeout.Equals(0) ? BaseConfig.MediumTimeout : timeout;
 
-            var element = this.WaitUntilDropdownIsPopulated(timeout);
+            var element = WaitUntilDropdownIsPopulated(timeout);
 
             var selectElement = new SelectElement(element);
 
@@ -93,7 +92,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="timeout">The timeout.</param>
         public void SelectByValue(string selectValue, double timeout)
         {
-            var element = this.WaitUntilDropdownIsPopulated(timeout);
+            var element = WaitUntilDropdownIsPopulated(timeout);
 
             var selectElement = new SelectElement(element);
 
@@ -150,11 +149,11 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>Web element when dropdown populated.</returns>
         private IWebElement WaitUntilDropdownIsPopulated(double timeout)
         {
-            var selectElement = new SelectElement(webElement);
+            var selectElement = new SelectElement(_element);
             var isPopulated = false;
             try
             {
-                new WebDriverWait((IWebDriver)webElement, TimeSpan.FromSeconds(timeout)).Until(
+                new WebDriverWait((IWebDriver)_element, TimeSpan.FromSeconds(timeout)).Until(
                     x =>
                     {
                         var size = selectElement.Options.Count;
@@ -172,7 +171,7 @@ namespace SeleniumWebDriver.WebElements
                 _logger.Error(e.Message);
             }
 
-            return webElement;
+            return _element;
         }
       
     }

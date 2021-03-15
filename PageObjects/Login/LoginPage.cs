@@ -37,7 +37,7 @@ namespace PageObjects.Login
         {
             var LocatorModel = new LocatorModel()
             {
-                LocatorType = Locator.Id,
+                LocatorType = LocatorType.Id,
                 Locator = "Submit"
             };
 
@@ -48,7 +48,7 @@ namespace PageObjects.Login
         {
             var LocatorModel = new LocatorModel()
             {
-                LocatorType = Locator.Id,
+                LocatorType = LocatorType.Id,
                 Locator = "username"
             };
 
@@ -59,7 +59,7 @@ namespace PageObjects.Login
         {
             var LocatorModel = new LocatorModel()
             {
-                LocatorType = Locator.Id,
+                LocatorType = LocatorType.Id,
                 Locator = "password"
             };
 
@@ -70,7 +70,7 @@ namespace PageObjects.Login
         {
             var LocatorModel = new LocatorModel()
             {
-                LocatorType = Locator.Id,
+                LocatorType = LocatorType.Id,
                 Locator = "companyId"
             };
 

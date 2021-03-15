@@ -1,5 +1,4 @@
 ﻿using NLog;
-using OpenQA.Selenium;
 using SeleniumWebDriver.Extensions;
 using SeleniumWebDriver.Type;
 
@@ -13,7 +12,12 @@ namespace SeleniumWebDriver.WebElements
 
         //private static readonly NLog.Logger Logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger(); .netcore3.x
     
-        private readonly IWebElement webElement;
+        private readonly Element _element;
+
+        public Table(Element element)
+        {
+            element = _element;
+        }
 
          /// <summary>
         /// Returns a text representation of the grid or table html like element.
@@ -25,7 +29,7 @@ namespace SeleniumWebDriver.WebElements
         /// </returns>
         public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator)
         {
-            var table = webElement;
+            var table = _element;
             var rows = table.GetElements(rowLocator);
 
             var result = new string[rows.Count][];

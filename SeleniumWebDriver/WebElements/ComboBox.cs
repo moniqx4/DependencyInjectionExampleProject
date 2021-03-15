@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -8,27 +7,27 @@ namespace SeleniumWebDriver.WebElements
         private static SelectElement select;
 
 
-        public bool IsComboBoxEnabled(IWebElement element)
+        public bool IsComboBoxEnabled(Element element)
         {
             return element.Enabled;
         }
 
 
-        public void SelectElementByIndex(IWebElement element, int index)
+        public void SelectElementByIndex(Element element, int index)
         {
             select = new SelectElement(element);
             select.SelectByIndex(index);
         }
 
 
-        public void SelectElementByValue(IWebElement element, string value)
+        public void SelectElementByValue(Element element, string value)
         {
             select = new SelectElement(element);
             select.SelectByValue(value);
         }
 
 
-        public void SelectElementByVIsibleText(IWebElement element, string visibleText)
+        public void SelectElementByVIsibleText(Element element, string visibleText)
         {
             select = new SelectElement(element);
             select.SelectByText(visibleText);

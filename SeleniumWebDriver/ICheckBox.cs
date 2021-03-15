@@ -1,13 +1,11 @@
-﻿using OpenQA.Selenium;
-
-namespace SeleniumWebDriver.WebElements
+﻿namespace SeleniumWebDriver.WebElements
 {
     public interface ICheckBox
     {
-        void ClickCheckBox(IWebElement element);
+        void ClickCheckBox(Element element);
 
-        bool IsCheckboxChecked(IWebElement element);
+        bool IsCheckboxChecked(Element element);
 
-        bool IsCheckboxEnbaled(IWebElement element);
+        bool IsCheckboxEnbaled(Element element);
     }
 }

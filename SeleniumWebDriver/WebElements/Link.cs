@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace SeleniumWebDriver.WebElements
+﻿namespace SeleniumWebDriver.WebElements
 {
     public class Link : ILink
     {
@@ -8,7 +6,7 @@ namespace SeleniumWebDriver.WebElements
         /// Clicks on Link
         /// </summary>
         /// <param name="element">Link WebElement</param>
-        public void ClickOnLink(IWebElement element)
+        public void ClickOnLink(Element element)
         {
             element.Click();
         }
@@ -18,7 +16,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Link WebElement</param>
         /// <returns></returns>
-        public string GetLinkText(IWebElement element)
+        public string GetLinkText(Element element)
         {
             return element.Text;
         }
@@ -28,7 +26,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">Link's WebElement</param>
         /// <returns></returns>
-        public bool IsLinkEnabled(IWebElement element)
+        public bool IsLinkEnabled(Element element)
         {
             return element.Enabled;
         }

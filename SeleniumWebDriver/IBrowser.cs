@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver
 {
@@ -23,6 +23,6 @@ namespace SeleniumWebDriver
 
         void SwitchToParent();
 
-        void SwitchToFrame(IWebElement frameElement);
+        void SwitchToFrame(Element frameElement);
     }
 }

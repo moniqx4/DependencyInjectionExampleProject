@@ -12,32 +12,32 @@ namespace SeleniumWebDriver.WebElements
 
         }
 
-        public IWebElement BuildLocator(Locator locatorType, string locator)
+        public IWebElement BuildLocator(LocatorType locatorType, string locator)
         {
             switch (locatorType)
             {
-                case Locator.Id:
+                case LocatorType.Id:
                     return _driver.FindElement(By.Id(locator));
 
-                case Locator.Class:
+                case LocatorType.Class:
                     return _driver.FindElement(By.ClassName(locator));
 
-                case Locator.CSS:
+                case LocatorType.CSS:
                     return _driver.FindElement(By.CssSelector(locator));
 
-                case Locator.DataAutomationId:
+                case LocatorType.DataAutomationId:
                     return _driver.FindElement(By.CssSelector($"[data-automation-id='{locator}']"));
 
-                case Locator.LinkText:
+                case LocatorType.LinkText:
                     return _driver.FindElement(By.LinkText(locator));
 
-                case Locator.PartialLinkText:
+                case LocatorType.PartialLinkText:
                     return _driver.FindElement(By.PartialLinkText(locator));
 
-                case Locator.TagName:
+                case LocatorType.TagName:
                     return _driver.FindElement(By.TagName(locator));
 
-                case Locator.XPath:
+                case LocatorType.XPath:
                     return _driver.FindElement(By.XPath(locator));
 
                 default:

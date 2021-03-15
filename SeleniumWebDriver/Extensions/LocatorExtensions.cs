@@ -18,39 +18,39 @@ namespace SeleniumWebDriver.Extensions
         {
             //By by;
 
-            switch (locator.Kind)
-            {
-                case Locator.Id:
-                    by = By.Id(locator.Value);
-                    break;
-                case Locator.Class:
-                    by = By.ClassName(locator.Value);
-                    break;
-                case Locator.CSS:
-                    by = By.CssSelector(locator.Value);
-                    break;
-                case Locator.LinkText:
-                    by = By.LinkText(locator.Value);
-                    break;
-                case Locator.Name:
-                    by = By.Name(locator.Value);
-                    break;
-                case Locator.PartialLinkText:
-                    by = By.PartialLinkText(locator.Value);
-                    break;
-                case Locator.TagName:
-                    by = By.TagName(locator.Value);
-                    break;
-                case Locator.XPath:
-                    by = By.XPath(locator.Value);
-                    break;
-                case Locator.DataAutomationId:
-                    by = By.CssSelector($"[data-automation-id='{locator.Value}']");
-                    break;
-                default:
-                    by = By.Id(locator.Value);
-                    break;
-            }
+            //switch (locator.Kind)
+            //{
+            //    case Locator.Id:
+            //        by = By.Id(locator.Value);
+            //        break;
+            //    case Locator.Class:
+            //        by = By.ClassName(locator.Value);
+            //        break;
+            //    case Locator.CSS:
+            //        by = By.CssSelector(locator.Value);
+            //        break;
+            //    case Locator.LinkText:
+            //        by = By.LinkText(locator.Value);
+            //        break;
+            //    case Locator.Name:
+            //        by = By.Name(locator.Value);
+            //        break;
+            //    case Locator.PartialLinkText:
+            //        by = By.PartialLinkText(locator.Value);
+            //        break;
+            //    case Locator.TagName:
+            //        by = By.TagName(locator.Value);
+            //        break;
+            //    case Locator.XPath:
+            //        by = By.XPath(locator.Value);
+            //        break;
+            //    case Locator.DataAutomationId:
+            //        by = By.CssSelector($"[data-automation-id='{locator.Value}']");
+            //        break;
+            //    default:
+            //        by = By.Id(locator.Value);
+            //        break;
+            //}
 
             return by;
         }

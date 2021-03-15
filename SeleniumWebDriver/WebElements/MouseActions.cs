@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium.Interactions;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -12,7 +11,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="trg"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void ClickNHoldNDrop(IWebElement Element, IWebElement trg, int x = 0, int y = 30)
+        public void ClickNHoldNDrop(Element Element, Element trg, int x = 0, int y = 30)
         {
             Actions act = new Actions(SeleniumDriver.Browser);
 
@@ -27,7 +26,7 @@ namespace SeleniumWebDriver.WebElements
         /// Double clicks on the specified element 
         /// </summary>
         /// <param name="element">Item to be double clicked, its WebElement </param>
-        public void DoubleClickOnElement(IWebElement element)
+        public void DoubleClickOnElement(Element element)
         {
             Actions act = new Actions(SeleniumDriver.Browser);
 
@@ -41,7 +40,7 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="src">Source item WebElement</param>
         /// <param name="trg">Target item WebElement</param>
-        public void DragNDrop(IWebElement src, IWebElement trg)
+        public void DragNDrop(Element src, Element trg)
         {
             Actions act = new Actions(SeleniumDriver.Browser);
 
