@@ -1,27 +1,22 @@
-﻿using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.WebElements;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface ISelect
     {
-        SelectElement SelectElement();
+        SelectElement SelectElement(LocatorType locatorType, string locator);
 
-        void SelectByText(string selectValue);
+        void SelectByText(string selectValue, double timeout, LocatorType locatorType, string locator);
 
-        void SelectByText(string selectValue, double timeout);
+        void SelectByIndex(int index, double timeout, LocatorType locatorType, string locator);
 
-        void SelectByIndex(int index);
+        void SelectByValue(string selectValue, double timeout, LocatorType locatorType, string locator);
 
-        void SelectByIndex(int index, double timeout);
+        bool IsSelectOptionAvailable(LocatorType locatorType, string locator);
 
-        void SelectByValue(string selectValue);
-
-        void SelectByValue(string selectValue, double timeout);
-
-        bool IsSelectOptionAvailable(Element option);
-
-        bool IsSelectOptionAvailable(Element element, double timeout);
+        bool IsSelectOptionAvailable(IWebElement element, double timeout);
 
     }
 }

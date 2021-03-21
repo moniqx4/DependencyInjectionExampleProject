@@ -13,7 +13,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="DropDownListEntriesLocator">item listing index in drop down after entering search char</param>
         /// <param name="searchChar">search characters</param>
         /// <param name="itemToClick"> item to click </param>
-        public void SelectItemInList(Element dropDownList, string DropDownListEntriesLocator, string searchChar, string itemToClick)
+        public void SelectItemInList(IWebElement dropDownList, string DropDownListEntriesLocator, string searchChar, string itemToClick)
         {
             //supply initial char
             dropDownList.SendKeys(searchChar);

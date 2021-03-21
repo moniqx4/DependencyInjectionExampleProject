@@ -1,6 +1,6 @@
-﻿using SeleniumWebDriver;
+﻿using PageObjects.WTDashboards.Models;
+using SeleniumWebDriver;
 using SeleniumWebDriver.Type;
-using System;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
@@ -15,56 +15,30 @@ namespace PageObjects.WTDashboards.ConcreteClasses
             _browser = browser;
             _webPage = webPage;
         }
+     
 
-        public void LoginToEmployeeDashboard()
+        public void ClickFeedbackButton()
         {
-            throw new NotImplementedException();
-        }
-
-        public void LogoutOfEmployeeDashboard()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NavigateMyTimeSheet()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NavigateToEmployeeDashboardHome(string version = "2")
-        {
-            string path;
-
-            if(version == "V2")
+            var locatorModel = new LocatorModel()
             {
-                path = "";
-            }else
+                LocatorType = LocatorType.Id,
+                Locator = "",
+                ElementType = ElementType.Button
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+        }
+
+        public void ClickWhatsNewButton()
+        {
+            var locatorModel = new LocatorModel()
             {
-                path = "";
-            }
+                LocatorType = LocatorType.Id,
+                Locator = "",
+                ElementType = ElementType.Button
+            };
 
-            _browser.NavigateTo(BaseConfig.Url + path);            
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
         }
-
-        public void NavigateToMyAdjustments()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetNotesText(string text)
-        {
-            //NotesTextField.SendKeys(text);
-            _webPage.SetText(LocatorType.Id, "", text);
-        }
-
-
-        //private IWebElement NotesTextField
-        //{
-        //    get
-        //    {
-        //        return _browser.FindElement(By.Id("sb_form_q"));               
-        //    }            
-
-        //}
     }
 }

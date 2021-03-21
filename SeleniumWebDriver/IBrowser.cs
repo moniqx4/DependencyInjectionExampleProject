@@ -1,10 +1,11 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using OpenQA.Selenium;
 
 namespace SeleniumWebDriver
 {
     public interface IBrowser
     {
         void NavigateTo(string url);
+
         void MoveForward();
 
         void MoveBackward();
@@ -23,6 +24,16 @@ namespace SeleniumWebDriver
 
         void SwitchToParent();
 
-        void SwitchToFrame(Element frameElement);
+        void SwitchToFrame(IWebElement frameElement);
+
+        IBrowser SwitchToAlert();
+
+        string GetAlertText();
+
+        IBrowser SetTextInAlert(string text);
+
+        void ClickAlertAcceptButton();
+
+        void DismissAlert();
     }
 }

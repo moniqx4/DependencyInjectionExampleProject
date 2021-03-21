@@ -1,13 +1,13 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface ILink
     {
-        bool IsLinkEnabled(Element element);
+        bool IsLinkEnabled(LocatorType locatorType, string locator);
 
-        string GetLinkText(Element element);
+        string GetLinkText(LocatorType locatorType, string locator);
 
-        void ClickOnLink(Element element);
+        void ClickLink(LocatorType locatorType, string locator);
     }
 }

@@ -1,13 +1,15 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface IButton
     {
-        bool IsButtonEnabled(Element element);
+        bool IsButtonEnabled(LocatorType locatorType, string locator);
 
-        void ClickButton(Element element);
+        void ClickButton(LocatorType locatorType, string locator);
 
-        string GetButtonText(Element element);
+        string GetButtonText(LocatorType locatorType, string locator);
+
+        bool IsButtonPresent(LocatorType locatorType, string locator);
     }
 }

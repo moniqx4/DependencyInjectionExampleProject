@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AutomatonServices\AutomationServices.csproj" />
     <ProjectReference Include="..\DependencyInjectionExampleProject.csproj" />
     <ProjectReference Include="..\TestUtilities\TestUtilities.csproj" />
   </ItemGroup>

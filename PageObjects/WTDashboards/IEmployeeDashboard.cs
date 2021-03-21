@@ -2,15 +2,8 @@
 {
     public interface IEmployeeDashboard
     {
-        void LoginToEmployeeDashboard();
+        void ClickFeedbackButton();
 
-        void NavigateToMyAdjustments();
-
-        void NavigateMyTimeSheet();
-
-        void NavigateToEmployeeDashboardHome(string version);
-
-        void LogoutOfEmployeeDashboard();
-
+        void ClickWhatsNewButton();
     }
 }

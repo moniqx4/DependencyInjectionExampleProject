@@ -7,7 +7,6 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Drivers;
 using SeleniumWebDriver.Types;
-using SeleniumWebDriver.WebElements;
 using System;
 
 namespace SeleniumWebDriver
@@ -89,21 +88,21 @@ namespace SeleniumWebDriver
             }
         }
 
-        public static Element FindElement(By by, string elementName)
-        {
-            return new Element(Browser.FindElement(by), elementName)
-            {
-                FoundBy = by
-            };
-        }
+        //public static IWebElement FindElement(By by, string elementName)
+        //{
+        //    return new Element(Browser.FindElement(by), elementName)
+        //    {
+        //        FoundBy = by
+        //    };
+        //}
 
-        public static Elements FindElements(By by)
-        {
-            return new Elements(Browser.FindElements(by))
-            {
-                FoundBy = by
-            };
-        }
+        //public static Elements FindElements(By by)
+        //{
+        //    return new Elements(Browser.FindElements(by))
+        //    {
+        //        FoundBy = by
+        //    };
+        //}
 
 
         private static RemoteWebDriver BuildRemoteDriver(BrowserType browser)
@@ -175,41 +174,4 @@ namespace SeleniumWebDriver
         }
 
     }
-
-    //public SeleniumDriver(DriverContext driverContext, LocatorBuilder locatorBuilder)
-    //{
-    //    DriverContext = driverContext;
-    //    _locatorBuilder = locatorBuilder;
-    //    //Driver = driverContext.Driver;
-    //}
-
-    //public void ClickElement(Locator locatorType, string locator)
-    //{
-    //    var ele = _locatorBuilder.BuildLocator(locatorType, locator);
-    //    DriverContext.Current.FindElement((By)ele).Click();
-    //}
-
-    //public void ClickElement(ElementLocator eleLocator)
-    //{
-    //    var ele = _locatorBuilder.BuildLocator(eleLocator.Kind, eleLocator.Value);
-    //    DriverContext.Current.FindElement((By)ele).Click();           
-    //}
-
-    //public void SetText(Locator locatorType, string locator, string text)
-    //{
-    //    var ele = _locatorBuilder.BuildLocator(locatorType, locator);
-    //    DriverContext.Current.FindElement((By)ele).SendKeys(text);
-    //}
-
-    //public void SetText(ElementLocator eleLocator, string text)
-    //{
-    //    var ele = _locatorBuilder.BuildLocator(eleLocator.Kind, eleLocator.Value);
-    //    DriverContext.Current.FindElement((By)ele).SendKeys(text);
-    //}
-
-    //public void NavigateTo(string url)
-    //{            
-    //    DriverContext.Current.Navigate().GoToUrl(url);
-    //}
-   
 }

@@ -1,13 +1,13 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface IRadioButton
     {
-        bool IsRadioButtonSelected(Element element);
+        bool IsRadioButtonSelected(LocatorType locatorType, string locator);
 
-        bool IsRadioButtonEnabled(Element element);
+        bool IsRadioButtonEnabled(LocatorType locatorType, string locator);
 
-        void ClickOnRadioButton(Element element);
+        void ClickOnRadioButton(LocatorType locatorType, string locator);
     }
 }

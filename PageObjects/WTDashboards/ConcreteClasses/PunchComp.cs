@@ -1,9 +1,9 @@
-﻿using OpenQA.Selenium;
-using PageObjects.Shared;
+﻿using PageObjects.WTDashboards.Constants;
+using PageObjects.WTDashboards.Constants.Enums;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 using SeleniumWebDriver;
-using System;
+using SeleniumWebDriver.Type;
 using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
@@ -16,67 +16,103 @@ namespace PageObjects.WTDashboards.ConcreteClasses
             _webPage = webPage;
         }
 
-        //public void ValidateButtonState(ExpectedButtons buttons)
-        //{
-        //    var actualButtons = GetPunchButtonState();           
-
-        //    return CommonTasks.DoesListContain(actualButtons, buttons[0].Text);
-        //}
-
-        //private List<T> GetPunchButtonState()
-        //{
-        //    //get all elements and add to a list
-
-        //    var LocatorModel = new LocatorModel()
-        //    {
-        //        LocatorType = Locator.Id,
-        //        Locator = "[data-automation-id^='punch-button']"
-        //    };
-
-        //    _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator);
-
-        //    var actualPunchButton = _webPage.GetAllElements(LocatorModel.LocatorType, LocatorModel.Locator);
-
-        //    for (int i = 0; i < actualPunchButton.Count; i++)
-        //    {
-        //        actualPunchButton.Add(actualPunchButton[i].Text);
-        //    }
-
-        //    return actualPunchButton;
-        //}
-
-        public IPunchComp AddManualPunch(PunchModel punchDetails)
+        public IPunchComp ClickPunchButton(PunchMethod punchMethod, PunchType punchType)
         {
-            // clicks the ... button
-            //_webPage.ClickElement()
-            SetPunchType(punchDetails.PunchType, PunchMethod.Manual);
+            if (punchMethod == PunchMethod.Regular)
+            {
+                //var locatorModel = new LocatorModel()
+                //{
+                //    LocatorType = LocatorType.DataAutomationId,
+                //    Locator = PunchElements
+                //};
 
-            if (string.IsNullOrEmpty(punchDetails.PunchDate)) { }
+                //_webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator);
+            }
             else
+            {
+                
+            }
+
+            return this;
+            
+        }
+
+        public IPunchComp ClickManualPunchTypeOption()
+        {
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = PunchElements.ManualPunchTypeOption,
+                ElementType = ElementType.Button
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);           
+
+            return this;
+        }
+
+        public IPunchComp ClickManualPunchNoteOption()
+        {
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = PunchElements.ManualPunchNoteOption,
+                ElementType = ElementType.Button
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+
+            return this;
+        }
+
+        public IPunchComp ClickManualPunchCostCenterOption()
+        {
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = PunchElements.ManualPunchCostCenterOption,
+                ElementType = ElementType.Option
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);          
+
+            return this;
+        }
+
+        public IPunchComp ClickManualPunchSubmitButton()
+        {
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = PunchElements.ManualPunchSubmitButton,
+                ElementType = ElementType.Button
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+
+            return this;
+        }
+
+        public IPunchComp SetManualPunchCostCenterSearchText(string text)
+        {
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = PunchElements.CostCenterSearchTextBox,
+                ElementType = ElementType.TextBox
+            };
+
+            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, text);
+
+            return this;
+        }  
+
+        public IPunchComp SetCostCenters(List<string> costCenters, PunchMethod punchMethod)
+        {
+            if (punchMethod == PunchMethod.Regular)
             {
 
             }
-
-            if (string.IsNullOrEmpty(punchDetails.PunchStartTime)) { }
-            else
-            {
-
-            }
-
-            if (string.IsNullOrEmpty(punchDetails.PunchEndTime)) { }
-            else
-            {
-
-            }
-
-
-            if (string.IsNullOrEmpty(punchDetails.Notes)) { }
-            else
-            {
-
-            }
-
-            if (punchDetails.CostCenters == null) { }
             else
             {
 
@@ -85,74 +121,18 @@ namespace PageObjects.WTDashboards.ConcreteClasses
             return this;
         }
 
-        public IPunchComp AddRegularPunch(PunchModel punchDetails)
+        public IPunchComp SetNotesText(string notes, PunchMethod punchMethod)
         {
-            SetPunchType(punchDetails.PunchType, PunchMethod.Regular);
-
-            if(string.IsNullOrEmpty(punchDetails.Notes)) { }
-            else
+            if (punchMethod == PunchMethod.Regular)
             {
 
             }
-
-            if (punchDetails.CostCenters == null) { }
             else
             {
 
             }
 
             return this;
-        }
-
-        public void ClearPunches()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SetPunchType(PunchType punchType, PunchMethod punchMethod)
-        {
-            if(punchMethod == PunchMethod.Manual)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-
-        private void SetCostCenters(IList<string> costCenters, PunchMethod punchMethod)
-        {
-            if (punchMethod == PunchMethod.Manual)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-
-        private void SetStartTime(string startTime)
-        {
-
-        }
-
-        private void SetEndTime()
-        {
-
-        }
-
-        private void SetNotes(string notes, PunchMethod punchMethod)
-        {
-            if (punchMethod == PunchMethod.Manual)
-            {
-
-            }
-            else
-            {
-
-            }
         }
        
     }

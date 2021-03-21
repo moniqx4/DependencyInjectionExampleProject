@@ -6,7 +6,7 @@ namespace PageObjects.WTDashboards
 {
     public interface IScheduleComponent
     {
-        List<ShiftDto> GetSingleDayScheduleDetails(int index);
+        List<ShiftModel> GetSingleDayScheduleDetails(int index);
 
         void ChangePayPeriod();
 

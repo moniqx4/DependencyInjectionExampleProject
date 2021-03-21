@@ -1,8 +1,6 @@
-﻿using PageObjects.WTDashboards.Constants;
+﻿using PageObjects.WTDashboards.Constants.Enums;
 using PageObjects.WTDashboards.Models.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PageObjects.WTDashboards.Models
 {
@@ -20,7 +18,7 @@ namespace PageObjects.WTDashboards.Models
 
         public string PunchEndTime { get; set; }
 
-        public IList<string> CostCenters { get; set; }
+        public List<string> CostCenters { get; set; }
 
     }
 }

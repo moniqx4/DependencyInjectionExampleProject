@@ -4,8 +4,8 @@ namespace PageObjects.WTDashboards
 {
     public interface IActivityComp
     {
-        AttPointsDto GetAttendencePointDetails();
+        IActivityComp ClickCorrectionsTab();
 
-        PunchActvityDto GetActivityDetails(int index);
+        IActivityComp ClickHistoryTab();
     }
 }

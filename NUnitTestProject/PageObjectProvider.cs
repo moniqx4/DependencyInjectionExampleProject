@@ -18,6 +18,7 @@ namespace NUnitTestProject
 
             //builder.RegisterAssemblyTypes(Assembly.Load("DependencyInjectionExampleProject")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load("NUnitTestProject")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.Load("AutomationServices")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load("PageObjects")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load("SeleniumWebDriver")).AsImplementedInterfaces();
 

@@ -3,21 +3,26 @@
 namespace SeleniumWebDriver.WebElements
 {
     public class Javascript : IJavaScript
-    {
+    {       
+        private readonly IAlert _alert;
+        public Javascript(IAlert alert)
+        {            
+            _alert = alert;
+        }
         /// <summary>
         /// Clicks cancel button on the pop up in the browser
         /// </summary>
         public void ClickCancelOnPopup()
         {
-            SeleniumDriver.Browser.SwitchTo().Alert().Dismiss();
+            _alert.DismissAlert();
         }
 
         /// <summary>
         /// Clicks Ok button on the pop up in the browser
         /// </summary>
         public void ClickOkOnPopup()
-        {
-            SeleniumDriver.Browser.SwitchTo().Alert().Accept();
+        {            
+            _alert.ClickAlertAcceptButton();
         }
 
         /// <summary>
@@ -29,7 +34,7 @@ namespace SeleniumWebDriver.WebElements
             if (!IsPopUpPresent())
                 return "Warning : No Pop Up Present";
             else
-                return SeleniumDriver.Browser.SwitchTo().Alert().Text;
+                return _alert.GetAlertText();
         }
 
         /// <summary>
@@ -40,7 +45,7 @@ namespace SeleniumWebDriver.WebElements
         {
             try
             {
-                SeleniumDriver.Browser.SwitchTo().Alert();
+                _alert.SwitchToAlert();
                 return true;
             }
             catch (NoAlertPresentException)
@@ -53,7 +58,7 @@ namespace SeleniumWebDriver.WebElements
         /// Scroll to specified WebElement
         /// </summary>
         /// <param name="ele">WebElement to focus</param>
-        public void ScrollToElement(Element ele)
+        public void ScrollToElement(IWebElement ele)
         {
             ((IJavaScriptExecutor)SeleniumDriver.Browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
         }
@@ -64,7 +69,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="inputText">Text to be displayed in the pop up </param>
         public void TypeTextInPopUp(string inputText)
         {
-            SeleniumDriver.Browser.SwitchTo().Alert().SendKeys(inputText);
+            _alert.TypeTextInAlert(inputText);
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface ILabel
     {
-        bool IsLabelEnabled(Element element);
+        bool IsLabelEnabled(LocatorType locatorType, string locator);
 
-        string GetLabelText(Element element);
+        string GetLabelText(LocatorType locatorType, string locator);
 
-        void ClickOnLabel(Element element);
+        void ClickOnLabel(LocatorType locatorType, string locator);
     }
 }

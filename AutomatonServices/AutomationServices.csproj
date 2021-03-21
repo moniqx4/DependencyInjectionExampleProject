@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PageObjects\PageObjects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LoginService\constants\enums\" />
+    <Folder Include="LoginService\constants\" />
+    <Folder Include="NavigationService\models\" />
+    <Folder Include="NavigationService\enums\" />
+    <Folder Include="NavigationService\constants\" />
+    <Folder Include="PunchService\models\" />
+    <Folder Include="WebKioskService\constants\" />
+  </ItemGroup>
+
+</Project>

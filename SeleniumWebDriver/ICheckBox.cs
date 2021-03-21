@@ -1,11 +1,13 @@
-﻿namespace SeleniumWebDriver.WebElements
+﻿using SeleniumWebDriver.Type;
+
+namespace SeleniumWebDriver.WebElements
 {
     public interface ICheckBox
     {
-        void ClickCheckBox(Element element);
+        void ClickCheckBox(LocatorType locatorType, string locator);
 
-        bool IsCheckboxChecked(Element element);
+        bool IsCheckboxChecked(LocatorType locatorType, string locator);
 
-        bool IsCheckboxEnbaled(Element element);
+        bool IsCheckboxEnbaled(LocatorType locatorType, string locator);
     }
 }

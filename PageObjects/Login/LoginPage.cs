@@ -4,7 +4,7 @@ using SeleniumWebDriver.Type;
 
 namespace PageObjects.Login
 {
-    public class LoginPage : ILogin
+    public class LoginPage : ILoginPage
     {
         private readonly IWebPage _webPage;
 
@@ -13,68 +13,94 @@ namespace PageObjects.Login
         public LoginPage(IWebPage webPage)
         {
             _webPage = webPage;
-        }
+        }   
+       
 
-        public void LoginToEmployeeDashboard(LoginCredModel loginCred)
-        {
-            FillLoginPageForm(loginCred);
-        }
-
-        public void LoginToWebKiosk(LoginCredModel loginCred)
-        {
-            FillLoginPageForm(loginCred);
-        }
-
-        private void FillLoginPageForm(LoginCredModel loginCred)
-        {  
-            SetUsername(loginCred.Username);
-            SetPassword(loginCred.Password);
-            SetCompanyAlias(loginCred.CompanyId);
-            ClickSubmitButton();
-        }
-
-        private void ClickSubmitButton()
+        public void ClickSubmitButton()
         {
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
-                Locator = "Submit"
+                Locator = "Submit",
+                ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator);
+            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator, LocatorModel.ElementType);
         }
 
-        private void SetUsername(string username)
+        public ILoginPage SetUsernameTextBox(string username)
         {
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
-                Locator = "username"
+                Locator = "username",
+                ElementType = ElementType.TextBox
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, username);
+
+            return this;
         }
 
-        private void SetPassword(string password)
+        public ILoginPage SetPasswordTextBox(string password)
         {
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
-                Locator = "password"
+                Locator = "password",
+                ElementType = ElementType.TextBox
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, password);
+
+            return this;
         }
 
-        private void SetCompanyAlias(string companyAlias)
+        public ILoginPage SetCompanyAliasTextBox(string companyAlias)
         {
             var LocatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
-                Locator = "companyId"
+                Locator = "companyId",
+                ElementType = ElementType.TextBox
             };
 
             _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, companyAlias);
+
+            return this;
         }
+
+        public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
+        {
+            var LocatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.Id,
+                Locator = "BadgeNumer",
+                ElementType = ElementType.TextBox
+            };
+
+            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, badgeNumber);
+
+            return this;
+        }
+
+        public ILoginPage EnterPinWithTouchEnabled(string pin)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ClickWebKioskLoginButton()
+        {
+            var LocatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.Id,
+                Locator = "Submit",
+                ElementType = ElementType.Button
+            };
+
+            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator, LocatorModel.ElementType);
+
+        }
+       
     }
 }

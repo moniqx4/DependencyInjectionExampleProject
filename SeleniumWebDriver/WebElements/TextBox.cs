@@ -1,27 +1,43 @@
-﻿using System;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
     public class TextBox : ITextBox
-    {
-        public void ClearTextBoxText(Element element)
+    {        
+        private LocatorBuilder _locatorBuilder;
+
+        public TextBox(LocatorBuilder locatorBuilder)
         {
-            throw new NotImplementedException();
+            _locatorBuilder = locatorBuilder;
+        }
+        public void ClearTextBox(LocatorType locatorType, string locator)
+        {
+            var eleType = _locatorBuilder.BuildLocator(locatorType, locator);
+            eleType.Clear();     
         }
 
-        public string GetTextBoxText(Element element)
+        public string GetTextBoxText(LocatorType locatorType, string locator)
         {
-            throw new NotImplementedException();
+            var eleType = _locatorBuilder.BuildLocator(locatorType, locator);
+            return eleType.Text;
         }
 
-        public bool IsTextBoxEnabled(Element element)
+        public bool IsTextBoxDisplayed(LocatorType locatorType, string locator)
         {
-            throw new NotImplementedException();
+            var eleType = _locatorBuilder.BuildLocator(locatorType, locator);
+            return eleType.Displayed;
+        }     
+
+        public void TypeInTextBox(LocatorType locatorType, string locator, string text)
+        {
+            var eleType = _locatorBuilder.BuildLocator(locatorType, locator);
+            eleType.SendKeys(text);
         }
 
-        public void TypeInTextBox(Element element, string text)
+        public void ClickIntoTextBox(LocatorType locatorType, string locator)
         {
-            throw new NotImplementedException();
+            var eleType = _locatorBuilder.BuildLocator(locatorType, locator);
+            eleType.Click();
         }
     }
 }

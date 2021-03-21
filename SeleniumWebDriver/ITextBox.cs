@@ -1,15 +1,17 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface ITextBox
     {
-        bool IsTextBoxEnabled(Element element);
+        bool IsTextBoxDisplayed(LocatorType locatorType, string locator);
 
-        void TypeInTextBox(Element element, string text);
+        void TypeInTextBox(LocatorType locatorType, string locator, string text);
 
-        string GetTextBoxText(Element element);
+        string GetTextBoxText(LocatorType locatorType, string locator);
 
-        void ClearTextBoxText(Element element);
+        void ClearTextBox(LocatorType locatorType, string locator);
+
+        void ClickIntoTextBox(LocatorType locatorType, string locator);
     }
 }

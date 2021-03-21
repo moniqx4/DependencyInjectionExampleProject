@@ -22,12 +22,12 @@ namespace NUnitTestProject
 
             [Test]
             [Category("EmployeeDashboard")]
-            public void VerifyRegularPunch()
+            public void ValidateRegularPunch()
             {
 
-                var runner = new TestRunner(nameof(VerifyRegularPunch));
+                var runner = new TestRunner(nameof(ValidateRegularPunch));
 
-                runner.Execute<VerifyPunchWorkflow>(workflow => { workflow.Execute(); });
+                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(); });
             }
         }
 

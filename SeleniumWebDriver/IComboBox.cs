@@ -1,15 +1,16 @@
-﻿using SeleniumWebDriver.WebElements;
+﻿
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
     public interface IComboBox
     {
-        void SelectElementByIndex(Element element, int index);
+        void SelectElementByIndex(LocatorType locatorType, string locator, int index);
 
-        void SelectElementByValue(Element element, string value);
+        void SelectElementByValue(LocatorType locatorType, string locator, string value);
 
-        void SelectElementByVIsibleText(Element element, string visibleText);
+        void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText);
 
-        bool IsComboBoxEnabled(Element element);
+        bool IsComboBoxEnabled(LocatorType locatorType, string locator);
     }
 }

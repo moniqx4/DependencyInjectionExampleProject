@@ -1,4 +1,4 @@
-﻿using PageObjects.WTDashboards.Models.Enums;
+﻿using PageObjects.WTDashboards.Constants.Enums;
 
 namespace PageObjects.WTDashboards.Models
 {

@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Type;
-using SeleniumWebDriver.WebElements;
 using System;
 
 namespace SeleniumWebDriver.Base
@@ -11,7 +10,7 @@ namespace SeleniumWebDriver.Base
         /// <summary>
         /// Helper Componnents object
         /// </summary>
-        public Helpers Helper = new Helpers();
+        //public Helpers Helper = new Helpers();
         private static IWebElement _webElement;
 
         public BasePage(IWebDriver driver)
@@ -159,73 +158,6 @@ namespace SeleniumWebDriver.Base
                 wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.ClassName(locator))));
             }
         }
-    }
-
-    /// <summary>
-    ///  Helper Components 
-    /// </summary>
-    public class Helpers
-    {
-        /// <summary>
-        /// Auto suggest Helper components
-        /// </summary>
-        public AutoTextComplete AutoTextComplete = new AutoTextComplete();
-
-        /// <summary>
-        /// Mouse Action Helper components  
-        /// </summary>
-        public MouseActions MouseActions = new MouseActions();
-
-        /// <summary>
-        /// KeyBoard Action Helper components 
-        /// </summary>
-        public KeyboardInteractions KeyBoardInteractions = new KeyboardInteractions();
-
-        /// <summary>
-        /// Browser Helper Components 
-        /// </summary>
-        public Browser Browser = new Browser();
-
-        /// <summary>
-        /// All Button Helper Component
-        /// </summary>
-        public Button Button = new Button();
-
-        /// <summary>
-        /// CheckBox Helper Components
-        /// </summary>
-        public CheckBox CheckBox = new CheckBox();
-
-        /// <summary>
-        /// ComboBox Helper Components
-        /// </summary>
-        public ComboBox ComboBox = new ComboBox();
-
-        /// <summary>
-        /// JavaScript Helper Components 
-        /// </summary>
-        public Javascript JavaScript = new Javascript();
-
-        /// <summary>
-        /// Label Helper Components
-        /// </summary>
-        public Label Label = new Label();
-
-        /// <summary>
-        /// Link Helper Components 
-        /// </summary>
-        public Link Link = new Link();
-
-        /// <summary>
-        /// Radio Button Helper Components
-        /// </summary>
-        public RadioButton RadioButton = new RadioButton();
-
-        /// <summary>
-        /// TextBox Helper Components
-        /// </summary>
-        public TextBox TextBox = new TextBox();
-
     }
 
 }

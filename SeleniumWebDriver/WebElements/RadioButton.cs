@@ -1,35 +1,46 @@
-﻿using OpenQA.Selenium;
+﻿using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
     public class RadioButton : IRadioButton
     {
+        private readonly LocatorBuilder _locatorBuilder;
+        public RadioButton(LocatorBuilder locatorBuilder)
+        {
+            _locatorBuilder = locatorBuilder;
+        }
         /// <summary>
         /// Clicks on specified radio button 
         /// </summary>
-        /// <param name="element">Radio button WebElement</param>
-        public void ClickOnRadioButton(Element element)
+        /// <param locatorType="locatorType">Type of Locator</param>
+        /// <param locator="locator">Type of Locator</param>
+        public void ClickOnRadioButton(LocatorType locatorType, string locator)
         {
+            var element = _locatorBuilder.BuildLocator(locatorType, locator);
             element.Click();
         }
 
         /// <summary>
         /// Determines if the radio button is enabled
         /// </summary>
-        /// <param name="element">Radio button WebElement</param>
+        /// <param locatorType="locatorType">Type of Locator</param>
+        /// <param locator="locator">Type of Locator</param>
         /// <returns>Returns True if Radio button is enabled else False</returns>
-        public bool IsRadioButtonEnabled(Element element)
+        public bool IsRadioButtonEnabled(LocatorType locatorType, string locator)
         {
+            var element = _locatorBuilder.BuildLocator(locatorType, locator);
             return element.Enabled;
         }
 
         /// <summary>
         /// Determines if the Radio button is already selected
         /// </summary>
-        /// <param name="element">Radio button WebElement</param>
+        /// <param locatorType="locatorType">Type of Locator</param>
+        /// <param locator="locator">Type of Locator</param>
         /// <returns>Return True </returns>
-        public bool IsRadioButtonSelected(Element element)
+        public bool IsRadioButtonSelected(LocatorType locatorType, string locator)
         {
+            var element = _locatorBuilder.BuildLocator(locatorType, locator);
             string flag = element.GetAttribute("checked");
 
             if (flag == null)

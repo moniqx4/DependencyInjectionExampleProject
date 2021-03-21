@@ -1,13 +1,23 @@
-﻿
-using PageObjects.WTDashboards.Models;
+﻿using PageObjects.WTDashboards.Constants.Enums;
+using PageObjects.WTDashboards.Models.Enums;
+using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards
 {
     public interface IPunchComp
     {
-        IPunchComp AddRegularPunch(PunchModel punchDetails);
-        IPunchComp AddManualPunch(PunchModel punchDetails);
 
-        void ClearPunches();
+        IPunchComp ClickPunchButton(PunchMethod punchMethod, PunchType punchType);
+
+        IPunchComp ClickManualPunchCostCenterOption();
+        IPunchComp ClickManualPunchNoteOption();
+        IPunchComp ClickManualPunchTypeOption();
+        IPunchComp SetManualPunchCostCenterSearchText(string text);
+
+        IPunchComp SetNotesText(string notes, PunchMethod punchMethod);
+
+        IPunchComp SetCostCenters(List<string> costCenters, PunchMethod punchMethod);
+        IPunchComp ClickManualPunchSubmitButton();
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PageObjects.WTDashboards.Constants
+﻿namespace PageObjects.WTDashboards.Constants.Enums
 {
     public static class PunchTypes
     {

@@ -1,33 +1,44 @@
 ﻿using PageObjects.WTDashboards;
 using PageObjects.WTDashboards.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SeleniumWebDriver;
+using SeleniumWebDriver.Type;
 
 namespace PageObjects.EmployeeDashboard.ConcreteClasses
 {
-    public class ActivityComp
+    public class ActivityComp : IActivityComp
     {
-        public ActivityComp()
+        private readonly IWebPage _webPage;
+        public ActivityComp(IWebPage webPage)
         {
-
+            _webPage = webPage;
         }
 
-        public AttPointsDto GetAttendencePointDetails()
+        public IActivityComp ClickCorrectionsTab()
         {
-            throw new NotImplementedException();
-        }        
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = "",
+                ElementType = ElementType.Tab
+            };
 
-        private void OpenAttPointsDrawer()
-        {
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
 
+            return this;
         }
 
-        private List<AttPointsDto> GetAttPointsDataRow(int index)
+        public IActivityComp ClickHistoryTab()
         {
-            throw new NotImplementedException();
+            var locatorModel = new LocatorModel()
+            {
+                LocatorType = LocatorType.DataAutomationId,
+                Locator = "",
+                ElementType = ElementType.Tab
+            };
+
+            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+
+            return this;
         }
-
-
     }
 }

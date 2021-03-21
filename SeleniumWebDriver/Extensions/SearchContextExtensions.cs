@@ -79,7 +79,7 @@ namespace SeleniumWebDriver.Extensions
         /// <example>How to use it: <code>
         /// Driver.GetElement(this.loginButton, e =&gt; e.Displayed);
         /// </code></example>
-        public static Element GetElement(this ISearchContext element, ElementLocator locator, Func<Element, bool> condition, [Optional] string customMessage)
+        public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, Func<IWebElement, bool> condition, [Optional] string customMessage)
         {
             return element.GetElement(locator, BaseConfig.LongTimeout, condition, customMessage);
         }
@@ -98,9 +98,9 @@ namespace SeleniumWebDriver.Extensions
         /// <example>How to use it: <code>
         /// this.Driver.GetElement(this.loginButton, timeout, e =&gt; e.Displayed);
         /// </code></example>
-        public static Element GetElement(this ISearchContext element, ElementLocator locator, double timeout, Func<Element, bool> condition, [Optional] string customMessage)
+        public static IWebElement GetElement(this ISearchContext element, ElementLocator locator, double timeout, Func<IWebElement, bool> condition, [Optional] string customMessage)
         {
-            var driver = (Element)element;
+            var driver = (IWebElement)element;
             //if (DriverContext.IsDriverSynchronizationWithAngular((IWebDriver)driver))
             //{
             //    //driver.WaitForAngular();
@@ -116,10 +116,10 @@ namespace SeleniumWebDriver.Extensions
                     drv =>
                     {
                         var ele = element.FindElement(by);
-                        return condition((Element)ele);
+                        return condition((IWebElement)ele);
                     });
 
-            return (Element)element.FindElement(@by);
+            return (IWebElement)element.FindElement(@by);
         }
 
         /// <summary>

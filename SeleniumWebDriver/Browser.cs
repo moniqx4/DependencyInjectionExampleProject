@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using SeleniumWebDriver.WebElements;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
@@ -73,7 +72,7 @@ namespace SeleniumWebDriver
         /// Switches webdriver to specified iframe component
         /// </summary>
         /// <param name="frameElement">IFrame WebElement</param>
-        public void SwitchToFrame(Element frameElement)
+        public void SwitchToFrame(IWebElement frameElement)
         {
             SeleniumDriver.Browser.SwitchTo().Frame(frameElement);
         }
@@ -107,6 +106,35 @@ namespace SeleniumWebDriver
             }
 
             SeleniumDriver.Browser.SwitchTo().Window(windows[index]);
+        }
+
+        public IBrowser SwitchToAlert()
+        {
+            SeleniumDriver.Browser.SwitchTo().Alert();
+
+            return this;
+        }
+
+        public string GetAlertText()
+        {
+            return SeleniumDriver.Browser.SwitchTo().Alert().Text;
+        }
+
+        public IBrowser SetTextInAlert(string text)
+        {
+            SeleniumDriver.Browser.SwitchTo().Alert().SendKeys(text);
+
+            return this;
+        }
+
+        public void ClickAlertAcceptButton()
+        {
+            SeleniumDriver.Browser.SwitchTo().Alert().Accept();
+        }
+
+        public void DismissAlert()
+        {
+            SeleniumDriver.Browser.SwitchTo().Alert().Dismiss();
         }
     }
 }
