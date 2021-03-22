@@ -8,9 +8,9 @@ namespace AutomationServices.LoginService
     {
         void LoginToWebKiosk(string baseUrl, WebKioskEmplLoginCreds loginCreds);
 
-        void LoginToWTEmployeeDashboard(string baseUrl, LoginCredModel loginCreds);
+        void LoginToWTEmployeeDashboard(string baseUrl, LoginCredsModel loginCreds);
 
-        void LoginToWTSupervisorDashboard(string baseUrl, LoginCredModel loginCreds);
+        void LoginToWTSupervisorDashboard(string baseUrl, LoginCredsModel loginCreds);
 
         void LoginToServiceBureau(string baseUrl, ServiceBureauCreds sbCreds);
 

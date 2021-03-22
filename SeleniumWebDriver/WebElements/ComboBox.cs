@@ -12,67 +12,76 @@ namespace SeleniumWebDriver.WebElements
         {
             _locatorBuilder = locatorBuilder;
         }
-
-        public bool IsComboBoxEnabled(LocatorType locatorType, string locator)
-        {
-            var element = _locatorBuilder.BuildLocator(locatorType, locator);
-            return element.Enabled;
-        }
-
-
-        public void SelectElementByIndex(LocatorType locatorType, string locator, int index)
-        {
-            var element = _locatorBuilder.BuildLocator(locatorType, locator);
-            select = new SelectElement(element);
-            select.SelectByIndex(index);
-        }
-
-
-        public void SelectElementByValue(LocatorType locatorType, string locator, string value)
-        {
-            var element = _locatorBuilder.BuildLocator(locatorType, locator);
-            select = new SelectElement(element);
-            select.SelectByValue(value);
-        }
-
-
-        public void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText)
-        {
-            var element = _locatorBuilder.BuildLocator(locatorType, locator);
-            select = new SelectElement(element);
-            select.SelectByText(visibleText);
-        }
-
-        /* ----- Multiple locators methods -----*/
       
-        public bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index)
+        public bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index=0)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
-            return element.Enabled;
+            if(index == 0)
+            {
+                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                return element.Enabled;
+            }
+            else
+            {
+                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                return elements.Enabled;
+            }
+           
         }
 
 
-        public void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex)
+        public void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex=0)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, locatorIndex);
-            select = new SelectElement(element);
-            select.SelectByIndex(index);
+            if (locatorIndex == 0)
+            {
+                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                select = new SelectElement(element);
+                select.SelectByIndex(index);
+            }
+            else
+            {
+                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, locatorIndex);
+                select = new SelectElement(elements);
+                select.SelectByIndex(index);
+            }
+           
         }
 
 
-        public void SelectElementByValue(LocatorType locatorType, string locator, string value, int index)
+        public void SelectElementByValue(LocatorType locatorType, string locator, string value, int index=0)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
-            select = new SelectElement(element);
-            select.SelectByValue(value);
+            if(index == 0)
+            {
+                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                select = new SelectElement(element);
+                select.SelectByValue(value);
+            }
+            else
+            {
+                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                select = new SelectElement(elements);
+                select.SelectByValue(value);
+            }
+            
         }
 
 
-        public void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText, int index)
+        public void SelectElementByVisibleText(LocatorType locatorType, string locator, string visibleText, int index=0)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
-            select = new SelectElement(element);
-            select.SelectByText(visibleText);
+
+            if (index == 0)
+            {
+                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                select = new SelectElement(element);
+                select.SelectByText(visibleText);
+            }
+            else
+            {
+                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                select = new SelectElement(elements);
+                select.SelectByText(visibleText);
+            }
+
+            
         }
     }
 }

@@ -93,6 +93,11 @@ namespace AutomationServices.PunchService
             
         }
 
+        public void CreateRegularPunch(PunchModel punch)
+        {
+            _punchComp.ClickPunchButton(punch.PunchMethod, punch.PunchType);
+        }
+
         private void _SetPunchType(PunchType punchType, PunchMethod punchMethod)
         {
             if (punchMethod == PunchMethod.Regular)
@@ -103,11 +108,6 @@ namespace AutomationServices.PunchService
             {
 
             }
-        }
-
-        public void CreateRegularPunch(PunchModel punch)
-        {            
-            _punchComp.ClickPunchButton(punch.PunchMethod, punch.PunchType);
         }
       
     }

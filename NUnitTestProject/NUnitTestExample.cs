@@ -4,7 +4,7 @@ using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch;
 
 namespace NUnitTestProject
 {
-    public class Tests
+    public class NuniTestExample
     {
         [TestFixture]
         public class EmployeeDashboardTests

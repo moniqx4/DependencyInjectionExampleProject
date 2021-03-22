@@ -5,14 +5,16 @@ using SeleniumWebDriver.Type;
 namespace PageObjects.Login
 {
     public class LoginPage : ILoginPage
-    {
-        private readonly IWebPage _webPage;
+    {       
+        private readonly ITextBox _textbox;
+        private readonly IButton _button;
 
         public LoginCredModel loginCred { get; set; }
 
-        public LoginPage(IWebPage webPage)
-        {
-            _webPage = webPage;
+        public LoginPage(ITextBox textbox, IButton button)
+        {           
+            _textbox = textbox;
+            _button = button;
         }   
        
 
@@ -25,7 +27,8 @@ namespace PageObjects.Login
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator, LocatorModel.ElementType);
+            _button.ClickButton(LocatorModel.LocatorType, LocatorModel.Locator);
+
         }
 
         public ILoginPage SetUsernameTextBox(string username)
@@ -36,8 +39,8 @@ namespace PageObjects.Login
                 Locator = "username",
                 ElementType = ElementType.TextBox
             };
-
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, username);
+           
+            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, username);
 
             return this;
         }
@@ -51,7 +54,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, password);
+            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, password);          
 
             return this;
         }
@@ -65,7 +68,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, companyAlias);
+            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, companyAlias);
 
             return this;
         }
@@ -79,7 +82,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, badgeNumber);
+            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, badgeNumber);
 
             return this;
         }
@@ -97,9 +100,8 @@ namespace PageObjects.Login
                 Locator = "Submit",
                 ElementType = ElementType.Button
             };
-
-            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator, LocatorModel.ElementType);
-
+            
+            _button.ClickButton(LocatorModel.LocatorType, LocatorModel.Locator);
         }
        
     }

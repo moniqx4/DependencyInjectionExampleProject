@@ -10,8 +10,9 @@ namespace SeleniumWebDriver
 
         void ClickElement(LocatorType type, string locator, ElementType elementType);
 
-        void CheckCheckbox(LocatorType type, string locator);
+        void CheckCheckbox(LocatorType type, string locator, bool isEnabled);
 
-        void UnCheckCheckbox(LocatorType type, string locator);
+        void ClickRadioButton(LocatorType locatorType, string locator);
+
     }
 }

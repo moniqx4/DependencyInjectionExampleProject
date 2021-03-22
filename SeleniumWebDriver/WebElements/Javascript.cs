@@ -85,6 +85,5 @@ namespace SeleniumWebDriver.WebElements
                 _alert.TypeTextInAlert(inputText);
         }
 
-        /* ----- Multiple locators methods -----*/
     }
 }

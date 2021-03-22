@@ -8,6 +8,6 @@ namespace SeleniumWebDriver
 
         bool IsRadioButtonEnabled(LocatorType locatorType, string locator);
 
-        void ClickOnRadioButton(LocatorType locatorType, string locator);
+        void ClickOnRadioButton(LocatorType locatorType, string locator, int index = 0);
     }
 }

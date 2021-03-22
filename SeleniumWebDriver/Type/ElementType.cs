@@ -12,6 +12,7 @@
         Modal,
         Label,
         Header,
-        Tab
+        Tab,
+        Checkbox
     }
 }

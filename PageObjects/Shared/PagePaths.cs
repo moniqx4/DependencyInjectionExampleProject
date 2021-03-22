@@ -11,5 +11,7 @@
         public static string WebKioskLoginPage => "";
 
         public static string WTTimecardApprovalPage => "/webtime/v2/supervisor/timecard/approval";
+
+        public static string WTFeedbackForm => "/WebTime/webkiosksetup";
     }
 }

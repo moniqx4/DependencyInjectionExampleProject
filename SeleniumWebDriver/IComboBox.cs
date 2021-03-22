@@ -4,21 +4,14 @@ using SeleniumWebDriver.Type;
 namespace SeleniumWebDriver
 {
     public interface IComboBox
-    {
-        void SelectElementByIndex(LocatorType locatorType, string locator, int index);
+    {      
 
-        void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex);
+        void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex =0);        
 
-        void SelectElementByValue(LocatorType locatorType, string locator, string value);
+        void SelectElementByValue(LocatorType locatorType, string locator, string value, int index=0);        
 
-        void SelectElementByValue(LocatorType locatorType, string locator, string value, int index);
+        void SelectElementByVisibleText(LocatorType locatorType, string locator, string visibleText, int index=0);
 
-        void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText);
-
-        void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText, int index);
-
-        bool IsComboBoxEnabled(LocatorType locatorType, string locator);
-
-        bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index);
+        bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index=0);
     }
 }

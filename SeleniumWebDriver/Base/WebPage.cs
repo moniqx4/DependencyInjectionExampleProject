@@ -49,6 +49,11 @@ namespace SeleniumWebDriver.Base
             _checkBox = checkBox;
         }
 
+        public void ClickRadioButton(LocatorType locatorType, string locator)
+        {
+            _radioButton.ClickOnRadioButton(locatorType, locator);
+        }
+
         public void ClickElement(LocatorType type, string locator, ElementType elementType)
         {
             switch (elementType)
@@ -76,20 +81,10 @@ namespace SeleniumWebDriver.Base
             
         }
 
-        public void CheckCheckbox(LocatorType type, string locator)
+        public void CheckCheckbox(LocatorType type, string locator, bool isEnabled)
         {
-            _checkBox.ClickCheckBox(type, locator);
-        }
-
-        public void UnCheckCheckbox(LocatorType type, string locator)
-        {
-            var isChecked = _checkBox.IsCheckboxEnabled(type, locator);
-            if (isChecked)
-            {
-                _checkBox.ClickCheckBox(type, locator);
-            }
-        }
-
+            _checkBox.ClickCheckBox(type, locator, isEnabled);
+        } 
 
         public string GetText(LocatorType type, string locator)
         {

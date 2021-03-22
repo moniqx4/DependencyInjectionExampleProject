@@ -14,10 +14,27 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param locatorType="locatorType">Type of Locator</param>
         /// <param locator="locator">Type of Locator</param>
-        public void ClickOnRadioButton(LocatorType locatorType, string locator)
+        public void ClickOnRadioButton(LocatorType locatorType, string locator, int index=0)
         {
-            var element = _locatorBuilder.BuildLocator(locatorType, locator);
-            element.Click();
+            var isClicked = IsRadioButtonSelected(locatorType, locator);
+
+            if(index == 0)
+            {
+                if (!isClicked)
+                {
+                    var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                    element.Click();
+                }
+            }
+            else
+            {
+                if (!isClicked)
+                {
+                    var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                    element.Click();
+                }
+            }          
+           
         }
 
         /// <summary>
@@ -47,8 +64,6 @@ namespace SeleniumWebDriver.WebElements
                 return false;
             else
                 return true;
-        }
-
-        /* ----- Multiple locators methods -----*/
+        }       
     }
 }
