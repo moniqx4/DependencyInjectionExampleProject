@@ -1,6 +1,7 @@
 ﻿using AutomationServices.LoginService.models;
 using AutomationServices.PunchService.enums;
 using PageObjects.Login;
+using PageObjects.Shared;
 using PageObjects.SharedServices;
 using PageObjects.WTDashboards.Models;
 using System;
@@ -11,11 +12,13 @@ namespace AutomationServices.LoginService
     {
         private readonly ILoginPage _login;
         private readonly INavigationService _navigate;
+        private readonly IWebKioskAdminLoginPage _wkAdminLogin;
 
-        public LoginService(ILoginPage login, INavigationService navigate)
+        public LoginService(ILoginPage login, INavigationService navigate, IWebKioskAdminLoginPage wkAdminLogin)
         {
             _login = login;
             _navigate = navigate;
+            _wkAdminLogin = wkAdminLogin;
         }
         public void LoginToServiceBureau(string baseUrl, ServiceBureauCreds sbCreds)
         {
@@ -24,14 +27,14 @@ namespace AutomationServices.LoginService
 
         public void LoginToWebKiosk(string baseUrl, WebKioskEmplLoginCreds loginCreds, string badgeNumber, string pin)
         {
-            var pagePath = "";
+            var pagePath = PagePaths.WebKioskLoginPage;
 
             _navigate.NavigateViaUrl(baseUrl, pagePath);
         }
 
         public void LoginToWebKioskWithBadge(string baseUrl, WebKioskEmplLoginCreds loginCreds)
         {
-            var pagePath = "";
+            var pagePath = PagePaths.WebKioskLoginPage;
 
             _navigate.NavigateViaUrl(baseUrl, pagePath);
             _login.SetBadgeNumberTextBox(loginCreds.BadgeNumber);
@@ -39,19 +42,20 @@ namespace AutomationServices.LoginService
 
         public void LoginToWebKioskAdminLogin(string baseUrl, WebKioskInstanceModel adminCreds)
         {
-            throw new NotImplementedException();
+            _navigate.OpenToWebKioskAdminLoginPage(baseUrl);
+            _FillWebKioskAdminPageForm(adminCreds.CompanyId, adminCreds.InstanceName, adminCreds.InstancePassword);
         }
 
         public void LoginToWTEmployeeDashboard(string baseUrl, LoginCredModel loginCred)
         {
-            var pagePath = "";
+            var pagePath = PagePaths.WTEmployeeDashboardPage;
 
             _GotoPageFillForm(baseUrl, pagePath, loginCred);
         }
 
         public void LoginToWTSupervisorDashboard(string baseUrl, LoginCredModel loginCred)
         {
-            var pagePath = "";
+            var pagePath = PagePaths.WTSupervisorDashboardPage;
             _GotoPageFillForm(baseUrl, pagePath, loginCred);
         }
 
@@ -86,6 +90,14 @@ namespace AutomationServices.LoginService
                 .ClickSubmitButton();           
         }
 
-        
+        private void _FillWebKioskAdminPageForm(string companyId, string instanceName, string instancePassword)
+        {
+            _wkAdminLogin.SetCompanyId(companyId)
+                .SetInstanceName(instanceName)
+                .SetInstancePassword(instancePassword)
+                .ClickSubmitButton();           
+        }
+
+
     }
 }

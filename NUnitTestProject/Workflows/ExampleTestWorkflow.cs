@@ -1,37 +1,30 @@
-﻿using DependencyInjectionExampleProject;
+﻿using AutomationServices.LoginService;
 using System;
 
 namespace NUnitTestProject.Workflows
 {
     public class ExampleTestWorkflow
     {
-        private readonly IEmployeeDashboard _employeeDashboard;
-        private readonly IPunchComponent _punchComponent;
+        private readonly ILoginService _loginService;
 
-        public ExampleTestWorkflow(IEmployeeDashboard employeeDashboard, IPunchComponent punchComponent)
+        public ExampleTestWorkflow(ILoginService loginService)
         {
-            _employeeDashboard = employeeDashboard;
-            _punchComponent = punchComponent;
+            _loginService = loginService;
         }
 
+        /* Steps that will be executed must be in the Execute Method */
         public void Execute()
         {
-            ShowEmployeeDashboardPageMsg();
-            ShowPunchComponentPageMsg();
+            var baseUrl = "";  // this should come from a test config file or app settings
+
+            Login(baseUrl);
+            
         }
 
-        private void ShowEmployeeDashboardPageMsg()
+        /* All test step should be private methods, generally void */
+        private void Login(string baseUrl)
         {
-            Console.Write("If you see this, then the test runner is setup properly. ");
-
-            _employeeDashboard.GetEmployeeDashboard();
-        }
-
-        private void ShowPunchComponentPageMsg()
-        {
-            Console.Write("If you see this, then the test runner is setup properly. ");
-
-            _punchComponent.GetPunchcomponent();
-        }
+            throw new Exception("Not Implemented Yet.");          
+        }       
     }
 }

@@ -57,5 +57,7 @@ namespace SeleniumWebDriver.WebElements
             var element = _locatorBuilder.BuildLocator(locatorType, locator);
             return element.Displayed;
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

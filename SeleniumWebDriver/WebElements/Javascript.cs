@@ -1,28 +1,37 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace SeleniumWebDriver.WebElements
 {
     public class Javascript : IJavaScript
     {       
         private readonly IAlert _alert;
-        public Javascript(IAlert alert)
-        {            
+        private readonly IBrowser _browser;
+        public Javascript(IAlert alert, IBrowser browser)
+        {
             _alert = alert;
+            _browser = browser;
         }
         /// <summary>
         /// Clicks cancel button on the pop up in the browser
         /// </summary>
         public void ClickCancelOnPopup()
-        {
-            _alert.DismissAlert();
+        {            
+            if (!IsPopUpPresent())
+                throw new Exception("Warning : No Pop Up Present");
+            else
+                _alert.DismissAlert();
         }
 
         /// <summary>
         /// Clicks Ok button on the pop up in the browser
         /// </summary>
         public void ClickOkOnPopup()
-        {            
-            _alert.ClickAlertAcceptButton();
+        {
+            if (!IsPopUpPresent())
+                throw new Exception("Warning : No Pop Up Present");
+            else
+                _alert.ClickAlertAcceptButton();
         }
 
         /// <summary>
@@ -60,7 +69,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="ele">WebElement to focus</param>
         public void ScrollToElement(IWebElement ele)
         {
-            ((IJavaScriptExecutor)SeleniumDriver.Browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
+            ((IJavaScriptExecutor)_browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
         }
 
         /// <summary>
@@ -69,7 +78,13 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="inputText">Text to be displayed in the pop up </param>
         public void TypeTextInPopUp(string inputText)
         {
-            _alert.TypeTextInAlert(inputText);
+            
+            if (!IsPopUpPresent())
+                throw new Exception( "Warning : No Pop Up Present");
+            else
+                _alert.TypeTextInAlert(inputText);
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

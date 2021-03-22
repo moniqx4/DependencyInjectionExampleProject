@@ -48,5 +48,7 @@ namespace SeleniumWebDriver.WebElements
             else
                 return true;
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

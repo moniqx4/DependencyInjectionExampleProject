@@ -3,6 +3,7 @@
     public class Alert : IAlert
     {
         private readonly IBrowser _browser;
+
         public Alert(IBrowser browser)
         {
             _browser = browser;
@@ -35,5 +36,7 @@
         {
             _browser.DismissAlert();
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

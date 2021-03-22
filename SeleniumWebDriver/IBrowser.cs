@@ -4,6 +4,16 @@ namespace SeleniumWebDriver
 {
     public interface IBrowser
     {
+        string GetBrowserTitle();
+
+        string GetBrowserUrl();
+
+        string GetAlertText();
+
+        IBrowser SwitchToAlert();        
+
+        IBrowser SetTextInAlert(string text);
+
         void NavigateTo(string url);
 
         void MoveForward();
@@ -16,21 +26,11 @@ namespace SeleniumWebDriver
 
         void BrowserRefresh();
 
-        string GetBrowserTitle();
-
-        string GetBrowserUrl();
-
         void SwitchToWindow(int index = 0);
 
         void SwitchToParent();
 
         void SwitchToFrame(IWebElement frameElement);
-
-        IBrowser SwitchToAlert();
-
-        string GetAlertText();
-
-        IBrowser SetTextInAlert(string text);
 
         void ClickAlertAcceptButton();
 

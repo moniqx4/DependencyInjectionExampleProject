@@ -8,6 +8,6 @@ namespace SeleniumWebDriver.WebElements
 
         bool IsCheckboxChecked(LocatorType locatorType, string locator);
 
-        bool IsCheckboxEnbaled(LocatorType locatorType, string locator);
+        bool IsCheckboxEnabled(LocatorType locatorType, string locator);
     }
 }

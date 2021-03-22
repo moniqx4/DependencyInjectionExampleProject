@@ -57,5 +57,7 @@ namespace SeleniumWebDriver.WebElements
                 .Build()
                 .Perform();
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

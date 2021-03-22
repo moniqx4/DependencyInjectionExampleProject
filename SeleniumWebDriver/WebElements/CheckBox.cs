@@ -42,10 +42,12 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="element">checkbox element</param>
         /// <returns>Returns true if checkbox is enabled else False</returns>
-        public bool IsCheckboxEnbaled(LocatorType locatorType, string locator)
+        public bool IsCheckboxEnabled(LocatorType locatorType, string locator)
         {
             var element = _locatorBuilder.BuildLocator(locatorType, locator);
             return element.Enabled;
         }
+
+        /* ----- Multiple locators methods -----*/
     }
 }

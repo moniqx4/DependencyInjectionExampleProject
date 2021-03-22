@@ -42,5 +42,37 @@ namespace SeleniumWebDriver.WebElements
             select = new SelectElement(element);
             select.SelectByText(visibleText);
         }
+
+        /* ----- Multiple locators methods -----*/
+      
+        public bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+            return element.Enabled;
+        }
+
+
+        public void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, locatorIndex);
+            select = new SelectElement(element);
+            select.SelectByIndex(index);
+        }
+
+
+        public void SelectElementByValue(LocatorType locatorType, string locator, string value, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+            select = new SelectElement(element);
+            select.SelectByValue(value);
+        }
+
+
+        public void SelectElementByVIsibleText(LocatorType locatorType, string locator, string visibleText, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+            select = new SelectElement(element);
+            select.SelectByText(visibleText);
+        }
     }
 }

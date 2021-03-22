@@ -1,5 +1,4 @@
-﻿
-using AutomationServices.EmployeeTimecardService;
+﻿using AutomationServices.EmployeeTimecardService;
 using AutomationServices.PunchService.enums;
 using PageObjects.WTDashboards;
 using PageObjects.WTDashboards.Constants.Enums;
@@ -63,19 +62,6 @@ namespace AutomationServices.PunchService
             {
                
             }
-
-            if (string.IsNullOrEmpty(punch.PunchStartTime)) { }
-            else
-            {
-
-            }
-
-            if (string.IsNullOrEmpty(punch.PunchEndTime)) { }
-            else
-            {
-
-            }
-
 
             if (string.IsNullOrEmpty(punch.Notes)) { }
             else

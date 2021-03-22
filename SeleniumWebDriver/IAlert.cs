@@ -4,9 +4,9 @@
     {
         IAlert SwitchToAlert();
 
-        string GetAlertText();
-
         IAlert TypeTextInAlert(string text);
+
+        string GetAlertText();        
 
         void ClickAlertAcceptButton();
 

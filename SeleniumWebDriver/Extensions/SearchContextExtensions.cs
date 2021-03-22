@@ -8,7 +8,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Type;
-using SeleniumWebDriver.WebElements;
 
 namespace SeleniumWebDriver.Extensions
 {
