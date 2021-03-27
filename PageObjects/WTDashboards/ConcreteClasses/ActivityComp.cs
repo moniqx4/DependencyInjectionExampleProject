@@ -1,7 +1,6 @@
-﻿using PageObjects.WTDashboards;
-using PageObjects.WTDashboards.Models;
+﻿using DataModelLibrary;
+using PageObjects.WTDashboards;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
 
 namespace PageObjects.EmployeeDashboard.ConcreteClasses
 {

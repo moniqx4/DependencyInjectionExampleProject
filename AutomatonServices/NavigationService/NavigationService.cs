@@ -1,7 +1,5 @@
 ﻿using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
-using PageObjects.WTDashboards.Models;
-using System;
+using DataModelLibrary;
 
 namespace PageObjects.SharedServices
 {

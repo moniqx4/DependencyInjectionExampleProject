@@ -1,15 +1,15 @@
-﻿using AutomationServices.LoginService.models;
+﻿using DataModelLibrary;
 
 namespace AutomationServices.LoginService
 {
     public interface ILoginCredentialService
     {
-        LoginCredsModel GetEmployeeCredentials();
+        LoginCredModel GetEmployeeCredentials();
 
-        LoginCredsModel GetAdminCredentials();
+        LoginCredModel GetAdminCredentials();
 
-        LoginCredsModel GetSupervisorCredentials();
+        LoginCredModel GetSupervisorCredentials();
 
-        LoginCredsModel GetSuperUserCredentials();
+        LoginCredModel GetSuperUserCredentials();
     }
 }

@@ -1,9 +1,8 @@
-﻿using PageObjects.WTDashboards.Constants;
+﻿using DataModelLibrary;
+using PageObjects.WTDashboards.Constants;
 using PageObjects.WTDashboards.Constants.Enums;
-using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
 using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards.ConcreteClasses

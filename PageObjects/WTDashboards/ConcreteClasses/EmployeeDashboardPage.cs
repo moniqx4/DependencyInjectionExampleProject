@@ -1,6 +1,5 @@
-﻿using PageObjects.WTDashboards.Models;
+﻿using DataModelLibrary;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {

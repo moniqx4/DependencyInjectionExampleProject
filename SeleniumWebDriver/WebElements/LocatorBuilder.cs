@@ -1,7 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.Models;
-using SeleniumWebDriver.Type;
 using System;
 using System.Collections.ObjectModel;
 

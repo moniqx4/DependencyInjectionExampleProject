@@ -1,6 +1,4 @@
-﻿using SeleniumWebDriver.Type;
-
-namespace PageObjects.WTDashboards.Models
+﻿namespace DataModelLibrary
 {
     public class LocatorModel
     {

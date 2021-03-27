@@ -1,5 +1,4 @@
-﻿using SeleniumWebDriver.Models;
-using SeleniumWebDriver.Type;
+﻿using DataModelLibrary;
 using SeleniumWebDriver.WebElements;
 using System;
 
@@ -57,7 +56,7 @@ namespace SeleniumWebDriver.Base
 
         public void ClickRadioButton(LocatorModel locatorModel)
         {
-            _radioButton.ClickOnRadioButton(locatorModel.LocatorType, locatorModel.Locator);
+            _radioButton.ClickOnRadioButton(locatorModel);
         }
 
         public void ClickElement(LocatorType type, string locator, ElementType elementType)

@@ -1,6 +1,7 @@
 ﻿using NLog;
 using SeleniumWebDriver.Extensions;
 using SeleniumWebDriver.Type;
+using LocatorType = DataModelLibrary.LocatorType;
 
 namespace SeleniumWebDriver.WebElements
 {   

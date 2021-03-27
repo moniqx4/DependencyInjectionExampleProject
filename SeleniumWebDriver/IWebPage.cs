@@ -1,5 +1,4 @@
-﻿using SeleniumWebDriver.Models;
-using SeleniumWebDriver.Type;
+﻿using DataModelLibrary;
 
 namespace SeleniumWebDriver
 {

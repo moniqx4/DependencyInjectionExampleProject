@@ -1,8 +1,8 @@
-﻿namespace SeleniumWebDriver.Type
+﻿namespace DataModelLibrary
 {
     public enum ElementType
     {
-        TextBox, 
+        TextBox,
         Button,
         Link,
         Grid,

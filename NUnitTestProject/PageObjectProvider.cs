@@ -21,6 +21,7 @@ namespace NUnitTestProject
             builder.RegisterAssemblyTypes(Assembly.Load("AutomationServices")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load("PageObjects")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load("SeleniumWebDriver")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.Load("DataModelLibrary"));
 
             // Registering Classes without Interfaces
             builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());

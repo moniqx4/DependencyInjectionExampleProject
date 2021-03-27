@@ -1,5 +1,4 @@
-﻿using PageObjects.WTDashboards.Models;
-using SeleniumWebDriver.Type;
+﻿using DataModelLibrary;
 using SeleniumWebDriver.WebElements;
 
 namespace PageObjects.WebKiosk.concreteClasses

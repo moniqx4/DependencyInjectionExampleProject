@@ -1,4 +1,4 @@
-﻿namespace SeleniumWebDriver.Type
+﻿namespace DataModelLibrary
 {
     public enum LocatorType
     {

@@ -1,6 +1,5 @@
-﻿using PageObjects.WTDashboards.Models;
-using SeleniumWebDriver;
-using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver;
+using DataModelLibrary;
 
 namespace PageObjects.Login
 {

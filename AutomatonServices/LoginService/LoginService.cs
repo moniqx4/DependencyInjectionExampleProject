@@ -1,10 +1,12 @@
 ﻿using AutomationServices.LoginService.models;
 using AutomationServices.PunchService.enums;
+using DataModelLibrary;
 using PageObjects.Login;
 using PageObjects.Shared;
 using PageObjects.SharedServices;
 using PageObjects.WTDashboards.Models;
 using System;
+
 
 namespace AutomationServices.LoginService
 {
@@ -46,14 +48,14 @@ namespace AutomationServices.LoginService
             _FillWebKioskAdminPageForm(adminCreds.CompanyId, adminCreds.InstanceName, adminCreds.InstancePassword);
         }
 
-        public void LoginToWTEmployeeDashboard(string baseUrl, LoginCredsModel loginCred)
+        public void LoginToWTEmployeeDashboard(string baseUrl, LoginCredModel loginCred)
         {
             var pagePath = PagePaths.WTEmployeeDashboardPage;
 
             _GotoPageFillForm(baseUrl, pagePath, loginCred);
         }
 
-        public void LoginToWTSupervisorDashboard(string baseUrl, LoginCredsModel loginCred)
+        public void LoginToWTSupervisorDashboard(string baseUrl, LoginCredModel loginCred)
         {
             var pagePath = PagePaths.WTSupervisorDashboardPage;
             _GotoPageFillForm(baseUrl, pagePath, loginCred);
@@ -76,13 +78,13 @@ namespace AutomationServices.LoginService
             throw new NotImplementedException();
         }
 
-        private void _GotoPageFillForm(string baseUrl, string pagePath, LoginCredsModel loginCred)
+        private void _GotoPageFillForm(string baseUrl, string pagePath, LoginCredModel loginCred)
         {
             _navigate.NavigateViaUrl(baseUrl, pagePath);
             _FillLoginPageForm(loginCred);
         }
 
-        private void _FillLoginPageForm(LoginCredsModel loginCred)
+        private void _FillLoginPageForm(LoginCredModel loginCred)
         {
             _login.SetCompanyAliasTextBox(loginCred.CompanyId)
                 .SetUsernameTextBox(loginCred.Username)

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using System;
 
 namespace SeleniumWebDriver.Type

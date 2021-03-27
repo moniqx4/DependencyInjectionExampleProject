@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {

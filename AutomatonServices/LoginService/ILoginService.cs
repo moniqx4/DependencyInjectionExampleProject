@@ -1,5 +1,6 @@
 ﻿using AutomationServices.LoginService.models;
 using AutomationServices.PunchService.enums;
+using DataModelLibrary;
 using PageObjects.WTDashboards.Models;
 
 namespace AutomationServices.LoginService
@@ -8,9 +9,9 @@ namespace AutomationServices.LoginService
     {
         void LoginToWebKiosk(string baseUrl, WebKioskEmplLoginCreds loginCreds);
 
-        void LoginToWTEmployeeDashboard(string baseUrl, LoginCredsModel loginCreds);
+        void LoginToWTEmployeeDashboard(string baseUrl, LoginCredModel loginCreds);
 
-        void LoginToWTSupervisorDashboard(string baseUrl, LoginCredsModel loginCreds);
+        void LoginToWTSupervisorDashboard(string baseUrl, LoginCredModel loginCreds);
 
         void LoginToServiceBureau(string baseUrl, ServiceBureauCreds sbCreds);
 

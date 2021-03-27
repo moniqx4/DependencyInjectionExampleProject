@@ -1,5 +1,5 @@
-﻿using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.Type;
+﻿using DataModelLibrary;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWebDriver.WebElements
 {

@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.LoginService.models
+﻿namespace DataModelLibrary
 {
     public class WebKioskEmplLoginCreds
     {
