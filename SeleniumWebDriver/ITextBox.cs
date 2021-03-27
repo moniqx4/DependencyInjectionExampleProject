@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
@@ -23,5 +24,25 @@ namespace SeleniumWebDriver
         void ClickIntoTextBox(LocatorType locatorType, string locator);
 
         void ClickIntoTextBox(LocatorType locatorType, string locator, int index);
+
+        bool IsTextBoxDisplayed(LocatorModel locatorModel);
+
+        bool IsTextBoxDisplayed(LocatorModel locatorModel, int index);
+
+        void TypeInTextBox(LocatorModel locatorModel, string text);
+
+        void TypeInTextBox(LocatorModel locatorModel, string text, int index);
+
+        string GetTextBoxText(LocatorModel locatorModel);
+
+        string GetTextBoxText(LocatorModel locatorModel, int index);
+
+        void ClearTextBox(LocatorModel locatorModel);
+
+        void ClearTextBox(LocatorModel locatorModel, int index);
+
+        void ClickIntoTextBox(LocatorModel locatorModel);
+
+        void ClickIntoTextBox(LocatorModel locatorModel, int index);
     }
 }

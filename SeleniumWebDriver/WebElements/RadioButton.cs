@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -37,6 +38,28 @@ namespace SeleniumWebDriver.WebElements
            
         }
 
+        public void ClickOnRadioButton(LocatorModel locatorModel, int index = 0)
+        {
+            var isClicked = IsRadioButtonSelected(locatorModel);
+
+            if (index == 0)
+            {
+                if (!isClicked)
+                {
+                    var element = _locatorBuilder.BuildLocator(locatorModel);
+                    element.Click();
+                }
+            }
+            else
+            {
+                if (!isClicked)
+                {
+                    var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+                    element.Click();
+                }
+            }
+        }
+
         /// <summary>
         /// Determines if the radio button is enabled
         /// </summary>
@@ -46,6 +69,12 @@ namespace SeleniumWebDriver.WebElements
         public bool IsRadioButtonEnabled(LocatorType locatorType, string locator)
         {
             var element = _locatorBuilder.BuildLocator(locatorType, locator);
+            return element.Enabled;
+        }
+
+        public bool IsRadioButtonEnabled(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
             return element.Enabled;
         }
 
@@ -64,6 +93,17 @@ namespace SeleniumWebDriver.WebElements
                 return false;
             else
                 return true;
-        }       
+        }
+
+        public bool IsRadioButtonSelected(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
+            string flag = element.GetAttribute("checked");
+
+            if (flag == null)
+                return false;
+            else
+                return true;
+        }
     }
 }

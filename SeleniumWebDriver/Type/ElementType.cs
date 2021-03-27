@@ -13,6 +13,7 @@
         Label,
         Header,
         Tab,
-        Checkbox
+        Checkbox,
+        Radio
     }
 }

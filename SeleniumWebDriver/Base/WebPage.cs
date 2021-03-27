@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 using SeleniumWebDriver.WebElements;
 using System;
 
@@ -54,6 +55,11 @@ namespace SeleniumWebDriver.Base
             _radioButton.ClickOnRadioButton(locatorType, locator);
         }
 
+        public void ClickRadioButton(LocatorModel locatorModel)
+        {
+            _radioButton.ClickOnRadioButton(locatorModel.LocatorType, locatorModel.Locator);
+        }
+
         public void ClickElement(LocatorType type, string locator, ElementType elementType)
         {
             switch (elementType)
@@ -81,14 +87,51 @@ namespace SeleniumWebDriver.Base
             
         }
 
+        public void ClickElement(LocatorModel locatorModel)
+        {
+            switch (locatorModel.ElementType)
+            {
+                case ElementType.Button:
+                    _button.ClickButton(locatorModel);
+                    break;
+
+                case ElementType.TextBox:
+                    _textBox.ClickIntoTextBox(locatorModel);
+                    break;
+
+                case ElementType.Option:
+                    _link.ClickLink(locatorModel);
+                    break;
+
+                case ElementType.Link:
+                    _link.ClickLink(locatorModel);
+                    break;
+
+                default:
+                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
+
+            }
+
+        }
+
         public void CheckCheckbox(LocatorType type, string locator, bool isEnabled)
         {
             _checkBox.ClickCheckBox(type, locator, isEnabled);
-        } 
+        }
+
+        public void CheckCheckbox(LocatorModel locatorModel, bool isEnabled)
+        {
+            _checkBox.ClickCheckBox(locatorModel, isEnabled);
+        }
 
         public string GetText(LocatorType type, string locator)
         {
             return _textBox.GetTextBoxText(type, locator);           
+        }
+
+        public string GetText(LocatorModel locatorModel)
+        {
+            return _textBox.GetTextBoxText(locatorModel);
         }
 
         public void SetText(LocatorType type, string locator, string text)
@@ -96,6 +139,90 @@ namespace SeleniumWebDriver.Base
             _textBox.ClearTextBox(type, locator);
             _textBox.TypeInTextBox(type, locator, text);
         }
-     
+
+        public void SetText(LocatorModel locatorModel, string text)
+        {
+            _textBox.ClearTextBox(locatorModel);
+            _textBox.TypeInTextBox(locatorModel, text);
+        }
+
+        //public void ExecuteJs()
+        //{
+            
+        //}
+
+        public bool IsDisplayed(LocatorModel locatorModel)
+        {
+            switch (locatorModel.ElementType)
+            {
+                case ElementType.Button:
+                    return _button.IsButtonPresent(locatorModel);                    
+
+                case ElementType.TextBox:                   
+                    return _textBox.IsTextBoxDisplayed(locatorModel);
+
+                case ElementType.Label:
+                    return _label.IsLabelPresent(locatorModel);
+
+                //case ElementType.Checkbox:
+                //    return _checkBox.IsCheckboxEnabled(locatorModel.LocatorType, locatorModel.Locator);
+
+                //case ElementType.Radio:
+                //    return _radioButton.IsRadioButtonEnabled(locatorModel.LocatorType, locatorModel.Locator);
+
+                //case ElementType.Label:
+                //    return _label.IsLabelEnabled(locatorModel.LocatorType, locatorModel.Locator);
+
+
+                //case ElementType.Option:
+                //    _link.ClickLink(locatorModel.LocatorType, locatorModel.Locator);
+                //    _link.
+                //    break;
+
+                //case ElementType.Link:
+                //    _link.ClickLink(locatorModel.LocatorType, locatorModel.Locator);
+                //    break;
+
+                default:
+                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
+
+            }
+        }
+
+        public bool IsActive(LocatorModel locatorModel)
+        {
+            switch (locatorModel.ElementType)
+            {
+                case ElementType.Button:
+                    return _button.IsButtonEnabled(locatorModel);
+
+                case ElementType.TextBox:
+                    return _textBox.IsTextBoxDisplayed(locatorModel);
+
+                case ElementType.Checkbox:
+                    return _checkBox.IsCheckboxEnabled(locatorModel);
+
+                case ElementType.Radio:
+                    return _radioButton.IsRadioButtonEnabled(locatorModel);
+
+                case ElementType.Label:
+                    return _label.IsLabelEnabled(locatorModel);
+
+
+                //case ElementType.Option:
+                //    _link.ClickLink(locatorModel);
+                //    _link.
+                //    break;
+
+                //case ElementType.Link:
+                //    _link.ClickLink(locatorModel);
+                //    break;
+
+                default:
+                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
+
+            }
+        }
+
     }
 }

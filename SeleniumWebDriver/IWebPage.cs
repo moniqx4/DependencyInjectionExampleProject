@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
@@ -13,6 +14,16 @@ namespace SeleniumWebDriver
         void CheckCheckbox(LocatorType type, string locator, bool isEnabled);
 
         void ClickRadioButton(LocatorType locatorType, string locator);
+
+        void ClickElement(LocatorModel locatorModel);
+
+        void CheckCheckbox(LocatorModel locatorModel, bool isEnabled);
+
+        string GetText(LocatorModel locatorModel);
+
+        void SetText(LocatorModel locatorModel, string text);
+
+        void ClickRadioButton(LocatorModel locatorModel);
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
 {
@@ -9,5 +10,17 @@ namespace SeleniumWebDriver
         string GetLinkText(LocatorType locatorType, string locator);
 
         void ClickLink(LocatorType locatorType, string locator);
+
+        bool IsLinkEnabled(LocatorModel locatorModel);
+
+        string GetLinkText(LocatorModel locatorModel);
+
+        void ClickLink(LocatorModel locatorModel);
+
+        bool IsLinkEnabled(LocatorModel locatorModel, int index);
+
+        string GetLinkText(LocatorModel locatorModel, int index);
+
+        void ClickLink(LocatorModel locatorModel, int index);
     }
 }

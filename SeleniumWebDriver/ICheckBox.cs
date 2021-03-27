@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -11,6 +12,14 @@ namespace SeleniumWebDriver.WebElements
         bool IsCheckboxChecked(LocatorType locatorType, string locator);
 
         bool IsCheckboxEnabled(LocatorType locatorType, string locator);
+
+        void ClickCheckBox(LocatorModel locatorModel);
+
+        void ClickCheckBox(LocatorModel locatorModel, bool isEnabled);
+
+        bool IsCheckboxChecked(LocatorModel locatorModel);
+
+        bool IsCheckboxEnabled(LocatorModel locatorModel);
 
     }
 }

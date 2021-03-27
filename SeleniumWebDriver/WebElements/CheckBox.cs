@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -57,6 +58,39 @@ namespace SeleniumWebDriver.WebElements
 
         }
 
+        public void ClickCheckBox(LocatorModel locatorModel)
+        {
+            var isChecked = IsCheckboxChecked(locatorModel);
+
+            if (!isChecked)
+            {
+                var element = _locatorBuilder.BuildLocator(locatorModel);
+                element.Click();
+            }
+        }
+
+        public void ClickCheckBox(LocatorModel locatorModel, bool isEnabled)
+        {
+            var isChecked = IsCheckboxChecked(locatorModel);
+
+            if (isEnabled)
+            {
+                if (!isChecked)
+                {
+                    var element = _locatorBuilder.BuildLocator(locatorModel);
+                    element.Click();
+                }
+            }
+            else
+            {
+                if (isChecked)
+                {
+                    var element = _locatorBuilder.BuildLocator(locatorModel);
+                    element.Click();
+                }
+            }
+        }
+
         /// <summary>
         /// Determines if checkbox is Checked
         /// </summary>
@@ -75,6 +109,18 @@ namespace SeleniumWebDriver.WebElements
                 return true;
         }
 
+        public bool IsCheckboxChecked(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
+            string flag = element.GetAttribute("checked");
+            if (flag == null)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+
         /// <summary>
         /// Determines if checkbox enabled
         /// </summary>
@@ -84,6 +130,12 @@ namespace SeleniumWebDriver.WebElements
         public bool IsCheckboxEnabled(LocatorType locatorType, string locator)
         {
             var element = _locatorBuilder.BuildLocator(locatorType, locator);
+            return element.Enabled;
+        }
+
+        public bool IsCheckboxEnabled(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
             return element.Enabled;
         }
 

@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver.Type;
+﻿using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver.WebElements
 {
@@ -22,6 +23,18 @@ namespace SeleniumWebDriver.WebElements
             element.Click();
         }
 
+        public void ClickLink(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
+            element.Click();
+        }
+
+        public void ClickLink(LocatorModel locatorModel, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            element.Click();
+        }
+
         /// <summary>
         /// Retrieves Link's text
         /// </summary>
@@ -31,6 +44,18 @@ namespace SeleniumWebDriver.WebElements
         public string GetLinkText(LocatorType locatorType, string locator)
         {
             var element = _locatorBuilder.BuildLocator(locatorType, locator);
+            return element.Text;
+        }
+
+        public string GetLinkText(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
+            return element.Text;
+        }
+
+        public string GetLinkText(LocatorModel locatorModel, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
             return element.Text;
         }
 
@@ -46,6 +71,17 @@ namespace SeleniumWebDriver.WebElements
             return element.Enabled;
         }
 
-        /* ----- Multiple locators methods -----*/
+        public bool IsLinkEnabled(LocatorModel locatorModel)
+        {
+            var element = _locatorBuilder.BuildLocator(locatorModel);
+            return element.Enabled;
+        }
+       
+
+        public bool IsLinkEnabled(LocatorModel locatorModel, int index)
+        {
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            return element.Enabled;
+        }
     }
 }
