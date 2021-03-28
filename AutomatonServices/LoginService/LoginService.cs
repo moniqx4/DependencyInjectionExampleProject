@@ -15,16 +15,28 @@ namespace AutomationServices.LoginService
         private readonly ILoginPage _login;
         private readonly INavigationService _navigate;
         private readonly IWebKioskAdminLoginPage _wkAdminLogin;
+        //private readonly IWebKioskDBLoginPage _wkDBLogin;
+        private readonly ISupervisorDBPage _supervisiorDB;
+        private readonly IServiceBureauPage _serviceBureau;
 
-        public LoginService(ILoginPage login, INavigationService navigate, IWebKioskAdminLoginPage wkAdminLogin)
+        public LoginService(ILoginPage login, INavigationService navigate, IWebKioskAdminLoginPage wkAdminLogin, IServiceBureauPage serviceBureau)
         {
             _login = login;
             _navigate = navigate;
             _wkAdminLogin = wkAdminLogin;
+            _serviceBureau = serviceBureau;
         }
         public void LoginToServiceBureau(string baseUrl, ServiceBureauCreds sbCreds)
         {
-            throw new NotImplementedException();
+            _serviceBureau.SetLoginCompanyAliasTextBox(sbCreds.CompanyAlias)
+                .SetLoginUsernameTextBox(sbCreds.Username)
+                .SetLoginPasswordTextBox(sbCreds.Password)
+                .ClickLoginButton();
+
+            //TODO check these steps
+            _serviceBureau.SetSBCompanyAliasTextBox(sbCreds.CompanyAlias)
+                .ClickSearchButton()
+                .ClickCompanyAliasLink(sbCreds.CompanyAlias);
         }
 
         public void LoginToWebKiosk(string baseUrl, WebKioskEmplLoginCreds loginCreds, string badgeNumber, string pin)
@@ -63,7 +75,7 @@ namespace AutomationServices.LoginService
 
         public void LogoutViaUrl(string baseUrl)
         {
-            var pagePath = "";
+            var pagePath = PagePaths.Logout;
 
             _navigate.NavigateViaUrl(baseUrl, pagePath);
         }

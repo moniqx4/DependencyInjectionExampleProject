@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		App.config.xml = App.config.xml
-		SeleniumWebDriver\Models\LocatorModel.cs = SeleniumWebDriver\Models\LocatorModel.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageObjects", "PageObjects\PageObjects.csproj", "{9BF32110-3D33-4EDF-9203-4B1BDBDF47C2}"
@@ -22,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUtilities", "TestUtilit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationServices", "AutomatonServices\AutomationServices.csproj", "{678C891A-88D2-4F52-8B27-F79590843774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModelLibrary", "DataModelLibrary\DataModelLibrary.csproj", "{CC11A281-CBFF-4193-A03E-B2B6989E7B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModelLibrary", "DataModelLibrary\DataModelLibrary.csproj", "{CC11A281-CBFF-4193-A03E-B2B6989E7B06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

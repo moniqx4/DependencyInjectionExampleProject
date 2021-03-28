@@ -6,16 +6,18 @@ using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver.WebElements
 {
+   
     public class LocatorBuilder
     {
         //[ThreadStatic]
         //static IWebElement _driver;
 
         private static IWebElement _webElement;
+        
 
         public LocatorBuilder()
         {
-        }
+        }        
 
         public IWebElement BuildLocator(LocatorType locatorType, string locator)
         {
@@ -228,7 +230,7 @@ namespace SeleniumWebDriver.WebElements
 
             switch (locatorType)
             {
-                case LocatorType.XPath:
+                case LocatorType.XPath:                    
                     return _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locator)));
 
                 case LocatorType.PartialLinkText:

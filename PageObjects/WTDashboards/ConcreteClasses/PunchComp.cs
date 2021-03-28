@@ -1,6 +1,5 @@
 ﻿using DataModelLibrary;
 using PageObjects.WTDashboards.Constants;
-using PageObjects.WTDashboards.Constants.Enums;
 using PageObjects.WTDashboards.Models.Enums;
 using SeleniumWebDriver;
 using System.Collections.Generic;

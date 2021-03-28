@@ -13,5 +13,7 @@
         public static string WTTimecardApprovalPage => "/webtime/v2/supervisor/timecard/approval";
 
         public static string WTFeedbackForm => "/WebTime/webkiosksetup";
+
+        public static string Logout => "/Logout";
     }
 }

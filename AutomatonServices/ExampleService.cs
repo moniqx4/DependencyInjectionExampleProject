@@ -1,9 +1,4 @@
 ﻿using PageObjects.Login;
-using PageObjects.WTDashboards;
-using PageObjects.WTDashboards.Constants.Enums;
-using PageObjects.WTDashboards.Models;
-using PageObjects.WTDashboards.Models.Enums;
-using System.Collections.Generic;
 
 namespace AutomationServices
 {

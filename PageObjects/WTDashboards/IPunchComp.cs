@@ -1,4 +1,4 @@
-﻿using PageObjects.WTDashboards.Constants.Enums;
+﻿using DataModelLibrary;
 using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
 

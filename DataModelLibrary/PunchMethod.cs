@@ -1,5 +1,4 @@
-﻿
-namespace PageObjects.WTDashboards.Constants.Enums
+﻿namespace DataModelLibrary
 {
     public enum PunchMethod
     {

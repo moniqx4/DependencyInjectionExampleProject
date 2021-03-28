@@ -3,6 +3,7 @@ using AutomationServices.LoginService;
 using AutomationServices.PunchService;
 using AutomationServices.PunchValidationService;
 using AutomationServices.WaitService;
+using DataModelLibrary;
 using NUnitTestProject.Services;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
@@ -60,7 +61,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             PunchModel punch = new PunchModel()
             {
                 PunchType = PunchType.ClockOut,
-                PunchMethod = PageObjects.WTDashboards.Constants.Enums.PunchMethod.Regular,
+                PunchMethod = PunchMethod.Regular,
                 Notes = "Automation Punch Note"
             };
 
@@ -88,7 +89,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             PunchModel punch = new PunchModel()
             {
                 PunchType = PunchType.ClockIn,               
-                PunchMethod = PageObjects.WTDashboards.Constants.Enums.PunchMethod.Regular,
+                PunchMethod = PunchMethod.Regular,
                 Notes = "Automation Punch Note"
             };
                       
