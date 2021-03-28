@@ -35,9 +35,4 @@
     <PackageReference Include="WebDriverManager" Version="2.11.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="PageObjects\PageObjects.csproj" />
-    <ProjectReference Include="SeleniumWebDriver\SeleniumWebDriver.csproj" />
-  </ItemGroup>
-
 </Project>
