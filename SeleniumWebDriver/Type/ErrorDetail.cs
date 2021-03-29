@@ -1,16 +1,14 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SeleniumWebDriver.Type
 {
     public class ErrorDetail
     {
 
-        private DateTime _dateTime;
-        private Exception _exception;
-        private Screenshot _screenshot;
+        private readonly DateTime _dateTime;
+        private readonly Exception _exception;
+        private readonly Screenshot _screenshot;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorDetail" /> class.

@@ -21,7 +21,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
            
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
             return this;
         }
@@ -35,7 +35,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Checkbox
             };
             
-            _webPage.CheckCheckbox(locatorModel.LocatorType, locatorModel.Locator, isEnabled);
+            _webPage.CheckCheckbox(locatorModel, isEnabled);
 
             return this;
         }
@@ -49,7 +49,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Checkbox
             };
 
-            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, comments);
+            _webPage.SetText(locatorModel, comments);
 
             return this;
         }
@@ -63,7 +63,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Checkbox
             };
 
-           _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, endDate);
+           _webPage.SetText(locatorModel, endDate);
 
             return this;
         }
@@ -77,7 +77,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Checkbox
             };
 
-            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, startDate);
+            _webPage.SetText(locatorModel, startDate);
 
             return this;
         }

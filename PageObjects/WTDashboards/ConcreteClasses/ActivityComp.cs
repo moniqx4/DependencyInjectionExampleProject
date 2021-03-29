@@ -21,7 +21,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
                 ElementType = ElementType.Tab
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
             return this;
         }
@@ -35,7 +35,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
                 ElementType = ElementType.Tab
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
             return this;
         }

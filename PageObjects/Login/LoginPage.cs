@@ -5,84 +5,81 @@ using DataModelLibrary;
 namespace PageObjects.Login
 {
     public class LoginPage : ILoginPage
-    {       
-        private readonly ITextBox _textbox;
-        private readonly IButton _button;
+    {      
+        
+        private readonly IWebPage _webPage;
 
-        public LoginCredModel loginCred { get; set; }
+        public LoginPage(IWebPage webPage)
+        {            
+            _webPage = webPage;
+        }
 
-        public LoginPage(ITextBox textbox, IButton button)
-        {           
-            _textbox = textbox;
-            _button = button;
-        }   
-       
 
         public void ClickSubmitButton()
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "Submit",
                 ElementType = ElementType.Button
             };
-
-            _button.ClickButton(LocatorModel.LocatorType, LocatorModel.Locator);
+         
+            _webPage.ClickElement(locatorModel);
 
         }
 
         public ILoginPage SetUsernameTextBox(string username)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "username",
                 ElementType = ElementType.TextBox
-            };
-           
-            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, username);
+            };           
+            
+            _webPage.SetText(locatorModel, username);
 
             return this;
         }
 
         public ILoginPage SetPasswordTextBox(string password)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "password",
                 ElementType = ElementType.TextBox
             };
-
-            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, password);          
+            
+            _webPage.SetText(locatorModel, password);
 
             return this;
         }
 
         public ILoginPage SetCompanyAliasTextBox(string companyAlias)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "companyId",
                 ElementType = ElementType.TextBox
             };
-
-            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, companyAlias);
+          
+            _webPage.SetText(locatorModel, companyAlias);
 
             return this;
         }
 
         public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "BadgeNumer",
                 ElementType = ElementType.TextBox
             };
-
-            _textbox.TypeInTextBox(LocatorModel.LocatorType, LocatorModel.Locator, badgeNumber);
+           
+            _webPage.SetText(locatorModel, badgeNumber);
 
             return this;
         }
@@ -94,14 +91,14 @@ namespace PageObjects.Login
 
         public void ClickWebKioskLoginButton()
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "Submit",
                 ElementType = ElementType.Button
             };
-            
-            _button.ClickButton(LocatorModel.LocatorType, LocatorModel.Locator);
+          
+            _webPage.ClickElement(locatorModel);
         }
        
     }

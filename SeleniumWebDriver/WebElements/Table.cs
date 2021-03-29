@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using DataModelLibrary;
+using NLog;
 using SeleniumWebDriver.Extensions;
 using SeleniumWebDriver.Type;
 using LocatorType = DataModelLibrary.LocatorType;
@@ -28,9 +29,9 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>
         /// Text representation of the grid or table html like element.
         /// </returns>
-        public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator, LocatorType locatorType, string locator)
+        public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator, LocatorModel locatorModel)
         {
-            var table = _locatorBuilder.BuildLocator(locatorType, locator);
+            var table = _locatorBuilder.BuildLocator(locatorModel);
             var rows = table.GetElements(rowLocator);
 
             var result = new string[rows.Count][];

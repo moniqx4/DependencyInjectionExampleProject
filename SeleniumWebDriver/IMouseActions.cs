@@ -1,14 +1,13 @@
 ﻿using DataModelLibrary;
-using OpenQA.Selenium;
 
 namespace SeleniumWebDriver
 {
     public interface IMouseActions
     {
-        void DragNDrop(IWebElement src, IWebElement trg);
+        void DragNDrop(LocatorModel locatorModelSrc, LocatorModel locatorModelTrg);
 
-        void ClickNHoldNDrop(LocatorType locatorType, string locator, IWebElement trg, int x = 0, int y = 30);
+        void ClickNHoldNDrop(LocatorModel locatorModel, int x = 0, int y = 30);
 
-        void DoubleClickOnElement(LocatorType locatorType, string locator);
+        void DoubleClickOnElement(LocatorModel locatorModel);
     }
 }

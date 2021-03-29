@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using System;
 
 namespace SeleniumWebDriver.WebElements
@@ -67,8 +68,11 @@ namespace SeleniumWebDriver.WebElements
         /// Scroll to specified WebElement
         /// </summary>
         /// <param name="ele">WebElement to focus</param>
-        public void ScrollToElement(IWebElement ele)
+        public void ScrollToElement(LocatorModel locatorModel)
         {
+            LocatorBuilder locatorBuilder = new LocatorBuilder();
+            var ele = locatorBuilder.BuildLocator(locatorModel);
+
             ((IJavaScriptExecutor)_browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
         }
 

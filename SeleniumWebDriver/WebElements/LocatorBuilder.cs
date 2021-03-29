@@ -228,38 +228,19 @@ namespace SeleniumWebDriver.WebElements
         {
             var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
 
-            switch (locatorType)
+            return locatorType switch
             {
-                case LocatorType.XPath:                    
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locator)));
-
-                case LocatorType.PartialLinkText:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locator)));
-
-                case LocatorType.Name:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locator)));
-
-                case LocatorType.LinkText:
-                    return wait.Until(ExpectedConditions.ElementExists(By.LinkText(locator)));
-
-                case LocatorType.Id:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locator)));
-
-                case LocatorType.CSS:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locator)));
-
-                case LocatorType.TagName: 
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locator)));
-
-                case LocatorType.Class:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locator)));
-
-                case LocatorType.DataAutomationId:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locator}']")));
-
-                default:
-                    throw new Exception($"LocatorType {locatorType} is unknown.");
-            }
+                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locator))),
+                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locator))),
+                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locator))),
+                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementExists(By.LinkText(locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locator))),
+                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locator))),
+                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locator))),
+                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locator))),
+                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locator}']"))),
+                _ => throw new Exception($"LocatorType {locatorType} is unknown."),
+            };
         }
 
         /// <summary>
@@ -274,38 +255,19 @@ namespace SeleniumWebDriver.WebElements
         {
             var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
 
-            switch (locatorModel.LocatorType)
+            return locatorModel.LocatorType switch
             {
-                case LocatorType.XPath:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locatorModel.Locator)));
-
-                case LocatorType.PartialLinkText:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locatorModel.Locator)));
-
-                case LocatorType.Name:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locatorModel.Locator)));
-
-                case LocatorType.LinkText:
-                    return wait.Until(ExpectedConditions.ElementExists(By.LinkText(locatorModel.Locator)));
-
-                case LocatorType.Id:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locatorModel.Locator)));
-
-                case LocatorType.CSS:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locatorModel.Locator)));
-
-                case LocatorType.TagName:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locatorModel.Locator)));
-
-                case LocatorType.Class:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locatorModel.Locator)));
-
-                case LocatorType.DataAutomationId:
-                    return _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']")));
-
-                default:
-                    throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown.");
-            }
+                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locatorModel.Locator))),
+                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locatorModel.Locator))),
+                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locatorModel.Locator))),
+                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementExists(By.LinkText(locatorModel.Locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locatorModel.Locator))),
+                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locatorModel.Locator))),
+                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locatorModel.Locator))),
+                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locatorModel.Locator))),
+                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))),
+                _ => throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown."),
+            };
         }
 
         /// <summary>
@@ -320,38 +282,19 @@ namespace SeleniumWebDriver.WebElements
         {
             var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
 
-            switch (locatorType)
+            return locatorType switch
             {
-                case LocatorType.XPath:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
-
-                case LocatorType.PartialLinkText:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator)));
-
-                case LocatorType.Name:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locator)));
-
-                case LocatorType.LinkText:
-                    return wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator)));
-
-                case LocatorType.Id:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator)));
-
-                case LocatorType.CSS:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locator)));
-
-                case LocatorType.TagName:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locator)));
-
-                case LocatorType.Class:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locator)));
-
-                case LocatorType.DataAutomationId:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locator}']")));
-
-                default:
-                    throw new Exception($"LocatorType {locatorType} is unknown.");
-            }
+                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator))),
+                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator))),
+                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locator))),
+                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator))),
+                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locator))),
+                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locator))),
+                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locator))),
+                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locator}']"))),
+                _ => throw new Exception($"LocatorType {locatorType} is unknown."),
+            };
         }
 
         /// <summary>
@@ -366,38 +309,19 @@ namespace SeleniumWebDriver.WebElements
         {
             var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
 
-            switch (locatorModel.LocatorType)
+            return locatorModel.LocatorType switch
             {
-                case LocatorType.XPath:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locatorModel.Locator)));
-
-                case LocatorType.PartialLinkText:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locatorModel.Locator)));
-
-                case LocatorType.Name:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locatorModel.Locator)));
-
-                case LocatorType.LinkText:
-                    return wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locatorModel.Locator)));
-
-                case LocatorType.Id:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locatorModel.Locator)));
-
-                case LocatorType.CSS:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locatorModel.Locator)));
-
-                case LocatorType.TagName:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locatorModel.Locator)));
-
-                case LocatorType.Class:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locatorModel.Locator)));
-
-                case LocatorType.DataAutomationId:
-                    return _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']")));
-
-                default:
-                    throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown.");
-            }
+                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locatorModel.Locator))),
+                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locatorModel.Locator))),
+                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locatorModel.Locator))),
+                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locatorModel.Locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locatorModel.Locator))),
+                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locatorModel.Locator))),
+                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locatorModel.Locator))),
+                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locatorModel.Locator))),
+                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))),
+                _ => throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown."),
+            };
         }
 
         /// <summary>

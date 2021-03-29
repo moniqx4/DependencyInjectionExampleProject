@@ -56,8 +56,7 @@ namespace SeleniumWebDriver.Extensions
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(
                     driver =>
                     {
-                        IJavaScriptExecutor javaScriptExecutor = driver as IJavaScriptExecutor;
-                        return javaScriptExecutor != null
+                        return driver is IJavaScriptExecutor javaScriptExecutor
                                && (bool)javaScriptExecutor.ExecuteScript("return jQuery.active == 0");
                     });
             }
@@ -256,8 +255,7 @@ namespace SeleniumWebDriver.Extensions
                 new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout)).Until(
                     driver =>
                     {
-                        IJavaScriptExecutor javaScriptExecutor = driver as IJavaScriptExecutor;
-                        return javaScriptExecutor != null
+                        return driver is IJavaScriptExecutor javaScriptExecutor
                                &&
                                (bool)javaScriptExecutor.ExecuteScript(
                                    "return window.angular != undefined && window.angular.element(document.body).injector().get('$http').pendingRequests.length == 0");
@@ -268,16 +266,7 @@ namespace SeleniumWebDriver.Extensions
                 Logger.Info("Wait for angular invalid operation exception.");
             }
         }
-
-        /// <summary>
-        /// Enable synchronization with angular.
-        /// </summary>        
-        /// <param name="enable">Enable or disable synchronization.</param>
-        public static void SynchronizeWithAngular(bool enable)
-        {
-            //DriverContext.SetAngularSynchronizationForDriver(enable);
-        }
-
+    
         /// <summary>
         /// Javascript drag and drop function.
         /// </summary>

@@ -20,7 +20,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
         }
 
         public IFeedbackFormComp SetFeedbackTextBox(string feedbackText)
@@ -32,7 +32,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, feedbackText);
+            _webPage.SetText(locatorModel, feedbackText);
 
             return this;
         }
@@ -46,7 +46,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, topicText);
+            _webPage.SetText(locatorModel, topicText);
 
             return this;
         }

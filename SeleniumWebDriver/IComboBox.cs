@@ -5,12 +5,12 @@ namespace SeleniumWebDriver
     public interface IComboBox
     {      
 
-        void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex =0);        
+        void SelectElementByIndex(LocatorModel locatorModel, int index, int locatorIndex =0);        
 
-        void SelectElementByValue(LocatorType locatorType, string locator, string value, int index=0);        
+        void SelectElementByValue(LocatorModel locatorModel, string value, int index=0);        
 
-        void SelectElementByVisibleText(LocatorType locatorType, string locator, string visibleText, int index=0);
+        void SelectElementByVisibleText(LocatorModel locatorModel, string visibleText, int index=0);
 
-        bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index=0);
+        bool IsComboBoxEnabled(LocatorModel locatorModel, int index=0);
     }
 }

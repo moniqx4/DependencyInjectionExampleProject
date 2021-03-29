@@ -1,5 +1,5 @@
-﻿using OpenQA.Selenium;
-using SeleniumWebDriver.WebElements;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 
 namespace SeleniumWebDriver
 {
@@ -11,10 +11,12 @@ namespace SeleniumWebDriver
 
         void ClickOkOnPopup();
 
-        void ClickCancelOnPopup();
-
-        void ScrollToElement(IWebElement ele);
+        void ClickCancelOnPopup();       
 
         void TypeTextInPopUp(string inputText);
+
+        void ScrollToElement(LocatorModel locatorModel);
+
+
     }
 }

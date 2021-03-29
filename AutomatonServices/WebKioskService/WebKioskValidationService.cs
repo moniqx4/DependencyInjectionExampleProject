@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutomationServices.WebKioskService
 {
-    class WebKioskValidationService
+    public class WebKioskValidationService
     {
     }
 }

@@ -7,6 +7,8 @@
         Link,
         Grid,
         Dropdown,
+        Selector,
+        AutoCompleteSelector,
         Option,
         Alert,
         Modal,
@@ -14,6 +16,8 @@
         Header,
         Tab,
         Checkbox,
-        Radio
+        Radio,
+        Javascript,
+        MenuOption
     }
 }

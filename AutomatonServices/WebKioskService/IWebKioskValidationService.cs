@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutomationServices.WebKioskService
+﻿namespace AutomationServices.WebKioskService
 {
-    interface IWebKioskValidationService
+    public interface IWebKioskValidationService
     {
         void ValidatePunchButtonState();
 

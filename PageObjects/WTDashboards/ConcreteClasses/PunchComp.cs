@@ -24,7 +24,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 //    Locator = PunchElements
                 //};
 
-                //_webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator);
+                //_webPage.ClickElement(locatorModel);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);           
+            _webPage.ClickElement(locatorModel);           
 
             return this;
         }
@@ -58,7 +58,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
             return this;
         }
@@ -72,7 +72,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Option
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);          
+            _webPage.ClickElement(locatorModel);          
 
             return this;
         }
@@ -86,7 +86,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
             return this;
         }
@@ -100,7 +100,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(locatorModel.LocatorType, locatorModel.Locator, text);
+            _webPage.SetText(locatorModel, text);
 
             return this;
         }  

@@ -14,55 +14,55 @@ namespace PageObjects.Login
 
         public void ClickSubmitButton()
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "Submit",
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(LocatorModel.LocatorType, LocatorModel.Locator, LocatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
 
         }
 
         public IWebKioskAdminLoginPage SetCompanyId(string companyId)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "CompanyId",
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, companyId);
+            _webPage.SetText(locatorModel, companyId);
 
             return this;
         }
 
         public IWebKioskAdminLoginPage SetInstanceName(string instanceName)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "",
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, instanceName);
+            _webPage.SetText(locatorModel, instanceName);
 
             return this;
         }
 
         public IWebKioskAdminLoginPage SetInstancePassword(string instancePassword)
         {
-            var LocatorModel = new LocatorModel()
+            var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
                 Locator = "",
                 ElementType = ElementType.TextBox
             };
 
-            _webPage.SetText(LocatorModel.LocatorType, LocatorModel.Locator, instancePassword);
+            _webPage.SetText(locatorModel, instancePassword);
 
             return this;
         }

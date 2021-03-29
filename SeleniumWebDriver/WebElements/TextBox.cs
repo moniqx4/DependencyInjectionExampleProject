@@ -4,7 +4,7 @@ namespace SeleniumWebDriver.WebElements
 {
     public class TextBox : ITextBox
     {        
-        private LocatorBuilder _locatorBuilder;
+        private readonly LocatorBuilder _locatorBuilder;
 
         public TextBox(LocatorBuilder locatorBuilder)
         {

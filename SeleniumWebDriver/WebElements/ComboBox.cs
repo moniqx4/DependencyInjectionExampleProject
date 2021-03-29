@@ -13,33 +13,33 @@ namespace SeleniumWebDriver.WebElements
             _locatorBuilder = locatorBuilder;
         }
       
-        public bool IsComboBoxEnabled(LocatorType locatorType, string locator, int index=0)
+        public bool IsComboBoxEnabled(LocatorModel locatorModel, int index=0)
         {
             if(index == 0)
             {
-                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 return element.Enabled;
             }
             else
             {
-                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 return elements.Enabled;
             }
            
         }
 
 
-        public void SelectElementByIndex(LocatorType locatorType, string locator, int index, int locatorIndex=0)
+        public void SelectElementByIndex(LocatorModel locatorModel, int index, int locatorIndex=0)
         {
             if (locatorIndex == 0)
             {
-                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 select = new SelectElement(element);
                 select.SelectByIndex(index);
             }
             else
             {
-                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, locatorIndex);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, locatorIndex);
                 select = new SelectElement(elements);
                 select.SelectByIndex(index);
             }
@@ -47,17 +47,17 @@ namespace SeleniumWebDriver.WebElements
         }
 
 
-        public void SelectElementByValue(LocatorType locatorType, string locator, string value, int index=0)
+        public void SelectElementByValue(LocatorModel locatorModel, string value, int index=0)
         {
             if(index == 0)
             {
-                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 select = new SelectElement(element);
                 select.SelectByValue(value);
             }
             else
             {
-                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 select = new SelectElement(elements);
                 select.SelectByValue(value);
             }
@@ -65,18 +65,18 @@ namespace SeleniumWebDriver.WebElements
         }
 
 
-        public void SelectElementByVisibleText(LocatorType locatorType, string locator, string visibleText, int index=0)
+        public void SelectElementByVisibleText(LocatorModel locatorModel, string visibleText, int index=0)
         {
 
             if (index == 0)
             {
-                var element = _locatorBuilder.BuildLocator(locatorType, locator);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 select = new SelectElement(element);
                 select.SelectByText(visibleText);
             }
             else
             {
-                var elements = _locatorBuilder.LocatorByIndex(locatorType, locator, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 select = new SelectElement(elements);
                 select.SelectByText(visibleText);
             }

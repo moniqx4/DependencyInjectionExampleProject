@@ -20,6 +20,10 @@ namespace SeleniumWebDriver
 
         void ClearTextBox(LocatorType locatorType, string locator, int index);
 
+        void ClearTextBox(LocatorModel locatorModel);
+
+        void ClearTextBox(LocatorModel locatorModel, int index);
+
         void ClickIntoTextBox(LocatorType locatorType, string locator);
 
         void ClickIntoTextBox(LocatorType locatorType, string locator, int index);
@@ -36,9 +40,7 @@ namespace SeleniumWebDriver
 
         string GetTextBoxText(LocatorModel locatorModel, int index);
 
-        void ClearTextBox(LocatorModel locatorModel);
-
-        void ClearTextBox(LocatorModel locatorModel, int index);
+       
 
         void ClickIntoTextBox(LocatorModel locatorModel);
 

@@ -151,7 +151,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.Button
             };
 
-            return _webPage.GetText(locatorModel);
+            return _webPage.GetElementText(locatorModel);
         }
 
         public string GetBadgeNumberTextFieldLabelText()
@@ -163,7 +163,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.Button
             };
 
-            return _webPage.GetText(locatorModel);
+            return _webPage.GetElementText(locatorModel);
         }
 
         public string GetPinTextFieldLabelText()
@@ -175,7 +175,7 @@ namespace PageObjects.Login
                 ElementType = ElementType.Button
             };
 
-            return _webPage.GetText(locatorModel);
+            return _webPage.GetElementText(locatorModel);
         }
     }
 }

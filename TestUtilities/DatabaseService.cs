@@ -58,7 +58,7 @@ namespace TestUtilities
         /// </summary>
         /// <param name="SQLCommandLine">Requested query</param>
         /// <returns>Returns GUID returned by query</returns>
-        public static string SQLGetSingleResult(string SQLCommandLine, bool KeyInteractionTable = false)
+        public static string SQLGetSingleResult(string SQLCommandLine)
         {
             string singleResult;
 
@@ -80,14 +80,12 @@ namespace TestUtilities
         /// Execute a sql query 
         /// </summary>
         /// <param name="SQLCommandLine">Scalar query</param>
-        public static void ExecuteSQLCommand(string SQLCommandLine, bool KeyInteractionTable = false)
+        public static void ExecuteSQLCommand(string SQLCommandLine)
         {
-            using (SqlConnection conn = new SqlConnection(DBConnectionStrings.DBConnectionStr))
-            {
-                conn.Open();
-                SqlCommand insertcommand = new SqlCommand(SQLCommandLine, conn);
-                insertcommand.ExecuteScalar();
-            }
+            using SqlConnection conn = new SqlConnection(DBConnectionStrings.DBConnectionStr);
+            conn.Open();
+            SqlCommand insertcommand = new SqlCommand(SQLCommandLine, conn);
+            insertcommand.ExecuteScalar();
         }
     }
 }

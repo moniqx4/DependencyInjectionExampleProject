@@ -25,7 +25,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
         }
 
         public void ClickWhatsNewButton()
@@ -37,7 +37,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 ElementType = ElementType.Button
             };
 
-            _webPage.ClickElement(locatorModel.LocatorType, locatorModel.Locator, locatorModel.ElementType);
+            _webPage.ClickElement(locatorModel);
         }
     }
 }

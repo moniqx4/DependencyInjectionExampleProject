@@ -30,8 +30,8 @@ namespace PageObjects.SharedServices
                 ElementType = ElementType.Option
             };
 
-            _webPage.ClickElement(toggleMenu.LocatorType, toggleMenu.Locator, toggleMenu.ElementType);
-            _webPage.ClickElement(menuItem.LocatorType, menuItem.Locator, ElementType.Option);
+            _webPage.ClickElement(toggleMenu);
+            _webPage.ClickElement(menuItem);
         }
 
         public void NavigateViaUrl(string baseUrl, string path)
@@ -48,7 +48,7 @@ namespace PageObjects.SharedServices
                 ElementType = ElementType.Link
             };
 
-            _webPage.ClickElement(topMenu.LocatorType, topMenu.Locator, topMenu.ElementType);
+            _webPage.ClickElement(topMenu);
 
             if (menuOption != null)
             {
@@ -59,7 +59,7 @@ namespace PageObjects.SharedServices
                     ElementType = ElementType.Option
                 };
 
-                _webPage.ClickElement(menuItem.LocatorType, menuItem.Locator, menuItem.ElementType);
+                _webPage.ClickElement(menuItem);
             }
            
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutomationServices.WebKioskService.models
 {
-    class WebKioskInstanceConfigModel
+    public class WebKioskInstanceConfigModel
     {
     }
 }
