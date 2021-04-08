@@ -10,7 +10,7 @@ namespace NUnitTestProject.Tests.TCT
         {
 
             [Test]
-            [Author("Monica S.")]
+            [Author("YourName or email here")]
             [Category("RCSmokeTest")]
             public void ValidateTimeOffRequestTest()
             {
@@ -20,16 +20,9 @@ namespace NUnitTestProject.Tests.TCT
                 runner.Execute<ValidateTimeOffRequest>(workflow => { workflow.Execute(); });
             }
 
-            //[Test]
-            //[Category("EmployeeDashboard")]
-            //public void ValidateRegularPunch()
-            //{
-
-            //    var runner = new TestRunner(nameof(ValidateRegularPunch));
-
-            //    runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(); });
-            //}
         }
+
+
 
     }
 }
