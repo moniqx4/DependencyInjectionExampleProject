@@ -1,6 +1,7 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.Waits;
 using System;
 using System.Collections.ObjectModel;
 
@@ -212,63 +213,7 @@ namespace SeleniumWebDriver.WebElements
                     return null;
 
             }
-
-        }
-
-
-        /// <summary>
-        /// Create a instance of Selenium webElement
-        /// </summary>
-        /// <param name="locator">Locator path</param>
-        /// <param name="locatorType"> Locator Type i.e. Xpath,Id,etc.</param>
-        /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
-        /// <returns> an instance of the webelement</returns>
-        [Obsolete]
-        private static IWebElement _WaitTillElementExist(string locator, LocatorType locatorType = LocatorType.XPath, int TimeOutForFindingElement = 10)
-        {
-            var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
-
-            return locatorType switch
-            {
-                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locator))),
-                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locator))),
-                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locator))),
-                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementExists(By.LinkText(locator))),
-                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locator))),
-                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locator))),
-                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locator))),
-                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locator))),
-                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locator}']"))),
-                _ => throw new Exception($"LocatorType {locatorType} is unknown."),
-            };
-        }
-
-        /// <summary>
-        /// Create a instance of Selenium webElement
-        /// </summary>
-        /// <param name="locator">Locator path</param>
-        /// <param name="locatorType"> Locator Type i.e. Xpath,Id,etc.</param>
-        /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
-        /// <returns> an instance of the webelement</returns>
-        [Obsolete]
-        private static IWebElement _WaitTillElementExist(LocatorModel locatorModel, int TimeOutForFindingElement = 10)
-        {
-            var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
-
-            return locatorModel.LocatorType switch
-            {
-                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementExists(By.XPath(locatorModel.Locator))),
-                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementExists(By.PartialLinkText(locatorModel.Locator))),
-                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Name(locatorModel.Locator))),
-                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementExists(By.LinkText(locatorModel.Locator))),
-                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementExists(By.Id(locatorModel.Locator))),
-                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(locatorModel.Locator))),
-                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementExists(By.TagName(locatorModel.Locator))),
-                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementExists(By.ClassName(locatorModel.Locator))),
-                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementExists(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))),
-                _ => throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown."),
-            };
-        }
+        }       
 
         /// <summary>
         /// Create a instance of Selenium webElement
@@ -322,117 +267,7 @@ namespace SeleniumWebDriver.WebElements
                 LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))),
                 _ => throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown."),
             };
-        }
-
-        /// <summary>
-        /// Create a instance of Selenium webElement when element staleness is gone 
-        /// </summary>
-        /// <param name="locator">Locator path</param>
-        /// <param name="locatorType"> Locator Type i.e. Xpath,Id,etc.</param>
-        /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
-        [Obsolete]
-        public static void WaitTillElementStalenessOf(string locator, LocatorType locatorType = LocatorType.XPath, int TimeOutForFindingElement = 10)
-        {
-            var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
-
-            switch (locatorType)
-            {
-                case LocatorType.XPath:                   
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.XPath(locator))));
-                    break;
-
-                case LocatorType.PartialLinkText:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.PartialLinkText(locator))));
-                    break;
-
-                case LocatorType.Name:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.Name(locator))));
-                    break;
-
-                case LocatorType.LinkText:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.LinkText(locator))));
-                    break;
-
-                case LocatorType.Id:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.Id(locator))));
-                    break;
-
-                case LocatorType.CSS:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.CssSelector(locator))));
-                    break;
-
-                case LocatorType.TagName:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.TagName(locator))));
-                    break;
-
-                case LocatorType.Class:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.ClassName(locator))));
-                    break;
-
-                case LocatorType.DataAutomationId:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.CssSelector($"[data-automation-id='{locator}']"))));
-                    break;
-
-                default:
-                    throw new Exception($"LocatorType {locatorType} is unknown.");
-            }
-
-        }
-
-        /// <summary>
-        /// Create a instance of Selenium webElement when element staleness is gone 
-        /// </summary>
-        /// <param name="locator">Locator path</param>
-        /// <param name="locatorType"> Locator Type i.e. Xpath,Id,etc.</param>
-        /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
-        [Obsolete]
-        public static void WaitTillElementStalenessOf(LocatorModel locatorModel, int TimeOutForFindingElement = 10)
-        {
-            var wait = new WebDriverWait(SeleniumDriver.Browser, TimeSpan.FromSeconds(TimeOutForFindingElement));
-
-            switch (locatorModel.LocatorType)
-            {
-                case LocatorType.XPath:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.XPath(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.PartialLinkText:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.PartialLinkText(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.Name:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.Name(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.LinkText:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.LinkText(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.Id:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.Id(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.CSS:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.CssSelector(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.TagName:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.TagName(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.Class:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.ClassName(locatorModel.Locator))));
-                    break;
-
-                case LocatorType.DataAutomationId:
-                    wait.Until(ExpectedConditions.StalenessOf(SeleniumDriver.Browser.FindElement(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))));
-                    break;
-
-                default:
-                    throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown.");
-            }
-
-        }
+        }      
+      
     }
-
 }

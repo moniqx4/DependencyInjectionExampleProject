@@ -68,6 +68,8 @@ namespace SeleniumWebDriver
 
         bool JSIsPopUpPresent();
 
+        string JSGetPsuedoElementText(string locator, string keyword);
+
 
     }
 }

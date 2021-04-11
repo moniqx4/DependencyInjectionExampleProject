@@ -82,7 +82,12 @@ namespace SeleniumWebDriver.Base
         public bool JSIsPopUpPresent()
         {
             return _javascript.IsPopUpPresent();
-        }       
+        }
+        
+        public string JSGetPsuedoElementText(string locator, string keyword)
+        {
+            return _javascript.GetTextFromPsuedoElement(locator, keyword);
+        }
 
         public string GetLabelText(LocatorModel locatorModel)
         {

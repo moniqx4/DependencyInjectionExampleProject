@@ -88,22 +88,16 @@ namespace SeleniumWebDriver
             }
         }
 
-        //public static IWebElement FindElement(By by, string elementName)
-        //{
-        //    return new Element(Browser.FindElement(by), elementName)
-        //    {
-        //        FoundBy = by
-        //    };
-        //}
-
-        //public static Elements FindElements(By by)
-        //{
-        //    return new Elements(Browser.FindElements(by))
-        //    {
-        //        FoundBy = by
-        //    };
-        //}
-
+        /// <summary>
+        /// Stops & Quits current WebDriver instance
+        /// </summary>
+        public static void StopBrowser()
+        {
+            Browser.Quit();
+            Browser.Dispose();
+            Browser = null;
+            BrowserWait = null;
+        }
 
         private static RemoteWebDriver BuildRemoteDriver(BrowserType browser)
         {
@@ -160,18 +154,7 @@ namespace SeleniumWebDriver
             }
 
             return driver;
-        }
-
-        /// <summary>
-        /// Stops & Quits current WebDriver instance
-        /// </summary>
-        public static void StopBrowser()
-        {
-            Browser.Quit();
-            Browser.Dispose();
-            Browser = null;
-            BrowserWait = null;
-        }
+        }       
 
     }
 }

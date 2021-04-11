@@ -75,7 +75,7 @@ namespace PageObjects.Login
             var locatorModel = new LocatorModel()
             {
                 LocatorType = LocatorType.Id,
-                Locator = "BadgeNumer",
+                Locator = "BadgeNumber",
                 ElementType = ElementType.TextBox
             };
            

@@ -89,5 +89,18 @@ namespace SeleniumWebDriver.WebElements
                 _alert.TypeTextInAlert(inputText);
         }
 
+        /// <summary>
+        /// This is a way to allow Selenium to handle Psuedo Elements via Javascript to get the content of the element
+        /// </summary>
+        /// <param name="locator">this would typlically be the class , for example .okButton</param>
+        /// <param name="keyword"> examples would be :after, :before, :first-line, etc</param>
+        /// <returns></returns>
+        public string GetTextFromPsuedoElement(string locator, string keyword)
+        {
+            string script = $"return window.getComputedStyle(document.querySelector('{locator}'),'{keyword}').getPropertyValue('content')";
+            IJavaScriptExecutor js = (IJavaScriptExecutor)_browser;
+            return (string)js.ExecuteScript(script);
+        }
+
     }
 }

@@ -17,6 +17,8 @@ namespace SeleniumWebDriver
 
         void ScrollToElement(LocatorModel locatorModel);
 
+        string GetTextFromPsuedoElement(string locator, string keyword);
+
 
     }
 }
