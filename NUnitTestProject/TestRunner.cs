@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using NUnitTestProject.Services;
 using System;
 using System.Collections.Generic;
 
@@ -18,20 +19,20 @@ namespace NUnitTestProject
 
             //private readonly string _version;
 
-            //private readonly ILogger _logger;
+            private readonly ITestLogger _logger;
 
-            public TestRunner(string testName)
-            {
-                _testName = testName;
-                //_version = version;
-                _registrations = new List<Tuple<Type, Type>>();
-                _container = PageObjectProvider.Container;
-                //_logger = new TestLogger();
-                _setupMethods = new Queue<ServiceMethod>();
-                _teardownMethods = new Queue<ServiceMethod>();
-            }
+        public TestRunner(string testName)
+        {
+            _testName = testName;
+            //_version = version;
+            _registrations = new List<Tuple<Type, Type>>();
+            _container = ServiceProvider.Container;           
+            _setupMethods = new Queue<ServiceMethod>();
+            _teardownMethods = new Queue<ServiceMethod>();
+            _logger.LogTest(testName);
+        }
 
-            public void Setup<T>(Action<object> setupMethod)
+        public void Setup<T>(Action<object> setupMethod)
             {
                 var method = new ServiceMethod { Service = typeof(T), Method = setupMethod };
 
@@ -54,7 +55,7 @@ namespace NUnitTestProject
             {
                 while (_setupMethods.Count != 0)
                 {
-                    var method = _setupMethods.Dequeue();
+                    var method = _setupMethods.Dequeue();                
                     var service = _container.Resolve(method.Service);
                     method.Method(service);
                 }
@@ -94,10 +95,10 @@ namespace NUnitTestProject
 
             private TestContext BuildTestContext()
             {
-                var testContextBuilder = new TestContextBuilder();
+                var testContextBuilder = new TestContextBuilder(_logger);
                 
                 testContextBuilder
-                    //.AddLogger(_logger)
+                    .AddLogger()
                     .AddName(_testName);
                         //.AddVersion(_version);
 

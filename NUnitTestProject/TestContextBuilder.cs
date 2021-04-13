@@ -1,20 +1,24 @@
-﻿namespace NUnitTestProject
+﻿using NUnitTestProject.Services;
+
+namespace NUnitTestProject
 {
     public class TestContextBuilder
     {
         private readonly TestContext _context;
+        private readonly ITestLogger _logger;
 
-        public TestContextBuilder()
+        public TestContextBuilder(ITestLogger logger)
         {
             _context = new TestContext();
+            _logger = logger;
         }
 
-        //public TestContextBuilder AddLogger(ILogger logger)
-        //{
-        //    _context.Logger = logger;
+        public TestContextBuilder AddLogger()
+        {
+            _context.Logger = (NLog.ILogger)_logger;
 
-        //    return this;
-        //}
+            return this;
+        }
 
         public TestContextBuilder AddName(string testName)
         {
