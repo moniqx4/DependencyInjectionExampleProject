@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace NUnitTestProject
 {
-        internal class TestRunner
+    internal class TestRunner
         {
             private readonly IContainer _container;
 
@@ -81,7 +81,7 @@ namespace NUnitTestProject
                     finally
                     {
                         // Cleaning up the context
-                        testContext.Close();
+                        //testContext.Close();
                     }
                 }
 

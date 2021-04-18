@@ -35,5 +35,7 @@ namespace SeleniumWebDriver
         void ClickAlertAcceptButton();
 
         void DismissAlert();
+
+        void Close();
     }
 }

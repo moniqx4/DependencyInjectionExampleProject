@@ -52,7 +52,7 @@ namespace SeleniumWebDriver
             }
         }
 
-        public static void Build(string type, BrowserType browser)
+        public static void Build(string type, BrowserType browser, SeleniumConfiguration driverConfig)
         {
             //var browserType = ConfigReader.GetConfigValue("BrowserType");
 
@@ -98,6 +98,7 @@ namespace SeleniumWebDriver
             Browser = null;
             BrowserWait = null;
         }
+       
 
         private static RemoteWebDriver BuildRemoteDriver(BrowserType browser)
         {

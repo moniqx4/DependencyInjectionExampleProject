@@ -1,16 +1,15 @@
 ﻿using System;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using SeleniumWebDriver.Drivers;
-using SeleniumWebDriver.Helper;
 using SeleniumWebDriver.Types;
 
 namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 {
+
     public class DriverFactory
     {
         public static void Build(string type, BrowserType browser)
@@ -22,7 +21,7 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
                 switch (browser)
                 {
                     case BrowserType.Chrome:
-                        new CustomChrome();
+                        new CustomChrome();                        
                         break;
                     case BrowserType.Firefox:
                         new CustomFirefox();

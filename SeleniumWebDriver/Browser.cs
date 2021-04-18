@@ -136,5 +136,11 @@ namespace SeleniumWebDriver
         {
             SeleniumDriver.Browser.SwitchTo().Alert().Dismiss();
         }
+
+        public void Close()
+        {            
+            SeleniumDriver.Browser.Close();
+            SeleniumDriver.Browser.Dispose();
+        }
     }
 }

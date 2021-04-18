@@ -1,6 +1,6 @@
-﻿using NUnitTestProject.Services;
+﻿using NLog;
 
-namespace NUnitTestProject
+namespace NUnitTestProject.Services
 {
     public class TestContextBuilder
     {
@@ -15,7 +15,7 @@ namespace NUnitTestProject
 
         public TestContextBuilder AddLogger()
         {
-            _context.Logger = (NLog.ILogger)_logger;
+            _context.Logger = (ILogger)_logger;
 
             return this;
         }
@@ -26,13 +26,7 @@ namespace NUnitTestProject
 
             return this;
         }
-
-        public TestContextBuilder AddVersion(string version)
-        {
-            _context.Version = version;
-
-            return this;
-        }
+      
 
         public TestContext Build()
         {
