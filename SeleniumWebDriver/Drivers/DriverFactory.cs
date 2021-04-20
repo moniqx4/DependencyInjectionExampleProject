@@ -1,4 +1,5 @@
 ﻿using System;
+using DataModelLibrary;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -12,39 +13,39 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 
     public class DriverFactory
     {
-        public static void Build(string type, BrowserType browser)
+        public static void Build(SeleniumConfiguration configuration)
         {
             //var browserType = ConfigReader.GetConfigValue("BrowserType");
 
-            if (type == "local")
+            if (configuration.RunType == RunType.Local)
             {
-                switch (browser)
+                switch (configuration.Browser)
                 {
                     case BrowserType.Chrome:
-                        new CustomChrome();                        
+                        new CustomChrome().ChromeOptions(configuration);                       
                         break;
                     case BrowserType.Firefox:
-                        new CustomFirefox();
+                        new CustomFirefox().FirefoxOptions(configuration);
                         break;
                     case BrowserType.Edge:
-                        new CustomEdge();
+                        new CustomEdge().EdgeOptions(configuration);
                         break;
                     case BrowserType.InternetExplorer:
-                        new CustomInternetExplorer();
+                        new CustomInternetExplorer().InternetExplorerOptions(configuration);
                         break;
                     default:
-                        throw new ArgumentException($"{browser} is not supported locally.");
+                        throw new ArgumentException($"{configuration.Browser} is not supported locally.");
                 }
             }
 
-            else if (type == "remote")
+            else if (configuration.RunType == RunType.Remote)
             {
-                BuildRemoteDriver(browser);
+                BuildRemoteDriver(configuration.Browser);
             }
 
             else
             {
-                throw new ArgumentException($"{type} is invalid. Choose 'local' or 'remote'.");
+                throw new ArgumentException($"{configuration.RunType} is invalid. Choose 'Local' or 'Remote'.");
             }
         }
 

@@ -19,30 +19,38 @@ namespace SeleniumWebDriver.Drivers
         {          
         }
 
-        public IWebDriver ChromeOptions(SeleniumConfiguration configuration, string testName)
+        public IWebDriver ChromeOptions(SeleniumConfiguration configuration)
         {
-            var config = BuildConfig(configuration, testName);
+            var config = BuildConfig(configuration);
 
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+            var chromeOptions = new ChromeOptions
+            {
+                PageLoadStrategy = PageLoadStrategy.Eager
+            };
             chromeOptions.AddArguments("--incognito");
             chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.Debug);
             if (config.Headless)
             {
                 chromeOptions.AddArgument("--headless");
             }
-            //chromeOptions.EnableMobileEmulation(),
+
+            if (config.IsMobile)
+            {
+                chromeOptions.EnableMobileEmulation(config.MobileDevice.ToString());
+            }
+
             //chromeOptions.AddLocalStatePreference("local", preferenceValue);  setup for local from config
-            //chromeOptions.PerformanceLoggingPreferences.IsCollectingPageEvents = true;           
+            chromeOptions.PerformanceLoggingPreferences.IsCollectingPageEvents = true;           
             //chromeOptions.BrowserVersion = "";
             new DriverManager().SetUpDriver(new ChromeConfig());
-            return new ChromeDriver(chromeOptions);
+            driver = new ChromeDriver(chromeOptions);
+            return driver;
            
         }
 
-        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration, string testName)
+        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
-            _logger.Info($"New Driver for Test: {testName} | {Guid.NewGuid()}");
+            _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
             _logger.Info($"Driver Configuration: {configuration.Name}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
@@ -54,7 +62,9 @@ namespace SeleniumWebDriver.Drivers
                RunType = configuration.RunType,
                Headless = configuration.Headless,
                Name = configuration.Name,
-               IsMobile = configuration.IsMobile
+               IsMobile = configuration.IsMobile,
+               TestName = configuration.TestName,
+               MobileDevice = configuration.MobileDevice
              };
 
 

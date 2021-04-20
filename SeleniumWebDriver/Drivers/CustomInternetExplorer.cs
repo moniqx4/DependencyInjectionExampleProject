@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using SeleniumWebDriver.Helper;
 using System;
@@ -10,36 +11,40 @@ namespace SeleniumWebDriver.Drivers
     public class CustomInternetExplorer
     {
         [ThreadStatic]
-        static IWebDriver driver = new InternetExplorerDriver();
+        private static IWebDriver driver = new InternetExplorerDriver();
 
         private ILogger _logger = new TestLogger();
 
 
-        public IWebDriver InternetExplorerOptions(SeleniumConfiguration configuration, string testName)
+        public IWebDriver InternetExplorerOptions(SeleniumConfiguration configuration)
         {
-            var config = BuildConfig(configuration, testName);
+            var config = BuildConfig(configuration);
 
-            var ieOptions = new InternetExplorerOptions();
-            ieOptions.PageLoadStrategy = PageLoadStrategy.Eager;
-            ieOptions.EnsureCleanSession = true;
-            ieOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;
-            ieOptions.EnableNativeEvents = true;
-            ieOptions.EnablePersistentHover = true;            
-            ieOptions.AddAdditionalCapability("runType", config.RunType);
-            ieOptions.AddAdditionalCapability("testName", testName); 
+            var ieOptions = new InternetExplorerOptions
+            {
+                //PageLoadStrategy = PageLoadStrategy.Eager,
+                EnsureCleanSession = true,
+                UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss,
+                EnableNativeEvents = true,
+                EnablePersistentHover = true
+            };
+
+            //ieOptions.AddAdditionalCapability("runType", config.RunType);
+            //ieOptions.AddAdditionalCapability("testName", testName); 
             ieOptions.SetLoggingPreference(LogType.Driver, LogLevel.Debug);
-            //ieOptions.InitialBrowserUrl = config.
+            ieOptions.InitialBrowserUrl = config.StartUrl;
             //ieOptions.FileUploadDialogTimeout = 
             //ieOptions.BrowserVersion = "";
             new DriverManager().SetUpDriver(new InternetExplorerConfig());
-            return new InternetExplorerDriver(ieOptions);
+            driver = new InternetExplorerDriver("./", ieOptions);
+            return driver;
 
         }
-      
 
-        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration, string testName)
+
+        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
-            _logger.Info($"New Driver for Test: {testName} | {Guid.NewGuid()}");
+            _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
             _logger.Info($"Driver Configuration: {configuration.Name}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
@@ -51,7 +56,9 @@ namespace SeleniumWebDriver.Drivers
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
                 Name = configuration.Name,
-                IsMobile = configuration.IsMobile
+                IsMobile = configuration.IsMobile,
+                TestName = configuration.TestName,
+                MobileDevice = MobileDevices.None
             };
 
 

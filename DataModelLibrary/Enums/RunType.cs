@@ -2,9 +2,7 @@
 {
     public enum RunType
     {
-        LocalToTin,
-        LocalToBronze,
-        LocalToDrProd,
+        Local,       
         Remote
     }
 }

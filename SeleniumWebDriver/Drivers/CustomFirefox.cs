@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using SeleniumWebDriver.Helper;
 using System;
@@ -10,50 +11,37 @@ namespace SeleniumWebDriver.Drivers
     public class CustomFirefox
     {
         [ThreadStatic]
-        static IWebDriver driver = new FirefoxDriver();
+        private static IWebDriver driver = new FirefoxDriver();
 
         private ILogger _logger = new TestLogger();
-
-        //private FirefoxOptions FirefoxOptions
-        //{
-        //    get
-        //    {
-        //        var firefoxOptions = new FirefoxOptions
-        //        {
-        //            PageLoadStrategy = PageLoadStrategy.Eager                   
-        //        };
-
-        //        new DriverManager().SetUpDriver(new FirefoxConfig());
-        //        driver = new FirefoxDriver(FirefoxOptions);
-        //        return (FirefoxOptions)driver;
-        //    }
-        //}
-
-        public IWebDriver FirefoxOptions(SeleniumConfiguration configuration, string testName)
+       
+        public IWebDriver FirefoxOptions(SeleniumConfiguration configuration)
         {
-            var config = BuildConfig(configuration, testName);
+            var config = BuildConfig(configuration);
 
-            var ffOptions = new FirefoxOptions();
-            ffOptions.PageLoadStrategy = PageLoadStrategy.Eager;
-            
-            ffOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss;           
-            
+            var ffOptions = new FirefoxOptions
+            {
+                PageLoadStrategy = PageLoadStrategy.Eager,
+                UnhandledPromptBehavior = UnhandledPromptBehavior.Dismiss
+            };
+
             ffOptions.AddAdditionalCapability("RunType", config.RunType);
-            ffOptions.AddAdditionalCapability("TestName", testName);
+            ffOptions.AddAdditionalCapability("TestName", config.TestName);
             
             ffOptions.SetLoggingPreference(LogType.Driver, LogLevel.Debug);
+            
             //ffOptions.BrowserVersion = "";
             //ffOptions.Profile();
             //ffOptions.BrowserExecutableLocation();
             new DriverManager().SetUpDriver(new FirefoxConfig());
-            return new FirefoxDriver(ffOptions);
+            driver =  new FirefoxDriver(ffOptions);
+            return driver;
 
         }
 
-
-        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration, string testName)
+        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
-            _logger.Info($"New Driver for Test: {testName} | {Guid.NewGuid()}");
+            _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
             _logger.Info($"Driver Configuration: {configuration.Name}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
@@ -65,7 +53,9 @@ namespace SeleniumWebDriver.Drivers
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
                 Name = configuration.Name,
-                IsMobile = configuration.IsMobile
+                IsMobile = configuration.IsMobile,
+                TestName = configuration.TestName,
+                MobileDevice = MobileDevices.None
             };
 
 

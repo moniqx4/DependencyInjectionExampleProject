@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using SeleniumWebDriver.Helper;
 using System;
@@ -14,9 +15,9 @@ namespace SeleniumWebDriver.Drivers
 
         private ILogger _logger = new TestLogger();
 
-        public IWebDriver ChromeOptions(SeleniumConfiguration configuration, string testName)
+        public IWebDriver EdgeOptions(SeleniumConfiguration configuration)
         {
-            var config = BuildConfig(configuration, testName);
+            var config = BuildConfig(configuration);
 
             var edgeOptions = new EdgeOptions();
             edgeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
@@ -28,15 +29,17 @@ namespace SeleniumWebDriver.Drivers
                 edgeOptions.AddAdditionalCapability("RunHeadless", "--headless");
             }
 
-            //edgeOptions.StartPage = "";
+            edgeOptions.StartPage = config.StartUrl;
+           
             new DriverManager().SetUpDriver(new EdgeConfig());
-            return new EdgeDriver(edgeOptions);
+            driver = new EdgeDriver(edgeOptions);
+            return driver;
 
         }
 
-        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration, string testName)
+        private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
-            _logger.Info($"New Driver for Test: {testName} | {Guid.NewGuid()}");
+            _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
             _logger.Info($"Driver Configuration: {configuration.Name}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
@@ -48,7 +51,9 @@ namespace SeleniumWebDriver.Drivers
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
                 Name = configuration.Name,
-                IsMobile = configuration.IsMobile
+                IsMobile = configuration.IsMobile,
+                TestName = configuration.TestName,
+                MobileDevice = MobileDevices.None
             };
 
 
