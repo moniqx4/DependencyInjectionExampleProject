@@ -1,0 +1,19 @@
+﻿namespace DataModelLibrary.Constants
+{
+    public class PagePaths
+    {
+        public static string WTEmployeeDashboardPage => "/WebTime/v3/Employee";
+
+        public static string WTSupervisorDashboardPage => "";
+
+        public static string WebKioskAdminPage => "";
+
+        public static string WebKioskLoginPage => "";
+
+        public static string WTTimecardApprovalPage => "/webtime/v2/supervisor/timecard/approval";
+
+        public static string WTFeedbackForm => "/WebTime/webkiosksetup";
+
+        public static string Logout => "/Logout";
+    }
+}
