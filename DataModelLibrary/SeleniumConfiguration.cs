@@ -1,7 +1,6 @@
-﻿using DataModelLibrary;
-using SeleniumWebDriver.Types;
+﻿using SeleniumWebDriver.Types;
 
-namespace SeleniumWebDriver.Drivers
+namespace DataModelLibrary
 {
     public class SeleniumConfiguration
     {

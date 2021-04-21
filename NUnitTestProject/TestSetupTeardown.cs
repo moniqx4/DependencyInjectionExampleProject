@@ -1,13 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using NLog.Fluent;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using SeleniumWebDriver;
 using SeleniumWebDriver.Types;
-using TestUtilities;
-using System.Reflection;
-using System.Threading;
-using System.IO;
+using DataModelLibrary;
 
 namespace NUnitTestProject
 {
@@ -21,12 +15,17 @@ namespace NUnitTestProject
             [SetUp]
             public virtual void BeforeEach()
             {
+
+                SeleniumConfiguration config = new SeleniumConfiguration
+                {
+                    Browser = BrowserType.Chrome,
+                };
                 // TODO: setup logger here, once created
                 //    Log.Information("");
                 //    Log.Information("\nNew Test Cycle :");
-                PageObjectProvider.Setup(); // this is what sets up our container for the PageObjects  
+                ServiceProvider.Setup();                
                 // TODO: create one to create and register the browser container, ex. UnityContainerFactory.GetContainer().RegisterInstance<IWebDriver>(SeleniumDriver.Browser);
-                SeleniumDriver.Build("local", BrowserType.Chrome);                             
+                SeleniumDriver.Build(config);                             
             }
 
             [OneTimeSetUp]

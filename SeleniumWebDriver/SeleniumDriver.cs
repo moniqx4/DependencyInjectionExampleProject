@@ -1,7 +1,7 @@
-﻿using DependencyInjectionExampleProject.SeleniumWebDriver.Drivers;
+﻿using DataModelLibrary;
+using DependencyInjectionExampleProject.SeleniumWebDriver.Drivers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.Drivers;
 using System;
 
 namespace SeleniumWebDriver
@@ -47,7 +47,7 @@ namespace SeleniumWebDriver
             }
         }
 
-        public static void Build(string type, SeleniumConfiguration driverConfig)
+        public static void Build(SeleniumConfiguration driverConfig)
         {
             //var browserType = ConfigReader.GetConfigValue("BrowserType");
 
