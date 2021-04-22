@@ -9,7 +9,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
 
         }
 

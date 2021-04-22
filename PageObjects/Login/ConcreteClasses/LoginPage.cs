@@ -9,7 +9,7 @@ namespace PageObjects.Login.ConcreteClasses
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
 
         }
 
@@ -59,7 +59,7 @@ namespace PageObjects.Login.ConcreteClasses
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
         }
        
     }

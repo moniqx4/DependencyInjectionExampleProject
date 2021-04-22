@@ -9,7 +9,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
 
         }
 
@@ -46,7 +46,7 @@ namespace PageObjects.Login
 
             //TODO this needs to loop through the characters of the badgenumber and then punch each of them
 
-            _webPage.ClickElement(locatorModel);
+            HandleClickElement(locatorModel);
 
             return this;
         }
@@ -64,7 +64,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
         }
 
         public IWebKioskDBLoginPage SetPin(string pin)
@@ -80,7 +80,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
 
             return this;
         }
@@ -90,7 +90,7 @@ namespace PageObjects.Login
 
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            HandleButton(locatorModel);
+            HandleClickElement(locatorModel);
 
             return this;
         }
@@ -99,7 +99,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            return HandleGetTextElements(locatorModel);
+            return HandleGetTextElement(locatorModel);
 
         }
 
@@ -107,7 +107,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            return HandleGetTextElements(locatorModel);
+            return HandleGetTextElement(locatorModel);
             
         }
 
@@ -115,7 +115,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Label, LocatorType.Id, "");
 
-            return HandleGetTextElements(locatorModel);
+            return HandleGetTextElement(locatorModel);
         }
     }
 }

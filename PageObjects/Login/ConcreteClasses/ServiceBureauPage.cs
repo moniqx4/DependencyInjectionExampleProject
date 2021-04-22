@@ -9,7 +9,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            HandleElement(locatorModel, companyAlias);
+            HandleTextBox(locatorModel, companyAlias);
 
             return this;
         }
@@ -18,7 +18,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
 
-            HandleElement(locatorModel);
+            HandleClickElement(locatorModel);
 
             return this;
         }
@@ -26,8 +26,8 @@ namespace PageObjects.Login
         public IServiceBureauPage SetLoginCompanyAliasTextBox(string companyAlias)
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
-           
-            HandleElement(locatorModel, companyAlias);
+
+            HandleTextBox(locatorModel, companyAlias);
 
             return this;
         }
@@ -36,7 +36,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            HandleElement(locatorModel, username);
+            HandleTextBox(locatorModel, username);
 
             return this;
         }
@@ -45,7 +45,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            HandleElement(locatorModel, password);
+            HandleTextBox(locatorModel, password);
 
             return this;
         }
@@ -54,7 +54,7 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
 
-            HandleElement(locatorModel);
+            HandleClickElement(locatorModel);
         }
 
         public void ClickCompanyAliasLink(string companyAlias)
@@ -62,7 +62,7 @@ namespace PageObjects.Login
             // TODO, need to pass the companyAlias into the locator
             var locatorModel = SetLocator(ElementType.Link, LocatorType.CSS, "");
 
-            HandleElement(locatorModel);
+            HandleClickElement(locatorModel);
         }
 
 
