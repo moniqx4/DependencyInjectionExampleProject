@@ -7,7 +7,6 @@ using DataModelLibrary;
 using NUnitTestProject.Services;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
-using LoginCredModel = DataModelLibrary.LoginCredModel;
 
 namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 {
