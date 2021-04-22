@@ -3,6 +3,7 @@
     public enum ElementType
     {
         TextBox,
+        Text,
         Button,
         Link,
         Grid,

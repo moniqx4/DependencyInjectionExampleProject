@@ -1,111 +1,68 @@
 ﻿using DataModelLibrary;
-using SeleniumWebDriver;
 
 namespace PageObjects.Login
 {
-    public class ServiceBureauPage : IServiceBureauPage
-    {
-        private readonly IWebPage _webPage;
-
-        public ServiceBureauPage(IWebPage webPage)
-        {
-            _webPage = webPage;
-        }
+    public class ServiceBureauPage : BasePageObject, IServiceBureauPage
+    { 
 
         public IServiceBureauPage SetSBCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, companyAlias);
+            HandleElement(locatorModel, companyAlias);
 
             return this;
         }
 
         public IServiceBureauPage ClickSearchButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleElement(locatorModel);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
-
-            _webPage.SetText(locatorModel, companyAlias);
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+           
+            HandleElement(locatorModel, companyAlias);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginUsernameTextBox(string username)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, username);
+            HandleElement(locatorModel, username);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginPasswordTextBox(string password)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, password);
+            HandleElement(locatorModel, password);
 
             return this;
         }
 
         public void ClickLoginButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleElement(locatorModel);
         }
 
         public void ClickCompanyAliasLink(string companyAlias)
         {
-
             // TODO, need to pass the companyAlias into the locator
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.Link
-            };
+            var locatorModel = SetLocator(ElementType.Link, LocatorType.CSS, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleElement(locatorModel);
         }
 
 

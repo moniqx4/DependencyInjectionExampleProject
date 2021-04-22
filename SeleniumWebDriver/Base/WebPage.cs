@@ -191,7 +191,42 @@ namespace SeleniumWebDriver.Base
 
       
       
-        public void ClickElement(LocatorModel locatorModel)
+        //public void ClickElement(LocatorModel locatorModel)
+        //{
+        //    switch (locatorModel.ElementType)
+        //    {
+        //        case ElementType.Button:
+        //            _button.ClickButton(locatorModel);
+        //            break;
+
+        //        case ElementType.TextBox:
+        //            _textBox.ClickIntoTextBox(locatorModel);
+        //            break;
+
+        //        case ElementType.Label:
+        //            _label.ClickOnLabel(locatorModel);
+        //            break;
+
+        //        case ElementType.Link:
+        //            _link.ClickLink(locatorModel);
+        //            break;
+
+        //        case ElementType.Radio:
+        //            _radioButton.ClickOnRadioButton(locatorModel);
+        //            break;
+
+        //        case ElementType.Tab:
+        //            _link.ClickLink(locatorModel);
+        //            break;                
+
+        //        default:
+        //            throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
+
+        //    }
+
+        //}
+
+        public IWebPage ClickElement(LocatorModel locatorModel)
         {
             switch (locatorModel.ElementType)
             {
@@ -217,14 +252,16 @@ namespace SeleniumWebDriver.Base
 
                 case ElementType.Tab:
                     _link.ClickLink(locatorModel);
-                    break;                
+                    break;
 
                 default:
                     throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
 
             }
 
-        }      
+            return this;
+
+        }
 
         public void CheckCheckbox(LocatorModel locatorModel, bool isEnabled)
         {
@@ -232,10 +269,12 @@ namespace SeleniumWebDriver.Base
         }    
 
 
-        public void SetText(LocatorModel locatorModel, string text)
+        public IWebPage SetText(LocatorModel locatorModel, string text)
         {
             _textBox.ClearTextBox(locatorModel);
             _textBox.TypeInTextBox(locatorModel, text);
+
+            return this;
         }
 
         //public void ExecuteJs()

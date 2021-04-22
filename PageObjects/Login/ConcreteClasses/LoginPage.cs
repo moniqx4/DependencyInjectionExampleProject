@@ -1,31 +1,23 @@
-﻿using SeleniumWebDriver;
-using DataModelLibrary;
+﻿using DataModelLibrary;
 
 
 namespace PageObjects.Login.ConcreteClasses
 {
     public class LoginPage : BasePageObject, ILoginPage
-    {  
-
-        public LoginPage(IWebPage webPage)
-        {            
-            _webPage = webPage;
-        }
-
-
+    { 
         public void ClickSubmitButton()
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
-                    
-            _webPage.ClickElement(locatorModel);
+
+            HandleButton(locatorModel);
 
         }
 
         public ILoginPage SetUsernameTextBox(string username)
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "username");
-                        
-            _webPage.SetText(locatorModel, username);
+           
+            HandleTextBox(locatorModel, username);
 
             return this;
         }
@@ -34,7 +26,7 @@ namespace PageObjects.Login.ConcreteClasses
         {          
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "password");
 
-            _webPage.SetText(locatorModel, password);
+            HandleTextBox(locatorModel, password);
 
             return this;
         }
@@ -43,8 +35,8 @@ namespace PageObjects.Login.ConcreteClasses
         {
 
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "companyId");
-          
-            _webPage.SetText(locatorModel, companyAlias);
+
+            HandleTextBox(locatorModel, companyAlias);
 
             return this;
         }
@@ -52,8 +44,8 @@ namespace PageObjects.Login.ConcreteClasses
         public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
         {
             var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "BadgeNumber");
-           
-            _webPage.SetText(locatorModel, badgeNumber);
+
+            HandleTextBox(locatorModel, badgeNumber);
 
             return this;
         }
@@ -66,8 +58,8 @@ namespace PageObjects.Login.ConcreteClasses
         public void ClickWebKioskLoginButton()
         {
             var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
-          
-            _webPage.ClickElement(locatorModel);
+
+            HandleButton(locatorModel);
         }
        
     }

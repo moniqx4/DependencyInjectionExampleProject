@@ -1,68 +1,41 @@
-﻿using SeleniumWebDriver;
-using DataModelLibrary;
+﻿using DataModelLibrary;
 
 namespace PageObjects.Login
 {
-    public class WebKioskAdminLoginPage : IWebKioskAdminLoginPage
+    public class WebKioskAdminLoginPage : BasePageObject, IWebKioskAdminLoginPage
     {
-        private readonly IWebPage _webPage;
-
-        public WebKioskAdminLoginPage(IWebPage webPage)
-        {
-            _webPage = webPage;
-        }
-
+        
         public void ClickSubmitButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "Submit",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
 
-            _webPage.ClickElement(locatorModel);
+            HandleButton(locatorModel);
 
         }
 
         public IWebKioskAdminLoginPage SetCompanyId(string companyId)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "CompanyId",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "username");
 
-            _webPage.SetText(locatorModel, companyId);
+            HandleTextBox(locatorModel, companyId);
 
             return this;
         }
 
         public IWebKioskAdminLoginPage SetInstanceName(string instanceName)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
 
-            _webPage.SetText(locatorModel, instanceName);
+            HandleTextBox(locatorModel, instanceName);
 
             return this;
         }
 
         public IWebKioskAdminLoginPage SetInstancePassword(string instancePassword)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
 
-            _webPage.SetText(locatorModel, instancePassword);
+            HandleTextBox(locatorModel, instancePassword);
 
             return this;
         }

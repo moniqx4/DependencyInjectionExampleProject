@@ -4,15 +4,15 @@ using SeleniumWebDriver.Type;
 namespace SeleniumWebDriver
 {
     public interface IWebPage
-    {  
+    {
 
-        void ClickElement(LocatorModel locatorModel);
+        IWebPage ClickElement(LocatorModel locatorModel);
 
         void CheckCheckbox(LocatorModel locatorModel, bool isEnabled);
 
         string GetElementText(LocatorModel locatorModel);
 
-        void SetText(LocatorModel locatorModel, string text);       
+        IWebPage SetText(LocatorModel locatorModel, string text);       
 
         bool IsDisplayed(LocatorModel locatorModel);
 

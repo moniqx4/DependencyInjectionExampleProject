@@ -1,80 +1,48 @@
 ﻿using DataModelLibrary;
-using SeleniumWebDriver;
-
 
 namespace PageObjects.Login
 {
-    public class WebKioskDBLoginPage : IWebKioskDBLoginPage
+    public class WebKioskDBLoginPage : BasePageObject, IWebKioskDBLoginPage
     {
-        private readonly IWebPage _webPage;
-
-        public WebKioskDBLoginPage(IWebPage webPage)
-        {
-            _webPage = webPage;
-        }
 
         public void ClickSubmitButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleButton(locatorModel);
+
         }
 
         public WebKioskDBLoginPage SetCompanyIdTextBox(string companyAlias)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, companyAlias);
-
+            HandleTextBox(locatorModel, companyAlias);
+            
             return this;
         }
 
         public WebKioskDBLoginPage SetUsernameTextBox(string username)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, username);
+            HandleTextBox(locatorModel, username);
 
             return this;
         }
 
         public WebKioskDBLoginPage SetPasswordTextBox(string password)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, password);
+            HandleTextBox(locatorModel, password);
 
             return this;
         }
 
         public IWebKioskDBLoginPage ClickNumberPad(string badgeNumber)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
             //TODO this needs to loop through the characters of the badgenumber and then punch each of them
 
@@ -85,97 +53,69 @@ namespace PageObjects.Login
 
         public IWebKioskDBLoginPage SetBadgeNumber(string badgeNumber)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, badgeNumber);
+            HandleTextBox(locatorModel, badgeNumber);           
 
             return this;
         }
 
         public void ClickSubmit()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleButton(locatorModel);
         }
 
         public IWebKioskDBLoginPage SetPin(string pin)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "",
-                ElementType = ElementType.TextBox
-            };
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
 
-            _webPage.SetText(locatorModel, pin);
+            HandleTextBox(locatorModel, pin);
 
             return this;
         }
 
         public IWebKioskDBLoginPage ClickSpanishToggle()
         {
-            throw new System.NotImplementedException();
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+
+            HandleButton(locatorModel);
+
+            return this;
         }
 
         public IWebKioskDBLoginPage ClickEnglishToggle()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
 
-            _webPage.ClickElement(locatorModel);
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+
+            HandleButton(locatorModel);
 
             return this;
         }
 
         public string GetLoginButtonLabelText()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            return _webPage.GetElementText(locatorModel);
+            return HandleGetTextElements(locatorModel);
+
         }
 
         public string GetBadgeNumberTextFieldLabelText()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
 
-            return _webPage.GetElementText(locatorModel);
+            return HandleGetTextElements(locatorModel);
+            
         }
 
         public string GetPinTextFieldLabelText()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = "",
-                ElementType = ElementType.Button
-            };
+            var locatorModel = SetLocator(ElementType.Label, LocatorType.Id, "");
 
-            return _webPage.GetElementText(locatorModel);
+            return HandleGetTextElements(locatorModel);
         }
     }
 }
