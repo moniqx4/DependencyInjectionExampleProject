@@ -1,6 +1,6 @@
 ﻿using PageObjects.WTDashboards.Models;
 
-namespace AutomationServices.ActivityService
+namespace AutomationServices.DashboardServices.ActivityService
 {
     public interface IActivityService
     {

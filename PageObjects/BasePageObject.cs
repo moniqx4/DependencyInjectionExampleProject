@@ -3,11 +3,20 @@ using SeleniumWebDriver;
 
 namespace PageObjects
 {
-    public abstract class BasePageObject
+    public class BasePageObject
     {
-        protected IWebPage _webPage;
+        private readonly IWebPage _webPage;
 
-       
+        public BasePageObject(IWebPage webPage)
+        {
+            _webPage = webPage;
+        }
+
+        //this empty constructor is to allow the BasePageObject to be inherited with the injection
+        public BasePageObject()
+        {
+        }
+
         public LocatorModel SetLocator(ElementType elementType, LocatorType locatorType, string locator)
         {
             var locatorModel = new LocatorModel()

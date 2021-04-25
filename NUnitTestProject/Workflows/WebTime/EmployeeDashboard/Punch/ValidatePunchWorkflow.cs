@@ -4,34 +4,31 @@ using AutomationServices.PunchService;
 using AutomationServices.PunchValidationService;
 using AutomationServices.WaitService;
 using DataModelLibrary;
-using NUnitTestProject.Services;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 
 namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 {
-    public class ValidatePunchWorkflow
+    public class ValidatePunchWorkflow 
     {            
-        private readonly IPunchValidationService _validatePunch;
-        private readonly IWaitService _waitService;
-        private readonly IEmployeeTImeCardService _employeeTimecardService;     
-        private readonly ILoginService _loginService;
+        private readonly IPunchValidationService _validatePunch;        
+        private readonly IEmployeeTImeCardService _employeeTimecardService;
         private readonly IPunchService _punchService;
+        private readonly ILoginService _loginService;
+        private readonly IWaitService _waitService;
 
         public ValidatePunchWorkflow(
-
-            IValidationService validate,
             ILoginService loginService,
             IPunchService punchService,
             IEmployeeTImeCardService employeeTimecardService,
-            IWaitService waitService,
-            IPunchValidationService validatePunch)
-        {           
-            _loginService = loginService;
+            IPunchValidationService validatePunch, IWaitService waitService)
+        {
+
             _punchService = punchService;
             _employeeTimecardService = employeeTimecardService;
-            _waitService = waitService;
             _validatePunch = validatePunch;
+            _loginService = loginService;
+            _waitService = waitService;
         }
 
         public void Execute()

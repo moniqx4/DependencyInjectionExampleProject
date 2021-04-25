@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.WebKioskService.enums
+﻿namespace AutomationServices.WebKioskService.Enums
 {
     public enum WebKioskSettingsOptions
     {

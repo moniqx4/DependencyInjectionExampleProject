@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace AutomationServices.ValidationServices
-{
-    /*create interface for all services, and inherit */
+{  
 
     public class ValidationService : IValidationService
     {
@@ -15,10 +14,10 @@ namespace AutomationServices.ValidationServices
         {
             _login = login;
         }
-
-        public void Method1()
+      
+        public void ValidateDataObjectMatch(IList<string> expectedObject, IList<string> actualObject)
         {
-
+            throw new NotImplementedException();
         }
 
         public void ValidateDateMatch(DateTime expectedDateTime)
@@ -36,7 +35,17 @@ namespace AutomationServices.ValidationServices
             throw new NotImplementedException();
         }
 
+        public void ValidateTextContains(string textToCheck, string containingText)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ValidateTextMatch(string expectedTextValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ValidateTextMatch(string expectedText, string actualText)
         {
             throw new NotImplementedException();
         }

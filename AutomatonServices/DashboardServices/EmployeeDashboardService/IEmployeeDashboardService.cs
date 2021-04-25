@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.EmployeeDashboardService
+﻿namespace AutomationServices.DashboardServices.EmployeeDashboardService
 {
     public interface IEmployeeDashboardService
     {

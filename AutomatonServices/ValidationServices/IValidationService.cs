@@ -13,8 +13,13 @@ namespace AutomationServices.ValidationServices
         void ValidateNumberMatch(int expectedNumber);
 
         void ValidateListMatch(IList<T> ExpectedList);
+        
 
-        //void ValidateObjectMatch(object<T> ExpectedObject);
+        void ValidateTextMatch(string expectedText, string actualText);
+
+        void ValidateTextContains(string textToCheck, string containingText);
+
+        void ValidateDataObjectMatch(IList<string> expectedObject, IList<string> actualObject);
 
     }
 }
