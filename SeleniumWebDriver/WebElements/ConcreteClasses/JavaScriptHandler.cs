@@ -1,14 +1,15 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
+using SeleniumWebDriver.ConcreteClasses;
 using System;
 
 namespace SeleniumWebDriver.WebElements
 {
-    public class Javascript : IJavaScript
+    public class JavaScriptHandler : IJavaScript
     {       
         private readonly IAlert _alert;
         private readonly IBrowser _browser;
-        public Javascript(IAlert alert, IBrowser browser)
+        public JavaScriptHandler(IAlert alert, IBrowser browser)
         {
             _alert = alert;
             _browser = browser;

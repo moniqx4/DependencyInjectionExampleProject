@@ -4,7 +4,7 @@ namespace NUnitTestProject.Services
 {
     public class WebSiteContext
     {
-        public string SiteUrl { get; internal set; }
+        public string StartUrl { get; internal set; }
 
         public bool IsMobile { get; internal set; }
 

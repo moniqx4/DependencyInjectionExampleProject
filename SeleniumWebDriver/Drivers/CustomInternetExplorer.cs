@@ -13,7 +13,7 @@ namespace SeleniumWebDriver.Drivers
         [ThreadStatic]
         private static IWebDriver driver = new InternetExplorerDriver();
 
-        private ILogger _logger = new TestLogger();
+        private IDriverLogger _logger = new DriverLogger();
 
 
         public IWebDriver InternetExplorerOptions(SeleniumConfiguration configuration)

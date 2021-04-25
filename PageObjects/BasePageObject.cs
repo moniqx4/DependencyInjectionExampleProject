@@ -12,7 +12,7 @@ namespace PageObjects
             _webPage = webPage;
         }
 
-        //this empty constructor is to allow the BasePageObject to be inherited with the injection
+        //This empty constructor is to allow the BasePageObject to be inherited with the injection
         public BasePageObject()
         {
         }

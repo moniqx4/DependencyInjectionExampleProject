@@ -3,7 +3,7 @@ using SeleniumWebDriver.Type;
 using SeleniumWebDriver.WebElements;
 using System;
 
-namespace SeleniumWebDriver.Base
+namespace SeleniumWebDriver.ConcreteClasses
 {
     public class WebPage : IWebPage
     {

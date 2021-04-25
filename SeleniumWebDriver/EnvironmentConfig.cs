@@ -1,4 +1,6 @@
-﻿namespace SeleniumWebDriver
+﻿using DataModelLibrary.Enums;
+
+namespace SeleniumWebDriver
 {
     public class EnvironmentConfig
     {
@@ -8,7 +10,7 @@
         /// Set Environment 
         /// </summary>
         /// <param name="testEnv">Environment to test in</param>
-        public static void setTestEnvirnoment(Environment testEnv)
+        public static void SetTestEnvirnoment(Environment testEnv)
         {
             _testEnvironment = testEnv;
         }
@@ -21,16 +23,5 @@
             }
         }
     }
-
-    /// <summary>
-    /// Environment Type
-    /// </summary>
-    public enum Environment
-    {
-        TIN,
-        BRONZE,
-        DRPROD,
-        CARBON,
-        PROD
-    }
+   
 }

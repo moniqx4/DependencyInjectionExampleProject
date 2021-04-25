@@ -1,5 +1,7 @@
 ﻿using Autofac;
+using DataModelLibrary;
 using NUnitTestProject.Services;
+using SeleniumWebDriver;
 using System;
 using System.Collections.Generic;
 
@@ -17,14 +19,14 @@ namespace NUnitTestProject
 
             private readonly string _testName;
 
-            //private readonly string _version;
+            private readonly string _appVersion;
 
             private readonly ITestLogger _logger;
 
         public TestRunner(string testName)
         {
             _testName = testName;
-            //_version = version;
+            _appVersion = appVersion;
             _registrations = new List<Tuple<Type, Type>>();
             _container = ServiceProvider.Container;           
             _setupMethods = new Queue<ServiceMethod>();
@@ -93,14 +95,34 @@ namespace NUnitTestProject
                 }
             }
 
-            private TestContext BuildTestContext()
+            private TestContext BuildTestContext(SeleniumConfiguration configuration, TestRunConfiguration runConfig)
             {
-                var testContextBuilder = new TestContextBuilder(_logger);
-                
-                testContextBuilder
-                    .AddLogger()
-                    .AddName(_testName);
-                        //.AddVersion(_version);
+
+                var driver = new SeleniumDriver(configuration, runConfig.StartUrl, _testName, _logger, _appVersion);
+
+                var testContextBuilder = new TestContextBuilder();
+
+                var webSiteBuilder = new WebSiteContextBuilder();
+
+            webSiteBuilder
+                .AddBrowser(browser)
+                .AddMobileFlag(configuration.IsMobile)
+                .AddStartUrl(configuration.StartUrl)
+                .AddWebPageHandler(webPage);
+
+            var webSiteContext = webSiteBuilder.Build();
+
+            var testContextBuilder = new TestContextBuilder();
+
+
+            testContextBuilder
+                .AddLogger()
+                .AddAppVersion()
+                .AddEnvironment(configuration.Environment)
+                .AddTestCategory(configuration.TestCategory)
+                .AddTeam(configuration.Team)
+                .AddWebSiteContext(webSiteBuilder);
+                    
 
                 var testContext = testContextBuilder.Build();
 

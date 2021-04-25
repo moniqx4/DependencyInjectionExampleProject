@@ -13,7 +13,7 @@ namespace SeleniumWebDriver.Drivers
         [ThreadStatic]
         static IWebDriver driver = new EdgeDriver();
 
-        private ILogger _logger = new TestLogger();
+        private IDriverLogger _logger = new DriverLogger();
 
         public IWebDriver EdgeOptions(SeleniumConfiguration configuration)
         {

@@ -7,7 +7,7 @@ namespace SeleniumWebDriver.WebElements
 {
     public class Select : ISelect
     {        
-        private readonly ILogger _logger;
+        private readonly IDriverLogger _logger;
         private readonly LocatorBuilder _locatorBuilder;
 
         public Select(LocatorBuilder locatorBuilder)
@@ -15,7 +15,7 @@ namespace SeleniumWebDriver.WebElements
             _locatorBuilder = locatorBuilder;
         }
 
-        public Select(ILogger logger)
+        public Select(IDriverLogger logger)
         {            
             _logger = logger;           
         }

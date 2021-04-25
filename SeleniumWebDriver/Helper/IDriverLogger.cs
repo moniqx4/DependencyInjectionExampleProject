@@ -2,7 +2,7 @@
 
 namespace SeleniumWebDriver
 {
-    public interface ILogger
+    public interface IDriverLogger
     {
         void LogTestStarting(IDriver driverContext, string testTitle);
 

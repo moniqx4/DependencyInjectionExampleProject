@@ -13,7 +13,7 @@ namespace SeleniumWebDriver.Drivers
         [ThreadStatic]
         private static IWebDriver driver = new FirefoxDriver();
 
-        private ILogger _logger = new TestLogger();
+        private readonly IDriverLogger _logger = new DriverLogger();
        
         public IWebDriver FirefoxOptions(SeleniumConfiguration configuration)
         {

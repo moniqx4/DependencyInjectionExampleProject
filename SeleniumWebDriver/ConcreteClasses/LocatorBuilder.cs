@@ -1,11 +1,10 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumWebDriver.Waits;
 using System;
 using System.Collections.ObjectModel;
 
-namespace SeleniumWebDriver.WebElements
+namespace SeleniumWebDriver.ConcreteClasses
 {
    
     public class LocatorBuilder

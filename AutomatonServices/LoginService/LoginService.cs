@@ -1,8 +1,8 @@
 ﻿using AutomationServices.LoginService.models;
 using AutomationServices.PunchService.enums;
 using DataModelLibrary;
+using DataModelLibrary.Constants;
 using PageObjects.Login;
-using PageObjects.Shared;
 using PageObjects.SharedServices;
 using PageObjects.WTDashboards.Models;
 using System;

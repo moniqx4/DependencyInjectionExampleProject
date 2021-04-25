@@ -12,9 +12,9 @@ namespace NUnitTestProject.Services
         }
 
 
-        public WebSiteContextBuilder AddSiteUrl(string siteUrl)
+        public WebSiteContextBuilder AddStartUrl(string startUrl)
         {
-            _context.SiteUrl = siteUrl;
+            _context.StartUrl = startUrl;
 
             return this;
         }

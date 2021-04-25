@@ -5,7 +5,7 @@ using NLog;
 namespace SeleniumWebDriver.Helper
 {
 
-    public class TestLogger : ILogger
+    public class DriverLogger : IDriverLogger
     {        
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private DateTime startTestTime;
