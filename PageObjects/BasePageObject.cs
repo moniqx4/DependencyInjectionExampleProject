@@ -21,9 +21,9 @@ namespace PageObjects
         {
             var locatorModel = new LocatorModel()
             {
+                ElementType = elementType,
                 LocatorType = locatorType,
-                Locator = locator,
-                ElementType = elementType
+                Locator = locator                
             };
 
             return locatorModel;
