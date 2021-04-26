@@ -19,14 +19,14 @@ namespace NUnitTestProject
 
             private readonly string _testName;
 
-            private readonly string _appVersion;
+            //private readonly string _appVersion;
 
             private readonly ITestLogger _logger;
 
         public TestRunner(string testName)
         {
             _testName = testName;
-            _appVersion = appVersion;
+            //_appVersion = appVersion;
             _registrations = new List<Tuple<Type, Type>>();
             _container = ServiceProvider.Container;           
             _setupMethods = new Queue<ServiceMethod>();
@@ -53,7 +53,7 @@ namespace NUnitTestProject
                 _teardownMethods.Enqueue(method);
             }
 
-            public void Execute<T>(Action<T> testMethod)
+            public void Execute<T>(Action<T> testMethod, SeleniumConfiguration config)
             {
                 while (_setupMethods.Count != 0)
                 {
@@ -61,7 +61,7 @@ namespace NUnitTestProject
                     var service = _container.Resolve(method.Service);
                     method.Method(service);
                 }
-                var testContext = BuildTestContext();
+                var testContext = BuildTestContext(config);
 
                 using (var scope = _container.BeginLifetimeScope(
                         builder =>
@@ -95,20 +95,18 @@ namespace NUnitTestProject
                 }
             }
 
-            private TestContext BuildTestContext(SeleniumConfiguration configuration, TestRunConfiguration runConfig)
+            private TestContext BuildTestContext(SeleniumConfiguration configuration)
             {
 
-                var driver = new SeleniumDriver(configuration, runConfig.StartUrl, _testName, _logger, _appVersion);
-
-                var testContextBuilder = new TestContextBuilder();
+                var driver = new SeleniumDriver(configuration);                
 
                 var webSiteBuilder = new WebSiteContextBuilder();
 
             webSiteBuilder
-                .AddBrowser(browser)
+                //.AddBrowser(browser)
                 .AddMobileFlag(configuration.IsMobile)
-                .AddStartUrl(configuration.StartUrl)
-                .AddWebPageHandler(webPage);
+                .AddStartUrl(configuration.StartUrl);
+                //.AddWebPageHandler(webPage);
 
             var webSiteContext = webSiteBuilder.Build();
 
@@ -120,8 +118,8 @@ namespace NUnitTestProject
                 .AddAppVersion()
                 .AddEnvironment(configuration.Environment)
                 .AddTestCategory(configuration.TestCategory)
-                .AddTeam(configuration.Team)
-                .AddWebSiteContext(webSiteBuilder);
+                .AddTeam(configuration.Team);
+                //.AddWebSiteContext(webSiteBuilder);
                     
 
                 var testContext = testContextBuilder.Build();
