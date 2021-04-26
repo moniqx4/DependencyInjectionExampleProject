@@ -1,17 +1,18 @@
 ﻿using DataModelLibrary;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
 namespace SeleniumWebDriver.WebElements
 {
-    public class MouseActions : IMouseActions
+    public class MouseActions : SeleniumDriver, IMouseActions
     {
-        private readonly LocatorBuilder _locatorBuilder;
+        private readonly ILocatorBuilder _locatorBuilder;
 
-        public MouseActions(LocatorBuilder locatorBuilder)
+        public MouseActions(SeleniumConfiguration config, ILocatorBuilder locatorBuilder) : base(config)
         {
             _locatorBuilder = locatorBuilder;
         }
+
+      
         /// <summary>
         /// Clicks on a element, hold and drop it on the specified location
         /// </summary>
@@ -22,7 +23,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="y"></param>
         public void ClickNHoldNDrop(LocatorModel locatorModel, int x = 0, int y = 30)
         {
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
             var element = _locatorBuilder.BuildLocator(locatorModel);
 
             act.ClickAndHold(element)
@@ -39,7 +40,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param LocatorModel.locator="locator">Type of Locator</param>
         public void DoubleClickOnElement(LocatorModel locatorModel)
         {
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
             var element = _locatorBuilder.BuildLocator(locatorModel);
 
             act.DoubleClick(element)
@@ -57,7 +58,7 @@ namespace SeleniumWebDriver.WebElements
             var elementTrg = _locatorBuilder.BuildLocator(locatorModelTrg);
             var elementSrc = _locatorBuilder.BuildLocator(locatorModelSrc);
 
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
 
             act.DragAndDrop(elementSrc, elementTrg)
                 .Build()

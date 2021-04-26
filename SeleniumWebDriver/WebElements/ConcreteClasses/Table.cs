@@ -14,9 +14,9 @@ namespace SeleniumWebDriver.WebElements
 
         //private static readonly NLog.Logger Logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger(); .netcore3.x
     
-        private readonly LocatorBuilder _locatorBuilder;
+        private readonly ILocatorBuilder _locatorBuilder;
 
-        public Table(LocatorBuilder locatorBuilder)
+        public Table(ILocatorBuilder locatorBuilder)
         {           
             _locatorBuilder = locatorBuilder;
         }

@@ -9,10 +9,12 @@ namespace SeleniumWebDriver.WebElements
     {       
         private readonly IAlert _alert;
         private readonly IBrowser _browser;
-        public JavaScriptHandler(IAlert alert, IBrowser browser)
+        private readonly ILocatorBuilder _locatorBuilder;
+        public JavaScriptHandler(IAlert alert, IBrowser browser, ILocatorBuilder locatorBuilder)
         {
             _alert = alert;
             _browser = browser;
+            _locatorBuilder = locatorBuilder;
         }
         /// <summary>
         /// Clicks cancel button on the pop up in the browser
@@ -70,9 +72,8 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="ele">WebElement to focus</param>
         public void ScrollToElement(LocatorModel locatorModel)
-        {
-            LocatorBuilder locatorBuilder = new LocatorBuilder();
-            var ele = locatorBuilder.BuildLocator(locatorModel);
+        {            
+            var ele = _locatorBuilder.BuildLocator(locatorModel);
 
             ((IJavaScriptExecutor)_browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
         }

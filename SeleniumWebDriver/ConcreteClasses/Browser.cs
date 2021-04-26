@@ -1,16 +1,23 @@
-﻿using OpenQA.Selenium;
+﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
 {
-    public class Browser : IBrowser
+    public class Browser : SeleniumDriver, IBrowser
     {
+        
+        public Browser(SeleniumConfiguration config) : base(config)
+        {           
+        }
+
         /// <summary>
         /// Maximize the browser
         /// </summary>
         public void BrowserMaximize()
         {
-            SeleniumDriver.Browser.Manage().Window.Maximize();
+           
+            _browser.Manage().Window.Maximize();
         }
 
         /// <summary>
@@ -18,7 +25,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public void BrowserMinimize()
         {
-            SeleniumDriver.Browser.Manage().Window.Minimize();
+            _browser.Manage().Window.Minimize();
         }
 
         /// <summary>
@@ -26,7 +33,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public void BrowserRefresh()
         {
-            SeleniumDriver.Browser.Navigate().Refresh();
+            _browser.Navigate().Refresh();
         }
 
         /// <summary>
@@ -35,7 +42,7 @@ namespace SeleniumWebDriver
         /// <returns>Browser Title</returns>
         public string GetBrowserTitle()
         {
-            return SeleniumDriver.Browser.Title;
+            return _browser.Title;
         }
 
         /// <summary>
@@ -44,7 +51,7 @@ namespace SeleniumWebDriver
         /// <returns>URL</returns>
         public string GetBrowserUrl()
         {
-            return SeleniumDriver.Browser.Url;
+            return _browser.Url;
         }
 
         /// <summary>
@@ -52,7 +59,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public void MoveBackward()
         {
-            SeleniumDriver.Browser.Navigate().Back();
+            _browser.Navigate().Back();
         }
 
         /// <summary>
@@ -60,12 +67,12 @@ namespace SeleniumWebDriver
         /// </summary>
         public void MoveForward()
         {
-            SeleniumDriver.Browser.Navigate().Forward();
+            _browser.Navigate().Forward();
         }
 
         public void NavigateTo(string url)
         {
-            SeleniumDriver.Browser.Navigate().GoToUrl(url);
+            _browser.Navigate().GoToUrl(url);
         }
 
         /// <summary>
@@ -74,7 +81,7 @@ namespace SeleniumWebDriver
         /// <param name="frameElement">IFrame WebElement</param>
         public void SwitchToFrame(IWebElement frameElement)
         {
-            SeleniumDriver.Browser.SwitchTo().Frame(frameElement);
+            _browser.SwitchTo().Frame(frameElement);
         }
 
         /// <summary>
@@ -82,14 +89,14 @@ namespace SeleniumWebDriver
         /// </summary>
         public void SwitchToParent()
         {
-            var windowids = SeleniumDriver.Browser.WindowHandles;
+            var windowids = _browser.WindowHandles;
 
             for (int i = windowids.Count - 1; i > 0; i--)
             {
-                SeleniumDriver.Browser.SwitchTo().Window(windowids[i]);
-                SeleniumDriver.Browser.Close();
+                _browser.SwitchTo().Window(windowids[i]);
+                _browser.Close();
             }
-            SeleniumDriver.Browser.SwitchTo().Window(windowids[0]);
+            _browser.SwitchTo().Window(windowids[0]);
         }
 
         /// <summary>
@@ -98,49 +105,49 @@ namespace SeleniumWebDriver
         /// <param name="index">Window index</param>
         public void SwitchToWindow(int index = 0)
         {
-            ReadOnlyCollection<string> windows = SeleniumDriver.Browser.WindowHandles;
+            ReadOnlyCollection<string> windows = _browser.WindowHandles;
 
             if ((windows.Count - 1) < index)
             {
                 throw new NoSuchWindowException("Invalid Browser Window Index" + index);
             }
 
-            SeleniumDriver.Browser.SwitchTo().Window(windows[index]);
+            _browser.SwitchTo().Window(windows[index]);
         }
 
         public IBrowser SwitchToAlert()
         {
-            SeleniumDriver.Browser.SwitchTo().Alert();
+            _browser.SwitchTo().Alert();
 
             return this;
         }
 
         public string GetAlertText()
         {
-            return SeleniumDriver.Browser.SwitchTo().Alert().Text;
+            return _browser.SwitchTo().Alert().Text;
         }
 
         public IBrowser SetTextInAlert(string text)
         {
-            SeleniumDriver.Browser.SwitchTo().Alert().SendKeys(text);
+            _browser.SwitchTo().Alert().SendKeys(text);
 
             return this;
         }
 
         public void ClickAlertAcceptButton()
         {
-            SeleniumDriver.Browser.SwitchTo().Alert().Accept();
+            _browser.SwitchTo().Alert().Accept();
         }
 
         public void DismissAlert()
         {
-            SeleniumDriver.Browser.SwitchTo().Alert().Dismiss();
+            _browser.SwitchTo().Alert().Dismiss();
         }
 
         public void Close()
-        {            
-            SeleniumDriver.Browser.Close();
-            SeleniumDriver.Browser.Dispose();
+        {
+            _browser.Close();
+            _browser.Dispose();
         }
     }
 }

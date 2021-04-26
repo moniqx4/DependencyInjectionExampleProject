@@ -1,5 +1,6 @@
 ﻿using System;
 using DataModelLibrary;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -13,26 +14,25 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 
     public class DriverFactory
     {
-        public static void Build(SeleniumConfiguration configuration)
+        public static IWebDriver Build(SeleniumConfiguration configuration)
         {
-            //var browserType = ConfigReader.GetConfigValue("BrowserType");
-
+           
             if (configuration.RunType == RunType.Local)
             {
                 switch (configuration.Browser)
                 {
                     case BrowserType.Chrome:
-                        new CustomChrome().ChromeOptions(configuration);                       
-                        break;
+                        return new CustomChrome().ChromeOptions(configuration);                       
+                       
                     case BrowserType.Firefox:
-                        new CustomFirefox().FirefoxOptions(configuration);
-                        break;
+                        return new CustomFirefox().FirefoxOptions(configuration);
+                       
                     case BrowserType.Edge:
-                        new CustomEdge().EdgeOptions(configuration);
-                        break;
+                        return new CustomEdge().EdgeOptions(configuration);
+                       
                     case BrowserType.InternetExplorer:
-                        new CustomInternetExplorer().InternetExplorerOptions(configuration);
-                        break;
+                        return new CustomInternetExplorer().InternetExplorerOptions(configuration);
+                        
                     default:
                         throw new ArgumentException($"{configuration.Browser} is not supported locally.");
                 }
@@ -40,7 +40,7 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 
             else if (configuration.RunType == RunType.Remote)
             {
-                BuildRemoteDriver(configuration.Browser);
+                return BuildRemoteDriver(configuration.Browser);
             }
 
             else

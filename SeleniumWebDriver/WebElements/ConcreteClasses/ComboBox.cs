@@ -6,9 +6,9 @@ namespace SeleniumWebDriver.WebElements
     public class ComboBox: IComboBox
     {
         private static SelectElement select;
-        private readonly LocatorBuilder _locatorBuilder;
+        private readonly ILocatorBuilder _locatorBuilder;
 
-        public ComboBox(LocatorBuilder locatorBuilder)
+        public ComboBox(ILocatorBuilder locatorBuilder)
         {
             _locatorBuilder = locatorBuilder;
         }

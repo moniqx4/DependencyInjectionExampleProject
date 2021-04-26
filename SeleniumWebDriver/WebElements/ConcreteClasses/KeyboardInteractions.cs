@@ -1,9 +1,15 @@
-﻿using OpenQA.Selenium.Interactions;
+﻿using DataModelLibrary;
+using OpenQA.Selenium.Interactions;
 
 namespace SeleniumWebDriver.WebElements
 {
-    public class KeyboardInteractions : IKeyboardInteractions
+    public class KeyboardInteractions : SeleniumDriver, IKeyboardInteractions
     {
+
+        public KeyboardInteractions(SeleniumConfiguration config) : base(config)
+        {
+        }
+
         /// <summary>
         /// Automate the key pressing combination e.g. Ctrl+Shift+T
         /// </summary>
@@ -12,7 +18,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="character">Char</param>
         public void DoubleCommandKeyAction(string cmdKey1, string cmdKey2, string character)
         {
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
 
             act.KeyDown(cmdKey1)
                 .KeyDown(cmdKey2)
@@ -31,7 +37,7 @@ namespace SeleniumWebDriver.WebElements
         /// <remark> Ctrl+T does not work for chrome browser. </remark>
         public void SingleCommandKeyAction(string cmdKey, string character)
         {
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
 
             act.KeyDown(cmdKey)
                 .SendKeys(character)
@@ -48,7 +54,7 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="character2">Keys 2</param>
         public void SingleCommandKeyAction(string cmdKey, string character1, string character2)
         {
-            Actions act = new Actions(SeleniumDriver.Browser);
+            Actions act = new Actions(_browser);
 
             act.KeyDown(cmdKey)
                 .SendKeys(character1)

@@ -1,6 +1,5 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
-using SeleniumWebDriver.ConcreteClasses;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -8,12 +7,12 @@ namespace SeleniumWebDriver.WebElements
 {
     public class AutoTextComplete : IAutoTextComplete
     {
-        private LocatorBuilder LocatorBuilder => new LocatorBuilder();
+        private readonly ILocatorBuilder _locatorBuilder;
         private readonly IDriverLogger _logger;
 
-        public AutoTextComplete(IDriverLogger logger)
+        public AutoTextComplete(IDriverLogger logger, ILocatorBuilder locatorBuilder)
         {
-           
+            _locatorBuilder = locatorBuilder;
             _logger = logger;
         }
 
@@ -29,13 +28,13 @@ namespace SeleniumWebDriver.WebElements
         {
             _logger.Info("Selecting an item from an AutoComplete Text box");
 
-            var element = LocatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel);
             //supply initial char
             element.SendKeys(searchChar);
             Thread.Sleep(2000);            
 
             //wait for auto suggest list
-            IList<IWebElement> elements = LocatorBuilder.GetLocators(locatorDD);
+            IList<IWebElement> elements = _locatorBuilder.GetLocators(locatorDD);
 
             foreach (var ele in elements)
             {

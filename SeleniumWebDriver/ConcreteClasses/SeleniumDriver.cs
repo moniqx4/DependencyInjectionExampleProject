@@ -6,29 +6,18 @@ using System;
 
 namespace SeleniumWebDriver
 {
-    public static class SeleniumDriver
+    public class SeleniumDriver
     {
-        [ThreadStatic]
-        private static IWebDriver _browser;
+        //[ThreadStatic]
+        public static IWebDriver _browser;
 
         [ThreadStatic]
         private static IWebDriver _browserWait;
         
 
-        public static IWebDriver Browser
+        public SeleniumDriver(SeleniumConfiguration config)
         {
-            get
-            {
-                if (_browser == null)
-                {
-                    throw new NullReferenceException("The WebDriver browser instance was not initialized.");
-                }
-                return _browser;
-            }
-            set
-            {
-                _browser = value;
-            }
+            _browser = DriverFactory.Build(config);
         }
 
         public static WebDriverWait BrowserWait
@@ -46,24 +35,17 @@ namespace SeleniumWebDriver
                 _browserWait = (IWebDriver)value;
             }
         }
-
-        public static void Build(SeleniumConfiguration driverConfig)
-        {
-            //var browserType = ConfigReader.GetConfigValue("BrowserType");
-
-            DriverFactory.Build(driverConfig);
-            
-        }
+      
 
         /// <summary>
         /// Stops & Quits current WebDriver instance
         /// </summary>
         public static void StopBrowser()
         {
-            Browser.Quit();
-            Browser.Dispose();
-            Browser = null;
-            BrowserWait = null;
+            _browser.Close();
+            _browser.Quit();
+            _browser.Dispose();
+            
         }
 
     }

@@ -1,22 +1,22 @@
 ﻿using DataModelLibrary;
-using SeleniumWebDriver.ConcreteClasses;
 
 namespace SeleniumWebDriver.WebElements
 {
     public class Button : IButton
     {
-        private LocatorBuilder LocatorBuilder => new LocatorBuilder();
+        private ILocatorBuilder _locatorBuilder;
         private readonly IDriverLogger _logger;
 
-        public Button(IDriverLogger logger)
+        public Button(IDriverLogger logger, ILocatorBuilder locatorBuilder)
         {
+            _locatorBuilder = locatorBuilder;
             _logger = logger;
         }
       
         public void ClickButton(LocatorModel locatorModel)
         {
             _logger.Info("Clicking a Button");
-            var element = LocatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel);
             element.Click();
         }       
 
@@ -25,12 +25,12 @@ namespace SeleniumWebDriver.WebElements
             _logger.Info("Getting Button Text");
             if (index == 0)
             {
-                var element = LocatorBuilder.BuildLocator(locatorModel);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 return element.Text;
             }
             else
             {
-                var elements = LocatorBuilder.LocatorByIndex(locatorModel, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 return elements.Text;
             }
         }
@@ -41,12 +41,12 @@ namespace SeleniumWebDriver.WebElements
 
             if (index == 0)
             {
-                var element = LocatorBuilder.BuildLocator(locatorModel);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 return element.Enabled;
             }
             else
             {
-                var elements = LocatorBuilder.LocatorByIndex(locatorModel, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 return elements.Enabled;
             }
         }
@@ -59,12 +59,12 @@ namespace SeleniumWebDriver.WebElements
 
             if (index == 0)
             {
-                var element = LocatorBuilder.BuildLocator(locatorModel);
+                var element = _locatorBuilder.BuildLocator(locatorModel);
                 return element.Displayed;
             }
             else
             {
-                var elements = LocatorBuilder.LocatorByIndex(locatorModel, index);
+                var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
                 return elements.Displayed;
             }
         }
