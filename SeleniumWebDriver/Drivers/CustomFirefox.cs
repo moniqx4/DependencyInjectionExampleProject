@@ -10,9 +10,6 @@ namespace SeleniumWebDriver.Drivers
 {
     public class CustomFirefox
     {
-        [ThreadStatic]
-        private static IWebDriver driver = new FirefoxDriver();
-
         private readonly IDriverLogger _logger = new DriverLogger();
        
         public IWebDriver FirefoxOptions(SeleniumConfiguration configuration)
@@ -34,15 +31,14 @@ namespace SeleniumWebDriver.Drivers
             //ffOptions.Profile();
             //ffOptions.BrowserExecutableLocation();
             new DriverManager().SetUpDriver(new FirefoxConfig());
-            driver =  new FirefoxDriver(ffOptions);
-            return driver;
+            return new FirefoxDriver(ffOptions);           
 
         }
 
         private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
             _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
-            _logger.Info($"Driver Configuration: {configuration.Name}");
+            _logger.Info($"Driver Configuration: {configuration.ConfigName}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
 
@@ -52,7 +48,7 @@ namespace SeleniumWebDriver.Drivers
                 Active = configuration.Active,
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
-                Name = configuration.Name,
+                ConfigName = configuration.ConfigName,
                 IsMobile = configuration.IsMobile,
                 TestName = configuration.TestName,
                 MobileDevice = MobileDevices.None

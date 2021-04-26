@@ -10,10 +10,7 @@ namespace SeleniumWebDriver.Drivers
 {
     public class CustomInternetExplorer
     {
-        [ThreadStatic]
-        private static IWebDriver driver = new InternetExplorerDriver();
-
-        private IDriverLogger _logger = new DriverLogger();
+       private IDriverLogger _logger = new DriverLogger();
 
 
         public IWebDriver InternetExplorerOptions(SeleniumConfiguration configuration)
@@ -36,8 +33,7 @@ namespace SeleniumWebDriver.Drivers
             //ieOptions.FileUploadDialogTimeout = 
             //ieOptions.BrowserVersion = "";
             new DriverManager().SetUpDriver(new InternetExplorerConfig());
-            driver = new InternetExplorerDriver("./", ieOptions);
-            return driver;
+            return new InternetExplorerDriver("./", ieOptions);           
 
         }
 
@@ -45,7 +41,7 @@ namespace SeleniumWebDriver.Drivers
         private SeleniumConfiguration BuildConfig(SeleniumConfiguration configuration)
         {
             _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
-            _logger.Info($"Driver Configuration: {configuration.Name}");
+            _logger.Info($"Driver Configuration: {configuration.ConfigName}");
             _logger.Info($"Browser: {configuration.Browser}");
             _logger.Info($"RunType: {configuration.RunType}");
 
@@ -55,7 +51,7 @@ namespace SeleniumWebDriver.Drivers
                 Active = configuration.Active,
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
-                Name = configuration.Name,
+                ConfigName = configuration.ConfigName,
                 IsMobile = configuration.IsMobile,
                 TestName = configuration.TestName,
                 MobileDevice = MobileDevices.None
