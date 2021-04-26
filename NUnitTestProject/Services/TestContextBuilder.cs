@@ -26,12 +26,12 @@ namespace NUnitTestProject.Services
             return this;
         }
 
-        public TestContextBuilder AddAppVersion()
-        {
-            _context.AppVersion = appVersion;
+        //public TestContextBuilder AddAppVersion()
+        //{
+        //    _context.AppVersion = appVersion;
 
-            return this;
-        }
+        //    return this;
+        //}
 
         public TestContextBuilder AddTestName(string testName)
         {
