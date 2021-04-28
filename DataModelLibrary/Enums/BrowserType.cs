@@ -1,4 +1,4 @@
-﻿namespace SeleniumWebDriver.Types
+﻿namespace DataModelLibrary.Enums
 {
     public enum BrowserType
     {

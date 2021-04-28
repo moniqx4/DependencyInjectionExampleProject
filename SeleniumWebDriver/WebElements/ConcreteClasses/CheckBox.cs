@@ -12,7 +12,7 @@ namespace SeleniumWebDriver.WebElements
         }
        
 
-        public void ClickCheckBox(LocatorModel locatorModel)
+        public ICheckBox ClickCheckBox(LocatorModel locatorModel)
         {
             var isChecked = IsCheckboxChecked(locatorModel);
 
@@ -21,9 +21,11 @@ namespace SeleniumWebDriver.WebElements
                 var element = _locatorBuilder.BuildLocator(locatorModel);
                 element.Click();
             }
+
+            return this;
         }
 
-        public void ClickCheckBox(LocatorModel locatorModel, bool isEnabled)
+        public ICheckBox ClickCheckBox(LocatorModel locatorModel, bool isEnabled)
         {
             var isChecked = IsCheckboxChecked(locatorModel);
 
@@ -43,12 +45,14 @@ namespace SeleniumWebDriver.WebElements
                     element.Click();
                 }
             }
+
+            return this;
         }
       
 
-        public bool IsCheckboxChecked(LocatorModel locatorModel)
+        public bool IsCheckboxChecked(LocatorModel locator)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locator);
             string flag = element.GetAttribute("checked");
             if (flag == null)
             {

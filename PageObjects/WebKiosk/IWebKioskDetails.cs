@@ -2,8 +2,8 @@
 {
     public interface IWebKioskDetails
     {
-        void SetRecentActivityCheckbox(bool isEnabled);
+        IWebKioskDetails SetRecentActivityCheckbox(bool isEnabled);
 
-        void SetTimeCorrectionCheckbox(bool isEnabled);
+        IWebKioskDetails SetTimeCorrectionCheckbox(bool isEnabled);
     }
 }

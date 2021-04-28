@@ -16,6 +16,7 @@
     <ProjectReference Include="..\AutomatonServices\AutomationServices.csproj" />
     <ProjectReference Include="..\DataModelLibrary\DataModelLibrary.csproj" />
     <ProjectReference Include="..\DependencyInjectionExampleProject.csproj" />
+    <ProjectReference Include="..\TestRunner\TestRunnerLibrary.csproj" />
     <ProjectReference Include="..\TestUtilities\TestUtilities.csproj" />
   </ItemGroup>
 

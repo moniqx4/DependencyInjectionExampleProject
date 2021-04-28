@@ -7,15 +7,14 @@ namespace PageObjects.Login.ConcreteClasses
     { 
         public void ClickSubmitButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, LoginElements.BTN_SUBMIT_ID);
 
             HandleClickElement(locatorModel);
-
         }
 
         public ILoginPage SetUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "username");
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, LoginElements.TXTBOX_USERNAME_ID);
            
             HandleTextBox(locatorModel, username);
 
@@ -24,7 +23,7 @@ namespace PageObjects.Login.ConcreteClasses
 
         public ILoginPage SetPasswordTextBox(string password)
         {          
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "password");
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, LoginElements.TXTBOX_PASSWORD_ID);
 
             HandleTextBox(locatorModel, password);
 
@@ -34,7 +33,7 @@ namespace PageObjects.Login.ConcreteClasses
         public ILoginPage SetCompanyAliasTextBox(string companyAlias)
         {
 
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "companyId");
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, LoginElements.TXTBOX_COMPANYALIAS_ID);
 
             HandleTextBox(locatorModel, companyAlias);
 
@@ -43,7 +42,7 @@ namespace PageObjects.Login.ConcreteClasses
 
         public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "BadgeNumber");
+            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, LoginElements.TXTBOX_BADGENUMBER_ID);
 
             HandleTextBox(locatorModel, badgeNumber);
 
@@ -57,7 +56,7 @@ namespace PageObjects.Login.ConcreteClasses
 
         public void ClickWebKioskLoginButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
+            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, LoginElements.BTN_SUBMIT_ID);
 
             HandleClickElement(locatorModel);
         }

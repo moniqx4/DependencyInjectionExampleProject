@@ -3,11 +3,11 @@
 namespace SeleniumWebDriver.WebElements
 {
     public interface ICheckBox
-    {       
+    {
 
-        void ClickCheckBox(LocatorModel locatorModel);
+        ICheckBox ClickCheckBox(LocatorModel locatorModel);
 
-        void ClickCheckBox(LocatorModel locatorModel, bool isEnabled);
+        ICheckBox ClickCheckBox(LocatorModel locatorModel, bool isEnabled);
 
         bool IsCheckboxChecked(LocatorModel locatorModel);
 

@@ -1,8 +1,9 @@
-﻿using DataModelLibrary.Enums;
+﻿using DataModelLibrary;
+using DataModelLibrary.Enums;
 
-namespace DataModelLibrary
+namespace TestRunnerLibrary
 {
-    public class SeleniumConfiguration
+    public class DriverConfiguration
     {
         public string ConfigName { get; set; }
 
@@ -33,6 +34,5 @@ namespace DataModelLibrary
         public string TestCategory { get; set; }
 
         //public List<SeleniumCapability> Capabilities { get; set; }
-
     }
 }

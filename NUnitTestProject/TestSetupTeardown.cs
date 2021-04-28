@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using SeleniumWebDriver;
-using SeleniumWebDriver.Types;
 using DataModelLibrary;
+using DataModelLibrary.Enums;
 
 namespace NUnitTestProject
 {
@@ -25,7 +25,7 @@ namespace NUnitTestProject
                 //    Log.Information("\nNew Test Cycle :");
                 ServiceProvider.Setup();                
                 // TODO: create one to create and register the browser container, ex. UnityContainerFactory.GetContainer().RegisterInstance<IWebDriver>(SeleniumDriver.Browser);
-                SeleniumDriver.Build(config);                             
+                                         
             }
 
             [OneTimeSetUp]

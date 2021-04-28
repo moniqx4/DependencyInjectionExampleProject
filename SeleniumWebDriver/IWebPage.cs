@@ -8,7 +8,7 @@ namespace SeleniumWebDriver
 
         IWebPage ClickElement(LocatorModel locatorModel);
 
-        void CheckCheckbox(LocatorModel locatorModel, bool isEnabled);
+        IWebPage CheckCheckbox(LocatorModel locatorModel, bool isEnabled);
 
         string GetElementText(LocatorModel locatorModel);
 

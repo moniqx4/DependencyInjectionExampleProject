@@ -134,34 +134,34 @@ namespace SeleniumWebDriver.ConcreteClasses
             _comboBox.SelectElementByValue(locatorModel, value);
         }
 
-        public string[][] GetTableData(ElementLocator row, ElementLocator col, LocatorModel locatorModel)
+        public string[][] GetTableData(ElementLocator row, ElementLocator col, LocatorModel locator)
         {
-            return _table.GetTable(row, col, locatorModel);
+            return _table.GetTable(row, col, locator);
         }
 
-        private bool IsSelectOptionAvailable(LocatorModel locatorModel)
+        private bool IsSelectOptionAvailable(LocatorModel locator)
         {
-            return _select.IsSelectOptionAvailable(locatorModel.LocatorType, locatorModel.Locator);
+            return _select.IsSelectOptionAvailable(locator);
         }
 
-        public void SelectElementByIndex(int index, double timeout, LocatorModel locatorModel)
+        public void SelectElementByIndex(int index, double timeout, LocatorModel locator)
         {
-            _select.SelectByIndex(index, timeout, locatorModel.LocatorType, locatorModel.Locator);
+            _select.SelectByIndex(index, timeout, locator);
         }
 
-        public void SelectElementByText(string value, double timeout, LocatorModel locatorModel)
+        public void SelectElementByText(string value, double timeout, LocatorModel locator)
         {
-            _select.SelectByText(value, timeout, locatorModel.LocatorType, locatorModel.Locator);
+            _select.SelectByText(value, timeout, locator);
         }
 
-        public void SelectElementByValue(string value, double timeout, LocatorModel locatorModel)
+        public void SelectElementByValue(string value, double timeout, LocatorModel locator)
         {
-            _select.SelectByValue(value, timeout, locatorModel.LocatorType, locatorModel.Locator);
+            _select.SelectByValue(value, timeout, locator);
         }
 
-        public void SelectElement(LocatorModel locatorModel)
+        public void SelectElement(LocatorModel locator)
         {
-            _select.SelectElement(locatorModel.LocatorType,locatorModel.Locator);
+            _select.SelectElement(locator);
         }
 
         public string GetLinkText(LocatorModel locatorModel)
@@ -263,9 +263,11 @@ namespace SeleniumWebDriver.ConcreteClasses
 
         }
 
-        public void CheckCheckbox(LocatorModel locatorModel, bool isEnabled)
+        public IWebPage CheckCheckbox(LocatorModel locatorModel, bool isEnabled)
         {
-            _checkBox.ClickCheckBox(locatorModel, isEnabled);
+             _checkBox.ClickCheckBox(locatorModel, isEnabled);
+
+            return this;
         }    
 
 

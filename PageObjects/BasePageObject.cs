@@ -53,6 +53,12 @@ namespace PageObjects
             return _webPage.ClickElement(locatorModel);
 
         }
+
+        public IWebPage HandleCheckbox(LocatorModel locator, bool isChecked)
+        {
+            var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
+            return _webPage.CheckCheckbox(locator, isChecked);
+        }
       
 
         public class T
