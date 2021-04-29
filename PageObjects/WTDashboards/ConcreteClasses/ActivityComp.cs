@@ -4,7 +4,7 @@ using SeleniumWebDriver;
 
 namespace PageObjects.EmployeeDashboard.ConcreteClasses
 {
-    public class ActivityComp : IActivityComp
+    public class ActivityComp : BasePageObject, IActivityComp
     {
         private readonly IWebPage _webPage;
         public ActivityComp(IWebPage webPage)
@@ -14,28 +14,18 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
 
         public IActivityComp ClickCorrectionsTab()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = "",
-                ElementType = ElementType.Tab
-            };
+            var locator = SetLocator(ElementType.Tab, LocatorType.DataAutomationId, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleClickElement(locator);
 
             return this;
         }
 
         public IActivityComp ClickHistoryTab()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = "",
-                ElementType = ElementType.Tab
-            };
+            var locator = SetLocator(ElementType.Tab, LocatorType.DataAutomationId, "");
 
-            _webPage.ClickElement(locatorModel);
+            HandleClickElement(locator);           
 
             return this;
         }

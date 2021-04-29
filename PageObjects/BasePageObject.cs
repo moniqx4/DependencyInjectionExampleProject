@@ -29,6 +29,18 @@ namespace PageObjects
             return locatorModel;
         }
 
+        public BaseLocatorModel SetLocator(LocatorType locatorType, string locator)
+        {
+            var locatorModel = new BaseLocatorModel() 
+            {
+                
+                LocatorType = locatorType,
+                Locator = locator
+            };
+
+            return locatorModel;
+        }
+
         public IWebPage HandleTextBox(LocatorModel locator, string text)
         {
 
@@ -36,12 +48,28 @@ namespace PageObjects
             return _webPage.SetText(locatorModel, text);
 
         }
-       
+
+        public IWebPage SetTextBox(BaseLocatorModel locator, string text)
+        {
+
+            var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
+            return _webPage.SetText(locatorModel, text);
+
+        }
+
 
         public string HandleGetTextElement(LocatorModel locator)
         {
 
             var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
+            return _webPage.GetElementText(locatorModel);
+
+        }
+
+        public string GetTextElement(BaseLocatorModel locator)
+        {
+
+            var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
             return _webPage.GetElementText(locatorModel);
 
         }
@@ -54,12 +82,28 @@ namespace PageObjects
 
         }
 
+        public IWebPage ClickElement(BaseLocatorModel locator)
+        {
+
+            var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
+            return _webPage.ClickEle(locatorModel);
+
+        }
+
         public IWebPage HandleCheckbox(LocatorModel locator, bool isChecked)
         {
-            var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
-            return _webPage.CheckCheckbox(locator, isChecked);
+            var LocatorModel =  SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
+            return _webPage.CheckCheckbox(LocatorModel, isChecked);
         }
-      
+
+        public IWebPage ClickCheckbox(BaseLocatorModel locator, bool isChecked)
+        {
+            var LocatorModel = SetLocator(locator.LocatorType, locator.Locator);
+
+            return _webPage.CheckCheckbox(LocatorModel, isChecked);
+
+        }
+
 
         public class T
         {

@@ -140,7 +140,86 @@ namespace SeleniumWebDriver.ConcreteClasses
                 LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locatorModel.Locator}']"))),
                 _ => throw new Exception($"LocatorType {locatorModel.LocatorType} is unknown."),
             };
-        }      
-      
+        }
+
+        /// <summary>
+        /// Create a instance of Selenium webElement
+        /// </summary>
+        /// <param name="locator">Locator path</param>        
+        
+        /// <returns> an instance of the webelement</returns>
+        [Obsolete]
+        private static IWebElement _WaitTillDisplayed(BaseLocatorModel locator)
+        {
+            var wait = new WebDriverWait(_browser, TimeSpan.FromSeconds(10));
+
+            return locator.LocatorType switch
+            {
+                LocatorType.XPath => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator.Locator))),
+                LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator.Locator))),
+                LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locator.Locator))),
+                LocatorType.LinkText => wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator.Locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator.Locator))),
+                LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locator.Locator))),
+                LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locator.Locator))),
+                LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locator.Locator))),
+                LocatorType.DataAutomationId => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locator.Locator}']"))),
+                _ => throw new Exception($"LocatorType {locator.LocatorType} is unknown."),
+            };
+        }
+
+        public IWebElement BuildLocator(BaseLocatorModel locator)
+        {
+            switch (locator.LocatorType)
+            {
+                case LocatorType.Id:
+                    var eleById = _WaitTillDisplayed(locator);
+                    return eleById.FindElement(By.Id(locator.Locator));
+
+                case LocatorType.Class:
+                    var eleByClass = _WaitTillDisplayed(locator);
+                    return eleByClass.FindElement(By.ClassName(locator.Locator));
+
+                case LocatorType.CSS:
+                    var eleByCSS = _WaitTillDisplayed(locator);
+                    return eleByCSS.FindElement(By.CssSelector(locator.Locator));
+
+                case LocatorType.DataAutomationId:
+                    var eleByDAID = _WaitTillDisplayed(locator);
+                    return eleByDAID.FindElement(By.CssSelector($"[data-automation-id='{locator.Locator}']"));
+
+                case LocatorType.LinkText:
+                    var eleByLinkText = _WaitTillDisplayed(locator);
+                    return eleByLinkText.FindElement(By.LinkText(locator.Locator));
+
+
+                case LocatorType.PartialLinkText:
+                    var eleByPartialLinkText = _WaitTillDisplayed(locator);
+                    return eleByPartialLinkText.FindElement(By.PartialLinkText(locator.Locator));
+
+                case LocatorType.TagName:
+                    var eleByTagName = _WaitTillDisplayed(locator);
+                    return eleByTagName.FindElement(By.TagName(locator.Locator));
+
+                case LocatorType.XPath:
+                    var eleByXPath = _WaitTillDisplayed(locator);
+                    return eleByXPath.FindElement(By.XPath(locator.Locator));
+
+
+                default:
+                    return null;
+
+            }
+        }
+
+        public IWebElement LocatorByIndex(BaseLocatorModel locator, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ReadOnlyCollection<IWebElement> GetLocators(BaseLocatorModel locator)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

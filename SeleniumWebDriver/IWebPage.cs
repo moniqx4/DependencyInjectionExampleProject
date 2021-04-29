@@ -6,13 +6,23 @@ namespace SeleniumWebDriver
     public interface IWebPage
     {
 
-        IWebPage ClickElement(LocatorModel locatorModel);
+        public IWebPage ClickElement(LocatorModel locator);
 
-        IWebPage CheckCheckbox(LocatorModel locatorModel, bool isEnabled);
+        public IWebPage ClickEle(BaseLocatorModel locator);
 
-        string GetElementText(LocatorModel locatorModel);
+        IWebPage CheckCheckbox(LocatorModel locator, bool isEnabled);
 
-        IWebPage SetText(LocatorModel locatorModel, string text);       
+        IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled);
+
+        string GetElementText(LocatorModel locator);
+
+        string GetElementText(BaseLocatorModel locator);
+
+        IWebPage SetText(LocatorModel locator, string text);
+
+        IWebPage SetText(BaseLocatorModel locator, string text);
+
+        bool IsCheckBoxChecked(BaseLocatorModel locator);
 
         bool IsDisplayed(LocatorModel locatorModel);
 
@@ -54,7 +64,13 @@ namespace SeleniumWebDriver
 
         void DoubleCommandKeyAction(string cmdKey1, string cmdKey2, string character);
 
-        string GetLabelText(LocatorModel locatorModel);
+        string GetLabelText(LocatorModel locator);
+
+        void JSExecuteClickElement(string script);
+
+        string JSExecuteGetElementText(string script);
+
+        void JSExecuteSetElementText(string script, string text);
 
         void JSTypeTextInPopUp(string inputtext);
 

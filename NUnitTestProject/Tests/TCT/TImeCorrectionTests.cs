@@ -27,7 +27,7 @@ namespace NUnitTestProject.Tests.TCT
         {
 
             var runner = new TestRunner();
-            var testContext = SetTestContext(nameof(ValidateTimeCorrectionTest));
+            var testContext = SetTestContext(testname);
             runner.Execute<ValidateTimeCorrectionsWorkflow>(workflow => { workflow.Execute(tcType, punchDate, punchTime, reason); }, testContext);
         }
     }

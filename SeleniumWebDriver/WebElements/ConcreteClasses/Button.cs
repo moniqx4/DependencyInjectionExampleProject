@@ -68,5 +68,25 @@ namespace SeleniumWebDriver.WebElements
                 return elements.Displayed;
             }
         }
+
+        public bool IsButtonEnabled(BaseLocatorModel locator, int index = 0)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetButtonText(BaseLocatorModel locator, int index = 0)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsButtonPresent(BaseLocatorModel locator, int index = 0)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ClickButton(BaseLocatorModel locator)
+        {
+            throw new System.NotImplementedException();
+        }
     }    
 }

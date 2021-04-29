@@ -17,7 +17,7 @@
     <Folder Include="NavigationService\constants\" />
     <Folder Include="PunchService\models\" />
     <Folder Include="DashboardServices\WebKioskService\Constants\" />
-    <Folder Include="Shared Services\ValidationServices\" />
+    <Folder Include="SharedServices\ValidationServices\" />
   </ItemGroup>
 
 </Project>

@@ -1,13 +1,14 @@
 using NUnit.Framework;
 using NUnitTestProject.Workflows;
 using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch;
+using TestRunnerLibrary;
 
 namespace NUnitTestProject
 {
     public class NuniTestExample
     {
         [TestFixture]
-        public class EmployeeDashboardTests
+        public class EmployeeDashboardTests : BaseTest
         {
 
             [Test]
@@ -15,9 +16,11 @@ namespace NUnitTestProject
             public void RunMyTest()
             {
 
-                var runner = new TestRunner(nameof(RunMyTest));
+                var runner = new TestRunner();
 
-                runner.Execute<ExampleTestWorkflow>(workflow => { workflow.Execute(); });
+                var testContext = SetTestContext(nameof(RunMyTest));
+
+                runner.Execute<ExampleTestWorkflow>(workflow => { workflow.Execute(); }, testContext);
             }
 
             [Test]
@@ -25,9 +28,11 @@ namespace NUnitTestProject
             public void ValidateRegularPunch()
             {
 
-                var runner = new TestRunner(nameof(ValidateRegularPunch));
+                var runner = new TestRunner();
 
-                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(); });
+                var testContext = SetTestContext(nameof(ValidateRegularPunch));
+
+                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(); }, testContext);
             }
         }
 

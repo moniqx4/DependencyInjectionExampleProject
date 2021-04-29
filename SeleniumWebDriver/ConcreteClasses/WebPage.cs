@@ -164,9 +164,9 @@ namespace SeleniumWebDriver.ConcreteClasses
             _select.SelectElement(locator);
         }
 
-        public string GetLinkText(LocatorModel locatorModel)
+        public string GetLinkText(LocatorModel locator)
         {
-            return _link.GetLinkText(locatorModel);
+            return _link.GetLinkText(locator);
         }
 
         public void AcceptAlert()
@@ -422,5 +422,47 @@ namespace SeleniumWebDriver.ConcreteClasses
             }
         }
 
+        public IWebPage ClickEle(BaseLocatorModel locator)
+        {
+
+
+
+            return this;
+        }
+
+        public IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetElementText(BaseLocatorModel locator)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IWebPage SetText(BaseLocatorModel locator, string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsCheckBoxChecked(BaseLocatorModel locator)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JSExecuteClickElement(string script)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string JSExecuteGetElementText(string script)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JSExecuteSetElementText(string script, string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
