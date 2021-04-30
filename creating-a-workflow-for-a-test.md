@@ -36,22 +36,32 @@ In Visual Studio, Add a New Item, and there will be listed a Test WorkFlow item.
     }
 ```
 
-Important pieces of a Workflow:
+**Important pieces of a Workflow:**
 
 * The biggest thing is the Execute method. This method is the only thing the Test will read for executing sets. If any values were passing in from test, they would be passed to this method. 
 * Steps are defined as well descriptive methods, they can be named whatever , and should be descriptive to what they do that can easily be understood by a reader. 
 * All Test Step methods should be created as private void methods. Expecting each step to be self contained and not returning anything to the next step. They could return values, but ideally you would not do this. However, not run saying you should never do this, do as you see fit. 
 * Workflows use Automation Services injected as readonly to do the work required by the defined test steps. 
-* In the above example, it shows LoginService used and the first step is login, the Login method created is where you could use the loginServices methods.  Do NOT put the methods injected in from a service directly in the Execute method. Even though you could do this, the idea is to keep the Execute method as clean as possible and easy to follow. So to be consistent with how all tests will be written, expect your test steps to be done the same way.
+* In the above example, it shows LoginService used and the first step is login, the Login method created is where you could use the LoginServices methods.  Do NOT put the methods injected in from a service directly in the Execute method. Even though you could do this, the idea is to keep the Execute method as clean as possible and easy to follow. So to be consistent with how all tests will be written, expect your test steps to be done the same way.
 
+The typical idea behind working with a workflow is as you, the designer of the test is writing out each step, you would write them in the Execute method first as Psuedo code. So for example:
 
+_My test steps might look like this:_
 
-{% code title="hello.sh" %}
+{% code title="ExampleWorkFlow.cs" %}
 ```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
+public void Execute()
+        {            
+
+            Login();
+            NavigateToEmployeeTimecard();
+            LocateEmployeeTimecard();
+            EnterTimeEntry():
+            ValidateEnterTimeEntry();
+            
+        }
 ```
 {% endcode %}
 
-
+Once I think I have all the steps I need to automate this test, then you add these Test Steps defined as methods. Right clicking on each method in Visual Studio will provide an option of generating the method for each one. They will be created for you, as private void methods and as not implemented. All ready for you to add code. This allows you to work with someone else to plan your tests, and write the code later. This can be compiled without the code and submitted for a PR review and worked on later. Basically, a Test Driven  design pattern for automation. This is one of the key aspects of using this approach to writing tests in this way.
 
