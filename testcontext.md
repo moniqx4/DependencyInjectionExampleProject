@@ -32,7 +32,7 @@ public TestContext SetTestContext(string testName)
  Each Test Suite, can have a different BaseTest inherited. You would do this, if you wanted to Run a certain group of test with a different configuration. Just create the BaseTest file in the directory of Test with a different name and inherit that Base Test file instead, formatted the same way as example with the new configuration settings.
 {% endhint %}
 
-Below is a list of the Available Settings, and which should be set \( if not set they will default to a base setting otherwise\):
+#### Below is a list of the Available Settings, and which should be set \( if not set they will default to a base setting otherwise\):
 
 <table>
   <thead>

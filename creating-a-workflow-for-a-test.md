@@ -36,7 +36,7 @@ In Visual Studio, Add a New Item, and there will be listed a Test WorkFlow item.
     }
 ```
 
-**Important pieces of a Workflow:**
+#### **Important pieces of a Workflow:**
 
 * The biggest thing is the Execute method. This method is the only thing the Test will read for executing sets. If any values were passing in from test, they would be passed to this method. 
 * Steps are defined as well descriptive methods, they can be named whatever , and should be descriptive to what they do that can easily be understood by a reader. 
@@ -48,7 +48,7 @@ In Visual Studio, Add a New Item, and there will be listed a Test WorkFlow item.
 
 The typical idea behind working with a workflow is as you, the designer of the test, is writing out each step, you would write them in the Execute method first as Pseudo code. For example:
 
-_My test steps might look like this:_
+_**My test steps might look like this:**_
 
 {% code title="ExampleWorkFlow.cs" %}
 ```bash
@@ -75,7 +75,7 @@ The code in each method is whatever it needs to be to get the job done for that 
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**Injecting Automation Services:**
+#### **Injecting Automation Services:**
 
 The other important thing about working with workflows, is understand what an Automation Service is, and how to get them into your workflow.
 
@@ -85,7 +85,7 @@ Automation Services are not necessarily a 1 to 1 relationship for a Page Object,
 
 Now with the definition out the way, how do you get access to these services? In the framework, Dependency Injection has been setup. This means anything with an Interface is managed by a container system and can be injected where needed. This allows code to be decoupled and easier to work with and maintain. When injected, classes/objects do not need to be instantiated before they can be used. The container takes care of that behind the scenes. The container is configured for using constructor injection, so as name implied , these services are Injected into a classes constructor.
 
-**Steps to Inject a Service:** 
+#### **Steps to Inject a Service:** 
 
 * At the top, above the constructor the Automation Service you need is added as private readonly as shown in example below.
 * Once you do that, you may notice a light squiggle in Visual Studio under the line. If you right click on that squiggle line, Visual Studio's context menu will have an option to add parameter to the constructor. 
