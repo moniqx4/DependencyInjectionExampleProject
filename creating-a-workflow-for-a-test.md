@@ -75,7 +75,32 @@ The code in each method is whatever it needs to be to get the job done for that 
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**Injecting Services:**
+**Injecting Automation Services:**
 
-The other important thing about working with workflows, 
+The other important thing about working with workflows, is understand what an Automation Service is, and how to get them into your workflow.
+
+Automation Services are basically similar actions grouped together to provide common used tasks. For example, a LoginService is designed for logging in to anywhere in the application you can log in. Do not get them confused with a Page Object. Automation Services are NOT Page Objects. Automation Services use Page Objects and even other Automation Services to complete their tasks. 
+
+Automation Services are not necessarily a 1 to 1 relationship for a Page Object, even if they may appear to that way. See the section on Creating Automation Services to get a better understanding.
+
+Now with the definition out the way, how do you get access to these services? In the framework, Dependency Injection has been setup. This means anything with an Interface is managed by a container system and can be injected where needed. This allows code to be decoupled and easier to work with and maintain. When injected, classes/objects do not need to be instantiated before they can be used. The container takes care of that behind the scenes. The container is configured for using constructor injection, so as name implied , these services are Injected into a classes constructor.
+
+Steps to Inject a Service: 
+
+* At the top, above the constructor the Automation Service you need is added as private readonly as shown in example below.
+* Once you do that, you may notice a light squiggle in Visual Studio under the line. If you right click on that squiggle line, Visual Studio's context menu will have an option to add parameter to the constructor. 
+* Select this option and Visual Studio will automatically add the rest of code to complete the Injection. That is it, you have injected your service and now it can be used throughout your Workflow using the \_nameService that you have given it, as displayed in example. The intellisense displaying what methods are available.
+
+{% hint style="info" %}
+If you Inject a service and then notice the intellisense does not provide a method you need, first be sure you have injected the proper service you need. Second, you may have to add the functionality to the service that is missing. Read the section on Creating and Modifying Automation Services to learn how to do that.
+{% endhint %}
+
+```bash
+ private readonly ILoginService _loginService;
+
+ public ExampleTestWorkflow(ILoginService loginService)
+ {
+     _loginService = loginService;
+ }
+```
 
