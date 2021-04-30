@@ -1,4 +1,5 @@
-﻿using DataModelLibrary.Enums;
+﻿using DataModelLibrary;
+using DataModelLibrary.Enums;
 using TestRunnerLibrary;
 
 
@@ -20,14 +21,13 @@ namespace NUnitTestProject
 
             testContext.BrowserType = BrowserType.Chrome;
             testContext.TestName = testName;
-
-
-            //TestContext testContext = new TestContext
-            //{
-            //    testContextBuilder.AddBrowser(BrowserType.Chrome);
-            //    testContextBuilder.AddTestName(testName);
-            //};
-
+            testContext.Team = Teams.TCT;
+            testContext.RunType = RunType.Local;
+            testContext.StartUrl = "";
+            testContext.Active = true;
+            testContext.ConfigName = "Default Config";
+            testContext.Environment = Environment.TIN;
+            testContext.TestCategoryName = "";         
 
 
             return testContext;
