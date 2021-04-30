@@ -85,7 +85,7 @@ Automation Services are not necessarily a 1 to 1 relationship for a Page Object,
 
 Now with the definition out the way, how do you get access to these services? In the framework, Dependency Injection has been setup. This means anything with an Interface is managed by a container system and can be injected where needed. This allows code to be decoupled and easier to work with and maintain. When injected, classes/objects do not need to be instantiated before they can be used. The container takes care of that behind the scenes. The container is configured for using constructor injection, so as name implied , these services are Injected into a classes constructor.
 
-Steps to Inject a Service: 
+**Steps to Inject a Service:** 
 
 * At the top, above the constructor the Automation Service you need is added as private readonly as shown in example below.
 * Once you do that, you may notice a light squiggle in Visual Studio under the line. If you right click on that squiggle line, Visual Studio's context menu will have an option to add parameter to the constructor. 
