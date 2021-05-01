@@ -34,7 +34,7 @@ public class NameOfYourTestTests
         }
 ```
 
-Import pieces to take note of this template: 
+**Import pieces to take note of in this template:** 
 
 * The Test name is appended with the word Test, ValidateSomeFunctionalityTest . This is done to easily see the difference between the Test and the WorkFlow it uses. 
 * Notice the name of the Workflow is appended with the word Workflow, ValidateSomeFunctionWorkflow. This done to make it clear this is a Workflow for a Test. 
@@ -71,7 +71,7 @@ This Template below is a little bit different, demonstrating a Test Driven Test 
 ```
 {% endcode %}
 
-Import pieces to take note for this template: 
+**Import pieces to take note for this template:** 
 
 * Each set of data that will be passed to test a new TestCaseData. In this example, the TestName is first, then each piece of actual testdata is separated by a comma. 
 * The NUnit attribute \[Test, TestCaseSource\(nameof\(AddCases\)\)\], where AddCases is passed. Can just juse the method name of AddCases, but could be named whatever, as long as its the same in both places. A user might want a different name if they have different sets of data setup. 
