@@ -33,9 +33,9 @@ namespace SeleniumWebDriver.Drivers
                 chromeOptions.AddArgument("--headless");
             }
 
-            if (config.IsMobile)
+            if (config.IsMobileEnabled)
             {
-                chromeOptions.EnableMobileEmulation(config.MobileDevice.ToString());
+                chromeOptions.EnableMobileEmulation(config.MobileDevices.ToString());
             }
 
             //chromeOptions.AddLocalStatePreference("local", preferenceValue);  setup for local from config
@@ -60,9 +60,9 @@ namespace SeleniumWebDriver.Drivers
                RunType = configuration.RunType,
                Headless = configuration.Headless,
                ConfigName = configuration.ConfigName,
-               IsMobile = configuration.IsMobile,
+               IsMobileEnabled = configuration.IsMobileEnabled,
                TestName = configuration.TestName,
-               MobileDevice = configuration.MobileDevice
+               MobileDevices = configuration.MobileDevices
              };
 
 

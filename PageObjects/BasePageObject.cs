@@ -22,8 +22,11 @@ namespace PageObjects
             var locatorModel = new LocatorModel()
             {
                 ElementType = elementType,
-                LocatorType = locatorType,
-                Locator = locator                
+                BaseLocator = {
+                    Locator = locator,
+                    LocatorType = locatorType
+                }
+                             
             };
 
             return locatorModel;
@@ -44,7 +47,7 @@ namespace PageObjects
         public IWebPage HandleTextBox(LocatorModel locator, string text)
         {
 
-            var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
+            var locatorModel = SetLocator(locator.ElementType, locator.BaseLocator.LocatorType, locator.BaseLocator.Locator);
             return _webPage.SetText(locatorModel, text);
 
         }
@@ -61,7 +64,7 @@ namespace PageObjects
         public string HandleGetTextElement(LocatorModel locator)
         {
 
-            var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
+            var locatorModel = SetLocator(locator.ElementType, locator.BaseLocator.LocatorType, locator.BaseLocator.Locator);
             return _webPage.GetElementText(locatorModel);
 
         }
@@ -75,11 +78,8 @@ namespace PageObjects
         }
 
         public IWebPage HandleClickElement(LocatorModel locator)
-        {
-
-            var locatorModel = SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
-            return _webPage.ClickElement(locatorModel);
-
+        {          
+            return _webPage.ClickElement(locator);
         }
 
         public IWebPage ClickElement(BaseLocatorModel locator)
@@ -91,9 +91,8 @@ namespace PageObjects
         }
 
         public IWebPage HandleCheckbox(LocatorModel locator, bool isChecked)
-        {
-            var LocatorModel =  SetLocator(locator.ElementType, locator.LocatorType, locator.Locator);
-            return _webPage.CheckCheckbox(LocatorModel, isChecked);
+        {            
+            return _webPage.CheckCheckbox(locator, isChecked);
         }
 
         public IWebPage ClickCheckbox(BaseLocatorModel locator, bool isChecked)

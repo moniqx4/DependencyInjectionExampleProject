@@ -6,13 +6,8 @@ using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
-    public class PunchComponent : IPunchComp
+    public class PunchComponent : BasePageObject, IPunchComp
     {
-        private readonly IWebPage _webPage;
-        public PunchComponent(IWebPage webPage)
-        {
-            _webPage = webPage;
-        }
 
         public IPunchComp ClickPunchButton(PunchMethod punchMethod, PunchType punchType)
         {
@@ -37,70 +32,49 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public IPunchComp ClickManualPunchTypeOption()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = PunchElements.ManualPunchTypeOption,
-                ElementType = ElementType.Button
-            };
+           
+            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchTypeOption);
 
-            _webPage.ClickElement(locatorModel);           
+            HandleClickElement(locator);
+              
 
             return this;
         }
 
         public IPunchComp ClickManualPunchNoteOption()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = PunchElements.ManualPunchNoteOption,
-                ElementType = ElementType.Button
-            };
+            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchNoteOption);
 
-            _webPage.ClickElement(locatorModel);
+            HandleClickElement(locator);
 
             return this;
         }
 
         public IPunchComp ClickManualPunchCostCenterOption()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = PunchElements.ManualPunchCostCenterOption,
-                ElementType = ElementType.Option
-            };
+            var locator = SetLocator(ElementType.Option, LocatorType.DataAutomationId, PunchElements.ManualPunchCostCenterOption);
 
-            _webPage.ClickElement(locatorModel);          
+            HandleClickElement(locator);
 
             return this;
         }
 
         public IPunchComp ClickManualPunchSubmitButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = PunchElements.ManualPunchSubmitButton,
-                ElementType = ElementType.Button
-            };
 
-            _webPage.ClickElement(locatorModel);
+            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+
+            HandleClickElement(locator);
 
             return this;
         }
 
         public IPunchComp SetManualPunchCostCenterSearchText(string text)
-        {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = PunchElements.CostCenterSearchTextBox,
-                ElementType = ElementType.TextBox
-            };
+        {            
 
-            _webPage.SetText(locatorModel, text);
+            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+
+            SetTextBox(locator, text);
 
             return this;
         }  

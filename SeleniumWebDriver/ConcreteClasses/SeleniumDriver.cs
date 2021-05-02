@@ -17,7 +17,7 @@ namespace SeleniumWebDriver
 
         public SeleniumDriver(SeleniumConfiguration config)
         {
-            _browser = DriverFactory.Build(config);
+            _browser = Driver.Build(config);
         }
 
         public static WebDriverWait BrowserWait

@@ -1,4 +1,5 @@
 ﻿using DataModelLibrary.Enums;
+using System.Collections.Generic;
 
 namespace DataModelLibrary
 {
@@ -12,11 +13,9 @@ namespace DataModelLibrary
 
         ///public string AppVersion { get; set; } probably always use the latest, but if we end up using browserstack, could select earlier versions
 
-        public bool IsMobile { get; set; }
+        public bool IsMobileEnabled { get; set; }
 
-        public bool IsLocal { get; set; }
-
-        public MobileDevices MobileDevice { get; set; }
+        public List<MobileDevices> MobileDevices { get; set; }
 
         public bool Headless { get; set; }
 

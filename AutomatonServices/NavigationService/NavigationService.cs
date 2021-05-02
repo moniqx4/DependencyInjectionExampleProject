@@ -1,65 +1,42 @@
-﻿using SeleniumWebDriver;
-using DataModelLibrary;
+﻿using DataModelLibrary;
+using AutomationServices.SharedServices.BrowserActions;
+using AutomationServices.SharedServices.ElementActions;
 
 namespace PageObjects.SharedServices
 {
     public class NavigationService :  INavigationService
     {
-        private readonly IWebPage _webPage;
-        private readonly IBrowser _browser;
-        public NavigationService(IWebPage webPage, IBrowser browser)
-        {
-            _webPage = webPage;
+        
+        private readonly IBrowserActions _browser;
+        private readonly IElementActions _element;
+
+        public NavigationService(IBrowserActions browser, IElementActions element)
+        {           
             _browser = browser;
+            _element = element;
         }
-   
+
 
         public void NavigateViaSideMenu(string menuOption)
         {
-            var toggleMenu = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = "hamburgermenutoggle",
-                ElementType = ElementType.Link
-            };
-
-            var menuItem = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = menuOption,
-                ElementType = ElementType.Option
-            };
-
-            _webPage.ClickElement(toggleMenu);
-            _webPage.ClickElement(menuItem);
+           
+            _element.ClickElement(LocatorType.DataAutomationId, "hamburgermenutoggle");
+            _element.ClickElement(LocatorType.DataAutomationId, menuOption);           
         }
 
         public void NavigateViaUrl(string baseUrl, string path)
         {            
-            _browser.NavigateTo(baseUrl + path);
+            _browser.NavigateToPageUrl(baseUrl + path);
         }
 
         public void NavigateViaWTTopMenu(string topMenuLocator, string menuOption = null)
         {
-            var topMenu = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = topMenuLocator,
-                ElementType = ElementType.Link
-            };
-
-            _webPage.ClickElement(topMenu);
+            
+            _element.ClickElement(LocatorType.DataAutomationId, topMenuLocator);           
 
             if (menuOption != null)
             {
-                var menuItem = new LocatorModel()
-                {
-                    LocatorType = LocatorType.DataAutomationId,
-                    Locator = menuOption,
-                    ElementType = ElementType.Option
-                };
-
-                _webPage.ClickElement(menuItem);
+                _element.ClickElement(LocatorType.DataAutomationId, menuOption);
             }
            
         }
@@ -67,25 +44,25 @@ namespace PageObjects.SharedServices
         public void OpenToWebKioskAdminLoginPage(string baseUrl)
         {
             var adminLoginPath = "";
-            _browser.NavigateTo(baseUrl + adminLoginPath);
+            _browser.NavigateToPageUrl(baseUrl + adminLoginPath);
         }
 
         public void OpenToWebKioskLoginPage(string baseUrl)
         {            
             var webKioskLoginPath = "";
-            _browser.NavigateTo(baseUrl + webKioskLoginPath);
+            _browser.NavigateToPageUrl(baseUrl + webKioskLoginPath);
         }
 
         public void OpenToWTEmployeeDashboard(string baseUrl)
         {
             var eedpath = "";
-            _browser.NavigateTo(baseUrl + eedpath);
+            _browser.NavigateToPageUrl(baseUrl + eedpath);
         }
 
         public void OpenToWTSupervisorDashboard(string baseUrl)
         {
             var sdbpath = "";
-            _browser.NavigateTo(baseUrl + sdbpath);
+            _browser.NavigateToPageUrl(baseUrl + sdbpath);
         }
     }
 }

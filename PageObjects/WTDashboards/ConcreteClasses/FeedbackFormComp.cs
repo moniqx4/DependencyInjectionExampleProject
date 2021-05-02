@@ -1,52 +1,31 @@
 ﻿using DataModelLibrary;
-using SeleniumWebDriver;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
-    public class FeedbackFormComp : IFeedbackFormComp
-    {
-        private readonly IWebPage _webPage;
-        public FeedbackFormComp(IWebPage webPage)
-        {
-            _webPage = webPage;
-        }
+    public class FeedbackFormComp : BasePageObject, IFeedbackFormComp
+    {        
 
         public void ClickSubmitButton()
-        {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.CSS,
-                Locator = "#feedback-submit",
-                ElementType = ElementType.Button
-            };
+        {           
+            var locator = SetLocator(ElementType.Button, LocatorType.CSS, "#feedback-submit");
 
-            _webPage.ClickElement(locatorModel);
+            HandleClickElement(locator);
         }
 
         public IFeedbackFormComp SetFeedbackTextBox(string feedbackText)
-        {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = "topic-textfield-input",
-                ElementType = ElementType.TextBox
-            };
+        {           
+            var locator = SetLocator(LocatorType.DataAutomationId, "topic-textfield-input");
 
-            _webPage.SetText(locatorModel, feedbackText);
+            SetTextBox(locator, feedbackText);
 
             return this;
         }
 
         public IFeedbackFormComp SetTopicTextBox(string topicText)
         {
-            var locatorModel = new LocatorModel()
-            {
-                LocatorType = LocatorType.DataAutomationId,
-                Locator = "feedback-textarea-textarea",
-                ElementType = ElementType.TextBox
-            };
+            var locator = SetLocator(LocatorType.DataAutomationId, "feedback-textarea-textarea");
 
-            _webPage.SetText(locatorModel, topicText);
+            SetTextBox(locator, topicText);
 
             return this;
         }

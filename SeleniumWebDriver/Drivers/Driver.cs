@@ -12,7 +12,7 @@ using SeleniumWebDriver.Drivers;
 namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 {
 
-    public class DriverFactory
+    public static class Driver
     {
         public static IWebDriver Build(SeleniumConfiguration configuration)
         {

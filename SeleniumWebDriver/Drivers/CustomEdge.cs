@@ -48,9 +48,9 @@ namespace SeleniumWebDriver.Drivers
                 RunType = configuration.RunType,
                 Headless = configuration.Headless,
                 ConfigName = configuration.ConfigName,
-                IsMobile = configuration.IsMobile,
+                IsMobileEnabled = configuration.IsMobileEnabled,
                 TestName = configuration.TestName,
-                MobileDevice = MobileDevices.None
+                MobileDevices = { MobileDevices.None }
             };
 
 
