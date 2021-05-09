@@ -10,6 +10,7 @@
         Name,
         Class,
         PartialLinkText,
-        DataAutomationId
+        DataAutomationId,
+        InputType
     }
 }

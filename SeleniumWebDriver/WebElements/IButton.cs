@@ -13,13 +13,13 @@ namespace SeleniumWebDriver
 
         void ClickButton(LocatorModel locatorModel);
 
-        bool IsButtonEnabled(BaseLocatorModel locator, int index = 0);
+        bool IsButtonEnabled(BaseLocatorModel locator, int index = 0, int waitTimeInSecs = 0);
 
-        string GetButtonText(BaseLocatorModel locator, int index = 0);
+        string GetButtonText(BaseLocatorModel locator, int index = 0, int waitTimeInSecs = 0);
 
-        bool IsButtonPresent(BaseLocatorModel locator, int index = 0);
+        bool IsButtonPresent(BaseLocatorModel locator, int index = 0, int waitTimeInSecs = 0);
 
-        void ClickButton(BaseLocatorModel locator);
+        void ClickButton(BaseLocatorModel locator, int waitTimeInSecs = 0);
 
     }
 }
