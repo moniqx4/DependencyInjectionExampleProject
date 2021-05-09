@@ -5,7 +5,7 @@ using TestRunnerLibrary;
 
 namespace NUnitTestProject
 {
-    public class BaseTest
+    public abstract class BaseTest
     {
         
         public BaseTest()

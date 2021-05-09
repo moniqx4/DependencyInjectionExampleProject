@@ -1,22 +1,21 @@
 ﻿using AutomationServices.EmployeeTimecardService;
 using AutomationServices.PunchService.enums;
 using DataModelLibrary;
+using DataModelLibrary.WebTimeModels;
 using PageObjects.WTDashboards;
-using DataModelLibrary;
-using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
 
 namespace AutomationServices.PunchService
 {
-    public class PunchService : IPunchService
-    {
-        private readonly IPunchComp _punchComp;
+    public class PunchService : IPunchService    {
+        
         private readonly IEmployeeTImeCardService _employeeTimecard;
-        public PunchService(IPunchComp punchComp, IEmployeeTImeCardService employeeTimecard)
-        {
-            _punchComp = punchComp;
+        private readonly IDashboardCards _dashboard;
+        public PunchService(IEmployeeTImeCardService employeeTimecard, IDashboardCards dashboard)
+        {            
             _employeeTimecard = employeeTimecard;
+            _dashboard = dashboard;
         }
 
         public void CreatePunch(PunchModel punch)
@@ -36,14 +35,14 @@ namespace AutomationServices.PunchService
             _SetPunchType(punchType, PunchMethod.Regular);
 
             if (!string.IsNullOrEmpty(notes))
-            {
-                _punchComp.SetNotesText(notes, PunchMethod.Regular);
+            {               
+                _dashboard.SetNotesText(notes, PunchMethod.Regular);
             }
            
 
             if (costCenters != null)           
             {
-                _punchComp.SetCostCenters(costCenters, PunchMethod.Regular);
+                _dashboard.SetCostCenters(costCenters, PunchMethod.Regular);
             }
         }
 
@@ -67,13 +66,13 @@ namespace AutomationServices.PunchService
             if (string.IsNullOrEmpty(punch.Notes)) { }
             else
             {
-                _punchComp.SetNotesText(punch.Notes, PunchMethod.Manual);
+                _dashboard.SetNotesText(punch.Notes, PunchMethod.Manual);
             }
 
             if (punch.CostCenters == null) { }
             else
             {
-                _punchComp.SetCostCenters(punch.CostCenters, PunchMethod.Manual);
+                _dashboard.SetCostCenters(punch.CostCenters, PunchMethod.Manual);
             }
 
         }
@@ -96,7 +95,7 @@ namespace AutomationServices.PunchService
 
         public void CreateRegularPunch(PunchModel punch)
         {
-            _punchComp.ClickPunchButton(punch.PunchMethod, punch.PunchType);
+            _dashboard.ClickPunchButton(punch.PunchMethod, punch.PunchType);
         }
 
         private void _SetPunchType(PunchType punchType, PunchMethod punchMethod)

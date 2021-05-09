@@ -1,6 +1,6 @@
 ﻿
 using AutomationServices.PunchService.enums;
-using PageObjects.WTDashboards.Models;
+using DataModelLibrary.WebTimeModels;
 using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
 

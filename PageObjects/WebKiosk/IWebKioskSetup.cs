@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PageObjects.WTDashboards.Models
+namespace PageObjects.WebKiosk
 {
-    public class PunchActvityModel
+    public interface IWebKioskSetup
     {
     }
 }

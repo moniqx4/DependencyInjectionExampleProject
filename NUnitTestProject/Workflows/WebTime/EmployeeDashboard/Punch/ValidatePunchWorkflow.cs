@@ -4,6 +4,7 @@ using AutomationServices.PunchService;
 using AutomationServices.PunchValidationService;
 using AutomationServices.WaitService;
 using DataModelLibrary;
+using DataModelLibrary.WebTimeModels;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 

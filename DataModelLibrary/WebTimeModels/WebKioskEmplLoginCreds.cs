@@ -1,4 +1,4 @@
-﻿namespace DataModelLibrary
+﻿namespace DataModelLibrary.WebTimeModels
 {
     public class WebKioskEmplLoginCreds
     {

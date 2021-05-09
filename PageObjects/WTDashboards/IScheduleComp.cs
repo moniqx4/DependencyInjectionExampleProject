@@ -1,5 +1,5 @@
 ﻿
-using PageObjects.WTDashboards.Models;
+using DataModelLibrary.WebTimeModels;
 using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards

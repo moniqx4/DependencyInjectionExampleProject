@@ -133,7 +133,7 @@ namespace SeleniumWebDriver
 
             return this;
         }
-
+       
         public void ClickAlertAcceptButton()
         {
             _browser.SwitchTo().Alert().Accept();

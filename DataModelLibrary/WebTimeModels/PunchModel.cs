@@ -1,8 +1,7 @@
-﻿using DataModelLibrary;
-using PageObjects.WTDashboards.Models.Enums;
+﻿using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
 
-namespace PageObjects.WTDashboards.Models
+namespace DataModelLibrary.WebTimeModels
 {
     public class PunchModel
     {

@@ -3,7 +3,7 @@ using SeleniumWebDriver;
 
 namespace PageObjects
 {
-    public class BasePageObject
+    public abstract class BasePageObject
     {
         private readonly IWebPage _webPage;
 

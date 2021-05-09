@@ -1,4 +1,4 @@
-﻿using PageObjects.WTDashboards.Models;
+﻿using DataModelLibrary.WebTimeModels;
 
 namespace AutomationServices.PunchValidationService
 {

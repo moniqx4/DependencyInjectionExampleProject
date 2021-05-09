@@ -1,4 +1,5 @@
-﻿using PageObjects.WTDashboards.Models;
+﻿using DataModelLibrary.WebTimeModels;
+using PageObjects.WTDashboards.Models;
 
 namespace AutomationServices.DashboardServices.ActivityService
 {

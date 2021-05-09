@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PageObjects.WTDashboards.Models
+﻿namespace DataModelLibrary.WebTimeModels
 {
     public class WebKioskInstanceModel
     {

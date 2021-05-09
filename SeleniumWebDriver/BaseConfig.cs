@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
-using System.Configuration;
-using NLog;
 using DataModelLibrary.Enums;
 
 namespace SeleniumWebDriver

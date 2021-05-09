@@ -23,7 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationServices", "Autom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModelLibrary", "DataModelLibrary\DataModelLibrary.csproj", "{CC11A281-CBFF-4193-A03E-B2B6989E7B06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunnerLibrary", "TestRunner\TestRunnerLibrary.csproj", "{B91E9635-A721-4120-943C-DBF0D40022B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestRunnerLibrary", "TestRunner\TestRunnerLibrary.csproj", "{B91E9635-A721-4120-943C-DBF0D40022B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppiumMobileDriver", "AppiumMobileDriver\AppiumMobileDriver.csproj", "{F1F9EAF1-90C8-4066-8650-4EC350EF3EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePageObjectLibrary", "MobilePageObjectLibrary\MobilePageObjectLibrary.csproj", "{9AAB4FB9-7FD0-47A1-85E8-B5B6B414074C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectSDKLibrary", "TestProjectSDKLibrary\TestProjectSDKLibrary.csproj", "{35D8688C-CDA5-4614-B8D0-B151055F5E29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{B91E9635-A721-4120-943C-DBF0D40022B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91E9635-A721-4120-943C-DBF0D40022B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B91E9635-A721-4120-943C-DBF0D40022B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F9EAF1-90C8-4066-8650-4EC350EF3EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F9EAF1-90C8-4066-8650-4EC350EF3EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F9EAF1-90C8-4066-8650-4EC350EF3EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F9EAF1-90C8-4066-8650-4EC350EF3EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AAB4FB9-7FD0-47A1-85E8-B5B6B414074C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AAB4FB9-7FD0-47A1-85E8-B5B6B414074C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AAB4FB9-7FD0-47A1-85E8-B5B6B414074C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AAB4FB9-7FD0-47A1-85E8-B5B6B414074C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D8688C-CDA5-4614-B8D0-B151055F5E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D8688C-CDA5-4614-B8D0-B151055F5E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D8688C-CDA5-4614-B8D0-B151055F5E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D8688C-CDA5-4614-B8D0-B151055F5E29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

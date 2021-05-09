@@ -1,4 +1,4 @@
-﻿namespace PageObjects.WTDashboards.Models
+﻿namespace DataModelLibrary.WebTimeModels
 {
     public class TimeEntryModel
     {

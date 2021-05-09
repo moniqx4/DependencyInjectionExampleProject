@@ -1,6 +1,7 @@
 ﻿using AutomationServices.LoginService.models;
 using AutomationServices.PunchService.enums;
 using DataModelLibrary;
+using DataModelLibrary.WebTimeModels;
 using PageObjects.WTDashboards.Models;
 
 namespace AutomationServices.LoginService

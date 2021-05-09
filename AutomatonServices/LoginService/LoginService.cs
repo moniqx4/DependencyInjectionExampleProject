@@ -2,6 +2,7 @@
 using AutomationServices.PunchService.enums;
 using DataModelLibrary;
 using DataModelLibrary.Constants;
+using DataModelLibrary.WebTimeModels;
 using PageObjects.Login;
 using PageObjects.SharedServices;
 using PageObjects.WTDashboards.Models;

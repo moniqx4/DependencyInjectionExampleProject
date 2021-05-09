@@ -1,9 +1,6 @@
 ﻿namespace PageObjects.WTDashboards
 {
-    public interface IEmployeeDashboard
-    {
-        void ClickFeedbackButton();
-
-        void ClickWhatsNewButton();
+    public interface IEmployeeDashboard : IEmployeeDBMenu, IMyTimeSheet, IEmployeeDashboardPage, IFeedbackFormComp, IMyAdjustmentsPage
+    {       
     }
 }

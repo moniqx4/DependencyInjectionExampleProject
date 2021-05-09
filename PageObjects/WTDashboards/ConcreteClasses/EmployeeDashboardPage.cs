@@ -2,7 +2,7 @@
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
-    public class EmployeeDashboardPage : BasePageObject, IEmployeeDashboard
+    public class EmployeeDashboardPage : BasePageObject, IEmployeeDashboardPage
     {       
     
      

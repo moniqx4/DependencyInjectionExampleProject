@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.LoginService.models
+﻿namespace DataModelLibrary.WebTimeModels
 {
     public class WebKioskAdminLogin
     {
