@@ -16,8 +16,8 @@ namespace NUnitTestProject.Tests.TCT
         private static IEnumerable<TestCaseData> AddCases()
         {
             yield return new TestCaseData("ValidateAddTimeCorrectionTests", TimeCorrectionType.Add, PunchType.ClockIn, "04/15/21", "8:00 AM", "Automated Time Correction Add Test");
-            yield return new TestCaseData("ValidateEditTimeCorrectionTests", TimeCorrectionType.Edit, PunchType.ClockIn, "04/15/21", "8:00 AM", "Automated Time Correction Edit Test");
-            yield return new TestCaseData("ValidateRemoveTimeCorrectionTests", TimeCorrectionType.Remove, PunchType.ClockIn, "04/15/21", "8:00 AM", "Automated Time Correction Remove Test");
+            yield return new TestCaseData("ValidateEditTimeCorrectionTests", TimeCorrectionType.Edit, PunchType.ClockIn, "04/15/21", "10:00 AM", "Automated Time Correction Edit Test");
+            yield return new TestCaseData("ValidateRemoveTimeCorrectionTests", TimeCorrectionType.Remove, PunchType.ClockIn, "04/15/21", "10:00 AM", "Automated Time Correction Remove Test");
         }
 
         [Test, TestCaseSource(nameof(AddCases))]
