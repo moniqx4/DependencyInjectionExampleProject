@@ -1,5 +1,6 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
+using SeleniumWebDriver.ConcreteClasses;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
@@ -15,8 +16,7 @@ namespace SeleniumWebDriver
         /// Maximize the browser
         /// </summary>
         public void BrowserMaximize()
-        {
-           
+        {           
             _browser.Manage().Window.Maximize();
         }
 
@@ -31,9 +31,11 @@ namespace SeleniumWebDriver
         /// <summary>
         /// Refreshes browser
         /// </summary>
-        public void BrowserRefresh()
+        public INavigation BrowserRefresh()
         {
             _browser.Navigate().Refresh();
+
+            return (INavigation)this;
         }
 
         /// <summary>
@@ -57,37 +59,45 @@ namespace SeleniumWebDriver
         /// <summary>
         /// Moves backward in the browser
         /// </summary>
-        public void MoveBackward()
+        public INavigation MoveBackward()
         {
-            _browser.Navigate().Back();
+           _browser.Navigate().Back();
+
+            return (INavigation)this;
         }
 
         /// <summary>
         /// Moves forward in the browser
         /// </summary>
-        public void MoveForward()
+        public INavigation MoveForward()
         {
             _browser.Navigate().Forward();
+
+            return (INavigation)this;
         }
 
-        public void NavigateTo(string url)
+        public INavigation NavigateTo(string url)
         {
             _browser.Navigate().GoToUrl(url);
+
+            return (INavigation)this;
         }
 
         /// <summary>
         /// Switches webdriver to specified iframe component
         /// </summary>
         /// <param name="frameElement">IFrame WebElement</param>
-        public void SwitchToFrame(IWebElement frameElement)
+        public ITargetLocator SwitchToFrame(IWebElement frameElement)
         {
             _browser.SwitchTo().Frame(frameElement);
+
+            return (ITargetLocator)this;
         }
 
         /// <summary>
         /// Switches to the parent window 
         /// </summary>
-        public void SwitchToParent()
+        public ITargetLocator SwitchToParent()
         {
             var windowids = _browser.WindowHandles;
 
@@ -97,13 +107,15 @@ namespace SeleniumWebDriver
                 _browser.Close();
             }
             _browser.SwitchTo().Window(windowids[0]);
+
+            return (ITargetLocator)this;
         }
 
         /// <summary>
         /// Switches to specified window
         /// </summary>
         /// <param name="index">Window index</param>
-        public void SwitchToWindow(int index = 0)
+        public ITargetLocator SwitchToWindow(int index = 0)
         {
             ReadOnlyCollection<string> windows = _browser.WindowHandles;
 
@@ -113,6 +125,8 @@ namespace SeleniumWebDriver
             }
 
             _browser.SwitchTo().Window(windows[index]);
+
+            return (ITargetLocator)this;
         }
 
         public IBrowser SwitchToAlert()
@@ -133,6 +147,7 @@ namespace SeleniumWebDriver
 
             return this;
         }
+
        
         public void ClickAlertAcceptButton()
         {
@@ -149,5 +164,10 @@ namespace SeleniumWebDriver
             _browser.Close();
             _browser.Dispose();
         }
+
+        //private ITargetLocator SwitchTo()
+        //{
+        //    //return (ITargetLocator)new DriverEventListener(config).Navigate(this);
+        //}
     }
 }

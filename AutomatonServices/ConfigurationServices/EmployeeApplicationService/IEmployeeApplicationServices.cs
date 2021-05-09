@@ -1,9 +1,6 @@
-﻿namespace AutomationServices.EmployeeApplicationService
+﻿namespace AutomationServices.ConfigurationServices.EmployeeApplicationService
 {
-    public interface IEmployeeApplicationServices: IEmployeePreferences, IAttestationPrompts, IEmployeeDashboard, IPayTypes, ICostCenters
-    {
-        void ClickCancel();
-
-        void ClickApply();
+    public interface IEmployeeApplicationServices: IEASEmployeePreferences, IEASAttestationPrompts, IEASEmployeeDashboard, IEASPayTypes, IEASCostCenters, IEmployeeApplicationService
+    {      
     }
 }

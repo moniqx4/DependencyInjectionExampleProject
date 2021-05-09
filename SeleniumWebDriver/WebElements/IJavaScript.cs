@@ -9,13 +9,13 @@ namespace SeleniumWebDriver
 
         string GetPopUpText();
 
-        void ClickOkOnPopup();
+        IJavaScriptExecutor ClickOkOnPopup();
 
-        void ClickCancelOnPopup();       
+        IJavaScriptExecutor ClickCancelOnPopup();
 
-        void TypeTextInPopUp(string inputText);
+        IJavaScriptExecutor TypeTextInPopUp(string inputText);
 
-        void ScrollToElement(LocatorModel locatorModel);
+        IJavaScriptExecutor ScrollToElement(LocatorModel locatorModel);
 
         string GetTextFromPsuedoElement(string locator, string keyword);
 

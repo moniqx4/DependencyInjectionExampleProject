@@ -2,7 +2,9 @@
 using DependencyInjectionExampleProject.SeleniumWebDriver.Drivers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Events;
 using System;
+
 
 namespace SeleniumWebDriver
 {

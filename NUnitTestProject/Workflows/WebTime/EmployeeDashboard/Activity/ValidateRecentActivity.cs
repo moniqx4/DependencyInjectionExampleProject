@@ -1,4 +1,4 @@
-﻿using AutomationServices.EmployeeApplicationService;
+﻿using AutomationServices.ConfigurationServices.EmployeeApplicationService;
 using AutomationServices.LoginService;
 using System;
 

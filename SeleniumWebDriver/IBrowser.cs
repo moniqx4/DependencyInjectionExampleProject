@@ -14,23 +14,23 @@ namespace SeleniumWebDriver
 
         IBrowser SetTextInAlert(string text);
 
-        void NavigateTo(string url);
+        INavigation NavigateTo(string url);
 
-        void MoveForward();
+        INavigation MoveForward();
 
-        void MoveBackward();
+        INavigation MoveBackward();
 
         void BrowserMaximize();
 
         void BrowserMinimize();
 
-        void BrowserRefresh();
+        INavigation BrowserRefresh();
 
-        void SwitchToWindow(int index = 0);
+        ITargetLocator SwitchToWindow(int index = 0);
 
-        void SwitchToParent();
+        ITargetLocator SwitchToParent();
 
-        void SwitchToFrame(IWebElement frameElement);
+        ITargetLocator SwitchToFrame(IWebElement frameElement);
 
         void ClickAlertAcceptButton();
 

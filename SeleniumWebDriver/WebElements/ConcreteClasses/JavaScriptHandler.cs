@@ -19,23 +19,27 @@ namespace SeleniumWebDriver.WebElements
         /// <summary>
         /// Clicks cancel button on the pop up in the browser
         /// </summary>
-        public void ClickCancelOnPopup()
+        public IJavaScriptExecutor ClickCancelOnPopup()
         {            
             if (!IsPopUpPresent())
                 throw new Exception("Warning : No Pop Up Present");
             else
                 _alert.DismissAlert();
+
+            return (IJavaScriptExecutor)this;
         }
 
         /// <summary>
         /// Clicks Ok button on the pop up in the browser
         /// </summary>
-        public void ClickOkOnPopup()
+        public IJavaScriptExecutor ClickOkOnPopup()
         {
             if (!IsPopUpPresent())
                 throw new Exception("Warning : No Pop Up Present");
             else
                 _alert.ClickAlertAcceptButton();
+
+            return (IJavaScriptExecutor)this;
         }
 
         /// <summary>
@@ -71,24 +75,28 @@ namespace SeleniumWebDriver.WebElements
         /// Scroll to specified WebElement
         /// </summary>
         /// <param name="ele">WebElement to focus</param>
-        public void ScrollToElement(LocatorModel locatorModel)
+        public IJavaScriptExecutor ScrollToElement(LocatorModel locatorModel)
         {            
             var ele = _locatorBuilder.BuildLocator(locatorModel);
 
             ((IJavaScriptExecutor)_browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
+
+            return (IJavaScriptExecutor)this;
         }
 
         /// <summary>
         /// Enters specified text in the pop up in the browser
         /// </summary>
         /// <param name="inputText">Text to be displayed in the pop up </param>
-        public void TypeTextInPopUp(string inputText)
+        public IJavaScriptExecutor TypeTextInPopUp(string inputText)
         {
             
             if (!IsPopUpPresent())
                 throw new Exception( "Warning : No Pop Up Present");
             else
                 _alert.TypeTextInAlert(inputText);
+
+            return (IJavaScriptExecutor)this;
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using SeleniumWebDriver.Drivers;
+using OpenQA.Selenium.Support.Events;
 
 namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 {
@@ -16,23 +17,32 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
     {
         public static IWebDriver Build(SeleniumConfiguration configuration)
         {
+            //var driverEventFiring = new EventFiringWebDriver(IWebDriver driver);
            
             if (configuration.RunType == RunType.Local)
             {
                 switch (configuration.Browser)
                 {
                     case BrowserType.Chrome:
-                        return new CustomChrome().ChromeOptions(configuration);                       
-                       
+                        var driver =  new CustomChrome().ChromeOptions(configuration);
+                        var driverEventFiring = new EventFiringWebDriver(driver);
+                        return driverEventFiring;
+
                     case BrowserType.Firefox:
-                        return new CustomFirefox().FirefoxOptions(configuration);
-                       
+                        var driverFF = new CustomFirefox().FirefoxOptions(configuration);
+                        var driverEventFiringFF = new EventFiringWebDriver(driverFF);
+                        return driverEventFiringFF;
+
                     case BrowserType.Edge:
-                        return new CustomEdge().EdgeOptions(configuration);
-                       
+                        var driverEdge = new CustomEdge().EdgeOptions(configuration);
+                        var driverEventFiringEdge = new EventFiringWebDriver(driverEdge);
+                        return driverEventFiringEdge;
+
                     case BrowserType.InternetExplorer:
-                        return new CustomInternetExplorer().InternetExplorerOptions(configuration);
-                        
+                        var driverIE = new CustomInternetExplorer().InternetExplorerOptions(configuration);
+                        var driverEventFiringIE = new EventFiringWebDriver(driverIE);
+                        return driverEventFiringIE;
+
                     default:
                         throw new ArgumentException($"{configuration.Browser} is not supported locally.");
                 }

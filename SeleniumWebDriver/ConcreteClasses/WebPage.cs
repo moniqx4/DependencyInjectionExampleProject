@@ -1,4 +1,5 @@
 ﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using SeleniumWebDriver.Type;
 using SeleniumWebDriver.WebElements;
 using System;
@@ -59,24 +60,26 @@ namespace SeleniumWebDriver.ConcreteClasses
         //{
         //    _comboBox.IsComboBoxEnabled(locatorModel, index);
         //}
-        public void JSTypeTextInPopUp(string inputtext)
+        public IJavaScriptExecutor JSTypeTextInPopUp(string inputtext)
         {
             _javascript.TypeTextInPopUp(inputtext);
+
+            return (IJavaScriptExecutor)this;
         }
 
-        public void JSScrollToElement(LocatorModel locatorModel)
+        public IJavaScriptExecutor JSScrollToElement(LocatorModel locatorModel)
         {
-            _javascript.ScrollToElement(locatorModel);
+            return _javascript.ScrollToElement(locatorModel);
         }
 
-        public void JSClickOkOnPopup()
+        public IJavaScriptExecutor JSClickOkOnPopup()
         {
-            _javascript.ClickOkOnPopup();
+            return _javascript.ClickOkOnPopup();
         }
 
-        public void JSClickOnCancel()
+        public IJavaScriptExecutor JSClickOnCancel()
         {
-            _javascript.ClickCancelOnPopup();
+            return _javascript.ClickCancelOnPopup();
         }
 
         public string JSGetPopUpText()
@@ -432,7 +435,7 @@ namespace SeleniumWebDriver.ConcreteClasses
             return _checkBox.IsCheckboxChecked(locator, waitTimeInSecs);            
         }
 
-        public void JSExecuteClickElement(string script)
+        public IJavaScriptExecutor JSExecuteClickElement(string script)
         {
             //var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             throw new NotImplementedException();
@@ -444,7 +447,7 @@ namespace SeleniumWebDriver.ConcreteClasses
             throw new NotImplementedException();
         }
 
-        public void JSExecuteSetElementText(string script, string text)
+        public IJavaScriptExecutor JSExecuteSetElementText(string script, string text)
         {
             //var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             throw new NotImplementedException();

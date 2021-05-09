@@ -1,6 +1,6 @@
 ﻿namespace AutomationServices.EmployeeApplicationService
 {
-    public interface IEmployeeDashboard
+    public interface IEASEmployeeDashboard
     {
     }
 }

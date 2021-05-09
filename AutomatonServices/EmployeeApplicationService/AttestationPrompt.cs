@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AutomationServices.ConfigurationServices.EmployeeApplicationService;
+using System;
 
 namespace AutomationServices.EmployeeApplicationService
 {
-    public class AttestationPrompt: IAttestationPrompts
+    public class AttestationPrompt: IEASAttestationPrompts
     {
         public AttestationPrompt()
         {
 
         }
 
-        public IAttestationPrompts AddNewPrompts(string promptName)
+        public IEASAttestationPrompts AddNewPrompts(string promptName)
         {
             throw new NotImplementedException();
         }
 
-        public IAttestationPrompts DeactivePrompts()
+        public IEASAttestationPrompts DeactivePrompts()
         {
             throw new NotImplementedException();
         }
 
-        public IAttestationPrompts EnablePrompt()
+        public IEASAttestationPrompts EnablePrompt()
         {
             throw new NotImplementedException();
         }

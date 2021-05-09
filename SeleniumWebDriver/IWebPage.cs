@@ -1,4 +1,5 @@
 ﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using SeleniumWebDriver.Type;
 
 namespace SeleniumWebDriver
@@ -68,19 +69,19 @@ namespace SeleniumWebDriver
 
         string GetLabelText(LocatorModel locator);
 
-        void JSExecuteClickElement(string script);
+        IJavaScriptExecutor JSExecuteClickElement(string script);
 
         string JSExecuteGetElementText(string script);
 
-        void JSExecuteSetElementText(string script, string text);
+        IJavaScriptExecutor JSExecuteSetElementText(string script, string text);
 
-        void JSTypeTextInPopUp(string inputtext);
+        IJavaScriptExecutor JSTypeTextInPopUp(string inputtext);
 
-        void JSScrollToElement(LocatorModel locatorModel);
+        IJavaScriptExecutor JSScrollToElement(LocatorModel locatorModel);
 
-        void JSClickOkOnPopup();
+        IJavaScriptExecutor JSClickOkOnPopup();
 
-        void JSClickOnCancel();
+        IJavaScriptExecutor JSClickOnCancel();
 
         string JSGetPopUpText();
 
