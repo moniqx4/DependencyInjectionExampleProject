@@ -13,36 +13,44 @@ namespace PageObjects.Shared
             _webPage = webPage;
         }
 
-        public IElement ClickEle(BaseLocatorModel locator)
+        public IElement ClickAnyElement(BaseLocatorModel locator, int waitTimeInSec)
         {
 
-            ClickElement(locator);
+            ClickElement(locator, waitTimeInSec);
 
             return this;           
         }
 
-        public IElement SetTextboxText(BaseLocatorModel locator, string text)
+        public IElement SetTextboxText(BaseLocatorModel locator, string text, int waitTimeInSec = 10)
         {
 
-            SetTextBox(locator, text);
+            SetTextBox(locator, text, waitTimeInSec);
 
             return this;
         }
 
-        public string GetText(BaseLocatorModel locator)
+        public string GetText(BaseLocatorModel locator, int waitTimeInSec = 10)
         {
 
-            return GetTextElement(locator);
+            return GetTextElement(locator, waitTimeInSec);
             
         }
 
-        public IElement ClickCheckboxElement(BaseLocatorModel locator, bool isChecked)
+        public IElement ClickCheckboxElement(BaseLocatorModel locator, bool isChecked, int waitTimeInSec = 10)
         {
-            ClickCheckbox(locator, isChecked);
+            ClickCheckbox(locator, isChecked, waitTimeInSec);
 
             return this;
         }
 
+        public bool ElementExists(BaseLocatorModel locator, int waitTimeInSec = 10)
+        {
+            return _webPage.IsDisplayed(locator, waitTimeInSec);
+        }
 
+        public bool IsChecked(BaseLocatorModel locator, int waitTimeInSec = 10)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

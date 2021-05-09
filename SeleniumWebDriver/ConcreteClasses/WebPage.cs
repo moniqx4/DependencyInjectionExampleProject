@@ -21,6 +21,8 @@ namespace SeleniumWebDriver.ConcreteClasses
         private readonly IRadioButton _radioButton;
         private readonly ICheckBox _checkBox;
 
+        private readonly ILocatorBuilder _locatorBuilder;
+
         public WebPage(ITextBox textBox,
             IButton button,
             ILink link,
@@ -33,7 +35,8 @@ namespace SeleniumWebDriver.ConcreteClasses
             IAlert alert,
             IJavaScript javascript,
             IRadioButton radioButton,
-            ICheckBox checkBox)
+            ICheckBox checkBox,
+            ILocatorBuilder locatorBuilder)
         {
             _textBox = textBox;
             _button = button;
@@ -48,6 +51,8 @@ namespace SeleniumWebDriver.ConcreteClasses
             _javascript = javascript;
             _radioButton = radioButton;
             _checkBox = checkBox;
+            _locatorBuilder = locatorBuilder;
+           
         }
 
         //public void IsComboBoxEnabled(LocatorModel locatorModel, string text, int index)
@@ -187,44 +192,7 @@ namespace SeleniumWebDriver.ConcreteClasses
         public void SwitchToOpenAlert()
         {
             _alert.SwitchToAlert();
-        }
-
-      
-      
-        //public void ClickElement(LocatorModel locatorModel)
-        //{
-        //    switch (locatorModel.ElementType)
-        //    {
-        //        case ElementType.Button:
-        //            _button.ClickButton(locatorModel);
-        //            break;
-
-        //        case ElementType.TextBox:
-        //            _textBox.ClickIntoTextBox(locatorModel);
-        //            break;
-
-        //        case ElementType.Label:
-        //            _label.ClickOnLabel(locatorModel);
-        //            break;
-
-        //        case ElementType.Link:
-        //            _link.ClickLink(locatorModel);
-        //            break;
-
-        //        case ElementType.Radio:
-        //            _radioButton.ClickOnRadioButton(locatorModel);
-        //            break;
-
-        //        case ElementType.Tab:
-        //            _link.ClickLink(locatorModel);
-        //            break;                
-
-        //        default:
-        //            throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
-
-        //    }
-
-        //}
+        }      
 
         public IWebPage ClickElement(LocatorModel locatorModel)
         {
@@ -332,6 +300,11 @@ namespace SeleniumWebDriver.ConcreteClasses
             }
         }
 
+        public bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs)
+        {
+            return _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs).Displayed;            
+        }
+
         public bool IsDisplayed(LocatorModel locatorModel)
         {
             switch (locatorModel.ElementType)
@@ -350,9 +323,11 @@ namespace SeleniumWebDriver.ConcreteClasses
 
                 //case ElementType.Grid:
                 //    break;
+                //case ElementType.Table:
+                //    break;
                 //case ElementType.Dropdown:
                 //    break;
-                //case ElementType.Option:
+                //case ElementType.DropdownOption:
                 //    break;
                 //case ElementType.Alert:
                 //    break;
@@ -422,47 +397,58 @@ namespace SeleniumWebDriver.ConcreteClasses
             }
         }
 
-        public IWebPage ClickEle(BaseLocatorModel locator)
+        public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs)
         {
 
-
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
+            element.Click();
 
             return this;
         }
 
-        public IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled)
+        public IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled, int waitTimeInSecs)
         {
-            throw new NotImplementedException();
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
+            _checkBox.ClickCheckBox(locator, waitTimeInSecs);
+
+            return this;
         }
 
-        public string GetElementText(BaseLocatorModel locator)
+        public string GetElementText(BaseLocatorModel locator, int waitTimeInSecs)
         {
-            throw new NotImplementedException();
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
+            return element.Text;
         }
 
-        public IWebPage SetText(BaseLocatorModel locator, string text)
+        public IWebPage SetText(BaseLocatorModel locator, string text, int waitTimeInSecs)
         {
-            throw new NotImplementedException();
+            _textBox.TypeInTextBox(locator, text);
+
+            return this;
         }
 
-        public bool IsCheckBoxChecked(BaseLocatorModel locator)
-        {
-            throw new NotImplementedException();
+        public bool IsCheckBoxChecked(BaseLocatorModel locator, int waitTimeInSecs)
+        {            
+            return _checkBox.IsCheckboxChecked(locator, waitTimeInSecs);            
         }
 
         public void JSExecuteClickElement(string script)
         {
+            //var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             throw new NotImplementedException();
         }
 
         public string JSExecuteGetElementText(string script)
         {
+            //var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             throw new NotImplementedException();
         }
 
         public void JSExecuteSetElementText(string script, string text)
         {
+            //var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             throw new NotImplementedException();
         }
+      
     }
 }

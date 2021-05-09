@@ -1,6 +1,6 @@
-﻿using PageObjects.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using static AutomationServices.ValidationServices.ValidationService;
 
 namespace AutomationServices.ValidationServices
 {

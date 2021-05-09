@@ -52,11 +52,11 @@ namespace PageObjects
 
         }
 
-        public IWebPage SetTextBox(BaseLocatorModel locator, string text)
+        public IWebPage SetTextBox(BaseLocatorModel locator, string text, int waitTimeInSec = 10)
         {
 
             var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
-            return _webPage.SetText(locatorModel, text);
+            return _webPage.SetText(locatorModel, text, waitTimeInSec);
 
         }
 
@@ -69,11 +69,11 @@ namespace PageObjects
 
         }
 
-        public string GetTextElement(BaseLocatorModel locator)
+        public string GetTextElement(BaseLocatorModel locator, int waitTimeInSec = 10)
         {
 
             var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
-            return _webPage.GetElementText(locatorModel);
+            return _webPage.GetElementText(locatorModel, waitTimeInSec);
 
         }
 
@@ -82,11 +82,11 @@ namespace PageObjects
             return _webPage.ClickElement(locator);
         }
 
-        public IWebPage ClickElement(BaseLocatorModel locator)
+        public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSec = 10)
         {
 
             var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
-            return _webPage.ClickEle(locatorModel);
+            return _webPage.ClickElement(locatorModel, waitTimeInSec);
 
         }
 
@@ -95,11 +95,11 @@ namespace PageObjects
             return _webPage.CheckCheckbox(locator, isChecked);
         }
 
-        public IWebPage ClickCheckbox(BaseLocatorModel locator, bool isChecked)
+        public IWebPage ClickCheckbox(BaseLocatorModel locator, bool isChecked, int waitTimeInSec = 10)
         {
             var LocatorModel = SetLocator(locator.LocatorType, locator.Locator);
 
-            return _webPage.CheckCheckbox(LocatorModel, isChecked);
+            return _webPage.CheckCheckbox(LocatorModel, isChecked, waitTimeInSec);
 
         }
 

@@ -4,17 +4,23 @@ namespace AutomationServices.SharedServices.ElementActions
 {
     public interface IElementActions
     {
-        void ClickElement(LocatorType locatorType, string locator);
-
-        string GetText(LocatorType locatorType, string locator);
+        void ClickElement(LocatorType locatorType, string locator, int waitTimeInSecs = 10);        
 
         void SetText(LocatorType locatorType, string locator, string text);
-
        
 
-        void ClickCheckbox(LocatorType locatorType, string locator, bool isChecked);
+        void ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        bool CheckCheckboxCurrentState(LocatorType locatorType, string locator);
+        string GetText(BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        void SetText(BaseLocatorModel locator, string text, int waitTimeInSecs = 10);
+
+
+        void ClickCheckbox(BaseLocatorModel locator, bool isChecked, int waitTimeInSecs = 10);
+
+        bool CheckCheckboxCurrentState(BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        bool DoesElementExists(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
     }
 }

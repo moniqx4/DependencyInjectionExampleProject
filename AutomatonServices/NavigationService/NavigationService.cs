@@ -18,8 +18,7 @@ namespace PageObjects.SharedServices
 
 
         public void NavigateViaSideMenu(string menuOption)
-        {
-           
+        {  
             _element.ClickElement(LocatorType.DataAutomationId, "hamburgermenutoggle");
             _element.ClickElement(LocatorType.DataAutomationId, menuOption);           
         }

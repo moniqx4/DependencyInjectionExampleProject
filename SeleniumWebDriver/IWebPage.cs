@@ -8,23 +8,25 @@ namespace SeleniumWebDriver
 
         public IWebPage ClickElement(LocatorModel locator);
 
-        public IWebPage ClickEle(BaseLocatorModel locator);
+        public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
         IWebPage CheckCheckbox(LocatorModel locator, bool isEnabled);
 
-        IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled);
+        IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled, int waitTimeInSecs = 10);
 
         string GetElementText(LocatorModel locator);
 
-        string GetElementText(BaseLocatorModel locator);
+        string GetElementText(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
         IWebPage SetText(LocatorModel locator, string text);
 
-        IWebPage SetText(BaseLocatorModel locator, string text);
+        IWebPage SetText(BaseLocatorModel locator, string text, int waitTimeInSecs = 10);
 
-        bool IsCheckBoxChecked(BaseLocatorModel locator);
+        bool IsCheckBoxChecked(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
         bool IsDisplayed(LocatorModel locatorModel);
+
+        bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
         bool IsActive(LocatorModel locatorModel);
 

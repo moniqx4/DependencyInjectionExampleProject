@@ -10,14 +10,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ConfigurationServices\PayrollPolicyService\" />
     <Folder Include="LoginService\constants\enums\" />
     <Folder Include="LoginService\constants\" />
-    <Folder Include="NavigationService\models\" />
-    <Folder Include="NavigationService\enums\" />
-    <Folder Include="NavigationService\constants\" />
-    <Folder Include="PunchService\models\" />
+    <Folder Include="NavigationService\Models\" />
+    <Folder Include="NavigationService\Constants\Enums\" />
+    <Folder Include="NavigationService\Constants\" />
+    <Folder Include="ScheduleServices\AttendancePointService\" />
+    <Folder Include="TimeEntryServices\TimeCorrectionServices\" />
+    <Folder Include="TimeEntryServices\PunchService\models\" />
     <Folder Include="DashboardServices\WebKioskService\Constants\" />
-    <Folder Include="SharedServices\ValidationServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.12" />
   </ItemGroup>
 
 </Project>

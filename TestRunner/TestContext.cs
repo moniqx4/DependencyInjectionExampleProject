@@ -10,7 +10,7 @@ namespace TestRunnerLibrary
     {
         //public ILogService Logger { get; internal set; } // for TestRunner
 
-        public string AppVersion { get; set; } // information to log
+        public string AppVersion { get; set; } // information to log, would come from TeamCity ??
 
         public string TestCategoryName { get; set; } // for Tests, configuration setting
 
@@ -34,11 +34,11 @@ namespace TestRunnerLibrary
 
         public bool IsMobile { get; set; } // for Driver, configuration setting
 
-        public string ViewPort { get; set; } // for Driver, configuration setting
+        public ViewPort ViewPort { get; set; } // for Driver, configuration setting
 
         public BrowserType BrowserType { get; set; } // for Driver , configuration setting       
 
-        public MobileDevices MobileDevice { get; set; } // for Driver , configuration setting
+        public List<MobileDevices> MobileDevice { get; set; } // for Driver , configuration setting
 
         public bool Headless { get; set; } // for Driver, configuration setting
 

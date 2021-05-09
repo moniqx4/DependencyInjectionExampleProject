@@ -1,6 +1,4 @@
-﻿using PageObjects.Login;
-using PageObjects.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AutomationServices.ValidationServices
@@ -8,11 +6,10 @@ namespace AutomationServices.ValidationServices
 
     public class ValidationService : IValidationService
     {
-        private readonly ILoginPage _login;
+        
 
-        public ValidationService(ILoginPage login)
-        {
-            _login = login;
+        public ValidationService()
+        {           
         }
       
         public void ValidateDataObjectMatch(IList<string> expectedObject, IList<string> actualObject)
@@ -48,6 +45,10 @@ namespace AutomationServices.ValidationServices
         public void ValidateTextMatch(string expectedText, string actualText)
         {
             throw new NotImplementedException();
+        }
+
+        public class T
+        {
         }
     }
 }

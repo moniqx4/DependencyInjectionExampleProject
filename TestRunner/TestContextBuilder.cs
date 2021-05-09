@@ -1,4 +1,5 @@
-﻿using DataModelLibrary.Enums;
+﻿using DataModelLibrary;
+using DataModelLibrary.Enums;
 using SeleniumWebDriver;
 
 namespace TestRunnerLibrary
@@ -13,13 +14,6 @@ namespace TestRunnerLibrary
             _context = new TestContext();
 
         }
-
-        //public TestContextBuilder AddWebSiteContext(WebSiteContext webSiteContext)
-        //{
-        //    _context.WebSite = webSiteContext;
-
-        //    return this;
-        //}
 
         //public TestContextBuilder AddLogger()
         //{
@@ -91,10 +85,14 @@ namespace TestRunnerLibrary
             return this;
         }
 
-        public TestContextBuilder AddViewPort(string width, string height)
+        public TestContextBuilder AddViewPort(int width, int height)
         {
-            _context.ViewPort = width;
-            _context.ViewPort = height;
+
+            _context.ViewPort = new ViewPort
+            {
+                Width = width,
+                Height = height
+            };            
 
             return this;
         }

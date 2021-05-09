@@ -12,11 +12,11 @@ namespace SeleniumWebDriver.WebElements
 
         ReadOnlyCollection<IWebElement> GetLocators(LocatorModel locator);
 
-        //IWebElement BuildLocator(BaseLocatorModel locator);
+        IWebElement BuildLocator(BaseLocatorModel locator, int timeInSec = 10);
 
-        //IWebElement LocatorByIndex(BaseLocatorModel locator, int index);
+        IWebElement LocatorByIndex(BaseLocatorModel locator, int index,int timeInSec = 10);
 
-        //ReadOnlyCollection<IWebElement> GetLocators(BaseLocatorModel locator);
+        ReadOnlyCollection<IWebElement> GetLocators(BaseLocatorModel locator, int timeInSec = 10);
 
     }
 }
