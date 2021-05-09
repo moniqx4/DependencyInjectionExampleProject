@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutomationServices.WebKioskService
+namespace AutomationServices.WebKioskServices
 {
     public class WebKioskService : IWebKioskService
     {

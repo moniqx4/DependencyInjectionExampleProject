@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutomationServices.ValidationServices
+namespace AutomationServices.ValidationServices.ConcreteClasses
 {  
 
     public class ValidationService : IValidationService

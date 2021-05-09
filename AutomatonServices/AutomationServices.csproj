@@ -19,7 +19,7 @@
     <Folder Include="ScheduleServices\AttendancePointService\" />
     <Folder Include="TimeEntryServices\TimeCorrectionServices\" />
     <Folder Include="TimeEntryServices\PunchService\models\" />
-    <Folder Include="DashboardServices\WebKioskService\Constants\" />
+    <Folder Include="DashboardServices\WebKioskServices\Constants\" />
   </ItemGroup>
 
   <ItemGroup>

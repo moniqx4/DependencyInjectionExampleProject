@@ -3,9 +3,9 @@ using System;
 
 namespace AutomationServices.EmployeeApplicationService
 {
-    public class AttestationPrompt: IEASAttestationPrompts
+    public class AttestationPromptService: IEASAttestationPrompts
     {
-        public AttestationPrompt()
+        public AttestationPromptService()
         {
 
         }

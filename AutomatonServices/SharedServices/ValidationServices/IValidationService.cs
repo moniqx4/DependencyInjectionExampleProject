@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static AutomationServices.ValidationServices.ValidationService;
+using static AutomationServices.ValidationServices.ConcreteClasses.ValidationService;
 
 namespace AutomationServices.ValidationServices
 {

@@ -15,23 +15,7 @@ namespace PageObjects
         //This empty constructor is to allow the BasePageObject to be inherited with the injection
         public BasePageObject()
         {
-        }
-
-        //public LocatorModel SetLocator(ElementType elementType, LocatorType locatorType, string locator)
-        //{
-        //    var locatorModel = new LocatorModel()
-        //    {
-        //        ElementType = elementType,
-        //        BaseLocator = {
-        //            Locator = locator,
-        //            LocatorType = locatorType
-        //        }
-                             
-        //    };
-
-        //    return locatorModel;
-        //}
-       
+        }      
 
         public BaseLocatorModel SetLocator(LocatorType locatorType, string locator)
         {

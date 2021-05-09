@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.WebKioskService.Models
+﻿namespace AutomationServices.WebKioskServices.Models
 {
     public class WebKioskInstanceConfigModel
     {

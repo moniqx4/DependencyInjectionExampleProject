@@ -1,4 +1,4 @@
-﻿namespace AutomationServices.WebKioskService
+﻿namespace AutomationServices.WebKioskServices
 {
     public interface IWebKioskValidationService
     {
