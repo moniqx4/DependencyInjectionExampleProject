@@ -29,9 +29,9 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>
         /// Text representation of the grid or table html like element.
         /// </returns>
-        public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator, LocatorModel locatorModel)
+        public string[][] GetTable(ElementLocator rowLocator, ElementLocator columnLocator, BaseLocatorModel locatorModel, int waitTimeInSecs)
         {
-            var table = _locatorBuilder.BuildLocator(locatorModel);
+            var table = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             var rows = table.GetElements(rowLocator);
 
             var result = new string[rows.Count][];

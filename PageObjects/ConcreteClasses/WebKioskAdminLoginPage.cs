@@ -7,7 +7,7 @@ namespace PageObjects.Login
         
         public void ClickSubmitButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "Submit");
+            var locatorModel = SetLocator(LocatorType.Id, "Submit");
 
             HandleClickElement(locatorModel);
 
@@ -15,7 +15,7 @@ namespace PageObjects.Login
 
         public IWebKioskAdminLoginPage SetCompanyId(string companyId)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "username");
+            var locatorModel = SetLocator(LocatorType.Id, "username");
 
             HandleTextBox(locatorModel, companyId);
 
@@ -24,7 +24,7 @@ namespace PageObjects.Login
 
         public IWebKioskAdminLoginPage SetInstanceName(string instanceName)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleTextBox(locatorModel, instanceName);
 
@@ -33,7 +33,7 @@ namespace PageObjects.Login
 
         public IWebKioskAdminLoginPage SetInstancePassword(string instancePassword)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleTextBox(locatorModel, instancePassword);
 

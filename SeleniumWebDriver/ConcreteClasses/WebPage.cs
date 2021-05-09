@@ -18,7 +18,7 @@ namespace SeleniumWebDriver.ConcreteClasses
         private readonly IKeyboardInteractions _keyboardInteractions;
         private readonly ILabel _label;
         private readonly IAlert _alert;
-        private readonly IJavaScript _javascript;
+        private readonly IJavaScriptHandler _javascript;
         private readonly IRadioButton _radioButton;
         private readonly ICheckBox _checkBox;
 
@@ -34,7 +34,7 @@ namespace SeleniumWebDriver.ConcreteClasses
             IKeyboardInteractions keyboardInteractions,
             ILabel label,
             IAlert alert,
-            IJavaScript javascript,
+            IJavaScriptHandler javascript,
             IRadioButton radioButton,
             ICheckBox checkBox,
             ILocatorBuilder locatorBuilder)
@@ -67,9 +67,9 @@ namespace SeleniumWebDriver.ConcreteClasses
             return (IJavaScriptExecutor)this;
         }
 
-        public IJavaScriptExecutor JSScrollToElement(LocatorModel locatorModel)
+        public IJavaScriptExecutor JSScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs)
         {
-            return _javascript.ScrollToElement(locatorModel);
+            return _javascript.ScrollToElement(locatorModel, waitTimeInSecs);
         }
 
         public IJavaScriptExecutor JSClickOkOnPopup()
@@ -97,9 +97,9 @@ namespace SeleniumWebDriver.ConcreteClasses
             return _javascript.GetTextFromPsuedoElement(locator, keyword);
         }
 
-        public string GetLabelText(LocatorModel locatorModel)
+        public string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            return _label.GetLabelText(locatorModel);
+            return _label.GetLabelText(locatorModel, waitTimeInSecs);
         }
 
         public void DoubleCommandKeyAction(string cmdKey1, string cmdKey2, string character)
@@ -112,67 +112,67 @@ namespace SeleniumWebDriver.ConcreteClasses
             _keyboardInteractions.SingleCommandKeyAction(cmdKey, character);
         }
 
-        public void DragNDrop(LocatorModel locatorModelSource, LocatorModel locatorModelTarget)
+        public void DragNDrop(BaseLocatorModel locatorModelSource, BaseLocatorModel locatorModelTarget, int waitTimeInSecs = 10)
         {
-            _mouseActions.DragNDrop(locatorModelSource, locatorModelTarget);
+            _mouseActions.DragNDrop(locatorModelSource, locatorModelTarget, waitTimeInSecs);
         }
 
-        public void DoubleClickOnElement(LocatorModel locatorModel)
+        public void DoubleClickOnElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            _mouseActions.DoubleClickOnElement(locatorModel);
+            _mouseActions.DoubleClickOnElement(locatorModel, waitTimeInSecs);
         }
 
-        public void ClickNHoldNDrop(LocatorModel locatorModel, int positionX, int positionY)
+        public void ClickNHoldNDrop(BaseLocatorModel locatorModel, int positionX, int positionY, int waitTimeInSecs = 10)
         {
-            _mouseActions.ClickNHoldNDrop(locatorModel, positionX, positionY);
+            _mouseActions.ClickNHoldNDrop(locatorModel, positionX, positionY, waitTimeInSecs);
         }
 
-        public void ComboxSelectByIndex(LocatorModel locatorModel,string text, int index)
+        public void ComboxSelectByIndex(BaseLocatorModel locatorModel,string text, int index, int waitTimeInSecs = 10)
         {
-            _comboBox.SelectElementByVisibleText(locatorModel, text, index);
+            _comboBox.SelectElementByVisibleText(locatorModel, text, index, waitTimeInSecs);
         }
 
-        public void ComboxSelectByIndex(LocatorModel locatorModel, int index)
+        public void ComboxSelectByIndex(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10)
         {
-            _comboBox.SelectElementByIndex(locatorModel, index);
+            _comboBox.SelectElementByIndex(locatorModel, index, waitTimeInSecs);
         }
 
-        public void ComboxSelectByValue(LocatorModel locatorModel, string value)
+        public void ComboxSelectByValue(BaseLocatorModel locatorModel, string value, int waitTimeInSecs = 10)
         {
-            _comboBox.SelectElementByValue(locatorModel, value);
+            _comboBox.SelectElementByValue(locatorModel, value, waitTimeInSecs);
         }
 
-        public string[][] GetTableData(ElementLocator row, ElementLocator col, LocatorModel locator)
+        public string[][] GetTableData(ElementLocator row, ElementLocator col, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            return _table.GetTable(row, col, locator);
+            return _table.GetTable(row, col, locator, waitTimeInSecs);
         }
 
-        private bool IsSelectOptionAvailable(LocatorModel locator)
+        private bool IsSelectOptionAvailable(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            return _select.IsSelectOptionAvailable(locator);
+            return _select.IsSelectOptionAvailable(locator, waitTimeInSecs);
         }
 
-        public void SelectElementByIndex(int index, double timeout, LocatorModel locator)
+        public void SelectElementByIndex(int index, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            _select.SelectByIndex(index, timeout, locator);
+            _select.SelectByIndex(index, timeout, locator, waitTimeInSecs);
         }
 
-        public void SelectElementByText(string value, double timeout, LocatorModel locator)
+        public void SelectElementByText(string value, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            _select.SelectByText(value, timeout, locator);
+            _select.SelectByText(value, timeout, locator, waitTimeInSecs);
         }
 
-        public void SelectElementByValue(string value, double timeout, LocatorModel locator)
+        public void SelectElementByValue(string value, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            _select.SelectByValue(value, timeout, locator);
+            _select.SelectByValue(value, timeout, locator, waitTimeInSecs);
         }
 
-        public void SelectElement(LocatorModel locator)
+        public void SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            _select.SelectElement(locator);
+            _select.SelectElement(locator, waitTimeInSecs);
         }
 
-        public string GetLinkText(LocatorModel locator)
+        public string GetLinkText(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
             return _link.GetLinkText(locator);
         }
@@ -195,59 +195,6 @@ namespace SeleniumWebDriver.ConcreteClasses
         public void SwitchToOpenAlert()
         {
             _alert.SwitchToAlert();
-        }      
-
-        public IWebPage ClickElement(LocatorModel locatorModel)
-        {
-            switch (locatorModel.ElementType)
-            {
-                case ElementType.Button:
-                    _button.ClickButton(locatorModel);
-                    break;
-
-                case ElementType.TextBox:
-                    _textBox.ClickIntoTextBox(locatorModel);
-                    break;
-
-                case ElementType.Label:
-                    _label.ClickOnLabel(locatorModel);
-                    break;
-
-                case ElementType.Link:
-                    _link.ClickLink(locatorModel);
-                    break;
-
-                case ElementType.Radio:
-                    _radioButton.ClickOnRadioButton(locatorModel);
-                    break;
-
-                case ElementType.Tab:
-                    _link.ClickLink(locatorModel);
-                    break;
-
-                default:
-                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
-
-            }
-
-            return this;
-
-        }
-
-        public IWebPage CheckCheckbox(LocatorModel locatorModel, bool isEnabled)
-        {
-             _checkBox.ClickCheckBox(locatorModel, isEnabled);
-
-            return this;
-        }    
-
-
-        public IWebPage SetText(LocatorModel locatorModel, string text)
-        {
-            _textBox.ClearTextBox(locatorModel);
-            _textBox.TypeInTextBox(locatorModel, text);
-
-            return this;
         }
 
         //public void ExecuteJs()
@@ -255,151 +202,13 @@ namespace SeleniumWebDriver.ConcreteClasses
             
         //}
 
-        public string GetElementText(LocatorModel locatorModel)
-        {
-            switch (locatorModel.ElementType)
-            {
-                case ElementType.Button:
-                    return _button.GetButtonText(locatorModel);
-
-                case ElementType.TextBox:
-                    return _textBox.GetTextBoxText(locatorModel);
-
-                case ElementType.Label:
-                    return _label.GetLabelText(locatorModel);
-
-                case ElementType.Link:
-                    return _link.GetLinkText(locatorModel);
-
-                //case ElementType.Grid:
-                //    return _table.GetTable(locatorModel);
-
-                //case ElementType.Dropdown:
-                //    return _comboBox.
-
-                //case ElementType.Option:
-                //    break;
-
-                case ElementType.Alert:
-                    return _alert.GetAlertText();
-
-                //case ElementType.Modal:
-                //    break;
-
-                case ElementType.Header:
-                    return _label.GetLabelText(locatorModel);
-
-                case ElementType.Tab:
-                    return _link.GetLinkText(locatorModel);
-
-                //case ElementType.Checkbox:
-                //    break;
-
-                //case ElementType.Radio:
-                //    return _radio. (locatorModel);
-
-                default:
-                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
-            }
-        }
-
+       
         public bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs)
         {
             return _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs).Displayed;            
         }
-
-        public bool IsDisplayed(LocatorModel locatorModel)
-        {
-            switch (locatorModel.ElementType)
-            {
-                case ElementType.Button:
-                    return _button.IsButtonPresent(locatorModel);
-
-                case ElementType.TextBox:
-                    return _textBox.IsTextBoxDisplayed(locatorModel);
-
-                case ElementType.Label:
-                    return _label.IsLabelPresent(locatorModel);
-
-                case ElementType.Link:
-                    return _link.IsLinkEnabled(locatorModel);
-
-                //case ElementType.Grid:
-                //    break;
-                //case ElementType.Table:
-                //    break;
-                //case ElementType.Dropdown:
-                //    break;
-                //case ElementType.DropdownOption:
-                //    break;
-                //case ElementType.Alert:
-                //    break;
-                //case ElementType.Modal:
-                //    break;
-                //case ElementType.Header:
-                //    break;
-                //case ElementType.Tab:
-                //    break;
-                //case ElementType.Checkbox:                    
-                //    break;
-
-                case ElementType.Radio:
-                    return _radioButton.IsRadioButtonEnabled(locatorModel);
-
-                default:
-                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
-
-            }
-        }
-
-        public bool IsActive(LocatorModel locatorModel)
-        {
-            switch (locatorModel.ElementType)
-            {
-                case ElementType.Button:
-                    return _button.IsButtonEnabled(locatorModel);
-
-                case ElementType.TextBox:
-                    return _textBox.IsTextBoxDisplayed(locatorModel);
-
-                case ElementType.Checkbox:
-                    return _checkBox.IsCheckboxEnabled(locatorModel);
-
-                case ElementType.Radio:
-                    return _radioButton.IsRadioButtonEnabled(locatorModel);
-
-                case ElementType.Label:
-                    return _label.IsLabelEnabled(locatorModel);
-
-                case ElementType.Link:
-                    return _link.IsLinkEnabled(locatorModel);
-
-                //case ElementType.Grid:
-                //    break;
-                case ElementType.Dropdown:
-                    return IsSelectOptionAvailable(locatorModel);
-
-                //case ElementType.Option:
-
-                //    break;
-
-                //case ElementType.Alert:
-                //    return _alert.
-
-                //case ElementType.Modal:
-                //    break;
-                case ElementType.Header:
-                    return _label.IsLabelEnabled(locatorModel);
-
-                case ElementType.Tab:
-                    return _link.IsLinkEnabled(locatorModel);
-
-                default:
-                    throw new Exception($"Unknown ElementType {locatorModel.ElementType}.");
-
-            }
-        }
-
+       
+      
         public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs)
         {
 

@@ -14,7 +14,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
 
         public IActivityComp ClickCorrectionsTab()
         {
-            var locator = SetLocator(ElementType.Tab, LocatorType.DataAutomationId, "");
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
 
             HandleClickElement(locator);
 
@@ -23,7 +23,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
 
         public IActivityComp ClickHistoryTab()
         {
-            var locator = SetLocator(ElementType.Tab, LocatorType.DataAutomationId, "");
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
 
             HandleClickElement(locator);           
 

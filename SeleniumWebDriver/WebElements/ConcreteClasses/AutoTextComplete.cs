@@ -24,17 +24,17 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="searchChar">search characters</param>
         /// <param name="itemToClick"> item to click </param>
         /// <param name="locatorDD">Dropdown element details</param>
-        public void SelectItemInList(LocatorModel locatorModel, string searchChar, string itemToClick, string dropDownListEntriesLocator, LocatorModel locatorDD)
+        public void SelectItemInList(BaseLocatorModel locatorModel, string searchChar, string itemToClick, string dropDownListEntriesLocator, BaseLocatorModel locatorDD, int waitTimeInSecs)
         {
             _logger.Info("Selecting an item from an AutoComplete Text box");
 
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             //supply initial char
             element.SendKeys(searchChar);
             Thread.Sleep(2000);            
 
             //wait for auto suggest list
-            IList<IWebElement> elements = _locatorBuilder.GetLocators(locatorDD);
+            IList<IWebElement> elements = _locatorBuilder.GetLocators(locatorDD, waitTimeInSecs);
 
             foreach (var ele in elements)
             {

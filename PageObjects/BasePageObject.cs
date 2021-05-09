@@ -17,20 +17,21 @@ namespace PageObjects
         {
         }
 
-        public LocatorModel SetLocator(ElementType elementType, LocatorType locatorType, string locator)
-        {
-            var locatorModel = new LocatorModel()
-            {
-                ElementType = elementType,
-                BaseLocator = {
-                    Locator = locator,
-                    LocatorType = locatorType
-                }
+        //public LocatorModel SetLocator(ElementType elementType, LocatorType locatorType, string locator)
+        //{
+        //    var locatorModel = new LocatorModel()
+        //    {
+        //        ElementType = elementType,
+        //        BaseLocator = {
+        //            Locator = locator,
+        //            LocatorType = locatorType
+        //        }
                              
-            };
+        //    };
 
-            return locatorModel;
-        }
+        //    return locatorModel;
+        //}
+       
 
         public BaseLocatorModel SetLocator(LocatorType locatorType, string locator)
         {
@@ -44,11 +45,11 @@ namespace PageObjects
             return locatorModel;
         }
 
-        public IWebPage HandleTextBox(LocatorModel locator, string text)
+        public IWebPage HandleTextBox(BaseLocatorModel locator, string text, int waitTimeInSec = 10)
         {
 
-            var locatorModel = SetLocator(locator.ElementType, locator.BaseLocator.LocatorType, locator.BaseLocator.Locator);
-            return _webPage.SetText(locatorModel, text);
+            var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
+            return _webPage.SetText(locatorModel, text, waitTimeInSec);
 
         }
 
@@ -61,11 +62,11 @@ namespace PageObjects
         }
 
 
-        public string HandleGetTextElement(LocatorModel locator)
+        public string HandleGetTextElement(BaseLocatorModel locator, int waitTimeInSec = 10)
         {
 
-            var locatorModel = SetLocator(locator.ElementType, locator.BaseLocator.LocatorType, locator.BaseLocator.Locator);
-            return _webPage.GetElementText(locatorModel);
+            var locatorModel = SetLocator(locator.LocatorType, locator.Locator);
+            return _webPage.GetElementText(locatorModel, waitTimeInSec);
 
         }
 
@@ -77,9 +78,9 @@ namespace PageObjects
 
         }
 
-        public IWebPage HandleClickElement(LocatorModel locator)
+        public IWebPage HandleClickElement(BaseLocatorModel locator, int waitTimeInSec = 10)
         {          
-            return _webPage.ClickElement(locator);
+            return _webPage.ClickElement(locator, waitTimeInSec);
         }
 
         public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSec = 10)
@@ -90,9 +91,9 @@ namespace PageObjects
 
         }
 
-        public IWebPage HandleCheckbox(LocatorModel locator, bool isChecked)
+        public IWebPage HandleCheckbox(BaseLocatorModel locator, bool isChecked, int waitTimeInSec = 10)
         {            
-            return _webPage.CheckCheckbox(locator, isChecked);
+            return _webPage.CheckCheckbox(locator, isChecked, waitTimeInSec);
         }
 
         public IWebPage ClickCheckbox(BaseLocatorModel locator, bool isChecked, int waitTimeInSec = 10)
@@ -103,10 +104,5 @@ namespace PageObjects
 
         }
 
-
-        public class T
-        {
-        }
     }
-
 }

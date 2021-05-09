@@ -1,20 +1,18 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
-using SeleniumWebDriver.ConcreteClasses;
 using System;
 
 namespace SeleniumWebDriver.WebElements
 {
-    public class JavaScriptHandler : IJavaScript
+    public class JavaScriptHandler : IJavaScriptHandler
     {       
         private readonly IAlert _alert;
         private readonly IBrowser _browser;
-        private readonly ILocatorBuilder _locatorBuilder;
-        public JavaScriptHandler(IAlert alert, IBrowser browser, ILocatorBuilder locatorBuilder)
+       
+        public JavaScriptHandler(IAlert alert, IBrowser browser)
         {
             _alert = alert;
             _browser = browser;
-            _locatorBuilder = locatorBuilder;
         }
         /// <summary>
         /// Clicks cancel button on the pop up in the browser
@@ -69,20 +67,7 @@ namespace SeleniumWebDriver.WebElements
             {
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Scroll to specified WebElement
-        /// </summary>
-        /// <param name="ele">WebElement to focus</param>
-        public IJavaScriptExecutor ScrollToElement(LocatorModel locatorModel)
-        {            
-            var ele = _locatorBuilder.BuildLocator(locatorModel);
-
-            ((IJavaScriptExecutor)_browser).ExecuteScript("arguments[0].scrollIntoView(true);", ele);
-
-            return (IJavaScriptExecutor)this;
-        }
+        }        
 
         /// <summary>
         /// Enters specified text in the pop up in the browser
@@ -112,5 +97,9 @@ namespace SeleniumWebDriver.WebElements
             return (string)js.ExecuteScript(script);
         }
 
+        public IJavaScriptExecutor ScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

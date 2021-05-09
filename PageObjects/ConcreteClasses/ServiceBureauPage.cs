@@ -7,7 +7,7 @@ namespace PageObjects.Login
 
         public IServiceBureauPage SetSBCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, companyAlias);
 
@@ -16,7 +16,7 @@ namespace PageObjects.Login
 
         public IServiceBureauPage ClickSearchButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleClickElement(locatorModel);
 
@@ -25,7 +25,7 @@ namespace PageObjects.Login
 
         public IServiceBureauPage SetLoginCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, companyAlias);
 
@@ -34,7 +34,7 @@ namespace PageObjects.Login
 
         public IServiceBureauPage SetLoginUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, username);
 
@@ -43,7 +43,7 @@ namespace PageObjects.Login
 
         public IServiceBureauPage SetLoginPasswordTextBox(string password)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, password);
 
@@ -52,7 +52,7 @@ namespace PageObjects.Login
 
         public void ClickLoginButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleClickElement(locatorModel);
         }
@@ -60,7 +60,7 @@ namespace PageObjects.Login
         public void ClickCompanyAliasLink(string companyAlias)
         {
             // TODO, need to pass the companyAlias into the locator
-            var locatorModel = SetLocator(ElementType.Link, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleClickElement(locatorModel);
         }

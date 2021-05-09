@@ -6,30 +6,23 @@ namespace SeleniumWebDriver
 {
     public interface IWebPage
     {
-
-        public IWebPage ClickElement(LocatorModel locator);
-
+     
         public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
-
-        IWebPage CheckCheckbox(LocatorModel locator, bool isEnabled);
+     
 
         IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled, int waitTimeInSecs = 10);
-
-        string GetElementText(LocatorModel locator);
+      
 
         string GetElementText(BaseLocatorModel locator, int waitTimeInSecs = 10);
-
-        IWebPage SetText(LocatorModel locator, string text);
+     
 
         IWebPage SetText(BaseLocatorModel locator, string text, int waitTimeInSecs = 10);
 
         bool IsCheckBoxChecked(BaseLocatorModel locator, int waitTimeInSecs = 10);
-
-        bool IsDisplayed(LocatorModel locatorModel);
+  
 
         bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
-
-        bool IsActive(LocatorModel locatorModel);
+      
 
         void AcceptAlert();
 
@@ -39,35 +32,11 @@ namespace SeleniumWebDriver
 
         void DismissAlert();
 
-        string GetLinkText(LocatorModel locatorModel);
-
-        void SelectElement(LocatorModel locatorModel);
-
-        void SelectElementByValue(string value, double timeout, LocatorModel locatorModel);
-
-        void SelectElementByText(string value, double timeout, LocatorModel locatorModel);
-
-        void SelectElementByIndex(int index, double timeout, LocatorModel locatorModel);
-
-        string[][] GetTableData(ElementLocator row, ElementLocator col, LocatorModel locatorModel);
-
-        void ComboxSelectByIndex(LocatorModel locatorModel, int index);
-
-        void ComboxSelectByValue(LocatorModel locatorModel, string value);
-
-        void ComboxSelectByIndex(LocatorModel locatorModel, string text, int index);
-
-        void ClickNHoldNDrop(LocatorModel locatorModel, int positionX, int positionY);
-
-        void DoubleClickOnElement(LocatorModel locatorModel);
-
-        void DragNDrop(LocatorModel locatorModelSource, LocatorModel locatorModelTarget);
 
         void SingleCommandKeyAction(string cmdKey, string character);
 
         void DoubleCommandKeyAction(string cmdKey1, string cmdKey2, string character);
-
-        string GetLabelText(LocatorModel locator);
+     
 
         IJavaScriptExecutor JSExecuteClickElement(string script);
 
@@ -76,8 +45,7 @@ namespace SeleniumWebDriver
         IJavaScriptExecutor JSExecuteSetElementText(string script, string text);
 
         IJavaScriptExecutor JSTypeTextInPopUp(string inputtext);
-
-        IJavaScriptExecutor JSScrollToElement(LocatorModel locatorModel);
+    
 
         IJavaScriptExecutor JSClickOkOnPopup();
 
@@ -87,7 +55,35 @@ namespace SeleniumWebDriver
 
         bool JSIsPopUpPresent();
 
+        IJavaScriptExecutor JSScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs);
+
         string JSGetPsuedoElementText(string locator, string keyword);
+
+        string GetLinkText(BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
+
+        void DragNDrop(BaseLocatorModel locatorModelSource, BaseLocatorModel locatorModelTarget, int waitTimeInSecs = 10);
+
+        void DoubleClickOnElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
+
+        void ClickNHoldNDrop(BaseLocatorModel locatorModel, int positionX, int positionY, int waitTimeInSecs = 10);
+
+        void ComboxSelectByIndex(BaseLocatorModel locatorModel, string text, int index, int waitTimeInSecs = 10);
+
+        void ComboxSelectByIndex(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10);
+
+        void ComboxSelectByValue(BaseLocatorModel locatorModel, string value, int waitTimeInSecs = 10);
+
+        string[][] GetTableData(ElementLocator row, ElementLocator col, BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        void SelectElementByIndex(int index, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        void SelectElementByText(string value, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        void SelectElementByValue(string value, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        void SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
 
     }

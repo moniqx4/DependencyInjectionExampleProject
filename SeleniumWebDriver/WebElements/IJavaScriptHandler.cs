@@ -1,9 +1,9 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
 
-namespace SeleniumWebDriver
+namespace SeleniumWebDriver.WebElements
 {
-    public interface IJavaScript
+    public interface IJavaScriptHandler
     {
         bool IsPopUpPresent();
 
@@ -15,10 +15,9 @@ namespace SeleniumWebDriver
 
         IJavaScriptExecutor TypeTextInPopUp(string inputText);
 
-        IJavaScriptExecutor ScrollToElement(LocatorModel locatorModel);
+        IJavaScriptExecutor ScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
         string GetTextFromPsuedoElement(string locator, string keyword);
-
 
     }
 }

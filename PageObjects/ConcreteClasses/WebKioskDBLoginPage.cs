@@ -7,7 +7,7 @@ namespace PageObjects.Login
 
         public void ClickSubmitButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleClickElement(locatorModel);
 
@@ -15,7 +15,7 @@ namespace PageObjects.Login
 
         public WebKioskDBLoginPage SetCompanyIdTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, companyAlias);
             
@@ -24,7 +24,7 @@ namespace PageObjects.Login
 
         public WebKioskDBLoginPage SetUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, username);
 
@@ -33,7 +33,7 @@ namespace PageObjects.Login
 
         public WebKioskDBLoginPage SetPasswordTextBox(string password)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, password);
 
@@ -42,7 +42,7 @@ namespace PageObjects.Login
 
         public IWebKioskDBLoginPage ClickNumberPad(string badgeNumber)
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             //TODO this needs to loop through the characters of the badgenumber and then punch each of them
 
@@ -53,7 +53,7 @@ namespace PageObjects.Login
 
         public IWebKioskDBLoginPage SetBadgeNumber(string badgeNumber)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, badgeNumber);           
 
@@ -62,14 +62,14 @@ namespace PageObjects.Login
 
         public void ClickSubmit()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleClickElement(locatorModel);
         }
 
         public IWebKioskDBLoginPage SetPin(string pin)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, pin);
 
@@ -78,7 +78,7 @@ namespace PageObjects.Login
 
         public IWebKioskDBLoginPage ClickSpanishToggle()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleClickElement(locatorModel);
 
@@ -88,7 +88,7 @@ namespace PageObjects.Login
         public IWebKioskDBLoginPage ClickEnglishToggle()
         {
 
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleClickElement(locatorModel);
 
@@ -97,7 +97,7 @@ namespace PageObjects.Login
 
         public string GetLoginButtonLabelText()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             return HandleGetTextElement(locatorModel);
 
@@ -105,7 +105,7 @@ namespace PageObjects.Login
 
         public string GetBadgeNumberTextFieldLabelText()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             return HandleGetTextElement(locatorModel);
             
@@ -113,7 +113,7 @@ namespace PageObjects.Login
 
         public string GetPinTextFieldLabelText()
         {
-            var locatorModel = SetLocator(ElementType.Label, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             return HandleGetTextElement(locatorModel);
         }

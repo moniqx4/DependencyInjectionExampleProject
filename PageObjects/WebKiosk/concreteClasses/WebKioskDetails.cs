@@ -16,7 +16,7 @@ namespace PageObjects.WebKiosk.ConcreteClasses
         public IWebKioskDetails SetRecentActivityCheckbox(bool isChecked)
         {
 
-            var locator = SetLocator(ElementType.Checkbox, LocatorType.Id, "wdc-enable-recactivity");
+            var locator = SetLocator(LocatorType.Id, "wdc-enable-recactivity");
 
             HandleCheckbox(locator, isChecked);
 
@@ -26,7 +26,7 @@ namespace PageObjects.WebKiosk.ConcreteClasses
 
         public IWebKioskDetails SetTimeCorrectionCheckbox(bool isChecked)
         {
-            var locator = SetLocator(ElementType.Checkbox, LocatorType.Id, "");
+            var locator = SetLocator(LocatorType.Id, "");
 
             HandleCheckbox(locator, isChecked);
 

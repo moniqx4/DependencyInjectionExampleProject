@@ -7,14 +7,10 @@ namespace PageObjects.WTDashboards.ConcreteClasses
       
         public ITimeOffComp ClickRequestTimeOffButton()
         {
-            var locatorModel = new LocatorModel()
-            {
-                ElementType = ElementType.Button,
-                BaseLocator =
-                {
+            var locatorModel = new BaseLocatorModel()
+            {             
                     LocatorType = LocatorType.DataAutomationId,
                     Locator = ""
-                }
                
             };
 
@@ -25,14 +21,10 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public ITimeOffComp SetAvailabilityCheckbox(bool isEnabled)
         {
-            var locatorModel = new LocatorModel()
-            {
-                ElementType = ElementType.Checkbox,
-                BaseLocator =
-                {
+            var locatorModel = new BaseLocatorModel()
+            {               
                     LocatorType = LocatorType.Id,
-                    Locator = ""
-                }
+                    Locator = ""              
             };
 
             HandleCheckbox(locatorModel, isEnabled);           

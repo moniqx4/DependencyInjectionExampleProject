@@ -7,14 +7,14 @@ namespace PageObjects.Login
 
         public void ClickSubmitButton()
         {
-            var locatorModel = SetLocator(ElementType.Button, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleClickElement(locatorModel);
         }
 
         public ISupervisorDBPage SetCompanyIdTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
             
             HandleTextBox(locatorModel, companyAlias);
 
@@ -23,7 +23,7 @@ namespace PageObjects.Login
 
         public ISupervisorDBPage SetUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.Id, "");
+            var locatorModel = SetLocator(LocatorType.Id, "");
 
             HandleTextBox(locatorModel, username);
 
@@ -32,7 +32,7 @@ namespace PageObjects.Login
 
         public ISupervisorDBPage SetPasswordTextBox(string password)
         {
-            var locatorModel = SetLocator(ElementType.TextBox, LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, "");
 
             HandleTextBox(locatorModel, password);
 

@@ -21,10 +21,10 @@ namespace SeleniumWebDriver.WebElements
         /// <param name="trg"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void ClickNHoldNDrop(LocatorModel locatorModel, int x = 0, int y = 30)
+        public void ClickNHoldNDrop(BaseLocatorModel locatorModel, int x = 0, int y = 30, int waitTimeInSecs = 10)
         {
             Actions act = new Actions(_browser);
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
 
             act.ClickAndHold(element)
                 .MoveToElement(element, x, y)
@@ -38,10 +38,10 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param LocatorModel.locatorType="locatorType">Type of Locator</param>
         /// <param LocatorModel.locator="locator">Type of Locator</param>
-        public void DoubleClickOnElement(LocatorModel locatorModel)
+        public void DoubleClickOnElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
             Actions act = new Actions(_browser);
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
 
             act.DoubleClick(element)
                 .Build()
@@ -53,10 +53,10 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="locatorModelSrc">Source item IWebElement</param>
         /// <param name="locatorModelTrg">Target item IWebElement</param>
-        public void DragNDrop(LocatorModel locatorModelSrc, LocatorModel locatorModelTrg)
+        public void DragNDrop(BaseLocatorModel locatorModelSrc, BaseLocatorModel locatorModelTrg, int waitTimeInSecs = 10)
         {
-            var elementTrg = _locatorBuilder.BuildLocator(locatorModelTrg);
-            var elementSrc = _locatorBuilder.BuildLocator(locatorModelSrc);
+            var elementTrg = _locatorBuilder.BuildLocator(locatorModelTrg, waitTimeInSecs);
+            var elementSrc = _locatorBuilder.BuildLocator(locatorModelSrc, waitTimeInSecs);
 
             Actions act = new Actions(_browser);
 

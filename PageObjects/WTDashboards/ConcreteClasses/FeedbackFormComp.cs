@@ -7,7 +7,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public void ClickSubmitButton()
         {           
-            var locator = SetLocator(ElementType.Button, LocatorType.CSS, "#feedback-submit");
+            var locator = SetLocator(LocatorType.CSS, "#feedback-submit");
 
             HandleClickElement(locator);
         }

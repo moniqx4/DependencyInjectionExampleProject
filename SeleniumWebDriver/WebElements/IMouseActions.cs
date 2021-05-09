@@ -4,10 +4,10 @@ namespace SeleniumWebDriver
 {
     public interface IMouseActions
     {
-        void DragNDrop(LocatorModel locatorModelSrc, LocatorModel locatorModelTrg);
+        void DragNDrop(BaseLocatorModel locatorModelSrc, BaseLocatorModel locatorModelTrg, int waitTimeInSecs = 10);
 
-        void ClickNHoldNDrop(LocatorModel locatorModel, int x = 0, int y = 30);
+        void ClickNHoldNDrop(BaseLocatorModel locatorModel, int x = 0, int y = 30, int waitTimeInSecs = 10);
 
-        void DoubleClickOnElement(LocatorModel locatorModel);
+        void DoubleClickOnElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
     }
 }

@@ -6,15 +6,15 @@ namespace SeleniumWebDriver
 {
     public interface ISelect
     {
-        SelectElement SelectElement(LocatorModel locator);
+        SelectElement SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        void SelectByText(string selectValue, double timeout, LocatorModel locator);
+        void SelectByText(string selectValue, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        void SelectByIndex(int index, double timeout, LocatorModel locator);
+        void SelectByIndex(int index, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        void SelectByValue(string selectValue, double timeout, LocatorModel locator);
+        void SelectByValue(string selectValue, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        bool IsSelectOptionAvailable(LocatorModel locator);
+        bool IsSelectOptionAvailable(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
         bool IsSelectOptionAvailable(IWebElement element, double timeout);
 

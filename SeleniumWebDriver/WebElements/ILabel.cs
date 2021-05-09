@@ -5,20 +5,20 @@ namespace SeleniumWebDriver
     public interface ILabel
     {      
 
-        bool IsLabelEnabled(LocatorModel locatorModel);
+        bool IsLabelEnabled(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
-        string GetLabelText(LocatorModel locatorModel);
+        string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
-        void ClickOnLabel(LocatorModel locatorModel);
+        void ClickOnLabel(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
-        bool IsLabelEnabled(LocatorModel locatorModel, int index);
+        bool IsLabelEnabled(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10);
 
-        string GetLabelText(LocatorModel locatorModel, int index);
+        string GetLabelText(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10);
 
-        void ClickOnLabel(LocatorModel locatorModel, int index);
+        void ClickOnLabel(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10);
 
-        bool IsLabelPresent(LocatorModel locatorModel);
+        bool IsLabelPresent(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
-        bool IsLabelPresent(LocatorModel locatorModel, int index);
+        bool IsLabelPresent(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10);
     }
 }

@@ -9,55 +9,18 @@ namespace SeleniumWebDriver.WebElements
         public CheckBox(ILocatorBuilder locatorBuilder)
         {
             _locatorBuilder = locatorBuilder;
-        }
+        }      
+
        
-
-        public ICheckBox ClickCheckBox(LocatorModel locatorModel)
+        public ICheckBox ClickCheckBox(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var isChecked = IsCheckboxChecked(locatorModel);
-
-            if (!isChecked)
-            {
-                var element = _locatorBuilder.BuildLocator(locatorModel);
-                element.Click();
-            }
-
-            return this;
-        }
-
-        public ICheckBox ClickCheckBox(LocatorModel locatorModel, bool isEnabled)
-        {
-            var isChecked = IsCheckboxChecked(locatorModel);
-
-            if (isEnabled)
-            {
-                if (!isChecked)
-                {
-                    var element = _locatorBuilder.BuildLocator(locatorModel);
-                    element.Click();
-                }
-            }
-            else
-            {
-                if (isChecked)
-                {
-                    var element = _locatorBuilder.BuildLocator(locatorModel);
-                    element.Click();
-                }
-            }
-
-            return this;
-        }
-
-        public ICheckBox ClickCheckBox(BaseLocatorModel locatorModel, int timeInSecs = 10)
-        {
-            var isChecked = IsCheckboxChecked(locatorModel, timeInSecs);
+            var isChecked = IsCheckboxChecked(locatorModel, waitTimeInSecs);
 
             if (isChecked)
             {
                 if (!isChecked)
                 {
-                    var element = _locatorBuilder.BuildLocator(locatorModel, timeInSecs);
+                    var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
                     element.Click();
                 }
             }
@@ -65,7 +28,7 @@ namespace SeleniumWebDriver.WebElements
             {
                 if (isChecked)
                 {
-                    var element = _locatorBuilder.BuildLocator(locatorModel, timeInSecs);
+                    var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
                     element.Click();
                 }
             }
@@ -73,15 +36,15 @@ namespace SeleniumWebDriver.WebElements
             return this;
         }
 
-        public ICheckBox ClickCheckBox(BaseLocatorModel locatorModel, bool isEnabled, int timeInSecs = 10)
+        public ICheckBox ClickCheckBox(BaseLocatorModel locatorModel, bool isEnabled, int waitTimeInSecs = 10)
         {
-            var isChecked = IsCheckboxChecked(locatorModel, timeInSecs);
+            var isChecked = IsCheckboxChecked(locatorModel, waitTimeInSecs);
 
             if (isEnabled)
             {
                 if (!isChecked)
                 {
-                    var element = _locatorBuilder.BuildLocator(locatorModel, timeInSecs);
+                    var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
                     element.Click();
                 }
             }
@@ -89,27 +52,15 @@ namespace SeleniumWebDriver.WebElements
             {
                 if (isChecked)
                 {
-                    var element = _locatorBuilder.BuildLocator(locatorModel, timeInSecs);
+                    var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
                     element.Click();
                 }
             }
 
             return this;
         }
-
-        public bool IsCheckboxChecked(LocatorModel locator)
-        {
-            var element = _locatorBuilder.BuildLocator(locator);
-            string flag = element.GetAttribute("checked");
-            if (flag == null)
-            {
-                return false;
-            }
-            else
-                return true;
-        }
-
-        public bool IsCheckboxChecked(BaseLocatorModel locatorModel, int timeInSecs = 10)
+     
+        public bool IsCheckboxChecked(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
             throw new System.NotImplementedException();
         }
@@ -119,9 +70,9 @@ namespace SeleniumWebDriver.WebElements
             throw new System.NotImplementedException();
         }
 
-        public bool IsCheckboxEnabled(BaseLocatorModel locatorModel, int timeInSecs = 10)
+        public bool IsCheckboxEnabled(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel, timeInSecs);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             string flag = element.GetAttribute("checked");
             if (flag == null)
             {

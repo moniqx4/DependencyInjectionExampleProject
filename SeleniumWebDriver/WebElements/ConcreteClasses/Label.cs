@@ -10,54 +10,54 @@ namespace SeleniumWebDriver.WebElements
             _locatorBuilder = locatorBuilder;
         }       
 
-        public void ClickOnLabel(LocatorModel locatorModel)
+        public void ClickOnLabel(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             element.Click();
         }
 
-        public void ClickOnLabel(LocatorModel locatorModel, int index)
+        public void ClickOnLabel(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index, waitTimeInSecs);
             element.Click();
         }
 
        
-        public string GetLabelText(LocatorModel locatorModel)
+        public string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             return element.Text;
         }
 
-        public string GetLabelText(LocatorModel locatorModel, int index)
+        public string GetLabelText(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index, waitTimeInSecs);
             return element.Text;
         }
       
 
-        public bool IsLabelEnabled(LocatorModel locatorModel)
+        public bool IsLabelEnabled(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             return element.Enabled;
         }
 
-        public bool IsLabelEnabled(LocatorModel locatorModel, int index)
+        public bool IsLabelEnabled(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            var element = _locatorBuilder.LocatorByIndex(locatorModel, index, waitTimeInSecs);
             return element.Enabled;
         }
        
 
-        public bool IsLabelPresent(LocatorModel locatorModel)
+        public bool IsLabelPresent(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locatorModel);
+            var element = _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs);
             return element.Displayed;
         }
        
-        public bool IsLabelPresent(LocatorModel locatorModel, int index)
+        public bool IsLabelPresent(BaseLocatorModel locatorModel, int index, int waitTimeInSecs = 10)
         {
-            var elements = _locatorBuilder.LocatorByIndex(locatorModel, index);
+            var elements = _locatorBuilder.LocatorByIndex(locatorModel, index, waitTimeInSecs);
             return elements.Displayed;
         }
     }

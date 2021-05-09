@@ -20,15 +20,15 @@ namespace SeleniumWebDriver.WebElements
             _logger = logger;           
         }
 
-        public SelectElement SelectElement(LocatorModel locator)
+        public SelectElement SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locator);
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             return new SelectElement(element);
         }
 
-        public void SelectByText(string selectValue, double timeout, LocatorModel locator)
+        public void SelectByText(string selectValue, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            var ele = _locatorBuilder.BuildLocator(locator);
+            var ele = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             var element = WaitUntilDropdownIsPopulated(timeout, ele);
 
             var selectElement = new SelectElement(element);
@@ -50,10 +50,10 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="index">Index value to be selected.</param>
         /// <param name="timeout">The timeout.</param>
-        public void SelectByIndex(int index, double timeout, LocatorModel locator)
+        public void SelectByIndex(int index, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
             timeout = timeout.Equals(0) ? BaseConfig.MediumTimeout : timeout;
-            var ele = _locatorBuilder.BuildLocator(locator);
+            var ele = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
 
             var element = WaitUntilDropdownIsPopulated(timeout, ele);
 
@@ -75,9 +75,9 @@ namespace SeleniumWebDriver.WebElements
         /// </summary>
         /// <param name="selectValue">Value to be selected.</param>
         /// <param name="timeout">The timeout.</param>
-        public void SelectByValue(string selectValue, double timeout, LocatorModel locator)
+        public void SelectByValue(string selectValue, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            var ele = _locatorBuilder.BuildLocator(locator);
+            var ele = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             var element = WaitUntilDropdownIsPopulated(timeout, ele);
 
             var selectElement = new SelectElement(element);
@@ -100,9 +100,9 @@ namespace SeleniumWebDriver.WebElements
         /// <returns>
         /// True or False depends if text is available in dropdown.
         /// </returns>
-        public bool IsSelectOptionAvailable(LocatorModel locator)
+        public bool IsSelectOptionAvailable(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
-            var element = _locatorBuilder.BuildLocator(locator);
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
             return IsSelectOptionAvailable(element, BaseConfig.MediumTimeout);
         }
 

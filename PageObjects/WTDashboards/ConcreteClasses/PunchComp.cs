@@ -1,7 +1,6 @@
 ﻿using DataModelLibrary;
 using PageObjects.WTDashboards.Constants;
 using PageObjects.WTDashboards.Models.Enums;
-using SeleniumWebDriver;
 using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
@@ -13,7 +12,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         {
             if (punchMethod == PunchMethod.Regular)
             {
-                //var locatorModel = new LocatorModel()
+                //var locatorModel = new BaseLocatorModel()
                 //{
                 //    LocatorType = LocatorType.DataAutomationId,
                 //    Locator = PunchElements
@@ -33,7 +32,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public IPunchComp ClickManualPunchTypeOption()
         {
            
-            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchTypeOption);
+            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchTypeOption);
 
             HandleClickElement(locator);
               
@@ -43,7 +42,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public IPunchComp ClickManualPunchNoteOption()
         {
-            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchNoteOption);
+            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchNoteOption);
 
             HandleClickElement(locator);
 
@@ -52,7 +51,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public IPunchComp ClickManualPunchCostCenterOption()
         {
-            var locator = SetLocator(ElementType.Option, LocatorType.DataAutomationId, PunchElements.ManualPunchCostCenterOption);
+            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchCostCenterOption);
 
             HandleClickElement(locator);
 
@@ -62,7 +61,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public IPunchComp ClickManualPunchSubmitButton()
         {
 
-            var locator = SetLocator(ElementType.Button, LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
 
             HandleClickElement(locator);
 
@@ -97,10 +96,17 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         {
             if (punchMethod == PunchMethod.Regular)
             {
+                //var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.NotesTextBox);
 
+                //SetTextBox(locator, notes);
             }
             else
             {
+                var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchButton);
+                ClickElement(locator);
+
+                //
+                //var locator1 = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchButton);
 
             }
 
