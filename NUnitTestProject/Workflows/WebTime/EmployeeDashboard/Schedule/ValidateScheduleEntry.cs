@@ -1,7 +1,5 @@
 ﻿using AutomationServices.LoginService;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Schedule
 {

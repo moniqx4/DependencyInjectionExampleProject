@@ -9,10 +9,6 @@ namespace NUnitTestProject.Tests.TCT
 {
     public class TImeCorrectionTests : BaseTest
     {
-        public TImeCorrectionTests()
-        {
-
-        }
         private static IEnumerable<TestCaseData> AddCases()
         {
             yield return new TestCaseData("ValidateAddTimeCorrectionTests", TimeCorrectionType.Add, PunchType.ClockIn, "04/15/21", "8:00 AM", "Automated Time Correction Add Test");
