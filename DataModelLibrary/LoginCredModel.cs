@@ -2,12 +2,23 @@
 {
     public class LoginCredModel
     {
-        public string CompanyId { get; set; }
 
-        public string Username { get; set; }
+        public LoginCredModel(string companyId, string username, string password, EmployeeType employeeType)
+        {
 
-        public string Password { get; set; }
+            CompanyId = companyId;
+            Username = username;
+            Password = password;
+            EmployeeType = employeeType;
+        }
 
-        public EmployeeType Employee { get; set; }
+
+        public string CompanyId { get;}
+
+        public string Username { get; }
+        public string Password { get;}
+
+        public EmployeeType EmployeeType { get; }
+        
     }
 }

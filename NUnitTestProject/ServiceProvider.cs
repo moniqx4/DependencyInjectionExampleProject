@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
+using DataModelLibrary;
 using System.Reflection;
 
 namespace NUnitTestProject
@@ -13,6 +14,8 @@ namespace NUnitTestProject
         public static IContainer Setup()
         {
             var builder = new ContainerBuilder();
+
+            //builder.RegisterType<SeleniumConfiguration>().As<ISeleniumRepositoryConfiguration>();
 
             //builder.RegisterAssemblyTypes(Assembly.Load("DependencyInjectionExampleProject")).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.Load(nameof(NUnitTestProject)))

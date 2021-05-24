@@ -1,24 +1,26 @@
 ﻿using DataModelLibrary;
-using SeleniumWebDriver.WebElements;
+using SeleniumWebDriver;
 
 namespace PageObjects.WebKiosk.ConcreteClasses
 {
     public class WebKioskDetails : BasePageObject, IWebKioskDetails
     {
-      
-        private readonly ICheckBox _checkbox;
 
-        public WebKioskDetails(ICheckBox checkbox)
-        {           
-            _checkbox = checkbox;
+        private readonly IWebPage _webPay;
+        private readonly string recentActivityCheckboxLocator;
+        private readonly string timeCorrectionCheckboxLocator;
+
+        public WebKioskDetails(IWebPage webPay)
+        {
+            _webPay = webPay;
         }
 
         public IWebKioskDetails SetRecentActivityCheckbox(bool isChecked)
         {
 
-            var locator = SetLocator(LocatorType.Id, "wdc-enable-recactivity");
+            var locator = SetLocator(LocatorType.Id, recentActivityCheckboxLocator);
 
-            HandleCheckbox(locator, isChecked);
+            ClickCheckbox(locator, isChecked);
 
             return this;
             
@@ -26,9 +28,9 @@ namespace PageObjects.WebKiosk.ConcreteClasses
 
         public IWebKioskDetails SetTimeCorrectionCheckbox(bool isChecked)
         {
-            var locator = SetLocator(LocatorType.Id, "");
+            var locator = SetLocator(LocatorType.Id, timeCorrectionCheckboxLocator);
 
-            HandleCheckbox(locator, isChecked);
+            ClickCheckbox(locator, isChecked);
 
             return this;
         }

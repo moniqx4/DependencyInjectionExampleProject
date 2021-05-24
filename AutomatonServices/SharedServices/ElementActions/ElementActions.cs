@@ -24,11 +24,7 @@ namespace AutomationServices.SharedServices.ElementActions
 
         public void ClickElement(LocatorType locatorType, string locator, int waitTimeInSecs)
         {
-            var locatorModel = new BaseLocatorModel
-            {
-                LocatorType = locatorType,
-                Locator = locator
-            };
+            var locatorModel = new BaseLocatorModel(locatorType, locator);           
 
             _element.ClickAnyElement(locatorModel, waitTimeInSecs);
         }
@@ -50,11 +46,7 @@ namespace AutomationServices.SharedServices.ElementActions
 
         public void SetText(LocatorType locatorType, string locator, string text)
         {
-            var locatorModel = new BaseLocatorModel
-            {
-                LocatorType = locatorType,
-                Locator = locator
-            };
+            var locatorModel = new BaseLocatorModel(locatorType, locator);            
 
             _element.SetTextboxText(locatorModel, text);
         }

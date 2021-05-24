@@ -10,8 +10,14 @@
 
     public class BaseLocatorModel
     {
-        public LocatorType LocatorType { get; set; }
-        public string Locator { get; set; }
+        public BaseLocatorModel(LocatorType locatorType, string locator)
+        {
+            LocatorType = locatorType;
+            Locator = locator;
+        }
+
+        public LocatorType LocatorType { get; }
+        public string Locator { get; }
 
     }
 }

@@ -13,18 +13,30 @@ using OpenQA.Selenium.Support.Events;
 namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 {
 
-    public static class Driver
+    public class Driver
     {
-        public static IWebDriver Build(SeleniumConfiguration configuration)
+        private readonly IOptions _options;
+
+
+        public Driver(IOptions options)
+        {
+            _options = options;
+        }
+
+        public IWebDriver Build(SeleniumConfiguration configuration)
         {
             //var driverEventFiring = new EventFiringWebDriver(IWebDriver driver);
-           
+            _options.Window.FullScreen();
+            _options.Cookies.DeleteAllCookies();
+            //_options.Timeouts()
+
+
             if (configuration.RunType == RunType.Local)
             {
-                switch (configuration.Browser)
+                switch (configuration.BrowserType)
                 {
                     case BrowserType.Chrome:
-                        var driver =  new CustomChrome().ChromeOptions(configuration);
+                        var driver =  new CustomChrome().ChromeOptions(configuration,_options);
                         var driverEventFiring = new EventFiringWebDriver(driver);
                         return driverEventFiring;
 
@@ -44,13 +56,13 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
                         return driverEventFiringIE;
 
                     default:
-                        throw new ArgumentException($"{configuration.Browser} is not supported locally.");
+                        throw new ArgumentException($"{configuration.BrowserType} is not supported locally.");
                 }
             }
 
             else if (configuration.RunType == RunType.Remote)
             {
-                return BuildRemoteDriver(configuration.Browser);
+                return BuildRemoteDriver(configuration.BrowserType);
             }
 
             else

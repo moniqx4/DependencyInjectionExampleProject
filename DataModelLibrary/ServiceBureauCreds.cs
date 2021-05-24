@@ -2,12 +2,20 @@
 {
     public class ServiceBureauCreds
     {
-        public string CompanyAlias { get; set; }
+        public ServiceBureauCreds(string companyAlias, string companyId, string username, string password)
+        {
+            CompanyAlias = companyAlias;
+            CompanyId = companyId;
+            Username = username;
+            Password = password;
+        }
 
-        public string CompanyId { get; set; }
+        public string CompanyAlias { get; }
 
-        public string Username { get; set; }
+        public string CompanyId { get;  }
 
-        public string Password { get; set; }
+        public string Username { get;  }
+
+        public string Password { get;  }
     }
 }

@@ -5,31 +5,49 @@ namespace DataModelLibrary
 {
     public class SeleniumConfiguration
     {
-        public string ConfigName { get; set; }
 
-        public bool Active { get; set; }
+        public SeleniumConfiguration(string configName, bool active, BrowserType browserType, bool isMobileEnabled, IReadOnlyList<MobileDevices> mobileDevices, bool headless, string startUrl
+            , string testName, RunType runType, Environment environment, Teams teams, string testCategory)
+        {
+            ConfigName = configName;
+            Active = active;
+            BrowserType = browserType;
+            IsMobileEnabled = isMobileEnabled;
+            MobileDevices = mobileDevices;
+            Headless = headless;
+            StartUrl = startUrl;
+            TestName = testName;
+            RunType = runType;
+            Environment = environment;
+            Teams = teams;
+            TestCategory = testCategory;
+        }
 
-        public BrowserType Browser { get; set; }
+        public string ConfigName { get;}
+
+        public bool Active { get; }
+
+        public BrowserType BrowserType { get; }
 
         ///public string AppVersion { get; set; } probably always use the latest, but if we end up using browserstack, could select earlier versions
 
-        public bool IsMobileEnabled { get; set; }
+        public bool IsMobileEnabled { get;  }
 
-        public List<MobileDevices> MobileDevices { get; set; }
+        public IReadOnlyList<MobileDevices> MobileDevices { get; }
 
-        public bool Headless { get; set; }
+        public bool Headless { get; }
 
-        public string StartUrl { get; set; }
+        public string StartUrl { get; }
 
-        public string TestName { get; set; }
+        public string TestName { get; }
 
-        public RunType RunType { get; set; }
+        public RunType RunType { get;  }
 
-        public Environment Environment { get; set; }
+        public Environment Environment { get;  }
 
-        public Teams Team { get; set; }
+        public Teams Teams { get;  }
 
-        public string TestCategory { get; set; }
+        public string TestCategory { get;  }
 
         //public List<SeleniumCapability> Capabilities { get; set; }
 

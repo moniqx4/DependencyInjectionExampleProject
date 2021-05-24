@@ -19,12 +19,7 @@ namespace PageObjects
 
         public BaseLocatorModel SetLocator(LocatorType locatorType, string locator)
         {
-            var locatorModel = new BaseLocatorModel() 
-            {
-                
-                LocatorType = locatorType,
-                Locator = locator
-            };
+            var locatorModel = new BaseLocatorModel(locatorType, locator);         
 
             return locatorModel;
         }

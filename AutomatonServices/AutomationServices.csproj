@@ -11,11 +11,11 @@
 
   <ItemGroup>
     <Folder Include="ConfigurationServices\PayrollPolicyService\" />
-    <Folder Include="LoginService\constants\enums\" />
-    <Folder Include="LoginService\constants\" />
-    <Folder Include="NavigationService\Models\" />
-    <Folder Include="NavigationService\Constants\Enums\" />
-    <Folder Include="NavigationService\Constants\" />
+    <Folder Include="LoginServices\constants\enums\" />
+    <Folder Include="LoginServices\constants\" />
+    <Folder Include="NavigationServices\Models\" />
+    <Folder Include="NavigationServices\Constants\Enums\" />
+    <Folder Include="NavigationServices\Constants\" />
     <Folder Include="ScheduleServices\AttendancePointService\" />
     <Folder Include="TimeEntryServices\TimeCorrectionServices\" />
     <Folder Include="TimeEntryServices\PunchService\models\" />
