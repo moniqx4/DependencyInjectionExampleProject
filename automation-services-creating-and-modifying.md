@@ -82,3 +82,7 @@ using AutomationServices.SharedServices.ElementActions;
         }
 ```
 
+Automation Services utilize other Automation Services and/or Page Objects. This sub-project does NOT have direct access to the Selenium WebDriver. However, if unable to find a service or page object that works for your needs and creating a page object doesn't make sense, for these special situations there are two interfaces available: IBrowerActions for browser control and IElementActions for element interaction.
+
+It is expected these only be used for those special snowflakes. Basically if you decide to use them, your PR will be more closely looked at for other alternatives. 
+
