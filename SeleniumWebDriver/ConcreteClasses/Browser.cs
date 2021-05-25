@@ -1,6 +1,5 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
-using SeleniumWebDriver.ConcreteClasses;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
@@ -10,6 +9,11 @@ namespace SeleniumWebDriver
         
         public Browser(SeleniumConfiguration config) : base(config)
         {           
+        }
+
+        public IWebDriver BrowserAction()
+        {
+            return _browser;
         }
 
         /// <summary>

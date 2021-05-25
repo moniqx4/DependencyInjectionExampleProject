@@ -1,4 +1,5 @@
-﻿using SeleniumWebDriver;
+﻿using PageObjects.Shared;
+using SeleniumWebDriver;
 
 namespace AutomationServices.SharedServices.BrowserActions
 {
@@ -7,9 +8,11 @@ namespace AutomationServices.SharedServices.BrowserActions
     {
 
         private readonly IBrowser _browser;
-        public BrowserActions(IBrowser browser)
+        private readonly IBrowserHandler _browserHandler;
+        public BrowserActions(IBrowser browser, IBrowserHandler browserHandler)
         {
             _browser = browser;
+            _browserHandler = browserHandler;
         }
 
         public void NavigateToPageUrl(string url)
@@ -27,6 +30,11 @@ namespace AutomationServices.SharedServices.BrowserActions
         {
             _browser.BrowserRefresh();
 
+        }
+
+        public void NavForward()
+        {
+            _browserHandler.Browser().Navigate().Forward();
         }
     }
 }

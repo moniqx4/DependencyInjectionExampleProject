@@ -1,4 +1,5 @@
 ﻿using DataModelLibrary;
+using OpenQA.Selenium;
 using SeleniumWebDriver;
 
 namespace PageObjects
@@ -15,7 +16,13 @@ namespace PageObjects
         //This empty constructor is to allow the BasePageObject to be inherited with the injection
         public BasePageObject()
         {
-        }      
+        }
+        
+        public IWebElement ElementAction(BaseLocatorModel locator, int waitTimeInSec = 10)
+        {
+            return _webPage.HandleElement(locator, waitTimeInSec);
+            
+        }
 
         public BaseLocatorModel SetLocator(LocatorType locatorType, string locator)
         {

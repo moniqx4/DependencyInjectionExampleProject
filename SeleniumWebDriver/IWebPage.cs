@@ -6,7 +6,9 @@ namespace SeleniumWebDriver
 {
     public interface IWebPage
     {
-     
+
+        IWebElement HandleElement(BaseLocatorModel locator, int waitTimeInSecs);
+
         public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
      
 

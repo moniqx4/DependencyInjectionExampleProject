@@ -208,6 +208,12 @@ namespace SeleniumWebDriver.ConcreteClasses
             return _locatorBuilder.BuildLocator(locatorModel, waitTimeInSecs).Displayed;            
         }
        
+        public IWebElement HandleElement(BaseLocatorModel locator, int waitTimeInSecs)
+        {
+            var element = _locatorBuilder.BuildLocator(locator, waitTimeInSecs);
+
+            return element;           
+        }
       
         public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs)
         {

@@ -4,6 +4,7 @@ namespace SeleniumWebDriver
 {
     public interface IBrowser
     {
+        IWebDriver BrowserAction();
         string GetBrowserTitle();
 
         string GetBrowserUrl();

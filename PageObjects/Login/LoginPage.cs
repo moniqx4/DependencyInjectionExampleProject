@@ -4,28 +4,42 @@
 namespace PageObjects.Login.ConcreteClasses
 {
     public class LoginPage : BasePageObject, ILoginPage
-    { 
-        public void ClickSubmitButton()
-        {
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.BTN_SUBMIT_ID);
+    {
 
-            HandleClickElement(locatorModel);
+        private readonly string submitButtonLocator = LoginElements.BTN_SUBMIT_ID;
+        private readonly string usernameTextboxLocator = LoginElements.TXTBOX_USERNAME_ID;
+        private readonly string passwordTextboxLocator = LoginElements.TXTBOX_PASSWORD_ID;
+        private readonly string companyAliasTextboxLocator = LoginElements.TXTBOX_COMPANYALIAS_ID;
+        private readonly string badgeNumberTextboxLocator = LoginElements.TXTBOX_BADGENUMBER_ID;
+        private readonly string webKioskLoginButtonLocator = "";
+       
+
+        public LoginPage()
+        {           
+        }
+
+
+        public void ClickSubmitButton()
+        {            
+            var locator = SetLocator(LocatorType.Id, submitButtonLocator);
+
+            ClickElement(locator);            
         }
 
         public ILoginPage SetUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.TXTBOX_USERNAME_ID);
+            var locatorModel = SetLocator(LocatorType.Id, usernameTextboxLocator);
            
-            HandleTextBox(locatorModel, username);
+            SetTextBox(locatorModel, username);
 
             return this;
         }
 
         public ILoginPage SetPasswordTextBox(string password)
         {          
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.TXTBOX_PASSWORD_ID);
+            var locatorModel = SetLocator(LocatorType.Id, passwordTextboxLocator);
 
-            HandleTextBox(locatorModel, password);
+            SetTextBox(locatorModel, password);
 
             return this;
         }
@@ -33,20 +47,29 @@ namespace PageObjects.Login.ConcreteClasses
         public ILoginPage SetCompanyAliasTextBox(string companyAlias)
         {
 
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.TXTBOX_COMPANYALIAS_ID);
+            var locatorModel = SetLocator(LocatorType.Id, companyAliasTextboxLocator);
 
-            HandleTextBox(locatorModel, companyAlias);
+            SetTextBox(locatorModel, companyAlias);            
 
             return this;
         }
 
         public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
         {
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.TXTBOX_BADGENUMBER_ID);
+            var locatorModel = SetLocator(LocatorType.Id, badgeNumberTextboxLocator);
 
-            HandleTextBox(locatorModel, badgeNumber);
+            SetTextBox(locatorModel, badgeNumber);
 
             return this;
+
+        }
+
+        public string GetBadgeNumberElementText()
+        {
+            var locatorModel = SetLocator(LocatorType.Id, badgeNumberTextboxLocator);
+
+            return GetTextElement(locatorModel);           
+
         }
 
         public ILoginPage EnterPinWithTouchEnabled(string pin)
@@ -56,10 +79,11 @@ namespace PageObjects.Login.ConcreteClasses
 
         public void ClickWebKioskLoginButton()
         {
-            var locatorModel = SetLocator(LocatorType.Id, LoginElements.BTN_SUBMIT_ID);
+            var locator = SetLocator(LocatorType.Id, webKioskLoginButtonLocator);
 
-            HandleClickElement(locatorModel);
+            ClickElement(locator);
+
         }
-       
+
     }
 }

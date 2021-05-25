@@ -5,6 +5,7 @@ using AutomationServices.PunchValidationService;
 using AutomationServices.WaitService;
 using DataModelLibrary;
 using DataModelLibrary.WebTimeModels;
+using PageObjects.Shared;
 using PageObjects.WTDashboards.Models;
 using PageObjects.WTDashboards.Models.Enums;
 
@@ -17,12 +18,13 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
         private readonly IPunchService _punchService;
         private readonly ILoginService _loginService;
         private readonly IWaitService _waitService;
+        private readonly IBrowserHandler _browser;
 
         public ValidatePunchWorkflow(
             ILoginService loginService,
             IPunchService punchService,
             IEmployeeTImeCardService employeeTimecardService,
-            IPunchValidationService validatePunch, IWaitService waitService)
+            IPunchValidationService validatePunch, IWaitService waitService, IBrowserHandler browser)
         {
 
             _punchService = punchService;
@@ -30,6 +32,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             _validatePunch = validatePunch;
             _loginService = loginService;
             _waitService = waitService;
+            _browser = browser;
         }
 
         public void Execute()
@@ -63,6 +66,8 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             };
 
             _punchService.CreatePunch(punch);
+
+           
         }
 
         private void WaitBetweenPunches()
@@ -72,12 +77,9 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 
         private void Login(string baseUrl)
         {
-            LoginCredModel loginCred = new LoginCredModel()
-            {
-                Username = "marcyemployee",
-                Password = "somepassword",
-                CompanyId = "100496"
-            };
+            var loginCred = new LoginCredModel("100496", "marcyemployee", "somepassword", EmployeeType.Employee);
+           
+            
             _loginService.LoginToWTEmployeeDashboard(baseUrl, loginCred);
         }
 
