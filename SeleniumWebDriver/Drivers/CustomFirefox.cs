@@ -39,20 +39,25 @@ namespace SeleniumWebDriver.Drivers
         {
             _logger.Info($"New Driver for Test: {configuration.TestName} | {Guid.NewGuid()}");
             _logger.Info($"Driver Configuration: {configuration.ConfigName}");
-            _logger.Info($"Browser: {configuration.Browser}");
+            _logger.Info($"Browser: {configuration.BrowserType}");
             _logger.Info($"RunType: {configuration.RunType}");
 
-            var config = new SeleniumConfiguration()
-            {
-                Browser = configuration.Browser,
-                Active = configuration.Active,
-                RunType = configuration.RunType,
-                Headless = configuration.Headless,
-                ConfigName = configuration.ConfigName,
-                IsMobileEnabled = configuration.IsMobileEnabled,
-                TestName = configuration.TestName,
-                MobileDevices = { MobileDevices.None }
-            };
+            var config = new SeleniumConfiguration
+             (
+                 configuration.ConfigName,
+                 configuration.Active,
+                 configuration.BrowserType,
+                 configuration.IsMobileEnabled,
+                 configuration.MobileDevices,
+                 configuration.Headless,
+                 configuration.StartUrl,
+                 configuration.TestName,
+                 configuration.RunType,
+                 configuration.Environment,
+                 configuration.Teams,
+                 configuration.TestCategory
+
+              );
 
 
             return config;

@@ -15,20 +15,21 @@ namespace DependencyInjectionExampleProject.SeleniumWebDriver.Drivers
 
     public class Driver
     {
-        private readonly IOptions _options;
+        readonly IOptions _options;
 
-
-        public Driver(IOptions options)
+        public Driver()
         {
-            _options = options;
+            _options.Window.Maximize();
+            _options.Cookies.DeleteAllCookies();
         }
 
-        public IWebDriver Build(SeleniumConfiguration configuration)
+        public static IWebDriver Build(SeleniumConfiguration configuration, IOptions _options)
         {
             //var driverEventFiring = new EventFiringWebDriver(IWebDriver driver);
-            _options.Window.FullScreen();
-            _options.Cookies.DeleteAllCookies();
+            
             //_options.Timeouts()
+
+
 
 
             if (configuration.RunType == RunType.Local)

@@ -2,7 +2,6 @@
 using DependencyInjectionExampleProject.SeleniumWebDriver.Drivers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Support.Events;
 using System;
 
 
@@ -10,23 +9,23 @@ namespace SeleniumWebDriver
 {
     public class SeleniumDriver
     {
-        //[ThreadStatic]
-        public static IWebDriver _browser;
+        [ThreadStatic]
+        public static IWebDriver _driver;
 
         [ThreadStatic]
         private static IWebDriver _browserWait;
         
 
-        public SeleniumDriver(SeleniumConfiguration config)
+        public SeleniumDriver(SeleniumConfiguration config, IOptions options)
         {
-            _browser = Driver.Build(config);
+            _driver = Driver.Build(config, options);
         }
 
         public static WebDriverWait BrowserWait
         {
             get
             {
-                if (_browserWait == null || _browser == null)
+                if (_browserWait == null || _driver == null)
                 {
                     throw new NullReferenceException("The WebDriver browser wait instance was not initialized.");
                 }
@@ -44,9 +43,9 @@ namespace SeleniumWebDriver
         /// </summary>
         public static void StopBrowser()
         {
-            _browser.Close();
-            _browser.Quit();
-            _browser.Dispose();
+            _driver.Close();
+            _driver.Quit();
+            _driver.Dispose();
             
         }
 

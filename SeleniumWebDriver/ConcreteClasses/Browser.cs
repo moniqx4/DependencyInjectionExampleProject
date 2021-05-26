@@ -1,27 +1,32 @@
 ﻿using DataModelLibrary;
 using OpenQA.Selenium;
+using System;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
 {
-    public class Browser : SeleniumDriver, IBrowser
+    public class Browser : IBrowser
     {
-        
-        public Browser(SeleniumConfiguration config) : base(config)
-        {           
+        readonly IOptions options;
+
+        [ThreadStatic]
+        static IWebDriver _driver;
+
+        public Browser()
+        {            
         }
 
         public IWebDriver BrowserAction()
         {
-            return _browser;
+            return _driver;
         }
 
         /// <summary>
         /// Maximize the browser
         /// </summary>
         public void BrowserMaximize()
-        {           
-            _browser.Manage().Window.Maximize();
+        {
+            _driver.Manage().Window.Maximize();
         }
 
         /// <summary>
@@ -29,7 +34,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public void BrowserMinimize()
         {
-            _browser.Manage().Window.Minimize();
+            _driver.Manage().Window.Minimize();
         }
 
         /// <summary>
@@ -37,7 +42,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public INavigation BrowserRefresh()
         {
-            _browser.Navigate().Refresh();
+            _driver.Navigate().Refresh();
 
             return (INavigation)this;
         }
@@ -48,7 +53,7 @@ namespace SeleniumWebDriver
         /// <returns>Browser Title</returns>
         public string GetBrowserTitle()
         {
-            return _browser.Title;
+            return _driver.Title;
         }
 
         /// <summary>
@@ -57,7 +62,7 @@ namespace SeleniumWebDriver
         /// <returns>URL</returns>
         public string GetBrowserUrl()
         {
-            return _browser.Url;
+            return _driver.Url;
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace SeleniumWebDriver
         /// </summary>
         public INavigation MoveBackward()
         {
-           _browser.Navigate().Back();
+            _driver.Navigate().Back();
 
             return (INavigation)this;
         }
@@ -75,14 +80,14 @@ namespace SeleniumWebDriver
         /// </summary>
         public INavigation MoveForward()
         {
-            _browser.Navigate().Forward();
+            _driver.Navigate().Forward();
 
             return (INavigation)this;
         }
 
         public INavigation NavigateTo(string url)
         {
-            _browser.Navigate().GoToUrl(url);
+            _driver.Navigate().GoToUrl(url);
 
             return (INavigation)this;
         }
@@ -93,7 +98,7 @@ namespace SeleniumWebDriver
         /// <param name="frameElement">IFrame WebElement</param>
         public ITargetLocator SwitchToFrame(IWebElement frameElement)
         {
-            _browser.SwitchTo().Frame(frameElement);
+            _driver.SwitchTo().Frame(frameElement);
 
             return (ITargetLocator)this;
         }
@@ -103,14 +108,14 @@ namespace SeleniumWebDriver
         /// </summary>
         public ITargetLocator SwitchToParent()
         {
-            var windowids = _browser.WindowHandles;
+            var windowids = _driver.WindowHandles;
 
             for (int i = windowids.Count - 1; i > 0; i--)
             {
-                _browser.SwitchTo().Window(windowids[i]);
-                _browser.Close();
+                _driver.SwitchTo().Window(windowids[i]);
+                _driver.Close();
             }
-            _browser.SwitchTo().Window(windowids[0]);
+            _driver.SwitchTo().Window(windowids[0]);
 
             return (ITargetLocator)this;
         }
@@ -121,33 +126,33 @@ namespace SeleniumWebDriver
         /// <param name="index">Window index</param>
         public ITargetLocator SwitchToWindow(int index = 0)
         {
-            ReadOnlyCollection<string> windows = _browser.WindowHandles;
+            ReadOnlyCollection<string> windows = _driver.WindowHandles;
 
             if ((windows.Count - 1) < index)
             {
                 throw new NoSuchWindowException("Invalid Browser Window Index" + index);
             }
 
-            _browser.SwitchTo().Window(windows[index]);
+            _driver.SwitchTo().Window(windows[index]);
 
             return (ITargetLocator)this;
         }
 
         public IBrowser SwitchToAlert()
         {
-            _browser.SwitchTo().Alert();
+            _driver.SwitchTo().Alert();
 
             return this;
         }
 
         public string GetAlertText()
         {
-            return _browser.SwitchTo().Alert().Text;
+            return _driver.SwitchTo().Alert().Text;
         }
 
         public IBrowser SetTextInAlert(string text)
         {
-            _browser.SwitchTo().Alert().SendKeys(text);
+            _driver.SwitchTo().Alert().SendKeys(text);
 
             return this;
         }
@@ -155,18 +160,18 @@ namespace SeleniumWebDriver
        
         public void ClickAlertAcceptButton()
         {
-            _browser.SwitchTo().Alert().Accept();
+            _driver.SwitchTo().Alert().Accept();
         }
 
         public void DismissAlert()
         {
-            _browser.SwitchTo().Alert().Dismiss();
+            _driver.SwitchTo().Alert().Dismiss();
         }
 
         public void Close()
         {
-            _browser.Close();
-            _browser.Dispose();
+            _driver.Close();
+            _driver.Dispose();
         }
 
         //private ITargetLocator SwitchTo()
