@@ -63,7 +63,7 @@ namespace SeleniumWebDriver.ConcreteClasses
         /// <param name="locatorType"> Locator Type i.e. Xpath,Id,etc.</param>
         /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
         /// <returns> an instance of the webelement</returns>
-        [Obsolete]
+        
         private static IWebElement _WaitTillElementDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs = 10)
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTimeInSecs));
@@ -92,7 +92,7 @@ namespace SeleniumWebDriver.ConcreteClasses
         /// <param name="locator">Locator path</param>        
 
         /// <returns> an instance of the webelement</returns>
-        [Obsolete]
+       
         private static IWebElement _WaitTillDisplayed(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTimeInSecs));
@@ -140,7 +140,6 @@ namespace SeleniumWebDriver.ConcreteClasses
                     var eleByLinkText = wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locatorModel.Locator)));
                     return eleByLinkText.FindElement(By.LinkText(locatorModel.Locator));
 
-
                 case LocatorType.PartialLinkText:
                     var eleByPartialLinkText = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locatorModel.Locator)));
                     return eleByPartialLinkText.FindElement(By.PartialLinkText(locatorModel.Locator));
@@ -166,45 +165,47 @@ namespace SeleniumWebDriver.ConcreteClasses
 
         public ReadOnlyCollection<IWebElement> GetLocators(BaseLocatorModel locator, int waitTimeInSecs = 10)
         {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTimeInSecs));
+
             switch (locator.LocatorType)
             {
                 case LocatorType.Id:
-                    var eleById = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleById = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator.Locator)));
                     return eleById.FindElements(By.Id(locator.Locator));
 
                 case LocatorType.Class:
-                    var eleByClass = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByClass = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locator.Locator)));
                     return eleByClass.FindElements(By.ClassName(locator.Locator));
 
 
                 case LocatorType.CSS:
-                    var eleByCSS = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByCSS = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locator.Locator)));
                     return eleByCSS.FindElements(By.CssSelector(locator.Locator));
 
 
                 case LocatorType.DataAutomationId:
-                    var eleByDAID = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByDAID = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"[data-automation-id='{locator.Locator}']")));
                     return eleByDAID.FindElements(By.CssSelector($"[data-automation-id='{locator.Locator}']"));
 
 
                 case LocatorType.LinkText:
-                    var eleByLinkText = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByLinkText = wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator.Locator)));
                     return eleByLinkText.FindElements(By.LinkText(locator.Locator));
 
                 case LocatorType.PartialLinkText:
-                    var eleByPartialLinkText = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByPartialLinkText = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator.Locator)));
                     return eleByPartialLinkText.FindElements(By.PartialLinkText(locator.Locator));
 
                 case LocatorType.TagName:
-                    var eleByTagName = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByTagName = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locator.Locator)));
                     return eleByTagName.FindElements(By.TagName(locator.Locator));
 
                 case LocatorType.XPath:
-                    var eleByXPath = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByXPath = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator.Locator)));
                     return eleByXPath.FindElements(By.XPath(locator.Locator));
 
                 case LocatorType.InputType:
-                    var eleByInputType = _WaitTillElementDisplayed(locator, waitTimeInSecs);
+                    var eleByInputType = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector($"input='[{locator.Locator}']")));
                     return eleByInputType.FindElements(By.CssSelector($"input='[{locator.Locator}']"));
 
                 default:

@@ -1,5 +1,4 @@
-﻿using DataModelLibrary;
-using SeleniumWebDriver.Helper;
+﻿using SeleniumWebDriver.Helper;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
@@ -8,7 +7,7 @@ using System.Drawing;
 
 namespace SeleniumWebDriver.ConcreteClasses
 {
-    public class DriverEventListener: SeleniumDriver, IWebDriver, ISearchContext, IDisposable, IWebElement
+    public class DriverEventListener: IWebDriver, ISearchContext, IDisposable, IWebElement
     {
         private IDriverLogger _logger = new DriverLogger();
 
@@ -19,9 +18,9 @@ namespace SeleniumWebDriver.ConcreteClasses
 
         //private EventFiringWebDriver _eventFiringListener = new EventFiringWebDriver(_browser);
 
-        public DriverEventListener(SeleniumConfiguration config) : base(config)
+        public DriverEventListener()
         {
-            _browser = _driver;
+            
         }
 
         public event EventHandler<WebDriverNavigationEventArgs> Navigating;
