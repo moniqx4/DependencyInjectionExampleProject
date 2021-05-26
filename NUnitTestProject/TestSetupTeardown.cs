@@ -11,7 +11,7 @@ namespace NUnitTestProject
             [OneTimeSetUp]
             public void RunBeforeAnyTests()
             {
-                PageObjectProvider.Setup();
+                PageObjectProvider.Setup("V2");
             }
 
         }

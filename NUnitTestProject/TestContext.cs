@@ -6,7 +6,7 @@
 
         public string WorkflowName { get; set; }
 
-        public string Version { get; set; } = "V3";
+        public string Version { get; set; }
         
         public void Close()
         {

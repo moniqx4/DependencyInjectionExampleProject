@@ -9,9 +9,9 @@ namespace NUnitTestProject
     {
         public static IContainer Container { get; set; }
 
-        public static string Version { get; set; } = "V3";
+        //public static string Version { get; set; }
 
-        public static IContainer Setup()
+        public static IContainer Setup(string version)
         {
             var builder = new ContainerBuilder();
 
@@ -20,7 +20,7 @@ namespace NUnitTestProject
             // Registering Classes without Interfaces
             builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
-            if (Version == "V3")
+            if (version == "V3")
             {
                 builder.RegisterType<EmployeeDashboardV3>().As<IEmployeeDashboard>();
             }
