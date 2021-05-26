@@ -4,65 +4,72 @@ namespace PageObjects.Login
 {
     public class ServiceBureauPage : BasePageObject, IServiceBureauPage
     { 
+        private readonly string sBCompanyAliasTextBoxLocator = "";
+        private readonly string companyAliasTextBoxLocator = "";
+        private readonly string searchButtonLocator = "";
+        private readonly string usernameTextBoxLocator = "";
+        private readonly string passwordTextBoxLocator = "";
+        private readonly string loginButtonLocator = "";
+        private readonly string companyAliasLinkLocator = "";
 
         public IServiceBureauPage SetSBCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, sBCompanyAliasTextBoxLocator);
 
-            HandleTextBox(locatorModel, companyAlias);
+            SetTextBox(locatorModel, companyAlias);
 
             return this;
         }
 
         public IServiceBureauPage ClickSearchButton()
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, searchButtonLocator);
 
-            HandleClickElement(locatorModel);
+            ClickElement(locatorModel);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginCompanyAliasTextBox(string companyAlias)
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, companyAliasTextBoxLocator);
 
-            HandleTextBox(locatorModel, companyAlias);
+            SetTextBox(locatorModel, companyAlias);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, usernameTextBoxLocator);
 
-            HandleTextBox(locatorModel, username);
+            SetTextBox(locatorModel, username);
 
             return this;
         }
 
         public IServiceBureauPage SetLoginPasswordTextBox(string password)
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, passwordTextBoxLocator);
 
-            HandleTextBox(locatorModel, password);
+            SetTextBox(locatorModel, password);
 
             return this;
         }
 
         public void ClickLoginButton()
         {
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, loginButtonLocator);
 
-            HandleClickElement(locatorModel);
+            ClickElement(locatorModel);
         }
 
         public void ClickCompanyAliasLink(string companyAlias)
         {
             // TODO, need to pass the companyAlias into the locator
-            var locatorModel = SetLocator(LocatorType.CSS, "");
+            var locatorModel = SetLocator(LocatorType.CSS, companyAliasLinkLocator);
 
-            HandleClickElement(locatorModel);
+            ClickElement(locatorModel);
         }
 
 

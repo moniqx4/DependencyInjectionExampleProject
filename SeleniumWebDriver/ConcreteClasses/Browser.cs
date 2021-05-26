@@ -1,13 +1,11 @@
-﻿using DataModelLibrary;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 using System.Collections.ObjectModel;
 
 namespace SeleniumWebDriver
 {
     public class Browser : IBrowser
-    {
-        readonly IOptions options;
+    {        
 
         [ThreadStatic]
         static IWebDriver _driver;
