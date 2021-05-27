@@ -16,14 +16,14 @@ namespace NUnitTestProject
 
             private readonly string _testName;
 
-            private readonly string _version;
+            //private readonly string _version;
 
             //private readonly ILogger _logger;
 
-            public TestRunner(string testName, string version)
+            public TestRunner(string testName)
             {
                 _testName = testName;
-                _version = version;
+                //_version = version;
                 Registrations = new List<Tuple<Type, Type>>();
                 _container = PageObjectProvider.Container;
                 //_logger = new TestLogger(_testName);
@@ -96,10 +96,10 @@ namespace NUnitTestProject
             {
                 var testContextBuilder = new TestContextBuilder();
 
-                testContextBuilder
-                    //.AddLogger(_logger)
-                    .AddName(_testName)
-                    .AddVersion(_version);
+            testContextBuilder
+                //.AddLogger(_logger)
+                .AddName(_testName);
+                    //.AddVersion(_version);
 
                 var testContext = testContextBuilder.Build();
 

@@ -18,7 +18,7 @@
 
         public TestContextBuilder AddName(string testName)
         {
-            _context.WorkflowName = testName;
+            _context.TestName = testName;
 
             return this;
         }

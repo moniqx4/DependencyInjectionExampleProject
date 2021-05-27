@@ -4,7 +4,7 @@
     {
         //public ILogger Logger { get; internal set; }
 
-        public string WorkflowName { get; set; }
+        public string TestName { get; set; }
 
         public string Version { get; set; }
         

@@ -7,9 +7,7 @@ namespace NUnitTestProject
 {
     public static class PageObjectProvider
     {
-        public static IContainer Container { get; set; }
-
-        //public static string Version { get; set; }
+        public static IContainer Container { get; set; }        
 
         public static IContainer Setup(string version)
         {

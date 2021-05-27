@@ -14,7 +14,7 @@ namespace NUnitTestProject
             public void RunMyTest()
             {
 
-                var runner = new TestRunner(nameof(RunMyTest), "V3");
+                var runner = new TestRunner(nameof(RunMyTest));
 
                 runner.Execute<ExampleTestWorkflow>(workflow => { workflow.Execute(); });
             }
