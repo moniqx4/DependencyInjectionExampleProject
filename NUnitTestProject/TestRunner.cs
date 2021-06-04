@@ -64,7 +64,7 @@ namespace NUnitTestProject
                         builder =>
                         {                            
                             builder.RegisterInstance(testContext);
-                        //builder.RegisterInstance(testContext.WebSite);
+                        
                         foreach (var registration in Registrations)
                             {                                
                                 builder.RegisterType(registration.Item2).As(registration.Item1);

@@ -11,7 +11,7 @@ namespace NUnitTestProject
             [OneTimeSetUp]
             public void RunBeforeAnyTests()
             {
-                PageObjectProvider.Setup("V3");
+                PageObjectProvider.Setup("V3"); // passing the version, demonstrates a way to switch versions of objects to be set
             }
 
         }
