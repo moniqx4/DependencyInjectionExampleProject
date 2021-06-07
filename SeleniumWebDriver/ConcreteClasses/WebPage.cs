@@ -60,6 +60,12 @@ namespace SeleniumWebDriver.ConcreteClasses
         //{
         //    _comboBox.IsComboBoxEnabled(locatorModel, index);
         //}
+
+        public IWebElement GetElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 5)
+        {
+            return _locatorBuilder.BuildLocator(locatorModel);            
+        }
+
         public IJavaScriptExecutor JSTypeTextInPopUp(string inputtext)
         {
             _javascript.TypeTextInPopUp(inputtext);

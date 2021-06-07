@@ -7,23 +7,25 @@ namespace SeleniumWebDriver
     public interface IWebPage
     {
 
-        IWebElement HandleElement(BaseLocatorModel locator, int waitTimeInSecs);
+        IWebElement GetElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 5);
 
-        public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
+        //IWebElement HandleElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
+
+        //public IWebPage ClickElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
      
 
         IWebPage CheckCheckbox(BaseLocatorModel locator, bool isEnabled, int waitTimeInSecs = 10);
       
 
-        string GetElementText(BaseLocatorModel locator, int waitTimeInSecs = 10);
+        //string GetElementText(BaseLocatorModel locator, int waitTimeInSecs = 10);
      
 
-        IWebPage SetText(BaseLocatorModel locator, string text, int waitTimeInSecs = 10);
+        //IWebPage SetText(BaseLocatorModel locator, string text, int waitTimeInSecs = 10);
 
         bool IsCheckBoxChecked(BaseLocatorModel locator, int waitTimeInSecs = 10);
   
 
-        bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
+        //bool IsDisplayed(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
       
 
         void AcceptAlert();
@@ -57,13 +59,13 @@ namespace SeleniumWebDriver
 
         bool JSIsPopUpPresent();
 
-        IJavaScriptExecutor JSScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs);
+        IJavaScriptExecutor JSScrollToElement(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
         string JSGetPsuedoElementText(string locator, string keyword);
 
-        string GetLinkText(BaseLocatorModel locator, int waitTimeInSecs = 10);
+        //string GetLinkText(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
+        //string GetLabelText(BaseLocatorModel locatorModel, int waitTimeInSecs = 10);
 
         void DragNDrop(BaseLocatorModel locatorModelSource, BaseLocatorModel locatorModelTarget, int waitTimeInSecs = 10);
 
@@ -85,7 +87,7 @@ namespace SeleniumWebDriver
 
         void SelectElementByValue(string value, double timeout, BaseLocatorModel locator, int waitTimeInSecs = 10);
 
-        void SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
+        //void SelectElement(BaseLocatorModel locator, int waitTimeInSecs = 10);
 
 
     }

@@ -6,17 +6,15 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
 {
     public class ActivityComp : BasePageObject, IActivityComp
     {
-        private readonly IWebPage _webPage;
-        public ActivityComp(IWebPage webPage)
+        public ActivityComp(IWebPage webPage) : base(webPage)
         {
-            _webPage = webPage;
         }
 
         public IActivityComp ClickCorrectionsTab()
         {
             var locator = SetLocator(LocatorType.DataAutomationId, "");
 
-            HandleClickElement(locator);
+            GetElement(locator).Click();            
 
             return this;
         }
@@ -25,7 +23,7 @@ namespace PageObjects.EmployeeDashboard.ConcreteClasses
         {
             var locator = SetLocator(LocatorType.DataAutomationId, "");
 
-            HandleClickElement(locator);           
+            GetElement(locator).Click();
 
             return this;
         }

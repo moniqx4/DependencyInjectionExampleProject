@@ -18,7 +18,7 @@ namespace NUnitTestProject
 
                 SeleniumConfiguration config = new SeleniumConfiguration
                 {
-                    Browser = BrowserType.Chrome,
+                    //Browser = BrowserType.Chrome,
                 };
                 // TODO: setup logger here, once created
                 //    Log.Information("");

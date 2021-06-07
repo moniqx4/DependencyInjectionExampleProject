@@ -15,8 +15,10 @@ namespace PageObjects.Login
         public ISupervisorDBPage SetCompanyIdTextBox(string companyAlias)
         {
             var locatorModel = SetLocator(LocatorType.Id, "");
-            
-            HandleTextBox(locatorModel, companyAlias);
+
+            var element = GetElement(locatorModel);
+
+            element.SendKeys(companyAlias);
 
             return this;
         }
@@ -25,7 +27,9 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(LocatorType.Id, "");
 
-            HandleTextBox(locatorModel, username);
+            var element = GetElement(locatorModel);
+
+            element.SendKeys(username);
 
             return this;
         }
@@ -34,7 +38,9 @@ namespace PageObjects.Login
         {
             var locatorModel = SetLocator(LocatorType.CSS, "");
 
-            HandleTextBox(locatorModel, password);
+            var element = GetElement(locatorModel);
+
+            element.SendKeys(password);
 
             return this;
         }

@@ -1,75 +1,67 @@
 ﻿using DataModelLibrary;
+using SeleniumWebDriver;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
     public class TimeoffRequestComp : BasePageObject, ITimeOffComp
     {
-      
-        public ITimeOffComp ClickRequestTimeOffButton()
+        public TimeoffRequestComp(IWebPage webPage) : base(webPage)
         {
-            var locatorModel = new BaseLocatorModel()
-            {             
-                    LocatorType = LocatorType.DataAutomationId,
-                    Locator = ""
-               
-            };
+        }
 
-            HandleClickElement(locatorModel);
+        public ITimeOffComp ClickRequestTimeOffButton()
+        {        
+
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
+
+            var element = GetElement(locator);
+
+            element.Click();
 
             return this;
+            
         }
 
         public ITimeOffComp SetAvailabilityCheckbox(bool isEnabled)
         {
-            var locatorModel = new BaseLocatorModel()
-            {               
-                    LocatorType = LocatorType.Id,
-                    Locator = ""              
-            };
+            var locator = SetLocator(LocatorType.DataAutomationId, "");           
 
-            HandleCheckbox(locatorModel, isEnabled);           
+            HandleCheckbox(locator, isEnabled);           
 
             return this;
         }
 
         public ITimeOffComp SetCommentsTextBox(string comments)
-        {
-            var locator = new BaseLocatorModel()
-            {
-                    LocatorType = LocatorType.Id,
-                    Locator = ""
-             
-            };
+        {            
 
-            SetTextBox(locator, comments);
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
+
+            var element = GetElement(locator);
+
+            element.SendKeys(comments);
 
             return this;
         }
 
         public ITimeOffComp SetEndDateTextBox(string endDate)
         {
-            var locator = new BaseLocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = ""
+           
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
 
-            };
+            var element = GetElement(locator);
 
-            SetTextBox(locator, endDate);
+            element.SendKeys(endDate);
 
             return this;
         }
 
         public ITimeOffComp SetStartDateTextBox(string startDate)
         {
-            var locator = new BaseLocatorModel()
-            {
-                LocatorType = LocatorType.Id,
-                Locator = ""
+            var locator = SetLocator(LocatorType.DataAutomationId, "");
 
-            };
+            var element = GetElement(locator);
 
-            SetTextBox(locator, startDate);
+            element.SendKeys(startDate);
 
             return this;
         }

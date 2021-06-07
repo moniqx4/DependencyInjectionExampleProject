@@ -1,12 +1,19 @@
 ﻿using DataModelLibrary;
 using PageObjects.WTDashboards.Constants;
 using PageObjects.WTDashboards.Models.Enums;
+using SeleniumWebDriver;
 using System.Collections.Generic;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
-    public class PunchComponent : BasePageObject, IPunchComp
+    public class PunchComp : IPunchComp
     {
+        private readonly IWebPage _webPage;
+
+        public PunchComp(IWebPage webPage)
+        {
+            _webPage = webPage;
+        }
 
         public IPunchComp ClickPunchButton(PunchMethod punchMethod, PunchType punchType)
         {
@@ -19,6 +26,7 @@ namespace PageObjects.WTDashboards.ConcreteClasses
                 //};
 
                 //_webPage.ClickElement(locatorModel);
+                
             }
             else
             {
@@ -32,28 +40,33 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public IPunchComp ClickManualPunchTypeOption()
         {
            
-            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchTypeOption);
+            var locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchTypeOption);
 
-            HandleClickElement(locator);
-              
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
 
             return this;
         }
 
         public IPunchComp ClickManualPunchNoteOption()
         {
-            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchNoteOption);
+            var locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchNoteOption);
 
-            HandleClickElement(locator);
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
 
             return this;
         }
 
         public IPunchComp ClickManualPunchCostCenterOption()
         {
-            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchCostCenterOption);
+            var locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchCostCenterOption);
 
-            HandleClickElement(locator);
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
 
             return this;
         }
@@ -61,9 +74,11 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public IPunchComp ClickManualPunchSubmitButton()
         {
 
-            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+            var locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
 
-            HandleClickElement(locator);
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
 
             return this;
         }
@@ -71,9 +86,11 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         public IPunchComp SetManualPunchCostCenterSearchText(string text)
         {            
 
-            var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+            var locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchSubmitButton);
+            
+            var element = _webPage.GetElement(locator);
 
-            SetTextBox(locator, text);
+            element.SendKeys(text);
 
             return this;
         }  
@@ -94,21 +111,22 @@ namespace PageObjects.WTDashboards.ConcreteClasses
 
         public IPunchComp SetNotesText(string notes, PunchMethod punchMethod)
         {
+            BaseLocatorModel locator;
+
             if (punchMethod == PunchMethod.Regular)
             {
-                //var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.NotesTextBox);
-
-                //SetTextBox(locator, notes);
+                locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.RegNotesTextBox);              
+               
             }
             else
             {
-                var locator = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchButton);
-                ClickElement(locator);
-
-                //
-                //var locator1 = SetLocator(LocatorType.DataAutomationId, PunchElements.ManualPunchButton);
+                locator = new BaseLocatorModel(LocatorType.DataAutomationId, PunchElements.ManualPunchButton);               
 
             }
+
+            var element = _webPage.GetElement(locator);
+
+            element.SendKeys(notes);
 
             return this;
         }

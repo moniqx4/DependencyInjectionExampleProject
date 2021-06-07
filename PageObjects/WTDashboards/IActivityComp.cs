@@ -1,6 +1,4 @@
-﻿using PageObjects.WTDashboards.Models;
-
-namespace PageObjects.WTDashboards
+﻿namespace PageObjects.WTDashboards
 {
     public interface IActivityComp
     {

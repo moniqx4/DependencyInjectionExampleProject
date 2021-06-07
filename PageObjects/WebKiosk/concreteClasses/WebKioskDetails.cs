@@ -3,16 +3,16 @@ using SeleniumWebDriver;
 
 namespace PageObjects.WebKiosk.ConcreteClasses
 {
-    public class WebKioskDetails : BasePageObject, IWebKioskDetails
+    public class WebKioskDetails : IWebKioskDetails
     {
 
-        private readonly IWebPage _webPay;
+        private readonly IWebPage _webPage;
         private readonly string recentActivityCheckboxLocator;
         private readonly string timeCorrectionCheckboxLocator;
 
-        public WebKioskDetails(IWebPage webPay)
+        public WebKioskDetails(IWebPage webPage)
         {
-            _webPay = webPay;
+            _webPage = webPage;
         }
 
         public IWebKioskDetails SetRecentActivityCheckbox(bool isChecked)

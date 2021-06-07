@@ -2,6 +2,9 @@
 {
     public class PunchElements
     {
+
+        public static string RegNotesTextBox => "";
+
         public static string ManualPunchButton => "";
 
         public static string ManualPunchTypeOption => "";

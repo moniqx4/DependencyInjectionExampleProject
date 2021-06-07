@@ -1,22 +1,30 @@
 ﻿using DataModelLibrary;
+using SeleniumWebDriver;
 
 namespace PageObjects.WTDashboards.ConcreteClasses
 {
     public class FeedbackFormComp : BasePageObject, IFeedbackFormComp
-    {        
+    {
+        public FeedbackFormComp(IWebPage webPage) : base(webPage)
+        {
+        }
 
         public void ClickSubmitButton()
         {           
             var locator = SetLocator(LocatorType.CSS, "#feedback-submit");
 
-            HandleClickElement(locator);
+            var element = GetElement(locator);
+
+            element.Click();
         }
 
         public IFeedbackFormComp SetFeedbackTextBox(string feedbackText)
         {           
             var locator = SetLocator(LocatorType.DataAutomationId, "topic-textfield-input");
+            
+            var element = GetElement(locator);
 
-            SetTextBox(locator, feedbackText);
+            element.SendKeys(feedbackText);
 
             return this;
         }
@@ -25,7 +33,9 @@ namespace PageObjects.WTDashboards.ConcreteClasses
         {
             var locator = SetLocator(LocatorType.DataAutomationId, "feedback-textarea-textarea");
 
-            SetTextBox(locator, topicText);
+            var element = GetElement(locator);
+
+            element.SendKeys(topicText);
 
             return this;
         }

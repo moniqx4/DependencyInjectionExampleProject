@@ -1,45 +1,53 @@
 ﻿using DataModelLibrary;
-
+using SeleniumWebDriver;
 
 namespace PageObjects.Login.ConcreteClasses
 {
-    public class LoginPage : BasePageObject, ILoginPage
+    public class LoginPage : ILoginPage
     {
-
+        private readonly IWebPage _webPage;
         private readonly string submitButtonLocator = LoginElements.BTN_SUBMIT_ID;
         private readonly string usernameTextboxLocator = LoginElements.TXTBOX_USERNAME_ID;
         private readonly string passwordTextboxLocator = LoginElements.TXTBOX_PASSWORD_ID;
         private readonly string companyAliasTextboxLocator = LoginElements.TXTBOX_COMPANYALIAS_ID;
         private readonly string badgeNumberTextboxLocator = LoginElements.TXTBOX_BADGENUMBER_ID;
         private readonly string webKioskLoginButtonLocator = "";
-       
 
-        public LoginPage()
-        {           
+
+        public LoginPage(IWebPage webPage)
+        {
+            _webPage = webPage;
         }
 
 
         public void ClickSubmitButton()
         {            
-            var locator = SetLocator(LocatorType.Id, submitButtonLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, submitButtonLocator);
 
-            ClickElement(locator);            
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
+                  
         }
 
         public ILoginPage SetUsernameTextBox(string username)
         {
-            var locatorModel = SetLocator(LocatorType.Id, usernameTextboxLocator);
-           
-            SetTextBox(locatorModel, username);
+            var locator = new BaseLocatorModel(LocatorType.Id, usernameTextboxLocator);
+
+            var element = _webPage.GetElement(locator);
+
+            element.SendKeys(username);
 
             return this;
         }
 
         public ILoginPage SetPasswordTextBox(string password)
         {          
-            var locatorModel = SetLocator(LocatorType.Id, passwordTextboxLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, passwordTextboxLocator);
 
-            SetTextBox(locatorModel, password);
+            var element = _webPage.GetElement(locator);
+
+            element.SendKeys(password);
 
             return this;
         }
@@ -47,18 +55,23 @@ namespace PageObjects.Login.ConcreteClasses
         public ILoginPage SetCompanyAliasTextBox(string companyAlias)
         {
 
-            var locatorModel = SetLocator(LocatorType.Id, companyAliasTextboxLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, companyAliasTextboxLocator);
 
-            SetTextBox(locatorModel, companyAlias);            
+            var element = _webPage.GetElement(locator);
+
+            element.SendKeys(companyAlias);
 
             return this;
         }
 
         public ILoginPage SetBadgeNumberTextBox(string badgeNumber)
         {
-            var locatorModel = SetLocator(LocatorType.Id, badgeNumberTextboxLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, badgeNumberTextboxLocator);
 
-            SetTextBox(locatorModel, badgeNumber);
+            var element = _webPage.GetElement(locator);
+
+            element.SendKeys(badgeNumber);
+
 
             return this;
 
@@ -66,9 +79,9 @@ namespace PageObjects.Login.ConcreteClasses
 
         public string GetBadgeNumberElementText()
         {
-            var locatorModel = SetLocator(LocatorType.Id, badgeNumberTextboxLocator);
-
-            return GetTextElement(locatorModel);           
+            var locator = new BaseLocatorModel(LocatorType.Id, badgeNumberTextboxLocator);
+            var element = _webPage.GetElement(locator);
+            return element.Text;           
 
         }
 
@@ -79,9 +92,11 @@ namespace PageObjects.Login.ConcreteClasses
 
         public void ClickWebKioskLoginButton()
         {
-            var locator = SetLocator(LocatorType.Id, webKioskLoginButtonLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, webKioskLoginButtonLocator);
 
-            ClickElement(locator);
+            var element = _webPage.GetElement(locator);
+
+            element.Click();
 
         }
 

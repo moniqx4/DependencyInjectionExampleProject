@@ -18,7 +18,7 @@ namespace SeleniumWebDriver.Helper
         {
             startTestTime = DateTime.Now;
             Info("*************************************************************************************");
-            Info("START: {0} starts at {1}.", testTitle, startTestTime);
+            Info($"START: {testTitle} starts at {startTestTime}.");
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace SeleniumWebDriver.Helper
         {
             var endTestTime = DateTime.Now;
             var timeInSec = (endTestTime - this.startTestTime).TotalMilliseconds / 1000d;
-            Info("END: {0} ends at {1} after {2} sec.", testTitle, endTestTime, timeInSec.ToString("##,###", CultureInfo.CurrentCulture));
+            Info($"END: {testTitle} ends at {endTestTime} after {timeInSec.ToString("##,###", CultureInfo.CurrentCulture)} sec.");
             Info("*************************************************************************************");
         }
 
@@ -61,6 +61,16 @@ namespace SeleniumWebDriver.Helper
         public void Error(string message, params object[] args)
         {
             Logger.Error(CultureInfo.CurrentCulture, message, args);
+        }
+
+        /// <summary>
+        /// Errors the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="args">The arguments.</param>
+        public void Debug(string message, params object[] args)
+        {
+            Logger.Debug(CultureInfo.CurrentCulture, message, args);
         }
 
         /// <summary>
