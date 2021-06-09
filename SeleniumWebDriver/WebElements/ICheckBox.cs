@@ -10,7 +10,7 @@ namespace SeleniumWebDriver.WebElements
 
         bool IsCheckboxChecked(BaseLocatorModel locatorModel, int timeInSecs = 10);
 
-        bool IsCheckboxEnabled(BaseLocatorModel locatorModel, int timeInSecs = 10);
+        bool IsCheckboxEnabledByIndex(BaseLocatorModel locatorModel, int index, int timeInSecs = 10);
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DataModelLibrary;
 using SeleniumWebDriver;
+using SeleniumWebDriver.WebElements;
 
 namespace PageObjects.WebKiosk.ConcreteClasses
 {
@@ -7,20 +8,22 @@ namespace PageObjects.WebKiosk.ConcreteClasses
     {
 
         private readonly IWebPage _webPage;
+        private readonly ICheckBox _checkBox;
         private readonly string recentActivityCheckboxLocator;
         private readonly string timeCorrectionCheckboxLocator;
 
-        public WebKioskDetails(IWebPage webPage)
+        public WebKioskDetails(IWebPage webPage, ICheckBox checkBox)
         {
             _webPage = webPage;
+            _checkBox = checkBox;
         }
 
         public IWebKioskDetails SetRecentActivityCheckbox(bool isChecked)
         {
 
-            var locator = SetLocator(LocatorType.Id, recentActivityCheckboxLocator);
+            var locator = new BaseLocatorModel(LocatorType.Id, "");
 
-            ClickCheckbox(locator, isChecked);
+            _checkBox.ClickCheckBox(locator, isChecked);
 
             return this;
             
@@ -28,9 +31,10 @@ namespace PageObjects.WebKiosk.ConcreteClasses
 
         public IWebKioskDetails SetTimeCorrectionCheckbox(bool isChecked)
         {
-            var locator = SetLocator(LocatorType.Id, timeCorrectionCheckboxLocator);
+            
+            var locator = new BaseLocatorModel(LocatorType.Id, timeCorrectionCheckboxLocator);
+            _checkBox.ClickCheckBox(locator, isChecked);
 
-            ClickCheckbox(locator, isChecked);
 
             return this;
         }
