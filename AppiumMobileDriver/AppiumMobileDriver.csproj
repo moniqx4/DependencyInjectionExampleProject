@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
-    <PackageReference Include="Eyes.Appium" Version="4.23.0" />
+    <PackageReference Include="Eyes.Appium" Version="4.25.0" />
   </ItemGroup>
 
 </Project>

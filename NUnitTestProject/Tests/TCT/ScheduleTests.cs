@@ -1,9 +1,12 @@
 ﻿using NUnit.Framework;
 using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Schedule;
 using TestRunnerLibrary;
+using TestContext = TestRunnerLibrary.TestContext;
 
 namespace NUnitTestProject.Tests.TCT
 {
+    using static TestSetupTeardown;
+
     public class ScheduleTests : BaseTest
     {
 

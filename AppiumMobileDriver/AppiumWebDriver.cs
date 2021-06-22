@@ -2,7 +2,7 @@
 
 namespace AppiumMobileDriver
 {
-    public class Class1
+    public class AppiumWebDriver
     {
     }
 }
