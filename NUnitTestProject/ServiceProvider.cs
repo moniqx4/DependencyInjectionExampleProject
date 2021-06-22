@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
-using DataModelLibrary;
 using System.Reflection;
 
 namespace NUnitTestProject
@@ -8,8 +7,6 @@ namespace NUnitTestProject
     public static class ServiceProvider
     {
         public static IContainer Container { get; set; }
-
-        //public static string Version { get; set; } = "V3";
 
         public static IContainer Setup()
         {
@@ -49,11 +46,8 @@ namespace NUnitTestProject
             //       .Where(t => t.Name.StartsWith("I"))
             //       .AsImplementedInterfaces();
 
-
             return builder.Build();
-            //Container.BeginLifetimeScope();
-
-            //return Container;
+           
         }
 
     }

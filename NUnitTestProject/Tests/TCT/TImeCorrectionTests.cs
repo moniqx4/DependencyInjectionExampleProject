@@ -4,9 +4,13 @@ using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Activity;
 using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
 using TestRunnerLibrary;
+using TestContext = TestRunnerLibrary.TestContext;
 
 namespace NUnitTestProject.Tests.TCT
 {
+
+    using static TestSetupTeardown;
+
     public class TImeCorrectionTests : BaseTest
     {
         private static IEnumerable<TestCaseData> AddCases()

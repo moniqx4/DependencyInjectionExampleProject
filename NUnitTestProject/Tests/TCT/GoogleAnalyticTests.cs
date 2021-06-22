@@ -1,9 +1,12 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 using TestRunnerLibrary;
+using TestContext = TestRunnerLibrary.TestContext;
 
 namespace NUnitTestProject.Tests.TCT
 {
+    using static TestSetupTeardown;
+
     public class GoogleAnalyticTests : BaseTest
     {
         private static IEnumerable<TestCaseData> AddCases()

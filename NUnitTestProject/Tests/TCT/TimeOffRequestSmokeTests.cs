@@ -1,14 +1,16 @@
 using NUnit.Framework;
 using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.TimeOffRequest;
 using TestRunnerLibrary;
+using TestContext = TestRunnerLibrary.TestContext;
 
 namespace NUnitTestProject.Tests.TCT
 {
-    public class TimeOffRequestSmokeTests
-    {
-        [TestFixture]
-        public class EmployeeDashboardTests: BaseTest
+
+    using static TestSetupTeardown;
+
+        public class TimeOffRequestSmokeTests : BaseTest
         {
+            public TestContext TestContext { get; set; }
 
             [Test]
             [Author("YourName or email here")]
@@ -17,15 +19,10 @@ namespace NUnitTestProject.Tests.TCT
             {
 
                 var runner = new TestRunner();
-
                 var testContext = SetTestContext(nameof(ValidateTimeOffRequestTest));
-
                 runner.Execute<ValidateTimeOffRequest>(workflow => { workflow.Execute(); }, testContext);
             }
 
         }
 
-
-
-    }
 }
