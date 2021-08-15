@@ -1,8 +1,8 @@
 ---
 description: >-
-  Page Objects in this framework are "pure" page objects. They do not contain
-  combined functionality. They simply provide access to each element on a
-  specific page.
+  Page Objects in this framework are "semi- pure" page objects. They do not
+  contain combined functionality. They simply provide access to each element on
+  a specific page exposing the basic action.
 ---
 
 # Page Objects: Creating and Modifying
@@ -20,7 +20,11 @@ description: >-
 
 
 
-## 
+## Base Rules: 
+
+* Methods for page objects should prefix the action they provide: For example, ClickApplyButton\(\), or SeUsernameTextbox\(string username\); See section below: How to Create a New Page Object. 
+* All Page Objects MUST have an interface, except in the case of using a Partial class. See section Large Page Objects below, for more details on using Partial classes. 
+* Page Objects do NOT require logging lines for each method. However, if you are catching an error, you  do want to log that catch, to provide an assist for debugging. Logging the error that was caught and how it was handled. 
 
 ## How to Modify an Existing Page Object:
 
@@ -45,7 +49,7 @@ If your page object needs access to Browser commands, inject the IBrowser interf
 When creating a new Page Object, name and append it with the Type the page object is, as noted above. If you need to create a Page Object that has other items associated with it, create a folder to house all of that pages pieces, and create a different page object for each piece.  
 
 {% hint style="warning" %}
-Not required, but when dealing with a big page object with multiple pieces that belong to it, there are a few ways to do this: 
+**Large Page Objects:** Not required, but when dealing with a big page object with multiple pieces that belong to it, there are a few ways to do this: 
 
 **Option 1:** 
 
