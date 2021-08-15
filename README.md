@@ -75,8 +75,8 @@ This Template below is a little bit different, demonstrating a Test Driven Test 
 
 **Import pieces to take note for this template:** 
 
-* Each set of data that will be passed to test a new TestCaseData. In this example, the TestName is first, then each piece of actual testdata is separated by a comma. 
-* The NUnit attribute \[Test, TestCaseSource\(nameof\(AddCases\)\)\], where AddCases is passed. Can just juse the method name of AddCases, but could be named whatever, as long as its the same in both places. A user might want a different name if they have different sets of data setup. 
-* Notice where the variables are passed to testcase: ValidateTimeCorrectionTest\(string testname, TimeCorrectionType tcType, string punchDate, string punchTime, string reason\), this must match what is in each data set. 
-* Now notice in the Workflow Execute, the variables are passed to the test, except the TestName, this is excluded, this value is only passed to the TextContext. Only actual TestData is passed to the WorkFlow to the Execute method:   runner.Execute\(workflow =&gt; { workflow.Execute\(tcType, punchDate, punchTime, reason\); }, testContext\);
+* **Each set of data that will be passed to test a new TestCaseData**. In this example, the TestName is first, then each piece of actual testdata is separated by a comma. 
+* The **NUnit attribute \[Test, TestCaseSource\(nameof\(AddCases\)\)\]**, where AddCases is passed. Can just just the method name of AddCases, but could be named whatever, as long as its the same in both places. A user might want a different name if they have different sets of data setup. 
+* Notice where the **variables are passed to testcase**: ValidateTimeCorrectionTest\(string testname, TimeCorrectionType tcType, string punchDate, string punchTime, string reason\), this must match what is in each data set. 
+* Now notice in the **Workflow Execute, the variables are passed to the test, except the TestName**, this is excluded, this value is only passed to the TextContext. Only actual TestData is passed to the WorkFlow to the Execute method:   runner.Execute\(workflow =&gt; { workflow.Execute\(tcType, punchDate, punchTime, reason\); }, testContext\);
 

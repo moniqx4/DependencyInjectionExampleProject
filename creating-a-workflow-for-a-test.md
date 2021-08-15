@@ -1,10 +1,10 @@
 ---
 description: >-
-  Each Test or set of Tests ( for data driven ) must have a WorkFlow associated
-  with it. WorkFlows are where the actual test steps are defined and run.
+  Each Test or set of Tests ( for data driven ) must have a Workflow associated
+  with it. Workflows are where the actual test steps are defined and run.
 ---
 
-# Creating a WorkFlow for a Test
+# Creating a Workflow for a Test
 
 ## Getting Started with creating a WorkFlow
 
@@ -65,10 +65,19 @@ public void Execute()
 ```
 {% endcode %}
 
-Once I think I have all the steps I need to automate this test, then you add these Test Steps defined as methods. Right clicking on each method in Visual Studio will provide an option of generating the method for each one. They will be created for you, as private void methods and as not implemented. All ready for you to add code. This allows you to work with someone else to plan your tests, and write the code later. This can be compiled without the code and submitted for a PR review and worked on later. Basically, a Test Driven  design pattern for automation. This is one of the key aspects of using this approach to writing tests in this way.
+Once I think I have all the steps I need to automate this test, then you add these Test Steps defined as methods. Right clicking on each method in Visual Studio will provide an option of generating the method for each one. They will be created for you, as private void methods and as not implemented. All ready for you to add code. This allows you to work with someone else to plan your tests, and write the code later. This can be compiled without the code and submitted for a PR review and worked on later. Basically, a Test Driven design pattern for automation. This is one of the key aspects of using this approach to writing tests in this way.
 
 {% hint style="info" %}
 The code in each method is whatever it needs to be to get the job done for that step. Since it is private, it gives the coder the flexible to write code how they see fit, as long as it executes the step it is associated with and does the actions based on the method's description \( the method name\). That is why its ok to have longer names if needed. Each word in the name should be PascalCase as shown in example.
+
+If a user can read this section and know all the steps being executed in the test, without reading anything else, then you have created your workflow with the correct amount of granularity. 
+
+\*\*\*\*❗ **Bad Example:** 
+
+Login\(\);  
+RunTest\(\);
+
+Just reading this, I have no idea what is being tested, or how its being tested by the script.
 {% endhint %}
 
 
