@@ -11,5 +11,8 @@
 * [Other Sub-Projects: PlayWrightWebDriver](other-sub-projects-playwrightwebdriver.md)
 * [F.A.Q](f.a.q.md)
 * [Advanced Topics: Selenium Web Driver](advanced-topics-selenium-web-driver.md)
-* [Creating Tests](creating-tests.md)
+
+## Process of Creating Tests
+
+* [Creating a Test](process-of-creating-tests/creating-a-test.md)
 
