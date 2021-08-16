@@ -1,8 +1,7 @@
 ---
 description: >-
   This guide assumes you are already familiar with writing tests in general with
-  Selenium as we are doing today. We will start from NUnit and and work our way
-  through the framework.
+  Selenium. We will start from NUnit and and work our way through the framework.
 ---
 
 # Getting Started with UIAutomation 2021
@@ -15,7 +14,7 @@ To create a Test, we'll use the Template that will layout our basic structure. I
 public class NameOfYourTestTests
     {
         [TestFixture]
-        public class NameOfYourTestTests: BaseTest
+        public class NameOfYourTestTests: TeardownSetup
         {
 
             [Test]
@@ -41,9 +40,9 @@ public class NameOfYourTestTests
 * In this framework Tests are simply the director. Sets the TestRunner with the Tests its running, and then pointing it to the Workflow to run that Test.  
 * A Workflow can be used for multiple Tests, assuming the all use the same Steps. This is what you would do in the case of writing data driven Tests. 
 * When not doing Data Driven, the Test would be a 1:1 relationship. 
-* The next important piece is the TestContext. The TestContext sets all the pertinent information related to your test settings. You'll notice the test is inheriting from a BaseTest\*\* , this BaseTest file is where you would setting with whatever setting available in the TestContext. The BaseTest are settings that will be used for all the Tests in this files Test Suite. Each TestSuite can have a different BaseTest if you want it to use different settings from one group of tests to another. We'll talk about that more in depth later. For now we'll use the default one set here.
+* The next important piece is the TestContext. The TestContext sets all the pertinent information related to your test settings. You'll notice the test is inheriting from a TeardownSetup\*\*. The TeardownSetup are settings that will be used for all the Tests in this files Test Suite. 
 
-**\*\*BaseTest** is used in this example, but in some cases I have named it TestSetupTeardown, which defined better what is being inherited. In here, is where OneTimeSetup options can be inherited, or any methods you might need for your tests. Its also where the Container is Setup for the TestRunner.
+**\*\*TeardownSetup** is where OneTimeSetup options can be inherited, or any methods you might need for your tests. Its also where the Container is Setup for the TestRunner.
 
 {% hint style="info" %}
  The Author NUnit attribute is an optional feature, put in to make it easier to see who originally worked on test just in case someone has questions on a testcase. Granted in Visual Studio one can see whom last updated, but that doesn't mean they originally wrote it. Could also review history in BitBucket, but just easier if right here. We also have a few other custom attributes for NUnit available, not listed here, Jira for the Jira story card number, and also TRTestcaseId, for the testcase associated with Test.
