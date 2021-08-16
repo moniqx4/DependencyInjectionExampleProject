@@ -22,7 +22,8 @@
 
 ## Code Snippets
 
-* [Untitled](code-snippets/untitled.md)
+* [Dependency Injection Design Pattern](code-snippets/dependency-injection-design-pattern.md)
+* [Design Patterns](code-snippets/untitled.md)
 
 ## Advanced Topics: Selenium WebDriver
 
