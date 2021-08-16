@@ -20,14 +20,19 @@
 * [Tips to Creating better Tests](tips-to-creating-better-tests.md)
 * [FAQ](faq.md)
 
-## Code Snippets
+## Code Snippets and More <a id="code-snippets"></a>
 
-* [Dependency Injection Design Pattern](code-snippets/dependency-injection-design-pattern.md)
-* [Design Patterns](code-snippets/untitled.md)
+---
+
+* [Dependency Injection Design Pattern](dependency-injection-design-pattern.md)
 
 ## Advanced Topics: Selenium WebDriver
 
 * [Selenium Web Driver](advanced-topics-selenium-webdriver/advanced-topics-selenium-web-driver.md)
 * [IBrowser/Browser](advanced-topics-selenium-webdriver/ibrowser-browser.md)
 * [IWebPage/WebPage](advanced-topics-selenium-webdriver/iwebpage-webpage.md)
+
+---
+
+* [DI Container - Big Explanation](di-container-big-explanation.md)
 
