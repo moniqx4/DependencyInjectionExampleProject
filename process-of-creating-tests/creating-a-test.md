@@ -26,7 +26,7 @@ Before coding anything, we should be thinking of what we want to test and then d
 
 In this step, we are creating the Base Test, we have decided what tests we want to write for this testsuite, and here we are simply creating the Test class. To guide our work going forward. ✅ Can use the Example Test class, and copy and change to your tests with your values. 
 
-## Step 3: 
+## Step 3: Creating the Workflow
 
 Now in our Test we added our Workflow\(s\) name. However, they probably are red because they have not been created yet. So in this step, we create those workflow classes, with the same name as we named then in the Test. They should be the name of the Test, appended with the work 'Workflow'. For example: ValidateAbleToLoginTest is the test name, and the workflow name would be ValidateAbleToLoginWorkflow. ✅ Can use the Example Workflow class, and copy and change to your workflow name to quickly get started.
 
