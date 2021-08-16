@@ -16,3 +16,12 @@
 
 * [Creating a Test](process-of-creating-tests/creating-a-test.md)
 
+---
+
+* [Tips to Creating better Tests](tips-to-creating-better-tests.md)
+* [FAQ](faq.md)
+
+## Code Snippets
+
+* [Untitled](code-snippets/untitled.md)
+

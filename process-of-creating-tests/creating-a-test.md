@@ -40,9 +40,9 @@ So for example, I know I need to Login, so the ILoginService is injected. If usi
 
 ## Step 5: Add Steps for test \(Code\)
 
-In the Execute method, we add Tests steps as methods. They can be as Verbose in naming as needed, the goal is to clearly identify the actions that step is doing. Each step does not not necessary need to be a a single line, they can have multiple code lines as needed to complete the action the step does. For example, if I have method called DeleteTimecardEntries\(\), this method may take a few steps to accomplish it, and those details may not be important to a reader to understand what this test is doing from a non code perspective.
+In the Execute method, we add Tests steps as methods. They can be as Verbose in naming as needed, the _**goal is to clearly identify the actions that step is doing**_. Each step does not necessary need to be a single line, they can have multiple code lines as needed to complete the action the step does. For example, if I have method called DeleteTimecardEntries\(\), this method may take a few steps to accomplish it, and those details may not be important to a reader to understand what this test is doing from a non code perspective.
 
-Now that we have created our Steps as methods, they are appearing as Red, because they don't exist. That is expected, and now we can use the Visual Studio quick actions, highlighting method and right clicking and selecting Generate method. VS will create the methods as not implemented. We have completed the first basic steps, and this could be checked in and reviewed before building it to have a check on what you are testing and the approach you'll be using.
+Now that we have created our Steps as methods, they are appearing as Red, because they don't exist. That is expected, and now we can use the Visual Studio quick actions, highlighting method and right clicking and selecting Generate method. VS will create the methods as not implemented. We have completed the first basic steps, and this could be checked in and reviewed before adding code to have a check on what you are testing and the approach you'll be using.
 
 ## Step 6: Adding Source for TestData
 
@@ -50,7 +50,7 @@ While I'm planning my test, I'm also thinking about what Test Data do I need as 
 
 The TestData itself might come from repository class in code, or a json file, or where ever your data maybe store. We can reference that data as a GetTestData type method and pass it to our data Model.
 
-NOTE: in the case where your data is not changing and its maybe one item, like a single string that doesn't make sense to put it in an data model, then its ok, to just set the string value in workflow.
+🗒 **NOTE**: in the case where your data is not changing and its maybe one or two items, ex. a single string that doesn't make sense to put it in an data model, then its ok, to just set the string value in workflow.
 
 ## Step 7: Coding our Methods
 
@@ -60,7 +60,7 @@ Assuming you have injected the dependencies for Services needed, we can now use 
 
 I've injected LoginService, so I'd use \_login, and then locate the method available from intellisense that I need. 
 
-✅ If I find a method I need was not available, not a problem. We can simply type it in anyway. It will be red, but using the VS Quickactions, can click on it, and select the option to create the method. It will create it on our interface, and then we will need to implement it on the concrete class. Also using the QuickActions on the concrete class to add the method \( as not implemented\) and then add the necessary code to it.
+✅ If I find a method I need was not available, not a problem. We can simply type it in anyway. It will be red, but using the VS Quickactions, can click on it, and select the option to create the method. [VS](https://docs.microsoft.com/en-us/visualstudio/ide/quick-actions?view=vs-2019) will create it on our interface, and then we will need to implement it on the concrete class. Also using the QuickActions on the concrete class to add the method \( as not implemented\) and then add the necessary code to it.
 
 Repeat and rinse for each method.
 
@@ -68,7 +68,7 @@ Repeat and rinse for each method.
 
 Some prefer to test as they go along, but you might prefer to run test after all pieces are in place depending on what the methods in your test do. 
 
-If anything was correct the first time, and nothing missed, or incorrect order of steps, test should work fine. Otherwise, time to debug, starting with the first method that failed, and fixing what failed, and proceeding til they all pass. Similar to what happens when you do Test Driven Development. Fix until you get it to pass, and in the case of UIAutomation, always be sure you can at least consistently run test 10 times in a row at a minimum without failure to address any issues with test flakiness.
+If anything was correct the first time, and nothing missed, or incorrect order of steps, test should work fine. Otherwise, time to debug, starting with the first method that failed, and fixing what failed, and proceeding until they all pass. Similar to what happens when you do Test Driven Development. Fix until you get it to pass, and in the case of UIAutomation, always be sure you can at least consistently run test 10 times in a row at a minimum without failure to address any issues with test flakiness.
 
 
 
