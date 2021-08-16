@@ -28,7 +28,7 @@ In this step, we are creating the Base Test, we have decided what tests we want 
 
 ## Step 3: 
 
-Now in our Test we added our Workflow\(s\) name. However, they probably are ready, because they have not been created yet. So in this step, we create those workflow classes, with the same name as we named then in the Test. They should be the name of the Test, appended with the work 'Workflow'. For example: ValidateAbleToLoginTest is the test name, and the workflow name would be ValidateAbleToLoginWorkflow. ✅ Can use the Example Workflow class, and copy and change to your workflow name to quickly get started.
+Now in our Test we added our Workflow\(s\) name. However, they probably are red because they have not been created yet. So in this step, we create those workflow classes, with the same name as we named then in the Test. They should be the name of the Test, appended with the work 'Workflow'. For example: ValidateAbleToLoginTest is the test name, and the workflow name would be ValidateAbleToLoginWorkflow. ✅ Can use the Example Workflow class, and copy and change to your workflow name to quickly get started.
 
 ## Step 4:  What Services/PageObjects do we need to complete our Test? \(Planning\)
 
