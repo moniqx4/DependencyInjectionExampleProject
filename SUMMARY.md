@@ -25,14 +25,11 @@
 ---
 
 * [Dependency Injection Design Pattern](dependency-injection-design-pattern.md)
+* [DI Container - Big Explanation](di-container-big-explanation.md)
 
 ## Advanced Topics: Selenium WebDriver
 
 * [Selenium Web Driver](advanced-topics-selenium-webdriver/advanced-topics-selenium-web-driver.md)
 * [IBrowser/Browser](advanced-topics-selenium-webdriver/ibrowser-browser.md)
 * [IWebPage/WebPage](advanced-topics-selenium-webdriver/iwebpage-webpage.md)
-
----
-
-* [DI Container - Big Explanation](di-container-big-explanation.md)
 
