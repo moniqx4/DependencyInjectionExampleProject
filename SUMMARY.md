@@ -33,3 +33,7 @@
 * [IBrowser/Browser](advanced-topics-selenium-webdriver/ibrowser-browser.md)
 * [IWebPage/WebPage](advanced-topics-selenium-webdriver/iwebpage-webpage.md)
 
+## Project Structure
+
+* [Framework Architecture](project-structure/framework-architecture.md)
+
