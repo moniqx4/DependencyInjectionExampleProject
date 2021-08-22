@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 
 namespace NUnitTestProject
 {
+    [SetUpFixture]
     public class TestSetupTeardown
     {
-
-        [SetUpFixture]
-        public class TestSetupTearDown
-        {
+     
             private static IConfiguration _configuration;
 
             private static Checkpoint _checkpoint;
@@ -100,7 +98,6 @@ namespace NUnitTestProject
                 //extent.Flush();
                 SeleniumDriver.StopBrowser();
             }
-
-        }
+        
     }
 }
