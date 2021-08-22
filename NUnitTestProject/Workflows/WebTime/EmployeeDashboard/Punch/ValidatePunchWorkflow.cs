@@ -35,7 +35,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             _browser = browser;
         }
 
-        public void Execute(PunchLogic punchTestData)
+        public void Execute(PunchDataFactory punchTestData)
         {           
             var baseUrl = "";
 

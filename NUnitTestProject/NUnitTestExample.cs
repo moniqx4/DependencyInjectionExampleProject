@@ -33,7 +33,7 @@ namespace NUnitTestProject
 
                 var testContext = SetTestContext(nameof(ValidateRegularPunch));
 
-                PunchLogic pl = new PunchLogic();
+                PunchDataFactory pl = new PunchDataFactory();
                 var punchData1 = pl.GetPunchTest1Details();
                 var punchData2 = pl.GetPunchTest2Details();
 

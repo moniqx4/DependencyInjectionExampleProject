@@ -50,11 +50,11 @@ namespace NUnitTestProject
 
 namespace NUnitTestProject
 {
-    public class PunchLogic
+    public class PunchDataFactory
     {
         PunchTestData _PunchDataAccess;
 
-        public PunchLogic()
+        public PunchDataFactory()
         {
             _PunchDataAccess = new PunchTestData();
         }
