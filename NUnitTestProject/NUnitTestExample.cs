@@ -19,6 +19,7 @@ namespace NUnitTestProject
                 var runner = new TestRunner();
 
                 var testContext = SetTestContext(nameof(RunMyTest));
+                
 
                 runner.Execute<ExampleTestWorkflow>(workflow => { workflow.Execute(); }, testContext);
             }
@@ -32,7 +33,11 @@ namespace NUnitTestProject
 
                 var testContext = SetTestContext(nameof(ValidateRegularPunch));
 
-                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(); }, testContext);
+                PunchLogic pl = new PunchLogic();
+                var punchData1 = pl.GetPunchTest1Details();
+                var punchData2 = pl.GetPunchTest2Details();
+
+                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(punchData1); }, testContext);
             }
         }
 

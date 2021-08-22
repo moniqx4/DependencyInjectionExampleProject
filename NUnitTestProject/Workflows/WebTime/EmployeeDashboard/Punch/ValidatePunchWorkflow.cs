@@ -35,9 +35,11 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             _browser = browser;
         }
 
-        public void Execute()
+        public void Execute(PunchLogic punchTestData)
         {           
-            var baseUrl = "";           
+            var baseUrl = "";
+
+            var punchtestData = punchTestData.GetPunchTest1Details();
 
             Login(baseUrl);
             CreateRegularClockInPunchWithNotes(); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
@@ -45,7 +47,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             //ValidatePunch(clockInPunch); // pass in the expected punch details TODO: need expected Data Model
             ClearPunch(); // clear out added punch
             WaitBetweenPunches();
-            CreateRegularClockOutPunchWithNotes();
+            CreateRegularClockOutPunchWithNotes(punchtestData);
             //ValidatePunch(clockOutPunch); TODO: need expected Data Model
             Logout(baseUrl);
 
@@ -56,7 +58,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             _loginService.LogoutViaUrl(baseUrl);
         }
 
-        private void CreateRegularClockOutPunchWithNotes()
+        private void CreateRegularClockOutPunchWithNotes(PunchDataModel punchTestData)
         {
             PunchModel punch = new PunchModel()
             {
@@ -64,6 +66,14 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
                 PunchMethod = PunchMethod.Regular,
                 Notes = "Automation Punch Note"
             };
+
+            //PunchLogic pl = new PunchLogic();
+            //var punchData1 = pl.GetPunchTest1Details();
+            //var punchData2 = pl.GetPunchTest2Details();
+
+            //var punchType = punchData1.PunchType;
+
+            var punchType2 = punchTestData.PunchType;
 
             _punchService.CreatePunch(punch);
 
