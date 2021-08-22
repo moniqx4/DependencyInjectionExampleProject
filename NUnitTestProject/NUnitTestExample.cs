@@ -37,7 +37,7 @@ namespace NUnitTestProject
                 var punchData1 = pl.GetPunchTest1Details();
                 var punchData2 = pl.GetPunchTest2Details();
 
-                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(punchData1); }, testContext);
+                runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(pl); }, testContext);
             }
         }
 
