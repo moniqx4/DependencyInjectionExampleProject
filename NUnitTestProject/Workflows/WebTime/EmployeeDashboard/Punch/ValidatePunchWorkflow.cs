@@ -18,7 +18,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
         private readonly IPunchService _punchService;
         private readonly ILoginService _loginService;
         private readonly IWaitService _waitService;
-        private readonly IBrowserHandler _browser;
+        private readonly IBrowserHandler _browser;       
 
         public ValidatePunchWorkflow(
             ILoginService loginService,
@@ -41,8 +41,13 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 
             var punchtestData = punchTestData.GetPunchTest1Details();
 
+            var punchBuilder = new PunchBuilder();
+            var punchDetails = punchBuilder.Build();
+
+            punchDetails.PunchDataModel.PunchType = PunchType.ClockIn;
+
             Login(baseUrl);
-            CreateRegularClockInPunchWithNotes(); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
+            CreateRegularClockInPunchWithNotes(punchDetails); // pass in punch details, punchType (regular or manual), punchTypes ( clockin, etc)
             //var actualPunchDetails = 
             //ValidatePunch(clockInPunch); // pass in the expected punch details TODO: need expected Data Model
             ClearPunch(); // clear out added punch
@@ -73,11 +78,14 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 
             //var punchType = punchData1.PunchType;
 
-            var punchType2 = punchTestData.PunchType;
+            var punchBuilder = new PunchBuilder();
+            var punchDetails = punchBuilder.Build();
 
-            _punchService.CreatePunch(punch);
+            punchDetails.PunchType = PunchType.ClockIn;
 
-           
+            var punchType2 = punchTestData.PunchType;            
+
+            _punchService.CreatePunch(punch);           
         }
 
         private void WaitBetweenPunches()
@@ -93,7 +101,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             _loginService.LoginToWTEmployeeDashboard(baseUrl, loginCred);
         }
 
-        private void CreateRegularClockInPunchWithNotes()
+        private void CreateRegularClockInPunchWithNotes(PunchModel punchTestData)
         {
             PunchModel punch = new PunchModel()
             {
@@ -102,7 +110,7 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
                 Notes = "Automation Punch Note"
             };
                       
-            _punchService.CreatePunch(punch);
+            _punchService.CreatePunch(punchTestData);
            
         }
 

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using NUnitTestProject.Workflows;
 using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch;
+using PageObjects.WTDashboards.Models.Enums;
 using TestRunnerLibrary;
 
 namespace NUnitTestProject
@@ -36,6 +37,15 @@ namespace NUnitTestProject
                 PunchDataFactory pl = new PunchDataFactory();
                 var punchData1 = pl.GetPunchTest1Details();
                 var punchData2 = pl.GetPunchTest2Details();
+
+                //var punchBuilder = new PunchBuilder();                
+                //var punchDetails = punchBuilder.Build();
+                //punchDetails.PunchDataModel.PunchType = PageObjects.WTDashboards.Models.Enums.PunchType.ClockIn; // then pass the punchDetails through the execute
+
+                PunchBuilder punchBuilder = new PunchBuilder();
+                PunchTestModel clockinPunch = punchBuilder.AddPunchType(PunchType.ClockIn)
+                                                    .AddPunchMethod(DataModelLibrary.PunchMethod.Regular)
+                                                    .Build();
 
                 runner.Execute<ValidatePunchWorkflow>(workflow => { workflow.Execute(pl); }, testContext);
             }

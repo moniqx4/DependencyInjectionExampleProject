@@ -1,4 +1,6 @@
-﻿using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch;
+﻿using DataModelLibrary;
+using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch;
+using PageObjects.WTDashboards.Models.Enums;
 
 namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
 {
@@ -11,8 +13,8 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             PunchDataModel punchtest = new PunchDataModel()
             {
                 ID = 1,
-                PunchType = "Clock In",
-                PunchMethod = "Regular",
+                PunchType = PunchType.ClockIn,
+                PunchMethod = PunchMethod.Regular,
                 Notes = "Test"
             };
             return punchtest;
@@ -25,8 +27,8 @@ namespace NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Punch
             PunchDataModel punchtest = new PunchDataModel()
             {
                 ID = 2,
-                PunchType = "Clock Out",
-                PunchMethod = "Regular",
+                PunchType = PunchType.ClockIn,
+                PunchMethod = PunchMethod.Regular,
                 Notes = "Test"
             };
             return punchtest;
@@ -40,9 +42,9 @@ namespace NUnitTestProject
     {
         public int ID { get; set; }
 
-        public string PunchType { get; set; }
+        public PunchType PunchType { get; set; }
 
-        public string PunchMethod { get; set; }
+        public PunchMethod PunchMethod { get; set; }
 
         public string Notes { get; set; }
     }
