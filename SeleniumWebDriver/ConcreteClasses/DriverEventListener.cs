@@ -11,12 +11,12 @@ namespace SeleniumWebDriver.ConcreteClasses
     {
         private IDriverLogger _logger = new DriverLogger();
 
-        private IWebDriver _driver;
+        private static IWebDriver _driver;
 
         private IWebElement _webElement;
         private bool disposedValue;
 
-        //private EventFiringWebDriver _eventFiringListener = new EventFiringWebDriver(_browser);
+        private EventFiringWebDriver _eventFiringDriver = new EventFiringWebDriver(_driver);
 
         public DriverEventListener()
         {
@@ -106,7 +106,8 @@ namespace SeleniumWebDriver.ConcreteClasses
         {
             try
             {
-                _driver.Close();
+                _eventFiringDriver.Close();
+                
             }
             catch (Exception ex)
             {
@@ -133,6 +134,7 @@ namespace SeleniumWebDriver.ConcreteClasses
 
         public INavigation Navigate()
         {
+            
             throw new System.NotImplementedException();
         }
 
@@ -175,14 +177,14 @@ namespace SeleniumWebDriver.ConcreteClasses
             System.GC.SuppressFinalize(this);
         }
 
-        public void Clear()
+        public void Clear(By by)
         {
-            throw new NotImplementedException();
+            _eventFiringDriver.FindElement(by).Clear();
         }
 
-        public void SendKeys(string text)
+        public void SendKeys(By by,string text)
         {
-            throw new NotImplementedException();
+            _eventFiringDriver.FindElement(by).SendKeys(text);            
         }
 
         public void Submit()
@@ -190,9 +192,9 @@ namespace SeleniumWebDriver.ConcreteClasses
             throw new NotImplementedException();
         }
 
-        public void Click()
+        public void Click(By by)
         {
-            throw new NotImplementedException();
+            _eventFiringDriver.FindElement(by).Click();            
         }
 
         public string GetAttribute(string attributeName)
