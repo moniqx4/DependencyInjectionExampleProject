@@ -5,14 +5,15 @@ using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium.Support.UI;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using DataModelLibrary.Enums;
 
 namespace SeleniumWebDriver.ConcreteClasses
 {
    
-    public class LocatorBuilder: ILocatorBuilder
+    public partial class LocatorBuilder: ILocatorBuilder
     {
         [ThreadStatic]
-        static IWebDriver _driver;
+        private static IWebDriver _driver;
 
         private static IWebElement _webElement;
         
@@ -36,9 +37,14 @@ namespace SeleniumWebDriver.ConcreteClasses
         /// <param name="TimeOutForFindingElement"> Number of seconds an element should wait for a webelement to display or exists </param>
         /// <returns> an instance of the webelement</returns>
        
-        private static IWebElement _WaitTillElementDisplayed(LocatorModel locator, int waitTimeInSecs = 10)
+        private static IWebElement _WaitTillElementDisplayed(LocatorModel locator, bool useCSSLocator, CSSLocators cssLocator, string value = null, int waitTimeInSecs = 10)
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTimeInSecs));
+
+            if(!useCSSLocator)
+            {
+                return GetCSSLocatorElements(cssLocator, value, waitTimeInSecs);
+            }
 
             return locator.BaseLocator.LocatorType switch
             {
@@ -46,7 +52,7 @@ namespace SeleniumWebDriver.ConcreteClasses
                 LocatorType.PartialLinkText => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator.BaseLocator.Locator))),
                 LocatorType.Name => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locator.BaseLocator.Locator))),
                 LocatorType.LinkText => wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator.BaseLocator.Locator))),
-                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator.BaseLocator.Locator))),
+                LocatorType.Id => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locator.BaseLocator.Locator))),                
                 LocatorType.CSS => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locator.BaseLocator.Locator))),
                 LocatorType.TagName => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName(locator.BaseLocator.Locator))),
                 LocatorType.Class => _webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName(locator.BaseLocator.Locator))),
