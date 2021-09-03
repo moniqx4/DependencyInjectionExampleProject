@@ -25,7 +25,7 @@ namespace NUnitTestProject.Tests.TCT
         //[Test, TestCaseSource(typeof(PunchTestData), "TestCases")] // this way calls it from external class
         [Test, TestCaseSource(typeof(PunchDataCSV), "GetTestCases", new object[] { "somecsvfile.csv" })] // this way calls it from a csv file
         [Author("YourName or email here")]
-        [Category("DashboardTimeCorrectionTests")]        
+        [EEDashboard] // see Nunit Custom Catgory for adding more as needed       
         public void ValidateTimeCorrectionTest(string testname, TimeCorrectionType tcType, string punchDate, string punchTime, string reason)
         {
 
