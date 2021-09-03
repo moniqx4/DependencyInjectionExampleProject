@@ -22,15 +22,17 @@ Once we have some plans\(tests\), we can decide what kind of services are needed
 
 This layer is the one that depending on size of project, can be _optional_. However, this layer provides one very important feature, which is **Re-Usability** for our code. When you have a larger project, with more than 1 or two people writing tests, this layer allows creating chunks of re-usable code in the form of Services. These services need to be properly planned out to provide not only re-usable code, but in manner that is intuitive and makes this code discoverable by the consumers.
 
-Keep in mind, for a smaller project you can omit this layer, and it does add an extra layer of abstraction. Instead,  you could use Page Objects in your workflow, but because workflows are personal to the test they are being written for, you'll lose re-usability, between workflows. Copying and pasting any code you repeat between workflows. Not suggested for larger projects where many people, or different people write tests, because if a change is made in the application under test, that requires you change your workflow , you'll need to be aware of all the workflows that have that code, and update as well. Whereas with the Services layer, that re-useable chunk of code would be in one place, and only need to update there.
+Keep in mind, for a smaller project you can omit this layer, as it does add an extra layer of abstraction. Instead,  you could use Page Objects in your workflow, but because workflows are personal to the test they are being written for, you'll lose re-usability, between workflows. Copying and pasting any code you repeat between workflows. Not suggested for larger projects where many people, or different people write tests, because if a change is made in the application under test, that requires you change your workflow , you'll need to be aware of all the workflows that have that code, and update as well. Whereas with the Services layer, that re-useable chunk of code would be the single place of truth for code, and only need to update there.
 
-As services can be challenging to build, and if you have a team that is fairly new to the codebase, one approach is start with using Page Objects with your workflows, and as tests are being developed as  chunks of code are being repeated a Service is created for that code and then shared between the workflows. This allows your test writing to dictate what Services are needed.
+\_\_📍 _As services can be challenging to build, and if you have a team that is fairly new to the codebase, one approach is start with using Page Objects with your workflows, and as tests are being developed as  chunks of code are being repeated a Service is created for that code and then shared between the workflows. This allows your test writing to dictate what Services are needed._
 
 ## Page Objects Layer - Lower level Component
 
 The materials or  what the workteams use to build their services. The workteams don’t know how to build these materials, and don’t care how they are built. They just want to get the materials they need.
 
 Now at the same thing they are figuring out the best structure on the services layer, they have already provided the list of materials they need, aka pageobjects. These are being assembled and ready for the Services layer to consume whenever they are ready. Or in the case of a smaller project they may be feeding the Workflows directly. 
+
+> Page Objects done in the manner described, are commonly referred to as Business Layer Page Objects.
 
 ## Driver Layer - Lowest level Component
 
