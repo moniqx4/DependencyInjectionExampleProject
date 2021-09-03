@@ -1,5 +1,6 @@
 ﻿using DataModelLibrary.Enums;
 using NUnit.Framework;
+using NUnitTestProject.Tests.TCT.TestData;
 using NUnitTestProject.Workflows.WebTime.EmployeeDashboard.Activity;
 using PageObjects.WTDashboards.Models.Enums;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ namespace NUnitTestProject.Tests.TCT
             yield return new TestCaseData("ValidateRemoveTimeCorrectionTests", TimeCorrectionType.Remove, PunchType.ClockIn, "04/15/21", "10:00 AM", "Automated Time Correction Remove Test");
         }
 
-        [Test, TestCaseSource(nameof(AddCases))]
+        //[Test, TestCaseSource(nameof(AddCases))]
+        //[Test, TestCaseSource(typeof(PunchTestData), "TestCases")] // this way calls it from external class
+        [Test, TestCaseSource(typeof(PunchDataCSV), "GetTestCases", new object[] { "somecsvfile.csv" })] // this way calls it from a csv file
         [Author("YourName or email here")]
         [Category("DashboardTimeCorrectionTests")]        
         public void ValidateTimeCorrectionTest(string testname, TimeCorrectionType tcType, string punchDate, string punchTime, string reason)
