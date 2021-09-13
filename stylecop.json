@@ -1,0 +1,9 @@
+{
+  "$schema": "DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "MLProductions LLC",
+      "copyrightText": "\"Licensed under the Apache License, Version 2.0 (the \"License\");\""
+    }
+  }
+}

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using TestUtilities;
 
 namespace SeleniumWebDriver.Helper
 {
@@ -94,6 +95,38 @@ namespace SeleniumWebDriver.Helper
             canceller.Cancel();
             canceller.Dispose();
             return result;
+        }
+
+        public static void WaitForAjax()
+        {
+            int maxSeconds = ConfigurationService.Instance.GetTimeoutSettings().WaitForAjaxTimeout;
+
+            string numberOfAjaxConnections = string.Empty;
+
+            Wait.ForConditionUntilTimeout(
+                () =>
+                {
+                    numberOfAjaxConnections = InvokeScript("return window.openHTTPs ? window.openHTTPs.length : null");
+
+                    if (int.TryParse(numberOfAjaxConnections, out int ajaxConnections))
+                    {
+                        if (ajaxConnections == 0)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        // If it's not a number, the page might have been freshly loaded indicating the monkey
+                        // patch is replaced or we haven't yet done the patch.
+                        MonkeyPatchXMLHttpRequest();
+                    }
+
+                    return false;
+                },
+                totalRunTimeoutMilliseconds: maxSeconds * 1000,
+                sleepTimeMilliseconds: 300,
+                onTimeout: () => { Logger.LogWarning($"Timed out waiting for open connections to be closed. Wait time: {maxSeconds} sec."); });
         }
     }
 }
