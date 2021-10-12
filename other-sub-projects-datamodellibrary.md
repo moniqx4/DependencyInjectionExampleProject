@@ -21,10 +21,10 @@ If the Data Model you need is not one shared, or maybe only specific to one item
 
 **Some Best Practices when it comes to Data Models:**
 
-* Data Objects \( models\), should not be partially initialized
+* Data Objects ( models), should not be partially initialized
   * This forces data objects being passed to have all the required data and thus avoiding instantiating errors and better encapsulation, Example: 
 
-```text
+```
  public class BaseLocatorModel
     {
         public BaseLocatorModel(LocatorType locatorType, string locator)
@@ -41,11 +41,8 @@ If the Data Model you need is not one shared, or maybe only specific to one item
 
 * If the Data Object is one expected to have its information written out to a log, add the override string to it. Example: 
 
-```text
-
+```
 ```
 
 * Leveraging Data Object Models can be very useful and make it much easier to pass data around. If a method has more then 3 parameters being passed to it, consider using a Data Object Model instead.
-
-
 

@@ -10,7 +10,7 @@ The architecture for this Automation Framework is based on Layers. Each Layer ha
 
 This layer is the **highest** component of framework. Here is where your tests and workflows are created. These tests/workflows are the "Directors" of how tests runs. The Directors plan and provide the requirements for the rest of the layers, to fulfill their requirements for getting their tests functional.
 
-Directors can write plans \(tests\) all day, and we need those to understand what we need to work on for them. Directors can be anyone really. They don’t have to know anything about the inner working of our architecture. Ideally, it would be preferred to write the tests first, so we have an idea of what is needed to work for the tests.
+Directors can write plans (tests) all day, and we need those to understand what we need to work on for them. Directors can be anyone really. They don’t have to know anything about the inner working of our architecture. Ideally, it would be preferred to write the tests first, so we have an idea of what is needed to work for the tests.
 
 Workflows are your workspace, they are personal to the tests they are written for. They are independent of each other. This means if you want to re-use code it must come from a Service. On smaller projects, if the Services layer has been opted out of having, code comes from the page objects directly. Copy and pasting repeated chunks of code will the only way to semi-share code between workflows. 
 
@@ -18,13 +18,13 @@ Workflows are your workspace, they are personal to the tests they are written fo
 
 The main layer that are the “WorkTeams” for the directors. The workteam gets their requirements from the directors, and its their job to get the stuff they need together to present to the directors. The directors have no knowledge of the details, they just want the work done.
 
-Once we have some plans\(tests\), we can decide what kind of services are needed. This should be thought out at a high level, and then mocked out. Do this planning does require us to know how our DOMAIN works, to provide a structure of available services that is intuitive and efficient. Keep the redundancy down and figure out the best level of access to provide the directors, so they build their tests as they spec’ed out.
+Once we have some plans(tests), we can decide what kind of services are needed. This should be thought out at a high level, and then mocked out. Do this planning does require us to know how our DOMAIN works, to provide a structure of available services that is intuitive and efficient. Keep the redundancy down and figure out the best level of access to provide the directors, so they build their tests as they spec’ed out.
 
 This layer is the one that depending on size of project, can be _optional_. However, this layer provides one very important feature, which is **Re-Usability** for our code. When you have a larger project, with more than 1 or two people writing tests, this layer allows creating chunks of re-usable code in the form of Services. These services need to be properly planned out to provide not only re-usable code, but in manner that is intuitive and makes this code discoverable by the consumers.
 
 Keep in mind, for a smaller project you can omit this layer, as it does add an extra layer of abstraction. Instead,  you could use Page Objects in your workflow, but because workflows are personal to the test they are being written for, you'll lose re-usability, between workflows. Copying and pasting any code you repeat between workflows. Not suggested for larger projects where many people, or different people write tests, because if a change is made in the application under test, that requires you change your workflow , you'll need to be aware of all the workflows that have that code, and update as well. Whereas with the Services layer, that re-useable chunk of code would be the single place of truth for code, and only need to update there.
 
-\_\_📍 _As services can be challenging to build, and if you have a team that is fairly new to the codebase, one approach is start with using Page Objects with your workflows, and as tests are being developed as  chunks of code are being repeated a Service is created for that code and then shared between the workflows. This allows your test writing to dictate what Services are needed._
+__:round_pushpin: _As services can be challenging to build, and if you have a team that is fairly new to the codebase, one approach is start with using Page Objects with your workflows, and as tests are being developed as  chunks of code are being repeated a Service is created for that code and then shared between the workflows. This allows your test writing to dictate what Services are needed._
 
 ## Page Objects Layer - Lower level Component
 
@@ -38,13 +38,11 @@ Now at the same thing they are figuring out the best structure on the services l
 
 Tools came before anything else, so they are already available for the PageObjects layer to use. They may make a special request, or need some tool we haven’t provided yet, no problem we add it as needed. This layer ONLY available to the Page Objects layer, and the access is limited to two interfaces, IWebPage for element interaction and IBrowser for Browser interaction, controls for handling the browser window, for example, loading pages, refresh browser page, etc.
 
-## Other vertical layers \( cross between all the layers\):
+## Other vertical layers ( cross between all the layers):
 
 Utils – specialized tools to help any layer do their work 
 
 DataModelLibrary , Configuration– miscellaneous information needed by all
-
-
 
 
 

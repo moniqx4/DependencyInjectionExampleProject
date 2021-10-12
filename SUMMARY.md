@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Getting Started with UIAutomation 2021](README.md)
+* [Getting Started with UIAutomation DI](README.md)
 * [TestContext](testcontext.md)
 * [Creating a Workflow for a Test](creating-a-workflow-for-a-test.md)
 * [Automation Services: Creating and Modifying](automation-services-creating-and-modifying.md)
@@ -15,14 +15,14 @@
 
 * [Creating a Test](process-of-creating-tests/creating-a-test.md)
 
----
+***
 
 * [Tips to Creating better Tests](tips-to-creating-better-tests.md)
 * [FAQ](faq.md)
 
-## Code Snippets and More <a id="code-snippets"></a>
+## Code Snippets and More <a href="code-snippets" id="code-snippets"></a>
 
----
+***
 
 * [Dependency Injection Design Pattern](dependency-injection-design-pattern.md)
 * [DI Container - Big Explanation](di-container-big-explanation.md)
@@ -36,4 +36,3 @@
 ## Project Structure
 
 * [Framework Architecture](project-structure/framework-architecture.md)
-
